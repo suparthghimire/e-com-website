@@ -1,0 +1,5216 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Artificial Jewellery",
+            "slug": "artificial-jewellery",
+            "price": 170,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 98,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "1234565324",
+            "is_new": true,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-1-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-1-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-1-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-1-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-1-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-1-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-1-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-1-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Silver Ring",
+                    "slug": "silver-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 2,
+            "name": "Crown Shape Gold Ring",
+            "slug": "crown-shape-gold-ring",
+            "price": 49,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 80,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12345684",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-2-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-2-2.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-2-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-2-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Gold Clearance",
+                    "slug": "gold-clearance"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 3,
+            "name": "Diamond & Silver Advanced Ring",
+            "slug": "diamond-and-silver-advanced-ring",
+            "price": 350,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 88,
+            "ratings": 5,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12345673",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-3-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-3-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-3-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-3-4.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-3-5.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-3-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-3-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-3-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-3-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-3-5-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Luxury and Elegant Ring",
+                    "slug": "luxury-and-elegant-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 4,
+            "name": "Diamond Necklace",
+            "slug": "diamond-necklace",
+            "price": 398,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 70,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12344233",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-4-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-4-2.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-4-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-4-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "New Luxury Collection",
+                    "slug": "new-luxury-collection"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 5,
+            "name": "Fashion Comfort Decoration",
+            "slug": "fashion-comfort-decoration",
+            "price": 98,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 40,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "1234320",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-5-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-5-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-5-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-5-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-5-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-5-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-5-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-5-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "New Luxury Collection",
+                    "slug": "new-luxury-collection"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 6,
+            "name": "Fashion Gold Ring",
+            "slug": "fashion-gold-ring",
+            "price": 330,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 89,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12345678",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-6-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-6-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-6-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-6-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-6-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-6-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-6-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-6-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Gold Clearance",
+                    "slug": "gold-clearance"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 7,
+            "name": "Fashion Silver Ring",
+            "slug": "fashion-silver-ring",
+            "price": 120,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 56,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12345687",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-7-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-7-2.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-7-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-7-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Silver Ring",
+                    "slug": "silver-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 8,
+            "name": "Fresh Nature Silver Ring",
+            "slug": "fresh-nature-silver-ring",
+            "price": 35,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 88,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12345672",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-8-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-8-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-8-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-8-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-8-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-8-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-8-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-8-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Luxury and Elegant Ring",
+                    "slug": "luxury-and-elegant-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 9,
+            "name": "Girl’s Favorite Ring",
+            "slug": "girl-s-favorite-ring",
+            "price": 180,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 100,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12344235",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-9-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-9-2.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-9-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-9-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Luxury and Elegant Ring",
+                    "slug": "luxury-and-elegant-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 10,
+            "name": "Gold Business-Class Ring",
+            "slug": "gold-business-class-ring",
+            "price": 299,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 30,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12345688",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-10-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-10-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-10-3.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-10-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-10-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-10-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Gold Clearance",
+                    "slug": "gold-clearance"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 11,
+            "name": "Gold Ring Set With Five Rubies",
+            "slug": "gold-ring-set-with-five-rubies",
+            "price": 65,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 79,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 96,
+            "sku": "123456322",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": true,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-11-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-11-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-11-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-11-4.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-11-5.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-11-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-11-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-11-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-11-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-11-5-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Gold Clearance",
+                    "slug": "gold-clearance"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 12,
+            "name": "Green Pearles Earrings",
+            "slug": "green-pearles-earrings",
+            "price": 320,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 99,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12345673-1",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-12-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-12-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-12-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-12-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-12-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-12-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-12-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-12-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "New Luxury Collection",
+                    "slug": "new-luxury-collection"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 13,
+            "name": "Ring Gemmed With Rubies",
+            "slug": "ring-gemmed-with-rubies",
+            "price": 120,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 67,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 100,
+            "sku": "1234565320",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": true,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-13-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-13-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-13-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-13-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-13-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-13-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-13-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-13-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "New Luxury Collection",
+                    "slug": "new-luxury-collection"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 14,
+            "name": "Ring Set With Five Crystals",
+            "slug": "ring-set-with-five-crystals",
+            "price": 75,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 92,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "1234565323",
+            "is_new": true,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-14-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-14-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-14-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-14-4.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-14-5.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-14-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-14-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-14-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-14-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-14-5-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Gold Clearance",
+                    "slug": "gold-clearance"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 15,
+            "name": "Ring Set With Five Diamond",
+            "slug": "ring-set-with-five-diamond",
+            "price": 50,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 90,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 98,
+            "sku": "123456324",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": true,
+            "until": null,
+            "variants": [
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-15-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-15-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-15-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-15-4.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-15-5.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-15-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-15-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-15-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-15-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-15-5-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Silver Ring",
+                    "slug": "silver-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 16,
+            "name": "Seashell Shape Gold Ring",
+            "slug": "seashell-shape-gold-ring",
+            "price": 234,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 80,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12345675",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-16-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-16-2.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-16-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-16-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Luxury and Elegant Ring",
+                    "slug": "luxury-and-elegant-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 17,
+            "name": "Shell Shape Gold Eardrops",
+            "slug": "shell-shape-gold-eardrops",
+            "price": 98,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 90,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12344232",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-17-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-17-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-17-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-17-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-17-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-17-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-17-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-17-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "New Luxury Collection",
+                    "slug": "new-luxury-collection"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 18,
+            "name": "Silver & Diamond Ring",
+            "slug": "silver-and-diamond-ring",
+            "price": 215,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 79,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "1234565322",
+            "is_new": true,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-18-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-18-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-18-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-18-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-18-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-18-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-18-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-18-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Silver Ring",
+                    "slug": "silver-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 19,
+            "name": "Silver Decor Wristlet",
+            "slug": "silver-decor-wristlet",
+            "price": 160,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 77,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "123456323",
+            "is_new": null,
+            "is_featured": true,
+            "is_top": null,
+            "until": null,
+            "variants": [
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-19-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-19-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-19-3.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-19-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-19-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-19-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "New Luxury Collection",
+                    "slug": "new-luxury-collection"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 20,
+            "name": "Smooth Effect Light Ring",
+            "slug": "smooth-effect-light-ring",
+            "price": 98,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 88,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12345671",
+            "is_new": null,
+            "is_featured": true,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-20-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-20-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-20-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-20-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-20-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-20-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-20-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-20-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Luxury and Elegant Ring",
+                    "slug": "luxury-and-elegant-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 21,
+            "name": "Super Brand Eardrops",
+            "slug": "super-brand-eardrops",
+            "price": 98,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 90,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "1234322",
+            "is_new": null,
+            "is_featured": true,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-21-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-21-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-21-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-21-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-21-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-21-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-21-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-21-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Gold Clearance",
+                    "slug": "gold-clearance"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 22,
+            "name": "Various Color Eardrops",
+            "slug": "various-color-eardrops",
+            "price": 98,
+            "sale_price": 87,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 66,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12344230",
+            "is_new": null,
+            "is_featured": true,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-22-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-22-2.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-22-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-22-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "New Luxury Collection",
+                    "slug": "new-luxury-collection"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 23,
+            "name": "Wedding’s Top-rated Ring",
+            "slug": "wedding-s-top-rated-ring",
+            "price": 580,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 88,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12345682",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-23-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-23-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-23-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-23-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-23-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-23-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-23-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-23-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Luxury and Elegant Ring",
+                    "slug": "luxury-and-elegant-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 24,
+            "name": "White Color Women’s Earrings",
+            "slug": "white-color-women-s-earrings",
+            "price": 78,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 66,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12344231",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-24-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-24-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-24-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-24-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-24-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-24-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-24-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-24-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "New Luxury Collection",
+                    "slug": "new-luxury-collection"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 25,
+            "name": "Women’s Best Eardrops",
+            "slug": "women-s-best-eardrops",
+            "price": 98,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 43,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "1234323",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-25-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-25-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-25-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-25-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-25-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-25-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-25-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-25-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "New Luxury Collection",
+                    "slug": "new-luxury-collection"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 26,
+            "name": "Women’s Diamond Decoration",
+            "slug": "women-s-diamond-decoration",
+            "price": 78,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 54,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "1234321",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-26-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-26-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-26-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-26-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-26-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-26-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-26-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-26-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "New Luxury Collection",
+                    "slug": "new-luxury-collection"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 27,
+            "name": "Women’s Diamond Ring",
+            "slug": "women-s-diamond-ring",
+            "price": null,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 54,
+            "ratings": 5,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "123456321",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [
+                {
+                    "price": 330,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": 280,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-27-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-27-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-27-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-27-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-27-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-27-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-27-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-27-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Luxury and Elegant Ring",
+                    "slug": "luxury-and-elegant-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 28,
+            "name": "Women’s Gold Wristlet",
+            "slug": "women-s-gold-wristlet",
+            "price": 98,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 67,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "123456325",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-28-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-28-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-28-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-28-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-28-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-28-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-28-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-28-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Gold Clearance",
+                    "slug": "gold-clearance"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 29,
+            "name": "Women’s Platinum Ring",
+            "slug": "women-s-platinum-ring",
+            "price": 230,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 99,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "1234565325",
+            "is_new": true,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-29-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-29-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-29-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-29-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-29-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-29-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-29-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-29-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Silver Ring",
+                    "slug": "silver-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 30,
+            "name": "Women’s Silver Light Ring",
+            "slug": "women-s-silver-light-ring",
+            "price": 250,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 99,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "1234565321",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Black",
+                        "slug": "black",
+                        "color": "#2b2b2b"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Blue",
+                        "slug": "blue",
+                        "color": "#267497"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Brown",
+                        "slug": "brown",
+                        "color": "#d99e76"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Extra Large",
+                        "slug": "xl",
+                        "size": "XL"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Large",
+                        "slug": "l",
+                        "size": "L"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Medium",
+                        "slug": "m",
+                        "size": "M"
+                    }
+                },
+                {
+                    "price": null,
+                    "sale_price": null,
+                    "color": {
+                        "name": "Green",
+                        "slug": "green",
+                        "color": "#81d742"
+                    },
+                    "size": {
+                        "name": "Small",
+                        "slug": "s",
+                        "size": "S"
+                    }
+                }
+            ],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-30-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-30-2.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-30-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-30-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Silver Ring",
+                    "slug": "silver-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 31,
+            "name": "Women’s Silver Ring",
+            "slug": "women-s-silver-ring",
+            "price": 210,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 99,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 94,
+            "sku": "1234565321",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": true,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-31-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-31-2.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-31-3.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-31-4.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-31-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-31-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-31-3-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-31-4-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Silver Ring",
+                    "slug": "silver-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        },
+        {
+            "id": 32,
+            "name": "Women’s Thick Silver Ring",
+            "slug": "women-s-thick-silver-ring",
+            "price": 110,
+            "sale_price": null,
+            "short_description": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus adipiscing.",
+            "stock": 99,
+            "ratings": 0,
+            "reviews": 1,
+            "sale_count": 30,
+            "sku": "12344234",
+            "is_new": null,
+            "is_featured": null,
+            "is_top": null,
+            "until": null,
+            "variants": [],
+            "large_pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-32-1.jpg",
+                    "width": 800,
+                    "height": 900
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-32-2.jpg",
+                    "width": 800,
+                    "height": 900
+                }
+            ],
+            "pictures": [
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-32-1-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                },
+                {
+                    "url": "/uploads/images/demo-diamart/products/product-32-2-300x338.jpg",
+                    "width": 300,
+                    "height": 338
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Silver Ring",
+                    "slug": "silver-ring"
+                }
+            ],
+            "tags": [],
+            "brands": []
+        }
+    ],
+    "productCategories": [
+        {
+            "name": "Gold Clearance",
+            "slug": "gold-clearance"
+        },
+        {
+            "name": "Luxury and Elegant Ring",
+            "slug": "luxury-and-elegant-ring"
+        },
+        {
+            "name": "New Luxury Collection",
+            "slug": "new-luxury-collection"
+        },
+        {
+            "name": "Silver Ring",
+            "slug": "silver-ring"
+        }
+    ],
+    "posts": [
+        {
+            "id": 1,
+            "title": "Explore Fashion Trending For Women In Autumn 2021",
+            "slug": "explore-fashion-trending-for-women-in-autumn-2021",
+            "author": "John Doe",
+            "date": "2021-03-01",
+            "comments": 3,
+            "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-1.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-1.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-1-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Winter Sale",
+                    "slug": "winter-sale"
+                },
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Complete Set of Ski Tools for Everyone",
+            "slug": "complete-set-of-ski-tools-for-everyone",
+            "author": "John Doe",
+            "date": "2021-03-21",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-2.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-2.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-2-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Travel",
+                    "slug": "travel"
+                },
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Explore Fashion IPad And Accessories",
+            "slug": "explore-fashion-ipad-and-accessories",
+            "author": "John Doe",
+            "date": "2021-02-01",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-3.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-3.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-3-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Travel",
+                    "slug": "travel"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                },
+                {
+                    "name": "Summer Sale",
+                    "slug": "summer-sale"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Women’s Trending Sunglasses And Clothing",
+            "slug": "women-s-trending-sunglasses-and-clothing",
+            "author": "John Doe",
+            "date": "2021-03-11",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "gallery",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-4.jpg",
+                    "width": 900,
+                    "height": 500
+                },
+                {
+                    "url": "/uploads/images/elements/posts/post-5.jpg",
+                    "width": 900,
+                    "height": 500
+                },
+                {
+                    "url": "/uploads/images/elements/posts/post-3.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-4.jpg",
+                    "width": 900,
+                    "height": 500
+                },
+                {
+                    "url": "/uploads/images/elements/posts/post-5.jpg",
+                    "width": 900,
+                    "height": 500
+                },
+                {
+                    "url": "/uploads/images/elements/posts/post-3.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-4-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Women’s Fashion Summer Dress",
+            "slug": "women-s-fashion-summer-dress",
+            "author": "John Doe",
+            "date": "2021-03-02",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-6.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-6.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-6-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Sport",
+                    "slug": "sport"
+                },
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "The Best Choice for Spending Time",
+            "slug": "the-best-choice-for-spending-time",
+            "author": "John Doe",
+            "date": "2021-03-21",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "video",
+            "video": {
+                "url": "/uploads/video/video-1.mp4",
+                "width": 878,
+                "height": 494
+            },
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-5.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-5.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-5-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Sport",
+                    "slug": "sport"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Quisque a lectus.",
+            "slug": "quisque-a-lectus",
+            "author": "John Doe",
+            "date": "2021-03-18",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-8-800x484.jpg",
+                    "width": 800,
+                    "height": 484
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-8.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-8-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Aenean dignissim pellentesque felis.",
+            "slug": "aenean-dignissim-pellentesque-felis",
+            "author": "John Doe",
+            "date": "2021-03-29",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-7-870x653.jpg",
+                    "width": 870,
+                    "height": 653
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-7.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-7-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "title": "Suscipit pellentesque fusce.",
+            "slug": "suscipit-pellentesque-fusce",
+            "author": "John Doe",
+            "date": "2021-03-22",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-10-800x484.jpg",
+                    "width": 800,
+                    "height": 484
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-10.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-10-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Sport",
+                    "slug": "sport"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "title": "Pellentesque fusce suscipit.",
+            "slug": "pellentesque-fusce-suscipit",
+            "author": "John Doe",
+            "date": "2021-03-12",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-4.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-4.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-4-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Sport",
+                    "slug": "sport"
+                },
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "title": "Sollicitudin utaliquam leo de.",
+            "slug": "sollicitudin-utaliquam-leo-de",
+            "author": "John Doe",
+            "date": "2021-03-17",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-9-800x484.jpg",
+                    "width": 800,
+                    "height": 484
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-9.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-9-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "title": "Fusce suscipit pellentesque.",
+            "slug": "fusce-suscipit-pellentesque",
+            "author": "John Doe",
+            "date": "2021-03-06",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-1.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-1.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-1-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "title": "Utaliquam sollicitudin leo.",
+            "slug": "utaliquam-sollicitudin-leo",
+            "author": "John Doe",
+            "date": "2021-03-16",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-8-800x484.jpg",
+                    "width": 800,
+                    "height": 484
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-8.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-8-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Travel",
+                    "slug": "travel"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "title": "Sollicitudin utaliquam leo.",
+            "slug": "sollicitudin-utaliquam-leo",
+            "author": "John Doe",
+            "date": "2021-03-16",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-9-800x484.jpg",
+                    "width": 800,
+                    "height": 484
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-9.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-9-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "title": "Sed ornare adipiscing risus.",
+            "slug": "sed-ornare-adipiscing-risus",
+            "author": "John Doe",
+            "date": "2021-03-08",
+            "comments": 1,
+            "content": "Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, uctus metus libero eu augue.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-10-800x484.jpg",
+                    "width": 800,
+                    "height": 484
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-10.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/elements/posts/post-10-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "title": "20% Off Coupon for Cyber Week",
+            "slug": "20-off-coupon-for-cyber-week",
+            "author": "John Doe",
+            "date": "2021-03-09",
+            "comments": 1,
+            "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/demo-diamart/posts/post-1-800x386.jpg",
+                    "width": 800,
+                    "height": 386
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/demo-diamart/posts/post-1.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/demo-diamart/posts/post-1-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Travel",
+                    "slug": "travel"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "title": "Best Option for Women’s Beauty",
+            "slug": "best-option-for-women-s-beauty",
+            "author": "John Doe",
+            "date": "2021-03-10",
+            "comments": 1,
+            "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/demo-diamart/posts/post-2-800x386.jpg",
+                    "width": 800,
+                    "height": 386
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/demo-diamart/posts/post-2.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/demo-diamart/posts/post-2-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Shopping",
+                    "slug": "shopping"
+                },
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "title": "Moneyback Guarantee",
+            "slug": "moneyback-guarantee",
+            "author": "John Doe",
+            "date": "2021-03-11",
+            "comments": 1,
+            "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.",
+            "type": "image",
+            "video": null,
+            "large_picture": [
+                {
+                    "url": "/uploads/images/demo-diamart/posts/post-3-800x386.jpg",
+                    "width": 800,
+                    "height": 386
+                }
+            ],
+            "picture": [
+                {
+                    "url": "/uploads/images/demo-diamart/posts/post-3.jpg",
+                    "width": 900,
+                    "height": 500
+                }
+            ],
+            "small_picture": [
+                {
+                    "url": "/uploads/images/demo-diamart/posts/post-3-150x150.jpg",
+                    "width": 150,
+                    "height": 150
+                }
+            ],
+            "categories": [
+                {
+                    "name": "Shopping",
+                    "slug": "shopping"
+                },
+                {
+                    "name": "Fashion",
+                    "slug": "fashion"
+                }
+            ]
+        }
+    ]
+}
