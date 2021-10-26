@@ -65,7 +65,7 @@ export default function EditProfileForm({ user }) {
                 id="fullname"
               />
               {errors.fullname && (
-                <small className="text-danger">Full Name is Required</small>
+                <small className="error-msg">Full Name is Required</small>
               )}
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function EditProfileForm({ user }) {
                 id="phone"
               />
               {errors.phone && (
-                <small className="text-danger">Phone Number is Required</small>
+                <small className="error-msg">Phone Number is Required</small>
               )}
             </div>
           </div>
