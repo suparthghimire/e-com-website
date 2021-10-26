@@ -2,24 +2,30 @@ import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../../../config";
 import { toast } from "react-toastify";
-import { useRouter, userouter } from "next/router";
+import Router from "next/router";
+import { useForm } from "react-hook-form";
 export default function EditProfileForm({ user }) {
-  const [formUser, setFormUser] = useState({
-    full_name: user.full_name,
-    phone_number: user.phone_number,
-    address: user.address,
-    city: user.city,
-    district: user.district,
-    gender: user.gender,
-    state: user.state,
-  });
-  const router = useRouter();
-  const handle_edit = async (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handle_edit = async (data) => {
+    const formUser = {
+      address: data.address,
+      city: data.city,
+      district: data.district,
+      full_name: data.fullname,
+      gender: data.gender,
+      phone_number: data.phone,
+      state: data.state,
+    };
+    console.log(formUser);
+    toast.info("Saving Changes", {
+      autoClose: 2000,
+    });
     try {
-      toast.info("Saving Changes", {
-        autoClose: 2000,
-      });
       const response = await fetch(`${BASE_URL}/me/`, {
         method: "PUT",
         headers: {
@@ -33,7 +39,7 @@ export default function EditProfileForm({ user }) {
       toast.success("Changes Saved Successfully!", {
         autoClose: 2000,
       });
-      router.push("/");
+      Router.reload("/");
     } catch (error) {
       toast.error("Error While Saving Changes!", {
         autoClose: 1200,
@@ -43,91 +49,96 @@ export default function EditProfileForm({ user }) {
   };
   return (
     <div>
-      <form onSubmit={handle_edit}>
+      <form onSubmit={handleSubmit(handle_edit)}>
         <div className="row">
           <div className="col-12">
             <div className="form-group mb-3">
-              <label htmlFor="edit-fullname">Full Name*</label>
+              <label htmlFor="fullname">Full Name*</label>
               <input
                 type="text"
                 className="form-control"
                 placeholder="Full Name *"
-                name="edit-fullname"
-                id="edit-fullname"
-                value={formUser.full_name}
-                onChange={(e) =>
-                  setFormUser({ ...formUser, full_name: e.target.value })
-                }
+                {...register("fullname", {
+                  required: true,
+                  value: user.full_name,
+                })}
+                id="fullname"
               />
+              {errors.fullname && (
+                <small className="text-danger">Full Name is Required</small>
+              )}
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-6">
             <div className="form-group mb-3">
-              <label htmlFor="edit-phone">Phone Number *</label>
+              <label htmlFor="phone">Phone Number *</label>
               <input
                 type="number"
                 className="form-control"
                 placeholder="Phone Number *"
-                name="edit-phone"
-                id="edit-phone"
-                value={formUser.phone_number ? formUser.phone_number : ""}
-                onChange={(e) =>
-                  setFormUser({ ...formUser, phone_number: e.target.value })
-                }
+                {...register("phone", {
+                  required: true,
+                  value: user.phone_number,
+                })}
+                id="phone"
               />
+              {errors.phone && (
+                <small className="text-danger">Phone Number is Required</small>
+              )}
             </div>
           </div>
           <div className="col-6">
             <div className="form-group mb-3">
-              <label htmlFor="edit-address">Address *</label>
+              <label htmlFor="address">Address *</label>
               <input
                 type="text"
                 className="form-control"
                 placeholder="Address *"
-                name="edit-address"
-                id="edit-address"
-                value={formUser.address ? formUser.address : ""}
-                onChange={(e) =>
-                  setFormUser({ ...formUser, address: e.target.value })
-                }
+                {...register("address", {
+                  required: true,
+                  value: user.address,
+                })}
+                id="address"
               />
+              {errors.address && (
+                <small className="text-danger">Address is Required</small>
+              )}
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-6">
             <div className="form-group mb-3">
-              <label htmlFor="edit-city">City *</label>
+              <label htmlFor="city">City *</label>
               <input
                 type="text"
                 className="form-control"
                 placeholder="City *"
-                name="edit-city"
-                id="edit-city"
-                value={formUser.city ? formUser.city : ""}
-                onChange={(e) =>
-                  setFormUser({ ...formUser, city: e.target.value })
-                }
+                name="city"
+                {...register("city", { required: true, value: user.city })}
+                id="city"
               />
+              {errors.city && (
+                <small className="text-danger">City is Required</small>
+              )}
             </div>
           </div>
           <div className="col-6">
             <div className="form-group mb-3">
-              <label htmlFor="edit-gender">Gender *</label>
+              <label htmlFor="gender">Gender *</label>
               <select
                 className="form-control"
-                name="edit-gender"
-                id="edit-gender"
-                value={formUser.gender}
-                onChange={(e) =>
-                  setFormUser({ ...formUser, gender: e.target.value })
-                }
+                {...register("gender", { required: true, value: user.gender })}
+                id="gender"
               >
                 <option value="M">Male</option>
                 <option value="F">Female</option>
               </select>
+              {errors.gender && (
+                <small className="text-danger">Gender is Required</small>
+              )}
             </div>
           </div>
         </div>
@@ -135,15 +146,11 @@ export default function EditProfileForm({ user }) {
         <div className="row">
           <div className="col-6">
             <div className="form-group mb-3">
-              <label htmlFor="edit-state">State *</label>
+              <label htmlFor="state">State *</label>
               <select
-                name="edit-state"
+                {...register("state", { required: true, value: user.state })}
                 className="form-control"
-                id="edit-state"
-                value={formUser.state ? formUser.state : ""}
-                onChange={(e) => {
-                  setFormUser({ ...formUser, state: e.target.value });
-                }}
+                id="state"
               >
                 <option value="">None</option>
                 <option value="province-1">Province 1</option>
@@ -153,6 +160,9 @@ export default function EditProfileForm({ user }) {
                 <option value="karnali">Karnali</option>
                 <option value="sudurpashchim">Sudurpashchim</option>
               </select>
+              {errors.state && (
+                <small className="text-danger">State is Required</small>
+              )}
             </div>
           </div>
           <div className="col-6">
@@ -162,13 +172,15 @@ export default function EditProfileForm({ user }) {
                 type="text"
                 className="form-control"
                 placeholder="Your District *"
-                name="edit-district"
-                id="edit-district"
-                value={formUser.district ? formUser.district : ""}
-                onChange={(e) =>
-                  setFormUser({ ...formUser, district: e.target.value })
-                }
+                {...register("district", {
+                  required: true,
+                  value: user.district,
+                })}
+                id="district"
               />
+              {errors.district && (
+                <small className="text-danger">District is Required</small>
+              )}
             </div>
           </div>
           <button

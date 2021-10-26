@@ -5,7 +5,6 @@ import { SHOP_NAME } from "../../config";
 import ALink from "~/components/features/custom-link";
 import ForgotPasswordForm from "~/components/features/modals/forms/ForgotPasswordForm";
 import { useRouter } from "next/router";
-import Loader from "react-loader-spinner";
 import CustomLoader from "../../components/common/custom-loader";
 
 function ForgotPassword(props) {

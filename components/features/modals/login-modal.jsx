@@ -78,7 +78,7 @@ function LoginModal(props) {
         </ALink>
         <ul className="dropdown-box">
           <li>
-            <ALink href="#">Profile</ALink>
+            <ALink href="/pages/account">Profile</ALink>
           </li>
           <li>
             <a href="#" onClick={handle_logout}>

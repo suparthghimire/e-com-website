@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../../../config";
 import Cookie from "js-cookie";
@@ -10,7 +10,6 @@ export default function LoginForm() {
     email: "",
     password: "",
   });
-  const router = useRouter();
   const handle_login = async (e) => {
     e.preventDefault();
     toast.info("Logging You In. Please Wait", { autoClose: 1200 });
