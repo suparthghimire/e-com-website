@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BASE_URL } from "../../../../config";
 import { toast } from "react-toastify";
 import Router from "next/router";
@@ -10,6 +10,7 @@ export default function EditProfileForm({ user }) {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [serverErrors, setServerErrors] = useState(null);
 
   const handle_edit = async (data) => {
     const formUser = {
@@ -36,6 +37,20 @@ export default function EditProfileForm({ user }) {
       });
       const data = await response.json();
       console.log(data);
+      if (response.status === 400) {
+        //validation error
+        const error = new Error("Validation Error");
+        error.status = 400;
+        error.data = data;
+        throw error;
+      } else if (response.status !== 200) {
+        const error = new Error("Unexpected Error");
+        error.status = response.status;
+        error.data = {
+          message: ["Unexpected Error Occured"],
+        };
+        throw error;
+      }
       toast.success("Changes Saved Successfully!", {
         autoClose: 2000,
       });
@@ -44,13 +59,32 @@ export default function EditProfileForm({ user }) {
       toast.error("Error While Saving Changes!", {
         autoClose: 1200,
       });
-      console.error(error);
+      console.error(error, error.data);
+      let errors = [];
+      Object.keys(error.data).forEach((key) => {
+        error.data[key].forEach((error) => {
+          errors.push(error);
+        });
+      });
+      setServerErrors(errors);
     }
   };
   return (
     <div>
       <h3>Account Details</h3>
       <hr />
+      <div className="row">
+        <div className="col-6">
+          {serverErrors && (
+            <div className="alert alert-danger mb-2">
+              Errors:
+              {serverErrors.map((err) => (
+                <li>{err}</li>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
       <form onSubmit={handleSubmit(handle_edit)}>
         <div className="row">
           <div className="col-12">
@@ -144,7 +178,6 @@ export default function EditProfileForm({ user }) {
             </div>
           </div>
         </div>
-
         <div className="row">
           <div className="col-6">
             <div className="form-group mb-3">

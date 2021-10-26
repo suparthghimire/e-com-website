@@ -72,6 +72,8 @@ export default function ChangePassword() {
 
   return (
     <div>
+      <h3>Change Your Password</h3>
+      <hr />
       <div className="row">
         <div className="col-6">
           {serverErrors && (
@@ -84,7 +86,6 @@ export default function ChangePassword() {
           )}
         </div>
       </div>
-      <h3>Change Your Password</h3>
       <div className="ro">
         <div className="col-6">
           <hr />
