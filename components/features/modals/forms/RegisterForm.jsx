@@ -24,19 +24,24 @@ function RegisterForm() {
         body: JSON.stringify(user),
       });
       const response_user = await response.json();
+      console.log("user:", response_user);
       if (response.status == 400) {
         // Validation Error
         const error = new Error("Validation Error");
         error.status = 400;
         error.data = response_user;
         throw error;
+      } else if (response.status !== 201) {
+        const error = new Error("Unexpected Error");
+        error.status = response.status;
+        error.data = {
+          message: ["Unexpected Error Occured"],
+        };
+        throw error;
       }
-      console.log("user:", response_user);
-      toast.success("Registered Successfully!");
+      toast.success("Registered Successfully!", { autoClose: 1200 });
     } catch (error) {
-      //error handeling
-      console.log("Here");
-      toast.error("Error!");
+      toast.error("Error While Regestering!", { autoClose: 1200 });
       console.error(error, error.data);
       let errors = [];
       Object.keys(error.data).forEach((key) => {
@@ -45,11 +50,12 @@ function RegisterForm() {
         });
       });
       setServerErrors(errors);
+    } finally {
+      document.querySelectorAll("input").forEach((item) => (item.value = ""));
+      document
+        .querySelectorAll("input[type='checkbox']")
+        .forEach((item) => (item.checked = false));
     }
-    document.querySelectorAll("input").forEach((item) => (item.value = ""));
-    document
-      .querySelectorAll("input[type='checkbox']")
-      .forEach((item) => (item.checked = false));
   };
   return (
     <div>

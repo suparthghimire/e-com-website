@@ -4,6 +4,9 @@ import Helmet from "react-helmet";
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import CustomLoader from "../../components/common/custom-loader";
 import EditProfile from "~/components/features/modals/forms/EditProfileForm";
+import ChangePassword from "~/components/features/modals/forms/ChangePasswordForm";
+import Orders from "~/components/partials/account/orders";
+import Dashboard from "~/components/partials/account/dashboard";
 import ALink from "~/components/features/custom-link";
 
 function Account(props) {
@@ -34,7 +37,7 @@ function Account(props) {
 
         <div className="page-content mt-4 mb-10 pb-6">
           <div className="container">
-            <h2 className="title title-center mb-10">My Account</h2>
+            <h2 className="title title-center mb-10">{props.user.full_name}</h2>
 
             <Tabs
               selectedTabClassName="show"
@@ -56,65 +59,26 @@ function Account(props) {
                   <a className="nav-link">Account details</a>
                 </Tab>
                 <Tab className="nav-item">
-                  <ALink className="nav-link" href="/">
-                    Change Password
-                  </ALink>
+                  <a className="nav-link">Change Password</a>
                 </Tab>
+                {/* <Tab className="nav-item">
+                  <a className="nav-link">Billing Address and Shipping Address</a>
+                </Tab> */}
               </TabList>
               <div className="tab-content col-lg-9 col-md-8">
                 <TabPanel className="tab-pane dashboard">
-                  <p className="mb-0">
-                    Hello <span>{props.user.full_name}</span>
-                  </p>
-                  <p className="mb-8">
-                    From your account dashboard you can view your recent orders,
-                    manage and edit your password and account details.
-                  </p>
-                  <ALink href="/shop" className="btn btn-dark btn-rounded">
-                    Go To Shop<i className="d-icon-arrow-right"></i>
-                  </ALink>
+                  <Dashboard user={props.user} />
                 </TabPanel>
                 <TabPanel className="tab-pane">
-                  <table className="order-table">
-                    <thead>
-                      <tr>
-                        <th className="pl-2">Order</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Total</th>
-                        <th className="pr-2">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="order-number">
-                          <ALink href="#">#3596</ALink>
-                        </td>
-                        <td className="order-date">
-                          <time>February 24, 2021</time>
-                        </td>
-                        <td className="order-status">
-                          <span>On hold</span>
-                        </td>
-                        <td className="order-total">
-                          <span>$900.00 for 5 items</span>
-                        </td>
-                        <td className="order-action">
-                          <ALink
-                            href="#"
-                            className="btn btn-primary btn-link btn-underline"
-                          >
-                            View
-                          </ALink>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <Orders />
                 </TabPanel>
                 <TabPanel className="tab-pane">
                   <EditProfile user={props.user} />
                 </TabPanel>
                 <TabPanel className="tab-pane">
+                  <ChangePassword />
+                </TabPanel>
+                {/* <TabPanel className="tab-pane">
                   <p className="mb-2">
                     The following addresses will be used on the checkout page by
                     default.
@@ -161,7 +125,7 @@ function Account(props) {
                       </div>
                     </div>
                   </div>
-                </TabPanel>
+                </TabPanel> */}
               </div>
             </Tabs>
           </div>

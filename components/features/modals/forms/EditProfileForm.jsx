@@ -49,6 +49,8 @@ export default function EditProfileForm({ user }) {
   };
   return (
     <div>
+      <h3>Account Details</h3>
+      <hr />
       <form onSubmit={handleSubmit(handle_edit)}>
         <div className="row">
           <div className="col-12">

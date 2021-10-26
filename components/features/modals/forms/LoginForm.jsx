@@ -39,14 +39,20 @@ export default function LoginForm() {
         error.status = 401;
         error.data = tokens;
         throw error;
+      } else if (response.status !== 201) {
+        const error = new Error("Unexpected Error");
+        error.status = response.status;
+        error.data = "Unexpected Error Occured";
+        throw error;
       }
       if (!tokens) {
         // undefined error
-        const error = new Error("Undefined Error");
-        error.status = 500;
+        const error = new Error("Token Not Found Error");
+        error.status = response.status;
         error.data = "Undefined Token";
         throw error;
       }
+
       console.log("Tokens: ", tokens);
       Cookie.set("rameti_ec_access", tokens.access);
       Cookie.set("rameti_ec_refresh", tokens.refresh);
