@@ -16,6 +16,7 @@ import { BASE_URL } from "../config";
 
 const App = ({ Component, pageProps, store }) => {
   const [auth, setAuth] = useState(false);
+  const [loadingAuth, setLoadingAuth] = useState(true);
   const [user, setUser] = useState(null);
   useEffect(() => {
     if (store.getState().demo.current !== currentDemo) {
@@ -23,32 +24,40 @@ const App = ({ Component, pageProps, store }) => {
     }
     const refresh = Cookie.get("rameti_ec_refresh");
     const access = Cookie.get("rameti_ec_access");
-
-    fetch(`${BASE_URL}/me/`, {
-      headers: {
-        Authorization: `Bearer ${access}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((user) => {
-        if (user.code && user.code === "token_not_valid")
-          throw Error("Invalid Token Error");
-        console.log("User:", user);
-        setUser(user);
-        setAuth(true);
+    if (!access || access == "" || access.trim() == "") {
+      setAuth(false);
+      setLoadingAuth(false);
+    } else {
+      setLoadingAuth(true);
+      fetch(`${BASE_URL}/me/`, {
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
       })
-      .catch((err) => {
-        console.error(err.message);
-        setAuth(false);
-      });
+        .then((res) => res.json())
+        .then((user) => {
+          if (user.code && user.code === "token_not_valid")
+            throw Error("Invalid Token Error");
+          console.log("User:", user);
+          setUser(user);
+          setAuth(true);
+        })
+        .catch((err) => {
+          console.error(err.message);
+          setAuth(false);
+        })
+        .finally(() => {
+          setLoadingAuth(false);
+        });
+    }
   }, [auth]);
 
   return (
     <Provider store={store}>
       <PersistGate
         persistor={store.__persistor}
-        loading={
-          <div className="loading-overlay">
+        loadingAuth={
+          <div className="loadingAuth-overlay">
             <div className="bounce-loader">
               <div className="bounce1"></div>
               <div className="bounce2"></div>
@@ -74,7 +83,12 @@ const App = ({ Component, pageProps, store }) => {
         </Helmet>
 
         <Layout auth={auth} user={user}>
-          <Component {...pageProps} />
+          <Component
+            {...pageProps}
+            auth={auth}
+            user={user}
+            loadingAuth={loadingAuth}
+          />
         </Layout>
         <ToastContainer />
       </PersistGate>

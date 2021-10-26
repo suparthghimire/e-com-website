@@ -173,7 +173,8 @@ export default function Footer() {
           </div>
           <div className="footer-center">
             <p className="copyright">
-              All Rights Reserved to <span class="color-primary"> Rameti</span>
+              All Rights Reserved to{" "}
+              <span className="color-primary"> Rameti</span>
               &nbsp;,2021 &nbsp;|&nbsp;Powered By: Aspark Systems
             </p>
           </div>
