@@ -103,7 +103,7 @@ export default function EditProfileForm({ user }) {
                 id="address"
               />
               {errors.address && (
-                <small className="text-danger">Address is Required</small>
+                <small className="error-msg">Address is Required</small>
               )}
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function EditProfileForm({ user }) {
                 id="city"
               />
               {errors.city && (
-                <small className="text-danger">City is Required</small>
+                <small className="error-msg">City is Required</small>
               )}
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function EditProfileForm({ user }) {
                 <option value="F">Female</option>
               </select>
               {errors.gender && (
-                <small className="text-danger">Gender is Required</small>
+                <small className="error-msg">Gender is Required</small>
               )}
             </div>
           </div>
@@ -152,7 +152,6 @@ export default function EditProfileForm({ user }) {
                 className="form-control"
                 id="state"
               >
-                <option value="">None</option>
                 <option value="province-1">Province 1</option>
                 <option value="bagmati">Bagmati</option>
                 <option value="gandaki">Gandaki</option>
@@ -161,7 +160,7 @@ export default function EditProfileForm({ user }) {
                 <option value="sudurpashchim">Sudurpashchim</option>
               </select>
               {errors.state && (
-                <small className="text-danger">State is Required</small>
+                <small className="error-msg">State is Required</small>
               )}
             </div>
           </div>
@@ -179,7 +178,7 @@ export default function EditProfileForm({ user }) {
                 id="district"
               />
               {errors.district && (
-                <small className="text-danger">District is Required</small>
+                <small className="error-msg">District is Required</small>
               )}
             </div>
           </div>
