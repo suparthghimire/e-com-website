@@ -33,23 +33,24 @@ export default function LoginForm() {
         error.data = tokens;
         throw error;
       }
+      console.log(response.status);
       if (response.status === 401) {
         //validation error
         const error = new Error("Invalid Token Error");
         error.status = 401;
         error.data = tokens;
         throw error;
-      } else if (response.status !== 201) {
+      } else if (response.status !== 200) {
         const error = new Error("Unexpected Error");
         error.status = response.status;
-        error.data = "Unexpected Error Occured";
+        error.data = { detail: "Unexpected Error Occured" };
         throw error;
       }
       if (!tokens) {
         // undefined error
         const error = new Error("Token Not Found Error");
         error.status = response.status;
-        error.data = "Undefined Token";
+        error.data = { detail: "Failed to Grab Tokens" };
         throw error;
       }
 
