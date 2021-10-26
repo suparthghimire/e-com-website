@@ -3,7 +3,23 @@ Demo 25
 */
 
 .color-primary {
-    color: $primary-color;
+    color: $primary-color !important;
+}
+
+.background-primary {
+    background-color: $primary-color !important;
+}
+
+.border-primary {
+    border-color: $primary-color !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-danger {
+    color: red;
 }
 
 // Base
