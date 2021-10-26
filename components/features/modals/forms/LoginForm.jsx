@@ -43,8 +43,7 @@ export default function LoginForm() {
       Cookie.set("rameti_ec_refresh", tokens.refresh);
 
       toast.success("Login Successful!");
-      Router.reload(window.location.pathname);
-      router.push("/");
+      Router.reload("/");
     } catch (error) {
       toast.error("Error");
       console.error(error.data);

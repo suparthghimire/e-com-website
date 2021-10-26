@@ -3,9 +3,9 @@ import Helmet from "react-helmet";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import { SHOP_NAME } from "../../config";
 import ALink from "~/components/features/custom-link";
-import LoginForm from "~/components/features/modals/forms/LoginForm";
-import RegisterForm from "~/components/features/modals/forms/RegisterForm";
-function Login() {
+import ForgotPasswordForm from "~/components/features/modals/forms/ForgotPasswordForm";
+
+function ForgotPassword() {
   return (
     <main className="main">
       <Helmet>
@@ -40,24 +40,19 @@ function Login() {
                   <TabList className="nav nav-tabs nav-fill align-items-center border-no justify-content-center mb-5">
                     <Tab className="nav-item">
                       <span className="nav-link border-no lh-1 ls-normal">
-                        Sign in
-                      </span>
-                    </Tab>
-                    <li className="delimiter">or</li>
-                    <Tab className="nav-item">
-                      <span className="nav-link border-no lh-1 ls-normal">
-                        Register
+                        Forgot Password
                       </span>
                     </Tab>
                   </TabList>
 
                   <div className="tab-content">
+                    <p className="text-dark text-center">
+                      Lost Your Password? Don't Worry! We have got you covered.
+                      Enter Your Email Below to Proceed
+                    </p>
+                    <hr />
                     <TabPanel className="tab-pane">
-                      <LoginForm />
-                    </TabPanel>
-
-                    <TabPanel className="tab-pane">
-                      <RegisterForm />
+                      <ForgotPasswordForm />
                     </TabPanel>
                   </div>
                 </Tabs>
@@ -70,4 +65,4 @@ function Login() {
   );
 }
 
-export default React.memo(Login);
+export default React.memo(ForgotPassword);
