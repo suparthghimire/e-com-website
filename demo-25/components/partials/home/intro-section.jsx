@@ -1,127 +1,274 @@
-import React, { useEffect, useRef } from 'react';
+import React from "react";
 import Reveal from "react-awesome-reveal";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-
+import Menu from "~/components/partials/home/menu-section";
 // import Custom Components
-import ALink from '~/components/features/custom-link';
-import OwlCarousel from '~/components/features/owl-carousel';
+import ALink from "~/components/features/custom-link";
+import OwlCarousel from "~/components/features/owl-carousel";
 
-import { introSlider } from '~/utils/data/carousel';
-import { fadeIn, fadeInUpShorter, fadeInLeftShorter, blurIn, fadeInRightShorter } from '~/utils/data/keyframes';
+import { introSlider } from "~/utils/data/carousel";
+import {
+  fadeInUpShorter,
+  fadeInRightShorter,
+  fadeIn,
+  fadeInLeftShorter,
+} from "~/utils/data/keyframes";
 
 function IntroSection() {
-    const ref = useRef( null );
+  return (
+    <section className="intro-section">
+      <div className="container">
+        <div className="row grid">
+          <Reveal
+            keyframes={fadeInRightShorter}
+            delay={200}
+            triggerOnce
+            style={{ display: "contents" }}
+          >
+            <Menu />
+          </Reveal>
 
-    useEffect( () => {
-        isotopeInit();
-    }, [] );
+          <div className="grid-item height-x2">
+            <Reveal keyframes={fadeIn} delay={200} triggerOnce>
+              <OwlCarousel
+                adClass="intro-slider owl-theme owl-dot-inner owl-dot-dark owl-full-height animation-slider"
+                options={introSlider}
+              >
+                <div
+                  className="intro-slide1 banner banner-fixed banner-radius"
+                  style={{ backgroundColor: "#f6f5f7" }}
+                >
+                  <figure>
+                    <img
+                      src="./images/home/slides/1.jpg"
+                      width="580"
+                      height="508"
+                      alt="banner"
+                    />
+                  </figure>
+                  <div className="banner-content y-50">
+                    <Reveal keyframes={fadeInLeftShorter} duration={1000}>
+                      <h4 className="banner-subtitle text-uppercase font-weight-normal ls-normal">
+                        <span className="text-primary font-weight-bold">
+                          01.&nbsp;&nbsp;
+                        </span>
+                        BEST SELLERS STORE
+                      </h4>
+                    </Reveal>
 
-    async function isotopeInit() {
-        const Isotope = ( await import( 'isotope-layout' ) ).default;
+                    <Reveal
+                      keyframes={fadeInLeftShorter}
+                      duration={1000}
+                      delay={400}
+                    >
+                      <h3 className="banner-title font-weight-bold ls-md">
+                        Our greatest hits <br />
+                        for women
+                      </h3>
+                    </Reveal>
 
-        let iso = new Isotope( ref.current, {
-            itemSelector: '.grid-item',
-            masonry: {
-                columnWidth: '.grid-space'
-            }
-        } );
-    }
+                    <Reveal
+                      keyframes={fadeInUpShorter}
+                      duration={1000}
+                      delay={700}
+                    >
+                      <p className="font-weight-normal ls-normal lh-1 text-uppercase text-dark mb-5">
+                        Starting At{" "}
+                        <strong className="text-primary">$24.00</strong>
+                      </p>
+                    </Reveal>
 
-    return (
-        <div className="categories grid row" ref={ ref }>
-            <div className="grid-item col-md-6 height-x2">
-                <Reveal keyframes={ fadeInRightShorter } delay={ 100 } duration={ 1200 } className="h-100" triggerOnce>
-                    <div className="category category-banner text-white overlay-zoom category-absolute" style={ { backgroundColor: "#f0f0f0" } }>
-                        <figure className="category-media">
-                            <img src="./images/home/categories/1.jpg" alt="category" width="585" height="434" />
-                        </figure>
+                    <Reveal
+                      keyframes={fadeInUpShorter}
+                      duration={1000}
+                      delay={900}
+                    >
+                      <ALink
+                        href="/shop"
+                        className="btn btn-dark btn-sm btn-rounded"
+                      >
+                        Shop now
+                      </ALink>
+                    </Reveal>
+                  </div>
+                </div>
+                <div
+                  className="intro-slide2 banner banner-fixed banner-radius"
+                  style={{ backgroundColor: "#e4e8ec" }}
+                >
+                  <figure>
+                    <img
+                      src="./images/home/slides/2.jpg"
+                      width="580"
+                      height="508"
+                      alt="banner"
+                    />
+                  </figure>
+                  <div className="banner-content y-50">
+                    <Reveal keyframes={fadeInLeftShorter} delay={200}>
+                      <h4 className="banner-subtitle text-uppercase font-weight-normal ls-normal">
+                        <span className="text-primary font-weight-bold">
+                          02.&nbsp;
+                        </span>
+                        BEST SELLERS STORE
+                      </h4>
 
-                        <div className="category-content">
-                            <h4 className="category-name">New Arrivals</h4>
-                            <span className="category-count">
-                                <span>6</span> Products
-                            </span>
-                            <ALink href={ { pathname: "/shop", query: { category: 'new-arrivals' } } } className="btn btn-underline btn-link">Shop Now</ALink>
-                        </div>
-                    </div>
-                </Reveal>
-            </div>
+                      <Reveal keyframes={fadeInLeftShorter} delay={200}>
+                        <h3 className="banner-title font-weight-bold ls-md mb-2">
+                          Big Sale <br />
+                          for women
+                        </h3>
+                      </Reveal>
 
-            <div className="grid-item col-md-6 height-x15">
-                <Reveal keyframes={ fadeInLeftShorter } delay={ 200 } duration={ 1200 } className="h-100" triggerOnce>
-                    <div className="category category-banner overlay-zoom category-absolute" style={ { backgroundColor: "#dae0e0" } }>
-                        <figure className="category-media">
-                            <img src="./images/home/categories/2.jpg" alt="category" width="585" height="434" />
-                        </figure>
+                      <p className="text-uppercase text-dark ml-1">
+                        Up To
+                        <strong className="text-primary ml-1 mr-1">
+                          $24.00
+                        </strong>
+                        <strong>Off</strong>
+                      </p>
+                      <ALink
+                        className="btn btn-white btn-sm btn-rounded btn-shadow"
+                        href="/shop"
+                      >
+                        Shop now
+                      </ALink>
+                    </Reveal>
+                  </div>
+                </div>
+                <div
+                  className="intro-slide3 banner banner-fixed banner-radius"
+                  style={{ backgroundColor: "#1d1b1a" }}
+                >
+                  <figure>
+                    <img
+                      src="./images/home/slides/3.jpg"
+                      width="580"
+                      height="508"
+                      alt="Banner"
+                    />
+                  </figure>
+                  <div className="banner-content y-50">
+                    <Reveal keyframes={fadeInUpShorter} duration={1000}>
+                      <h4 className="banner-subtitle text-uppercase text-white font-weight-normal ls-normal">
+                        <span className="text-primary font-weight-bold">
+                          03.&nbsp;
+                        </span>
+                        BEST SELLERS STORE
+                      </h4>
+                    </Reveal>
 
-                        <div className="category-content">
-                            <h4 className="category-name">Flash Sales</h4>
-                            <span className="category-count">
-                                <span>3</span> Products
-                            </span>
-                            <ALink href={ { pathname: "/shop", query: { category: 'flash-sales' } } } className="btn btn-underline btn-link">Shop Now</ALink>
-                        </div>
-                    </div>
-                </Reveal>
-            </div>
+                    <Reveal
+                      keyframes={fadeInUpShorter}
+                      duration={1000}
+                      delay={400}
+                    >
+                      <h3 className="banner-title font-weight-bold text-white ls-md">
+                        Fashionable <br />
+                        for men's
+                      </h3>
+                    </Reveal>
 
-            <div className="grid-item col-md-3 col-6 height-x15">
-                <Reveal keyframes={ fadeInUpShorter } delay={ 300 } duration={ 1200 } className="h-100" triggerOnce>
-                    <div className="category category-banner overlay-zoom category-absolute text-white" style={ { backgroundColor: "#e6e6e6" } }>
-                        <figure className="category-media">
-                            <img src="./images/home/categories/4.jpg" alt="category" width="585" height="434" />
-                        </figure>
+                    <Reveal
+                      keyframes={fadeInUpShorter}
+                      duration={1000}
+                      delay={600}
+                    >
+                      <p className="font-weight-normal ls-normal lh-1 text-uppercase text-white mb-5">
+                        Starting At{" "}
+                        <strong className="text-primary">$24.00</strong>
+                      </p>
+                    </Reveal>
 
-                        <div className="category-content">
-                            <h4 className="category-name">Cosmetia</h4>
-                            <span className="category-count">
-                                <span>3</span> Products
-                            </span>
-                            <ALink href={ { pathname: "/shop", query: { category: 'cosmetia' } } } className="btn btn-underline btn-link">Shop Now</ALink>
-                        </div>
-                    </div>
-                </Reveal>
-            </div>
+                    <Reveal
+                      keyframes={fadeInUpShorter}
+                      duration={1000}
+                      delay={800}
+                    >
+                      <ALink
+                        href="/shop"
+                        className="btn btn-white btn-outline btn-sm btn-rounded"
+                      >
+                        Shop now
+                      </ALink>
+                    </Reveal>
+                  </div>
+                </div>
+              </OwlCarousel>
+            </Reveal>
+          </div>
 
-            <div className="grid-item col-md-3 col-6 height-x15">
-                <Reveal keyframes={ fadeInLeftShorter } delay={ 400 } duration={ 1200 } className="h-100" triggerOnce>
-                    <div className="category category-banner overlay-zoom category-absolute text-white" style={ { backgroundColor: "#ce9174" } }>
-                        <figure className="category-media">
-                            <img src="./images/home/categories/5.jpg" alt="category" width="585" height="434" />
-                        </figure>
+          <div className="grid-item height-x1">
+            <Reveal keyframes={fadeInLeftShorter} delay={200} triggerOnce>
+              <div
+                className="intro-banner intro-banner1 banner banner-fixed banner-radius 
+                                    overlay-dark"
+                style={{ backgroundColor: "#eeeeee" }}
+              >
+                <ALink href="#">
+                  <figure>
+                    <img
+                      src="./images/home/banners/1.jpg"
+                      width="280"
+                      height="241"
+                      alt="banner"
+                    />
+                  </figure>
+                </ALink>
+                <div className="banner-content">
+                  <h4 className="banner-subtitle text-uppercase font-weight-normal ls-s">
+                    New Arrivals
+                  </h4>
+                  <h3 className="banner-title font-weight-normal text-capitalize ls-md">
+                    Spring Essentials
+                  </h3>
+                  <ALink
+                    href="/shop"
+                    className="btn btn-dark btn-link btn-underline"
+                  >
+                    Shop Now<i className="d-icon-arrow-right"></i>
+                  </ALink>
+                </div>
+              </div>
+            </Reveal>
+          </div>
 
-                        <div className="category-content">
-                            <h4 className="category-name">Footwear</h4>
-                            <span className="category-count">
-                                <span>3</span> Products
-                            </span>
-                            <ALink href={ { pathname: "/shop", query: { category: 'footwear' } } } className="btn btn-underline btn-link">Shop Now</ALink>
-                        </div>
-                    </div>
-                </Reveal>
-            </div>
-
-            <div className="grid-item col-md-6 height-x1">
-                <Reveal keyframes={ fadeInRightShorter } delay={ 200 } duration={ 1200 } className="h-100" triggerOnce>
-                    <div className="category category-banner overlay-zoom category-absolute" style={ { backgroundColor: "#ebebeb" } }>
-                        <figure className="category-media">
-                            <img src="./images/home/categories/3.jpg" alt="category" width="585" height="434" />
-                        </figure>
-
-                        <div className="category-content">
-                            <h4 className="category-name">Best Seller</h4>
-                            <span className="category-count">
-                                <span>3</span> Products
-                            </span>
-                            <ALink href={ { pathname: "/shop", query: { category: 'best-seller' } } } className="btn btn-underline btn-link">Shop Now</ALink>
-                        </div>
-                    </div>
-                </Reveal>
-            </div>
-
-            <div className="grid-space col-1"></div>
+          <div className="grid-item height-x1">
+            <Reveal keyframes={fadeInLeftShorter} delay={200} triggerOnce>
+              <div
+                className="intro-banner intro-banner2 banner banner-fixed banner-radius 
+                                    overlay-light"
+                style={{ backgroundColor: "#e0dfde" }}
+              >
+                <ALink href="#">
+                  <figure>
+                    <img
+                      src="./images/home/banners/2.jpg"
+                      width="280"
+                      height="241"
+                      alt="banner"
+                    />
+                  </figure>
+                </ALink>
+                <div className="banner-content y-50">
+                  <h3 className="banner-title ls-m font-weight-normal mb-5">
+                    <strong className="text-uppercase">Cosmetics</strong>
+                    <br />
+                    Collection
+                  </h3>
+                  <ALink
+                    href="/shop"
+                    className="btn btn-link btn-underline mb-1"
+                  >
+                    Shop Now<i className="d-icon-arrow-right"></i>
+                  </ALink>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
-    )
+      </div>
+    </section>
+  );
 }
 
-export default React.memo( IntroSection );
+export default React.memo(IntroSection);
