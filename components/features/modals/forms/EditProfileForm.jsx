@@ -52,9 +52,11 @@ export default function EditProfileForm({ user }) {
         throw error;
       }
       toast.success("Changes Saved Successfully!", {
-        autoClose: 2000,
+        autoClose: 1200,
       });
-      Router.reload("/");
+      toast.info("Reload to See the Changes", {
+        autoClose: 1200,
+      });
     } catch (error) {
       toast.error("Error While Saving Changes!", {
         autoClose: 1200,

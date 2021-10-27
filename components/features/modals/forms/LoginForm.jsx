@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../../../config";
 import Cookie from "js-cookie";
@@ -14,7 +14,7 @@ export default function LoginForm() {
   const [serverError, setServerError] = useState({
     message: null,
   });
-
+  const router = useRouter();
   const handle_login = async (data) => {
     toast.info("Logging You In. Please Wait", { autoClose: 1200 });
     try {
@@ -63,7 +63,7 @@ export default function LoginForm() {
       setServerError({
         message: null,
       });
-      Router.reload("/");
+      router.push("/");
     } catch (error) {
       toast.error("Error", {
         autoClose: 1200,

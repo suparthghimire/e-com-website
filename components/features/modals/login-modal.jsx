@@ -6,7 +6,8 @@ import Cookie from "js-cookie";
 import ALink from "~/components/features/custom-link";
 import LoginForm from "./forms/LoginForm";
 import RegisterForm from "./forms/RegisterForm";
-import Router from "next/router";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 const customStyles = {
   overlay: {
     backgroundColor: "rgba(0,0,0,0.4)",
@@ -20,7 +21,7 @@ Modal.setAppElement("#__next");
 
 function LoginModal(props) {
   const [open, setOpen] = useState(false);
-
+  const router = useRouter();
   function closeModal() {
     document.querySelector(".ReactModal__Overlay").classList.add("removed");
     document
@@ -43,7 +44,8 @@ function LoginModal(props) {
     Cookie.set("rameti_ec_access", "", {
       expires: 0.000000001,
     });
-    Router.reload(window.location.pathname);
+    router.push("/");
+    toast.success("Successfully Logged Out", { autoClose: 1200 });
   };
   let auth_nav;
   if (!props.auth) {
@@ -63,14 +65,6 @@ function LoginModal(props) {
       </>
     );
   } else {
-    console.log(props.user);
-    //  auth_nav = (
-    //    <>
-    //      <a href="#" onClick={handle_logout}>
-    //        Logout
-    //      </a>
-    //    </>
-    //  );
     auth_nav = (
       <div className="dropdown">
         <ALink href="#">

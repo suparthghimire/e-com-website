@@ -18,12 +18,15 @@ const App = ({ Component, pageProps, store }) => {
   const [auth, setAuth] = useState(false);
   const [loadingAuth, setLoadingAuth] = useState(true);
   const [user, setUser] = useState(null);
+
+  const refresh = Cookie.get("rameti_ec_refresh");
+  const access = Cookie.get("rameti_ec_access");
+
   useEffect(() => {
     if (store.getState().demo.current !== currentDemo) {
       store.dispatch(demoActions.refreshStore(currentDemo));
     }
-    const refresh = Cookie.get("rameti_ec_refresh");
-    const access = Cookie.get("rameti_ec_access");
+
     if (!access || access == "" || access.trim() == "") {
       setAuth(false);
       setLoadingAuth(false);
@@ -50,7 +53,7 @@ const App = ({ Component, pageProps, store }) => {
           setLoadingAuth(false);
         });
     }
-  }, [auth]);
+  }, [access]);
 
   return (
     <Provider store={store}>
