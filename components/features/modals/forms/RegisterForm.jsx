@@ -1,210 +1,185 @@
-import { useState } from "react";
-import { toast } from "react-toastify";
-import { BASE_URL } from "../../../../config";
-
+import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { BASE_URL } from '../../../../config'
+import { useForm } from 'react-hook-form'
 function RegisterForm() {
-  const [user, setUser] = useState({
-    full_name: "",
-    email: "",
-    password: "",
-    phone_number: "",
-    gender: "M",
-    state: "",
-    district: "",
-    city: "",
-    address: "",
-    wholesaler: false,
-  });
-  const handle_register = async (e) => {
-    e.preventDefault();
-    toast.info("Regestering You. Please Wait...", {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+  const [serverErrors, setServerErrors] = useState(null)
+
+  const handle_register = async (user) => {
+    toast.info('Regestering You. Please Wait...', {
       autoClose: 1200,
-    });
+    })
+    console.log(user)
     try {
       const response = await fetch(`${BASE_URL}/register/`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "content-type": "application/json",
+          'content-type': 'application/json',
         },
         body: JSON.stringify(user),
-      });
-      const response_user = await response.json();
+      })
+      const response_user = await response.json()
+      console.log('user:', response_user)
       if (response.status == 400) {
         // Validation Error
-        const error = new Error("Validation Error");
-        error.status = 400;
-        error.data = response_user;
-        throw error;
+        const error = new Error('Validation Error')
+        error.status = 400
+        error.data = response_user
+        throw error
+      } else if (response.status !== 201) {
+        const error = new Error('Unexpected Error')
+        error.status = response.status
+        error.data = {
+          message: ['Unexpected Error Occured'],
+        }
+        throw error
       }
-      if (!response_user) {
-        //undefined user
-        const error = new Error("Undefined Error");
-        error.status = 500;
-        error.data = "An Error Occured";
-        throw error;
-      }
-      console.log("user:", response_user);
-      toast.success("Registered Successfully!");
+      toast.success('Registered Successfully!', { autoClose: 1200 })
     } catch (error) {
-      //error handeling
-      console.log("Here");
-      toast.error("Error!");
-      console.error(error, error.data);
+      toast.error('Error While Regestering!', { autoClose: 1200 })
+      console.error(error, error.data)
+      let errors = []
+      Object.keys(error.data).forEach((key) => {
+        error.data[key].forEach((error) => {
+          errors.push(error)
+        })
+      })
+      setServerErrors(errors)
+    } finally {
+      document.querySelectorAll('input').forEach((item) => (item.value = ''))
+      document.querySelectorAll("input[type='checkbox']").forEach((item) => (item.checked = false))
     }
-
-    document
-      .querySelectorAll("input[type='checkbox']")
-      .forEach((item) => (item.checked = false));
-    setUser({
-      full_name: "",
-      email: "",
-      password: "",
-      phone_number: "",
-      gender: "M",
-      state: "",
-      district: "",
-      city: "",
-      address: "",
-      wholesaler: false,
-    });
-  };
+  }
   return (
     <div>
-      <form onSubmit={handle_register}>
+      {serverErrors && (
+        <div className="alert alert-danger mb-2">
+          Errors:
+          {serverErrors.map((err) => (
+            <li>{err}</li>
+          ))}
+        </div>
+      )}
+      <form onSubmit={handleSubmit(handle_register)}>
         <div className="form-group">
           <label htmlFor="singin-name">Your Full Name:</label>
           <input
             type="text"
             className="form-control"
-            id="signin-name"
-            name="signin-name"
-            placeholder="Your Full Name*"
-            required
-            value={user.full_name}
-            onChange={(e) => setUser({ ...user, full_name: e.target.value })}
+            id="full_name"
+            {...register('full_name', { required: true })}
+            placeholder="Your Full Name *"
           />
+          {errors.full_name && <small className="error-msg">Full Name is Required</small>}
         </div>
         <div className="form-group">
           <label htmlFor="singin-email">Your email address:</label>
           <input
             type="email"
             className="form-control"
-            id="singin-email"
-            name="singin-email"
+            id="email"
+            {...register('email', { required: true })}
             placeholder="Your Email address *"
-            required
-            value={user.email}
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
           />
+          {errors.email && <small className="error-msg">Email is Required</small>}
         </div>
         <div className="form-group">
           <label htmlFor="singin-password">Password:</label>
           <input
             type="password"
             className="form-control"
-            id="register-password"
-            name="register-password"
+            id="password"
+            {...register('password', { required: true })}
             placeholder="Password *"
-            required
-            value={user.password}
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
+          {errors.email && <small className="error-msg">Password is Required</small>}
         </div>
         <div className="form-group">
           <label htmlFor="singin-phone">Your Phone Number:</label>
           <input
             type="number"
             className="form-control"
-            id="signin-phone"
-            name="signin-phone"
+            id="phone_number"
+            {...register('phone_number', { required: true })}
             placeholder="Your Phone Number *"
-            required
-            value={user.phone_number}
-            onChange={(e) => setUser({ ...user, phone_number: e.target.value })}
           />
+          {errors.phone_number && <small className="error-msg">Phone Number is Required</small>}
         </div>
         <div className="form-group">
           <label htmlFor="singin-phone">Your Gender:</label>
-          <select
-            className="form-control"
-            onChange={(e) => setUser({ ...user, gender: e.target.value })}
-            name=""
-            id=""
-          >
+          <select className="form-control" id="gender" {...register('gender', { required: true })}>
             <option value="M"> Male </option>
             <option value="F"> Female </option>
           </select>
+          {errors.gender && <small className="error-msg">Gender is Required</small>}
         </div>
         <div className="form-group">
           <label htmlFor="singin-state">State:</label>
-          <input
-            type="text"
-            className="form-control"
-            id="signin-state"
-            name="signin-state"
-            placeholder="Your State*"
-            required
-            value={user.state}
-            onChange={(e) => setUser({ ...user, state: e.target.value })}
-          />
+          <select {...register('state', { required: true })} className="form-control" id="state">
+            <option value="province-1">Province 1</option>
+            <option value="bagmati">Bagmati</option>
+            <option value="gandaki">Gandaki</option>
+            <option value="lumbini">Lumbini</option>
+            <option value="karnali">Karnali</option>
+            <option value="sudurpashchim">Sudurpashchim</option>
+          </select>
+          {errors.state && <small className="error-msg">State is Required</small>}
         </div>
         <div className="form-group">
           <label htmlFor="singin-district">District:</label>
           <input
             type="text"
             className="form-control"
-            id="signin-district"
-            name="signin-district"
-            placeholder="Your District*"
-            required
-            value={user.district}
-            onChange={(e) => setUser({ ...user, district: e.target.value })}
+            placeholder="Your District *"
+            {...register('district', {
+              required: true,
+            })}
+            id="district"
           />
+          {errors.district && <small className="error-msg">District is Required</small>}
         </div>
         <div className="form-group">
           <label htmlFor="singin-city">City:</label>
           <input
             type="text"
             className="form-control"
-            id="signin-city"
-            name="signin-city"
-            placeholder="Your City*"
-            required
-            value={user.city}
-            onChange={(e) => setUser({ ...user, city: e.target.value })}
+            placeholder="City *"
+            name="city"
+            {...register('city', { required: true })}
+            id="city"
           />
+          {errors.city && <small className="error-msg">City is Required</small>}
         </div>
         <div className="form-group">
           <label htmlFor="singin-city">Address:</label>
           <input
             type="text"
             className="form-control"
-            id="signin-city"
-            name="signin-city"
-            placeholder="Your City*"
-            required
-            value={user.address}
-            onChange={(e) => setUser({ ...user, address: e.target.value })}
+            placeholder="Address *"
+            {...register('address', {
+              required: true,
+            })}
+            id="address"
           />
+          {errors.address && <small className="error-msg">Address is Required</small>}
         </div>
         <div className="form-footer">
           <div className="form-checkbox">
             <input
               type="checkbox"
               className="custom-checkbox"
-              id="register-agree"
-              name="register-agree"
-              value={user.wholesaler}
-              onChange={(e) =>
-                setUser({
-                  ...user,
-                  wholesaler: !user.wholesaler,
-                })
-              }
+              id="wholesaler"
+              {...register('wholesaler')}
             />
-            <label className="form-control-label" htmlFor="register-agree">
+            <label className="form-control-label" htmlFor="wholesaler">
               I am Wholseller
             </label>
+            {errors.wholesaler && <small className="error-msg">Wholesaler is Required</small>}
           </div>
         </div>
         <button className="btn btn-dark btn-block btn-rounded" type="submit">
@@ -212,7 +187,7 @@ function RegisterForm() {
         </button>
       </form>
     </div>
-  );
+  )
 }
 
-export default RegisterForm;
+export default RegisterForm

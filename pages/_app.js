@@ -1,34 +1,37 @@
-import { useState, useEffect } from "react";
-import withRedux from "next-redux-wrapper";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import Helmet from "react-helmet";
+import { useState, useEffect } from 'react'
+import withRedux from 'next-redux-wrapper'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import Helmet from 'react-helmet'
 
-import Layout from "~/components/layout";
+import Layout from '~/components/layout'
 
-import makeStore from "~/store";
-import { demoActions } from "~/store/demo";
-import Cookie from "js-cookie";
-import { currentDemo } from "~/server/queries";
-import { ToastContainer } from "react-toastify";
-import "~/public/sass/style.scss";
-import { BASE_URL } from "../config";
+import makeStore from '~/store'
+import { demoActions } from '~/store/demo'
+import Cookie from 'js-cookie'
+import { currentDemo } from '~/server/queries'
+import { ToastContainer } from 'react-toastify'
+import '~/public/sass/style.scss'
+import { BASE_URL } from '../config'
 
 const App = ({ Component, pageProps, store }) => {
-  const [auth, setAuth] = useState(false);
-  const [loadingAuth, setLoadingAuth] = useState(true);
-  const [user, setUser] = useState(null);
+  const [auth, setAuth] = useState(false)
+  const [loadingAuth, setLoadingAuth] = useState(true)
+  const [user, setUser] = useState(null)
+
+  const refresh = Cookie.get('rameti_ec_refresh')
+  const access = Cookie.get('rameti_ec_access')
+
   useEffect(() => {
     if (store.getState().demo.current !== currentDemo) {
-      store.dispatch(demoActions.refreshStore(currentDemo));
+      store.dispatch(demoActions.refreshStore(currentDemo))
     }
-    const refresh = Cookie.get("rameti_ec_refresh");
-    const access = Cookie.get("rameti_ec_access");
-    if (!access || access == "" || access.trim() == "") {
-      setAuth(false);
-      setLoadingAuth(false);
+
+    if (!access || access == '' || access.trim() == '') {
+      setAuth(false)
+      setLoadingAuth(false)
     } else {
-      setLoadingAuth(true);
+      setLoadingAuth(true)
       fetch(`${BASE_URL}/me/`, {
         headers: {
           Authorization: `Bearer ${access}`,
@@ -36,21 +39,20 @@ const App = ({ Component, pageProps, store }) => {
       })
         .then((res) => res.json())
         .then((user) => {
-          if (user.code && user.code === "token_not_valid")
-            throw Error("Invalid Token Error");
-          console.log("User:", user);
-          setUser(user);
-          setAuth(true);
+          if (user.code && user.code === 'token_not_valid') throw Error('Invalid Token Error')
+          console.log('User:', user)
+          setUser(user)
+          setAuth(true)
         })
         .catch((err) => {
-          console.error(err.message);
-          setAuth(false);
+          console.error(err.message)
+          setAuth(false)
         })
         .finally(() => {
-          setLoadingAuth(false);
-        });
+          setLoadingAuth(false)
+        })
     }
-  }, [auth]);
+  }, [access])
 
   return (
     <Provider store={store}>
@@ -70,10 +72,7 @@ const App = ({ Component, pageProps, store }) => {
         <Helmet>
           <meta charSet="UTF-8" />
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
           <title>Riode - React eCommerce Template</title>
 
@@ -83,25 +82,20 @@ const App = ({ Component, pageProps, store }) => {
         </Helmet>
 
         <Layout auth={auth} user={user}>
-          <Component
-            {...pageProps}
-            auth={auth}
-            user={user}
-            loadingAuth={loadingAuth}
-          />
+          <Component {...pageProps} auth={auth} user={user} loadingAuth={loadingAuth} />
         </Layout>
         <ToastContainer />
       </PersistGate>
     </Provider>
-  );
-};
+  )
+}
 
 App.getInitialProps = async ({ Component, ctx, req }) => {
-  let pageProps = {};
+  let pageProps = {}
   if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
+    pageProps = await Component.getInitialProps(ctx)
   }
-  return { pageProps };
-};
+  return { pageProps }
+}
 
-export default withRedux(makeStore)(App);
+export default withRedux(makeStore)(App)

@@ -1,15 +1,16 @@
-import Cookies from "js-cookie";
-import { useState, useEffect } from "react";
-import { BASE_URL } from "../../../../config";
-import { toast } from "react-toastify";
-import Router from "next/router";
-import { useForm } from "react-hook-form";
+import Cookies from 'js-cookie'
+import { useState } from 'react'
+import { BASE_URL } from '../../../../config'
+import { toast } from 'react-toastify'
+import Router from 'next/router'
+import { useForm } from 'react-hook-form'
 export default function EditProfileForm({ user }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm()
+  const [serverErrors, setServerErrors] = useState(null)
 
   const handle_edit = async (data) => {
     const formUser = {
@@ -20,35 +21,72 @@ export default function EditProfileForm({ user }) {
       gender: data.gender,
       phone_number: data.phone,
       state: data.state,
-    };
-    console.log(formUser);
-    toast.info("Saving Changes", {
+    }
+    console.log(formUser)
+    toast.info('Saving Changes', {
       autoClose: 2000,
-    });
+    })
     try {
       const response = await fetch(`${BASE_URL}/me/`, {
-        method: "PUT",
+        method: 'PUT',
         headers: {
-          Authorization: `Bearer ${Cookies.get("rameti_ec_access")}`,
-          "content-type": "application/json",
+          Authorization: `Bearer ${Cookies.get('rameti_ec_access')}`,
+          'content-type': 'application/json',
         },
         body: JSON.stringify(formUser),
-      });
-      const data = await response.json();
-      console.log(data);
-      toast.success("Changes Saved Successfully!", {
-        autoClose: 2000,
-      });
-      Router.reload("/");
-    } catch (error) {
-      toast.error("Error While Saving Changes!", {
+      })
+      const data = await response.json()
+      console.log(data)
+      if (response.status === 400) {
+        //validation error
+        const error = new Error('Validation Error')
+        error.status = 400
+        error.data = data
+        throw error
+      } else if (response.status !== 200) {
+        const error = new Error('Unexpected Error')
+        error.status = response.status
+        error.data = {
+          message: ['Unexpected Error Occured'],
+        }
+        throw error
+      }
+      toast.success('Changes Saved Successfully!', {
         autoClose: 1200,
-      });
-      console.error(error);
+      })
+      toast.info('Reload to See the Changes', {
+        autoClose: 1200,
+      })
+    } catch (error) {
+      toast.error('Error While Saving Changes!', {
+        autoClose: 1200,
+      })
+      console.error(error, error.data)
+      let errors = []
+      Object.keys(error.data).forEach((key) => {
+        error.data[key].forEach((error) => {
+          errors.push(error)
+        })
+      })
+      setServerErrors(errors)
     }
-  };
+  }
   return (
     <div>
+      <h3>Account Details</h3>
+      <hr />
+      <div className="row">
+        <div className="col-6">
+          {serverErrors && (
+            <div className="alert alert-danger mb-2">
+              Errors:
+              {serverErrors.map((err) => (
+                <li>{err}</li>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
       <form onSubmit={handleSubmit(handle_edit)}>
         <div className="row">
           <div className="col-12">
@@ -58,15 +96,13 @@ export default function EditProfileForm({ user }) {
                 type="text"
                 className="form-control"
                 placeholder="Full Name *"
-                {...register("fullname", {
+                {...register('fullname', {
                   required: true,
                   value: user.full_name,
                 })}
                 id="fullname"
               />
-              {errors.fullname && (
-                <small className="text-danger">Full Name is Required</small>
-              )}
+              {errors.fullname && <small className="error-msg">Full Name is Required</small>}
             </div>
           </div>
         </div>
@@ -78,15 +114,13 @@ export default function EditProfileForm({ user }) {
                 type="number"
                 className="form-control"
                 placeholder="Phone Number *"
-                {...register("phone", {
+                {...register('phone', {
                   required: true,
                   value: user.phone_number,
                 })}
                 id="phone"
               />
-              {errors.phone && (
-                <small className="text-danger">Phone Number is Required</small>
-              )}
+              {errors.phone && <small className="error-msg">Phone Number is Required</small>}
             </div>
           </div>
           <div className="col-6">
@@ -96,15 +130,13 @@ export default function EditProfileForm({ user }) {
                 type="text"
                 className="form-control"
                 placeholder="Address *"
-                {...register("address", {
+                {...register('address', {
                   required: true,
                   value: user.address,
                 })}
                 id="address"
               />
-              {errors.address && (
-                <small className="text-danger">Address is Required</small>
-              )}
+              {errors.address && <small className="error-msg">Address is Required</small>}
             </div>
           </div>
         </div>
@@ -117,12 +149,10 @@ export default function EditProfileForm({ user }) {
                 className="form-control"
                 placeholder="City *"
                 name="city"
-                {...register("city", { required: true, value: user.city })}
+                {...register('city', { required: true, value: user.city })}
                 id="city"
               />
-              {errors.city && (
-                <small className="text-danger">City is Required</small>
-              )}
+              {errors.city && <small className="error-msg">City is Required</small>}
             </div>
           </div>
           <div className="col-6">
@@ -130,29 +160,25 @@ export default function EditProfileForm({ user }) {
               <label htmlFor="gender">Gender *</label>
               <select
                 className="form-control"
-                {...register("gender", { required: true, value: user.gender })}
+                {...register('gender', { required: true, value: user.gender })}
                 id="gender"
               >
                 <option value="M">Male</option>
                 <option value="F">Female</option>
               </select>
-              {errors.gender && (
-                <small className="text-danger">Gender is Required</small>
-              )}
+              {errors.gender && <small className="error-msg">Gender is Required</small>}
             </div>
           </div>
         </div>
-
         <div className="row">
           <div className="col-6">
             <div className="form-group mb-3">
               <label htmlFor="state">State *</label>
               <select
-                {...register("state", { required: true, value: user.state })}
+                {...register('state', { required: true, value: user.state })}
                 className="form-control"
                 id="state"
               >
-                <option value="">None</option>
                 <option value="province-1">Province 1</option>
                 <option value="bagmati">Bagmati</option>
                 <option value="gandaki">Gandaki</option>
@@ -160,9 +186,7 @@ export default function EditProfileForm({ user }) {
                 <option value="karnali">Karnali</option>
                 <option value="sudurpashchim">Sudurpashchim</option>
               </select>
-              {errors.state && (
-                <small className="text-danger">State is Required</small>
-              )}
+              {errors.state && <small className="error-msg">State is Required</small>}
             </div>
           </div>
           <div className="col-6">
@@ -172,15 +196,13 @@ export default function EditProfileForm({ user }) {
                 type="text"
                 className="form-control"
                 placeholder="Your District *"
-                {...register("district", {
+                {...register('district', {
                   required: true,
                   value: user.district,
                 })}
                 id="district"
               />
-              {errors.district && (
-                <small className="text-danger">District is Required</small>
-              )}
+              {errors.district && <small className="error-msg">District is Required</small>}
             </div>
           </div>
           <button
@@ -192,5 +214,5 @@ export default function EditProfileForm({ user }) {
         </div>
       </form>
     </div>
-  );
+  )
 }

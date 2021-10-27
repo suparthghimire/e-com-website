@@ -14,7 +14,8 @@ $color-purple-light: #ddcbfd !default;
 $primary-color: $color-pink-primary;
 $primary-color-dark: #222 !default;
 $secondary-color: #ff7271 !default;
-$alert-color: #b10001 !default;
+$alert-color: #f8d7da !default;
+$alert-text-color: #b55429 !default;
 $success-color: #a8c26e !default;
 $body-color: #666 !default;
 $dark-color: #222 !default;
@@ -25,15 +26,27 @@ $border-color-light: #eee !default;
 $white-color: #fff !default;
 // 2. Font-families
 $alt-font-family: sans-serif !default;
-$second-font-family: Poppins,
-$alt-font-family !default;
-$font-family: Poppins,
-$alt-font-family !default;
-$third-font-family: "Open Sans",
-$alt-font-family !default;
+$second-font-family: Poppins, $alt-font-family !default;
+$font-family: Poppins, $alt-font-family !default;
+$third-font-family: 'Open Sans', $alt-font-family !default;
 // 3. Breakpoints
-$breakpoints: ( xs: 480px, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1600px, xlst: 1920px, );
-$max-breakpoints: ( xs: 479px, sm: 575px, md: 767px, lg: 991px, xl: 1199px, xxl: 1599px, );
+$breakpoints: (
+  xs: 480px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px,
+  xlst: 1920px,
+);
+$max-breakpoints: (
+  xs: 479px,
+  sm: 575px,
+  md: 767px,
+  lg: 991px,
+  xl: 1199px,
+  xxl: 1599px,
+);
 // 4. Link Colors
 $social-facebook: #3b5998;
 $social-twitter: #1da1f2;
