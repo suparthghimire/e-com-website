@@ -35,7 +35,7 @@ function Cart ( props ) {
     const update = () => {
         updateCart( cartItems );
     }
-
+    console.log(cartItems);
     return (
         <div className="main cart">
             <div className="page-content pt-7 pb-10">
@@ -55,7 +55,7 @@ function Cart ( props ) {
                                             <thead>
                                                 <tr>
                                                     <th><span>Product</span></th>
-                                                    <th></th>
+                                                    <th>Product Name</th>
                                                     <th><span>Price</span></th>
                                                     <th><span>quantity</span></th>
                                                     <th>Subtotal</th>
@@ -68,7 +68,7 @@ function Cart ( props ) {
                                                             <td className="product-thumbnail">
                                                                 <figure>
                                                                     <ALink href={ '/product/default/' + item.slug }>
-                                                                        <img src={ process.env.NEXT_PUBLIC_ASSET_URI + item.pictures[ 0 ].url } width="100" height="100"
+                                                                        <img src={ /*TODO: ADD BASE URL */ item.product_image[0].url } width="100" height="100"
                                                                             alt="product" />
                                                                     </ALink>
                                                                 </figure>
@@ -83,7 +83,7 @@ function Cart ( props ) {
                                                             </td>
 
                                                             <td className="product-quantity">
-                                                                <Quantity qty={ item.qty } max={ item.stock } onChangeQty={ qty => onChangeQty( item.name, qty ) } />
+                                                                <Quantity qty={ item.qty } max={ 2 } onChangeQty={ qty => onChangeQty( item.name, qty ) } />
                                                             </td>
                                                             <td className="product-price">
                                                                 <span className="amount">${ toDecimal( item.price * item.qty ) }</span>

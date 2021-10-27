@@ -8,18 +8,17 @@ import { getTotalPrice, getCartCount, toDecimal } from '~/utils';
 
 function CartMenu ( props ) {
     const { cartList, removeFromCart } = props;
-
+    console.log(cartList)
     const showCartMenu = ( e ) => {
         e.preventDefault();
         e.currentTarget.closest( '.cart-dropdown' ).classList.add( 'opened' );
     }
-
     const hideCartMenu = () => {
         let item = document.querySelector( '.cart-dropdown.opened' );
         if ( item )
             item.classList.remove( 'opened' )
     }
-
+    console.log(cartList)
     const removeCart = ( item ) => {
         removeFromCart( item );
     }
@@ -41,7 +40,7 @@ function CartMenu ( props ) {
                         className="d-icon-arrow-right"></i><span className="sr-only">Cart</span></ALink>
                 </div>
                 {
-                    cartList.length > 0 ?
+                     cartList.length > 0 ?
                         <>
                             <div className="products scrollable">
                                 {
@@ -49,7 +48,7 @@ function CartMenu ( props ) {
                                         <div className="product product-cart" key={ 'cart-menu-product-' + index }>
                                             <figure className="product-media pure-media">
                                                 <ALink href={ '/product/default/' + item.slug } onClick={ hideCartMenu }>
-                                                    <img src={ process.env.NEXT_PUBLIC_ASSET_URI + item.pictures[ 0 ].url } alt="product" width="80"
+                                                    <img src={ item.product_image[0].url /* TODO: ADD BASE URL HERE  */ } alt="product" width="80"
                                                         height="88" />
                                                 </ALink>
                                                 <button className="btn btn-link btn-close" onClick={ () => { removeCart( item ) } }>
@@ -57,7 +56,7 @@ function CartMenu ( props ) {
                                                 </button>
                                             </figure>
                                             <div className="product-detail">
-                                                <ALink href={ '/product/default/' + item.slug } className="product-name" onClick={ hideCartMenu }>{ item.name }</ALink>
+                                                <ALink href={ '/product/default/' + item.slug } className="product-name" onClick={ hideCartMenu }>{ item.title }</ALink>
                                                 <div className="price-box">
                                                     <span className="product-quantity">{ item.qty }</span>
                                                     <span className="product-price">${ toDecimal( item.price ) }</span>
