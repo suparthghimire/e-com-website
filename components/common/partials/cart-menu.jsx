@@ -1,92 +1,166 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import ALink from '~/components/features/custom-link';
+import ALink from "~/components/features/custom-link";
 
-import { cartActions } from '~/store/cart';
+import { cartActions } from "~/store/cart";
 
-import { getTotalPrice, getCartCount, toDecimal } from '~/utils';
+import { getTotalPrice, getCartCount, toDecimal } from "~/utils";
 
-function CartMenu ( props ) {
-    const { cartList, removeFromCart } = props;
-    console.log(cartList)
-    const showCartMenu = ( e ) => {
-        e.preventDefault();
-        e.currentTarget.closest( '.cart-dropdown' ).classList.add( 'opened' );
-    }
-    const hideCartMenu = () => {
-        let item = document.querySelector( '.cart-dropdown.opened' );
-        if ( item )
-            item.classList.remove( 'opened' )
-    }
-    console.log(cartList)
-    const removeCart = ( item ) => {
-        removeFromCart( item );
-    }
+function CartMenu(props) {
+  const { cartList, removeFromCart } = props;
+  console.log(cartList);
+  const showCartMenu = (e) => {
+    e.preventDefault();
+    e.currentTarget.closest(".cart-dropdown").classList.add("opened");
+  };
+  const hideCartMenu = () => {
+    let item = document.querySelector(".cart-dropdown.opened");
+    if (item) item.classList.remove("opened");
+  };
+  console.log(cartList);
+  const removeCart = (item) => {
+    removeFromCart(item);
+  };
 
-    return (
-        <div className="dropdown cart-dropdown type2 cart-offcanvas mr-0 mr-lg-2">
-            <a href="#" className="cart-toggle label-block link" onClick={ showCartMenu }>
-                <span className="cart-label d-lg-show">
-                    <span className="cart-name">Shopping Cart:</span>
-                    <span className="cart-price">${ toDecimal( getTotalPrice( cartList ) ) }</span>
-                </span>
-                <i className="d-icon-bag"><span className="cart-count">{ getCartCount( cartList ) }</span></i>
-            </a>
-            <div className="cart-overlay" onClick={ hideCartMenu }></div>
-            <div className="dropdown-box">
-                <div className="cart-header">
-                    <h4 className="cart-title">Shopping Cart</h4>
-                    <ALink href="#" className="btn btn-dark btn-link btn-icon-right btn-close" onClick={ hideCartMenu }>close<i
-                        className="d-icon-arrow-right"></i><span className="sr-only">Cart</span></ALink>
-                </div>
-                {
-                     cartList.length > 0 ?
-                        <>
-                            <div className="products scrollable">
-                                {
-                                    cartList.map( ( item, index ) =>
-                                        <div className="product product-cart" key={ 'cart-menu-product-' + index }>
-                                            <figure className="product-media pure-media">
-                                                <ALink href={ '/product/default/' + item.slug } onClick={ hideCartMenu }>
-                                                    <img src={ item.product_image[0].url /* TODO: ADD BASE URL HERE  */ } alt="product" width="80"
-                                                        height="88" />
-                                                </ALink>
-                                                <button className="btn btn-link btn-close" onClick={ () => { removeCart( item ) } }>
-                                                    <i className="fas fa-times"></i><span className="sr-only">Close</span>
-                                                </button>
-                                            </figure>
-                                            <div className="product-detail">
-                                                <ALink href={ '/product/default/' + item.slug } className="product-name" onClick={ hideCartMenu }>{ item.title }</ALink>
-                                                <div className="price-box">
-                                                    <span className="product-quantity">{ item.qty }</span>
-                                                    <span className="product-price">${ toDecimal( item.price ) }</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ) }
-                            </div>
+  let cart_menu_button;
+  if (!props.auth) {
+    cart_menu_button = (
+      <ALink
+        href="/pages/login"
+        className="btn btn-dark"
+        onClick={hideCartMenu}
+      >
+        <span>Login</span>
+      </ALink>
+    );
+  } else {
+    cart_menu_button = (
+      <ALink
+        href="/pages/checkout"
+        className="btn btn-dark"
+        onClick={hideCartMenu}
+      >
+        <span>Go To Checkout</span>
+      </ALink>
+    );
+  }
 
-                            <div className="cart-total">
-                                <label>Subtotal:</label>
-                                <span className="price">${ toDecimal( getTotalPrice( cartList ) ) }</span>
-                            </div>
-
-                            <div className="cart-action">
-                                <ALink href="/pages/cart" className="btn btn-dark btn-link" onClick={ hideCartMenu }>View Cart</ALink>
-                                <ALink href="/pages/checkout" className="btn btn-dark" onClick={ hideCartMenu }><span>Go To Checkout</span></ALink>
-                            </div>
-                        </> :
-                        <p className="mt-4 text-center font-weight-semi-bold ls-normal text-body">No products in the cart.</p>
-                }
-            </div>
+  return (
+    <div className="dropdown cart-dropdown type2 cart-offcanvas mr-0 mr-lg-2">
+      <a
+        href="#"
+        className="cart-toggle label-block link"
+        onClick={showCartMenu}
+      >
+        <span className="cart-label d-lg-show">
+          <span className="cart-name">Shopping Cart:</span>
+          <span className="cart-price">
+            ${toDecimal(getTotalPrice(cartList))}
+          </span>
+        </span>
+        <i className="d-icon-bag">
+          <span className="cart-count">{getCartCount(cartList)}</span>
+        </i>
+      </a>
+      <div className="cart-overlay" onClick={hideCartMenu}></div>
+      <div className="dropdown-box">
+        <div className="cart-header">
+          <h4 className="cart-title">Shopping Cart</h4>
+          <ALink
+            href="#"
+            className="btn btn-dark btn-link btn-icon-right btn-close"
+            onClick={hideCartMenu}
+          >
+            close<i className="d-icon-arrow-right"></i>
+            <span className="sr-only">Cart</span>
+          </ALink>
         </div>
-    )
+        {cartList.length > 0 ? (
+          <>
+            <div className="products scrollable">
+              {cartList.map((item, index) => (
+                <div
+                  className="product product-cart"
+                  key={"cart-menu-product-" + index}
+                >
+                  <figure className="product-media pure-media">
+                    <ALink
+                      href={"/product/default/" + item.slug}
+                      onClick={hideCartMenu}
+                    >
+                      <img
+                        src={
+                          item.product_image[0]
+                            .url /* TODO: ADD BASE URL HERE  */
+                        }
+                        alt="product"
+                        width="80"
+                        height="88"
+                      />
+                    </ALink>
+                    <button
+                      className="btn btn-link btn-close"
+                      onClick={() => {
+                        removeCart(item);
+                      }}
+                    >
+                      <i className="fas fa-times"></i>
+                      <span className="sr-only">Close</span>
+                    </button>
+                  </figure>
+                  <div className="product-detail">
+                    <ALink
+                      href={"/product/default/" + item.slug}
+                      className="product-name"
+                      onClick={hideCartMenu}
+                    >
+                      {item.title}
+                    </ALink>
+                    <div className="price-box">
+                      <span className="product-quantity">{item.qty}</span>
+                      <span className="product-price">
+                        ${toDecimal(item.price)}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="cart-total">
+              <label>Subtotal:</label>
+              <span className="price">
+                ${toDecimal(getTotalPrice(cartList))}
+              </span>
+            </div>
+
+            <div className="cart-action">
+              <ALink
+                href="/pages/cart"
+                className="btn btn-dark btn-link"
+                onClick={hideCartMenu}
+              >
+                View Cart
+              </ALink>
+              {cart_menu_button}
+            </div>
+          </>
+        ) : (
+          <p className="mt-4 text-center font-weight-semi-bold ls-normal text-body">
+            No products in the cart.
+          </p>
+        )}
+      </div>
+    </div>
+  );
 }
 
-function mapStateToProps ( state ) {
-    return {
-        cartList: state.cart.data
-    }
+function mapStateToProps(state) {
+  return {
+    cartList: state.cart.data,
+  };
 }
 
-export default connect( mapStateToProps, { removeFromCart: cartActions.removeFromCart } )( CartMenu );
+export default connect(mapStateToProps, {
+  removeFromCart: cartActions.removeFromCart,
+})(CartMenu);

@@ -25,7 +25,7 @@ function DetailOne(props) {
 
   // decide if the product is wishlisted
   let isWishlisted,
-    colors = [] && product.product_image.map((pdt) => pdt.color_hex),
+    colors = [] && product.product_image.map((pdt) => pdt.color),
     sizes = [] && product.available_sizes;
   console.log(sizes, colors);
   isWishlisted =
@@ -87,9 +87,11 @@ function DetailOne(props) {
     if (product.is_available && cartActive) {
       addToCart({
         ...product,
-        name: product.title + "-" + curColor + "-" + curSize,
+        name: product.title,
         qty: quantity,
         price: product.display_price,
+        color: curColor,
+        size: curSize,
       });
     }
   };
@@ -203,11 +205,8 @@ function DetailOne(props) {
                   <option value="null">Choose an Option</option>
                   {product.product_image.map((item) =>
                     !isDisabled(item.name, curSize) ? (
-                      <option
-                        value={item.color_hex}
-                        key={"color-" + item.color_hex}
-                      >
-                        {item.color_hex}
+                      <option value={item.color} key={"color-" + item.color}>
+                        {item.color}
                       </option>
                     ) : (
                       ""

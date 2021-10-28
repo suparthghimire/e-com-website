@@ -96,7 +96,7 @@ export default function Header(props) {
             </ALink>
             <span className="divider"></span>
 
-            <CartMenu />
+            <CartMenu auth={props.auth} />
           </div>
         </div>
       </div>
