@@ -57,7 +57,7 @@ function Cart(props) {
           <div className="row">
             {cartItems.length > 0 ? (
               <>
-                <div className="col-lg-8 col-md-12 pr-lg-4">
+                <div className="col-lg-12 col-md-12 pr-lg-">
                   <table className="shop-table cart-table">
                     <thead>
                       <tr>
@@ -156,7 +156,7 @@ function Cart(props) {
                       Update Cart
                     </button>
                   </div>
-                  <div className="cart-coupon-box mb-8">
+                  {/* <div className="cart-coupon-box mb-8">
                     <h4 className="title coupon-title text-uppercase ls-m">
                       Coupon Discount
                     </h4>
@@ -173,9 +173,9 @@ function Cart(props) {
                     >
                       Apply Coupon
                     </button>
-                  </div>
+                  </div> */}
                 </div>
-                <aside className="col-lg-4 sticky-sidebar-wrapper">
+                {/* <aside className="col-lg-4 sticky-sidebar-wrapper">
                   <div
                     className="sticky-sidebar"
                     data-sticky-options="{'bottom': 20}"
@@ -324,7 +324,18 @@ function Cart(props) {
                       </ALink>
                     </div>
                   </div>
-                </aside>
+                </aside> */}
+                <div className="row pr-0 mr-0">
+                  <div className="col-8"></div>
+                  <div className="col-4">
+                    <ALink
+                      href="/pages/checkout"
+                      className="btn btn-dark btn-rounded btn-checkout"
+                    >
+                      Proceed to checkout
+                    </ALink>
+                  </div>
+                </div>
               </>
             ) : (
               <div className="empty-cart text-center">

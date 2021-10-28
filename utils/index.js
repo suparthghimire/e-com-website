@@ -335,6 +335,7 @@ export const getTotalPrice = (cartItems, extra_cost = {}) => {
       else additional_cost += extra_cost[key];
     });
   }
+  console.log(extra_cost, additional_cost);
   return total + additional_cost;
 };
 

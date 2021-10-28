@@ -63,7 +63,9 @@ export default function CheckoutForm({ cartList }) {
     const submit_data = {
       ...data,
       promo_code: promoCodeValue,
-      sub_total: getTotalPrice(cartList),
+      sub_total: getTotalPrice(cartList, {
+        promo_discount: promoDiscount,
+      }),
       total: getTotalPrice(cartList, {
         promo_discount: promoDiscount,
         shipping_fee: 40,
@@ -488,7 +490,10 @@ export default function CheckoutForm({ cartList }) {
                       <td>
                         <h4 className="summary-subtitle">Subtotal</h4>
                       </td>
-                      <td className="summary-subtotal-price pb-0 pt-0">
+                      <td
+                        colSpan="3"
+                        className="summary-subtotal-price pb-0 pt-0"
+                      >
                         Nrs.&nbsp;
                         {toDecimal(
                           getTotalPrice(cartList, {
@@ -554,7 +559,7 @@ export default function CheckoutForm({ cartList }) {
                           </li> */}
                         </ul>
                       </td>
-                      <td>Nrs. 40</td>
+                      <td colSpan="3">Nrs. 40</td>
                     </tr>
                     <tr className="summary-total">
                       <td className="pb-0">
@@ -563,7 +568,7 @@ export default function CheckoutForm({ cartList }) {
                           After 13% Tax on Total (Without Shipping)
                         </span>
                       </td>
-                      <td className=" pt-0 pb-0">
+                      <td colSpan="3" className=" pt-0 pb-0">
                         <p className="summary-total-price ls-s text-primary">
                           Nrs.&nbsp;
                           {toDecimal(

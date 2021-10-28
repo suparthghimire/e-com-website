@@ -5,13 +5,14 @@ import Header from "~/components/partials/checkout/header";
 import ALink from "~/components/features/custom-link";
 import CustomLoader from "../../components/common/custom-loader";
 import CheckoutForm from "~/components/features/modals/forms/CheckoutForm";
-
+import { useQuery } from "react-query";
 function Checkout(props) {
   const router = useRouter();
 
   if (!props.loadingAuth && !props.auth) router.push("/pages/login");
   if (!props.loadingAuth && props.auth) {
     const { cartList } = props;
+
     return (
       <main className="main checkout">
         <Helmet>

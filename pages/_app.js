@@ -42,7 +42,6 @@ const App = ({ Component, pageProps, store }) => {
         .then((user) => {
           if (user.code && user.code === "token_not_valid")
             throw Error("Invalid Token Error");
-          console.log("User:", user);
           setUser(user);
           setAuth(true);
         })

@@ -8,7 +8,6 @@ import { getTotalPrice, getCartCount, toDecimal } from "~/utils";
 
 function CartMenu(props) {
   const { cartList, removeFromCart } = props;
-  console.log(cartList);
   const showCartMenu = (e) => {
     e.preventDefault();
     e.currentTarget.closest(".cart-dropdown").classList.add("opened");
@@ -17,7 +16,6 @@ function CartMenu(props) {
     let item = document.querySelector(".cart-dropdown.opened");
     if (item) item.classList.remove("opened");
   };
-  console.log(cartList);
   const removeCart = (item) => {
     removeFromCart(item);
   };
