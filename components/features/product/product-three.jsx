@@ -34,7 +34,7 @@ function ProductThree(props) {
 
   const wishlistHandler = (e) => {
     if (toggleWishlist) {
-      toggleWishlist(product);
+      toggleWishlist({ ...product, name: product.title });
     }
 
     e.preventDefault();
@@ -48,30 +48,33 @@ function ProductThree(props) {
 
   const addToCartHandler = (e) => {
     e.preventDefault();
-    addToCart({ ...product, qty: 1, price: product.price[0] });
+    addToCart({
+      ...product,
+      qty: 1,
+      price: product.display_price,
+      name: product.title,
+    });
   };
-
+  {
+    /* TODO: ADD BASE URL TO IMAGES */
+  }
   return (
-    <div
-      className={`product product-classic ${adClass} ${
-        product.variants.length > 0 ? "product-variable" : ""
-      }`}
-    >
+    <div className={`product product-classic ${adClass} `}>
       <figure className="product-media">
         <ALink href={`/product/default/${product.slug}`}>
           <LazyLoadImage
             alt="product"
-            src={process.env.NEXT_PUBLIC_ASSET_URI + product.pictures[0].url}
+            src={product.product_image[0].url}
             threshold={500}
             effect="opacity"
             width="300"
             height="338"
           />
 
-          {product.pictures.length >= 2 ? (
+          {product.product_image.length >= 2 ? (
             <LazyLoadImage
               alt="product"
-              src={process.env.NEXT_PUBLIC_ASSET_URI + product.pictures[1].url}
+              src={product.product_image[1].url}
               threshold={500}
               width="300"
               height="338"
@@ -94,7 +97,7 @@ function ProductThree(props) {
           ) : (
             ""
           )}
-          {product.discount > 0 ? (
+          {/* {product.discount > 0 ? (
             product.variants.length === 0 ? (
               <label className="product-label label-sale">
                 {product.discount}% OFF
@@ -104,12 +107,12 @@ function ProductThree(props) {
             )
           ) : (
             ""
-          )}
+          )} */}
         </div>
       </figure>
 
       <div className="product-details">
-        {isCat ? (
+        {/* {isCat ? (
           <div className="product-cat">
             {product.categories
               ? product.categories.map((item, index) => (
@@ -129,30 +132,19 @@ function ProductThree(props) {
           </div>
         ) : (
           ""
-        )}
+        )} */}
 
         <h3 className="product-name">
           <ALink href={`/product/default/${product.slug}`}>
-            {product.name}
+            {product.title}
           </ALink>
         </h3>
 
         <div className="product-price">
-          {product.price[0] !== product.price[1] ? (
-            product.variants.length === 0 ||
-            (product.variants.length > 0 && !product.variants[0].price) ? (
-              <>
-                <ins className="new-price">${toDecimal(product.price[0])}</ins>
-                <del className="old-price">${toDecimal(product.price[1])}</del>
-              </>
-            ) : (
-              <del className="new-price">
-                ${toDecimal(product.price[0])} – ${toDecimal(product.price[1])}
-              </del>
-            )
-          ) : (
-            <ins className="new-price">${toDecimal(product.price[0])}</ins>
-          )}
+          <>
+            <ins className="new-price">${toDecimal(product.display_price)}</ins>
+            <del className="old-price">${toDecimal(product.price)}</del>
+          </>
         </div>
 
         {/* <div className="ratings-container">
@@ -165,25 +157,14 @@ function ProductThree(props) {
                 </div> */}
 
         <div className="product-action">
-          {product.variants.length > 0 ? (
-            <ALink
-              href={`/product/default/${product.slug}`}
-              className="btn-product btn-cart"
-              title="Go to product"
-            >
-              <span>Select Options</span>
-            </ALink>
-          ) : (
+          <ALink href={`/product/default/${product.slug}`}>
             <a
               href="#"
-              className="btn-product btn-cart"
-              title="Add to cart"
-              onClick={addToCartHandler}
+              className="btn btn-dark pl-2 pr-2 background-primary border-primary btn-block btn-rounded"
             >
-              <i className="d-icon-bag"></i>
-              <span>Add to cart</span>
+              <span>View Product</span>
             </a>
-          )}
+          </ALink>
           <a
             href="#"
             className="btn-product-icon btn-wishlist"

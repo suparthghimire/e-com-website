@@ -35,11 +35,11 @@ function HomePage() {
       <div className="page-content">
         <IntroSection />
         <div className="container">
-          <NewArrivalCollection products={topRated} loading={loading} />
+          {/* <NewArrivalCollection products={topRated} loading={loading} /> */}
 
-          <FeaturedCollection products={featured} loading={loading} />
+          {/* <FeaturedCollection products={featured} loading={loading} /> */}
 
-          <BrandSection />
+          {/* <BrandSection /> */}
         </div>
       </div>
 
