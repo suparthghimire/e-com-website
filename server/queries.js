@@ -94,6 +94,99 @@ export const GET_SPECIAL_PRODUCTS = gql`
     ${ PRODUCT_SMALL }
 `
 
+// export const GET_PRODUCT = gql`
+//     query product($slug: String!, $onlyData: Boolean = false) {
+//         product(demo: ${currentDemo }, slug: $slug, onlyData: $onlyData) {
+//             data {
+//                 id
+//                 slug
+//                 name
+//                 price
+//                 discount
+//                 short_description
+//                 sku
+//                 stock
+//                 ratings
+//                 reviews
+//                 sale_count
+//                 is_new
+//                 is_top
+//                 until
+//                 pictures {
+//                     url
+//                     width
+//                     height
+//                 }
+//                 small_pictures {
+//                     url
+//                     width
+//                     height
+//                 }
+//                 large_pictures {
+//                     url
+//                     width
+//                     height
+//                 }
+//                 categories {
+//                     name
+//                     slug
+//                 }
+//                 tags {
+//                     name
+//                     slug
+//                 }
+//                 brands {
+//                     name
+//                     slug
+//                 }
+//                 variants {
+//                     price
+//                     sale_price
+//                     color {
+//                         name
+//                         color
+//                         thumb {
+//                             url
+//                             width
+//                             height
+//                         }
+//                     }
+//                     size {
+//                         name
+//                         size
+//                         thumb {
+//                             url
+//                             width
+//                             height
+//                         }
+//                     }
+//                 }
+//             }
+//             prev @skip(if: $onlyData) {
+//                 slug
+//                 name
+//                 pictures {
+//                     url
+//                     width
+//                     height
+//                 }
+//             }
+//             next @skip(if: $onlyData) {
+//                 slug
+//                 name
+//                 pictures {
+//                     url
+//                     width
+//                     height
+//                 }
+//             }
+//             related @skip(if: $onlyData) {
+//                 ...ProductSimple
+//             }
+//         }
+//     }
+//     ${ PRODUCT_SIMPLE }
+// `
 export const GET_PRODUCT = gql`
     query product($slug: String!, $onlyData: Boolean = false) {
         product(demo: ${currentDemo }, slug: $slug, onlyData: $onlyData) {
@@ -187,7 +280,6 @@ export const GET_PRODUCT = gql`
     }
     ${ PRODUCT_SIMPLE }
 `
-
 export const GET_VIDEO = gql`
     query video($slug: String!) {
         video(demo: ${currentDemo }, slug: $slug) {
