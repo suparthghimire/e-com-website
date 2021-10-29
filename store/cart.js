@@ -27,7 +27,12 @@ function cartReducer(state = initialState, action) {
         ) > -1
       ) {
         let tmpData = state.data.reduce((acc, cur) => {
-          if (cur.name === tmpProduct.name) {
+          console.log(cur, tmpProduct);
+          if (
+            cur.name === tmpProduct.name &&
+            cur.color === tmpProduct.color &&
+            cur.size === tmpProduct.size
+          ) {
             acc.push({
               ...cur,
               qty: parseInt(cur.qty) + parseInt(tmpProduct.qty),
