@@ -22,7 +22,6 @@ function DetailOne(props) {
   const [curSize, setCurSize] = useState("null");
   const [cartActive, setCartActive] = useState(false);
   const [quantity, setQauntity] = useState(1);
-
   // decide if the product is wishlisted
   let isWishlisted,
     colors = [] && product.product_image.map((pdt) => pdt.color),
@@ -77,6 +76,7 @@ function DetailOne(props) {
 
   const setColorHandler = (e) => {
     setCurColor(e.target.value);
+    e.target.focus();
   };
 
   const setSizeHandler = (e) => {
@@ -190,10 +190,44 @@ function DetailOne(props) {
 
       <p className="product-short-desc">{product.description}</p>
 
+      <div className="product-form product-variations product-color d-flex align-items-end">
+        {colors.length > 0 ? (
+          <>
+            <label>Color:</label>
+            {product.product_image.map((item) => {
+              return (
+                <div className="ml-1">
+                  <input
+                    type="radio"
+                    id={item.color}
+                    name="shipping"
+                    className="color-picker-input d-none"
+                    value={item.color}
+                    onChange={setColorHandler}
+                  />
+                  <label className="color-picker-label" htmlFor={item.color}>
+                    <div
+                      className="color-div ml-0 mr-0 pl-0 pr-0"
+                      style={{
+                        background: item.color,
+                      }}
+                    ></div>
+                    {/* {item.color} */}
+                  </label>
+                </div>
+              );
+            })}
+          </>
+        ) : (
+          ""
+        )}
+      </div>
       {(product && sizes.length > 0) || colors.length ? (
         <>
           {product.product_image ? (
-            <div className="product-form product-variations product-color">
+            <></>
+          ) : (
+            /* <div className="product-form product-variations product-color">
               <label>Color:</label>
               <div className="select-box">
                 <select
@@ -214,8 +248,8 @@ function DetailOne(props) {
                   )}
                 </select>
               </div>
-            </div>
-          ) : (
+            </div> */
+
             ""
           )}
 

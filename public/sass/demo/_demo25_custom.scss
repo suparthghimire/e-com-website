@@ -916,3 +916,38 @@ Demo 25
   object-fit: cover;
   border-radius: 5px;
 }
+
+.color-div {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgb(216, 216, 216);
+  cursor: pointer;
+  transition: 150ms ease-in-out;
+}
+
+.color-div:hover,
+.color-div:focus {
+  box-shadow: 0 0 6px 0 #2a2a2a2a;
+  border: 2px solid #2a2a2a;
+}
+
+.active-color-div {
+  box-shadow: 0 0 6px 0 #2a2a2a2a;
+  border: 2px solid #2a2a2a;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.color-picker-label {
+  padding-left: 0 !important;
+}
+
+.color-picker-label::before,
+.color-picker-label::after {
+  transform: scale(0) !important;
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
