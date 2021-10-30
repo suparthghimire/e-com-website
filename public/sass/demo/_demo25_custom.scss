@@ -951,3 +951,45 @@ Demo 25
   opacity: 0 !important;
   visibility: hidden !important;
 }
+
+.accordian-toggle-btn {
+  border: 0;
+  padding: 1rem 1.2rem;
+  color: black;
+  cursor: pointer;
+  transition: 150ms ease-in-out;
+  background: white;
+  border: 2px solid black;
+  transition: 150ms ease-in-out;
+}
+
+.accordian-toggle-btn > i {
+  transition: transform 150ms ease-in-out;
+  font-size: 1.5rem !important;
+}
+
+.accordian-toggle-btn:hover,
+.accordian-toggle-btn-active {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+.accordian-toggle-btn-active > i {
+  transform: rotateZ(180deg);
+}
+
+.font-size-lg {
+  font-size: 1.5rem !important;
+}
+
+.accordian-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.accordian-body.accordian-body-show {
+  height: auto;
+  max-height: fit-content;
+  transition: all 0.5s cubic-bezier(1, 0, 1, 0);
+}

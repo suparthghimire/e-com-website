@@ -14,3 +14,14 @@ export const GET_ALL_ORDERS = async ({ queryKey }) => {
   });
   return response.json();
 };
+
+export const GET_SINGLE_ORDER = async ({ queryKey }) => {
+  const [_key, { id, access }] = queryKey;
+  console.log(id, access);
+  const response = await fetch(`${BASE_URL}/order/${id}/`, {
+    headers: {
+      Authorization: `Bearer ${access}`,
+    },
+  });
+  return response.json();
+};
