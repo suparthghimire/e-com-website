@@ -160,7 +160,7 @@ function ProductThree(props) {
           <ALink href={`/product/default/${product.slug}`}>
             <a
               href="#"
-              className="btn btn-dark pl-2 pr-2 background-primary border-primary btn-block btn-rounded"
+              className="btn btn-transparent pl-2 pr-2 border-primary btn-block"
             >
               <span>View Product</span>
             </a>
