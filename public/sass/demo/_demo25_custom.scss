@@ -1103,3 +1103,10 @@ Demo 25
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+// nav
+.header-nav-active,
+.header-nav:hover {
+  color: white;
+  background-color: $primary-color;
+}

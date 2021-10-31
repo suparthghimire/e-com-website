@@ -4,6 +4,7 @@ import CustomLoader from "~/components/common/custom-loader";
 import { GET_HOME_DATA_NEW } from "~/api/queries";
 import SingleCategory from "~/components/features/category/single-category";
 import OwlCarousel from "~/components/features/owl-carousel";
+import ALink from "~/components/features/custom-link";
 
 export default function Category() {
   const { data, status } = useQuery(["All Categories", {}], GET_HOME_DATA_NEW);
@@ -34,9 +35,11 @@ export default function Category() {
           <div className="category-list">
             {category.map((item, index) => {
               return (
-                <div className="row" key={"category" + index}>
-                  <SingleCategory key={"categiry-" + index} category={item} />
-                </div>
+                <ALink href={"/pages/category/" + item.slug}>
+                  <div className="row" key={"category" + index}>
+                    <SingleCategory key={"categiry-" + index} category={item} />
+                  </div>
+                </ALink>
               );
             })}
           </div>

@@ -29,3 +29,8 @@ export const GET_SINGLE_ORDER = async ({ queryKey }) => {
   });
   return response.json();
 };
+
+export const GET_NAV_ITEMS = async ({ queryKey }) => {
+  const response = await fetch(`${BASE_URL}/nav/`);
+  return response.json();
+};

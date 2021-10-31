@@ -2,28 +2,21 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import ALink from "~/components/features/custom-link";
+import CustomLoader from "../../components/common/custom-loader";
 
 import CartMenu from "~/components/common/partials/cart-menu";
 import SearchBox from "~/components/common/partials/search-box";
 import LoginModal from "~/components/features/modals/login-modal";
-
+import { useQuery } from "react-query";
+import { GET_NAV_ITEMS } from "~/api/queries";
 import { headerBorderRemoveList, headerCategories } from "~/utils/data/menu";
 
 export default function Header(props) {
   const router = useRouter();
 
-  useEffect(() => {
-    let header = document.querySelector("header");
-    if (header) {
-      if (
-        headerBorderRemoveList.includes(router.pathname) &&
-        header.classList.contains("header-border")
-      )
-        header.classList.remove("header-border");
-      else if (!headerBorderRemoveList.includes(router.pathname))
-        document.querySelector("header").classList.add("header-border");
-    }
-  }, [router.pathname]);
+  const { data, status } = useQuery(["nav-items", {}], GET_NAV_ITEMS);
+  if (status === "loading") return <CustomLoader type="Grid" />;
+  console.log(data, status);
 
   const showMobileMenu = () => {
     document.querySelector("body").classList.add("mmenu-active");
@@ -34,24 +27,7 @@ export default function Header(props) {
       <div className="header-top">
         <div className="container">
           <div className="header-right">
-            {/* <div className="dropdown">
-              <ALink href="#">USD</ALink>
-              <ul className="dropdown-box">
-                <li>
-                  <ALink href="#">USD</ALink>
-                </li>
-                <li>
-                  <ALink href="#">EUR</ALink>
-                </li>
-              </ul>
-            </div> */}
             <span className="divider"></span>
-            {/* <ALink href="/pages/contact-us" className="contact d-lg-show">
-              <i className="d-icon-map"></i>Contact
-            </ALink>
-            <ALink href="#" className="help d-lg-show">
-              <i className="d-icon-info"></i> Need Help
-            </ALink> */}
             <LoginModal auth={props.auth} user={props.user} />
           </div>
         </div>
@@ -76,7 +52,6 @@ export default function Header(props) {
                 height="44"
               />
             </ALink>
-
             <SearchBox />
           </div>
 
@@ -95,7 +70,6 @@ export default function Header(props) {
               <i className="d-icon-heart"></i>
             </ALink>
             <span className="divider"></span>
-
             <CartMenu auth={props.auth} />
           </div>
         </div>
@@ -108,20 +82,18 @@ export default function Header(props) {
               <div className="header-left">
                 <nav className="category-list">
                   <ul className="menu">
-                    {headerCategories.map((cat) => (
+                    {data.results.map((nav) => (
                       <li
                         className={
-                          router.query.category === cat.slug ? "active" : ""
+                          (router.query.category_slug === nav.slug
+                            ? "header-nav-active"
+                            : "") + " header-nav"
                         }
-                        key={`header-cat-${cat.slug}`}
+                        key={`header-nav-${nav.slug}`}
+                        style={{ width: "max-content" }}
                       >
-                        <ALink
-                          href={{
-                            pathname: "/shop",
-                            query: { category: cat.slug },
-                          }}
-                        >
-                          {cat.title}
+                        <ALink href={"/pages/category/" + nav.slug}>
+                          {nav.title}
                         </ALink>
                       </li>
                     ))}
@@ -129,7 +101,7 @@ export default function Header(props) {
                 </nav>
               </div>
 
-              <div className="header-right mr-0">
+              {/* <div className="header-right mr-0">
                 <nav className="other-links">
                   <ul className="menu">
                     <li className="d-xl-show">
@@ -146,7 +118,7 @@ export default function Header(props) {
                     </li>
                   </ul>
                 </nav>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
