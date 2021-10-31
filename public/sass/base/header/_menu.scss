@@ -15,16 +15,16 @@
             - MobileMenuOverlay
             - MobileMenuCloseButton
 
-        - CategoryMenu
+        - yMenu
  ------------------------------------------- */
 
 // Variables
 @include set-default(
   (
     menu: (
-       // Activ
+       // Active c
       active: (color: $primary-color),
-       // An
+       // Ance
       ancestor:
         (
           _gap: 3rem,
@@ -38,7 +38,9 @@
           color: false,
           _active-color: false
         ),
-      /tip: (
+       /
+      tip:
+        (
           padding: 0.3rem 0.5rem,
           font-size: 1rem,
           font-weight: 600,
@@ -46,12 +48,12 @@
           color: #fff,
           text-transform: uppercase,
           border-radius: 2px,
-           // Ho
+           // Hot L
           _hot-color: #d26e4b,
-           // Ne
+           // New L
           _new-color: $primary-color
         ),
-       // Me
+       // Mega
       megamenu:
         (
           padding: 1rem,
@@ -67,7 +69,7 @@
             text-transform: uppercase,
           )
         ),
-       // S
+       // Sub
       submenu:
         (
           padding: 2rem 0,
@@ -87,7 +89,7 @@
       font-weight: 700,
       line-height: 1.5,
       letter-spacing: -0.025em,
-       // Mobile Menu Con
+       // Mobile Menu Conta
       container:
         (
           max-width: 296px,
@@ -95,19 +97,19 @@
           background: #222529,
           border-color: #2e3237,
         ),
-       // Mobile Me
+       // Mobile Menu
       item:
         (
           padding: 1.3rem 0.6rem 1.3rem 1rem,
         ),
-       //
+       // Ac
       active:
         (
           background: false,
           color: false,
           border: false,
         ),
-       /
+       // T
       title:
         (
           text-transform: uppercase,
@@ -116,7 +118,7 @@
           font-weight: 700,
           color: #fff,
         ),
-       // O
+       // Ove
       overlay:
         (
           background: #000,
@@ -128,7 +130,7 @@
       background: $light-color,
       border: false,
       _item-active-color: $primary-color,
-       /
+       // T
       title:
         (
           padding: 1.8rem 0.2rem 1.8rem,
@@ -142,7 +144,7 @@
           letter-spacing: -0.05em,
           color: #222,
         ),
-       // An
+       // Ance
       ancestor:
         (
           padding: 1.2rem 0 1.3rem,
@@ -156,13 +158,15 @@
           margin: false,
           min-height: false,
         ),
-      /icon: (
+       //
+      icon:
+        (
           margin-right: 1rem,
           padding-left: 0.2rem,
           font-size: 2rem,
           color: #666,
         ),
-       // S
+       // Sub
       submenu:
         (
           padding: 2rem 0,
@@ -262,6 +266,7 @@
       > ul,
       .megamenu {
         top: 100%;
+        z-index: 1201;
       }
       // &::after {
       //     visibility: visible;
@@ -651,7 +656,7 @@
     border-color: transparent;
   }
   .nav-item.show .nav-link,
-  .nav-item.active .nav-link {
+  .nav-item .nav-link.active {
     color: $primary-color;
     border-color: $primary-color;
   }
@@ -827,7 +832,6 @@
 }
 // CategoryMenu
 .category-menu {
-  min-height: 100%;
   @include print_css(category-menu);
   .menu-title {
     @include print_css(category-menu, title);
