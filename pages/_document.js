@@ -10,7 +10,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <base href="/react/riode/demo-25/"></base>
+          {/* <base href="/react/riode/demo-25/"></base> */}
+          <base href="/"></base>
           <title>Riode - React eCommerce Template</title>
           <link rel="icon" href="images/icons/favicon.png" />
           <link
