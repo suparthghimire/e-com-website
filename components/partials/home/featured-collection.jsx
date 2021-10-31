@@ -9,7 +9,7 @@ import { productSlider } from "~/utils/data/carousel";
 import { fadeIn, fadeInRightShorter } from "~/utils/data/keyframes";
 
 function FeaturedCollection(props) {
-  const { products, loading } = props;
+  const { products } = props;
 
   return (
     <Reveal keyframes={fadeIn} delay={300} duration={1200} triggerOnce>
@@ -18,7 +18,22 @@ function FeaturedCollection(props) {
           <h2 className="title title-simple">Featured Products</h2>
         </Reveal>
 
-        {loading ? (
+        <OwlCarousel adClass="owl-theme owl-nav-full" options={productSlider}>
+          {products &&
+            products.map((item, index) => (
+              <Reveal
+                keyframes={fadeInRightShorter}
+                delay={300 + 100 * index}
+                duration={1200}
+                triggerOnce
+                key={`featured-product-${index}`}
+              >
+                <ProductThree product={item} isCat={false} />
+              </Reveal>
+            ))}
+        </OwlCarousel>
+
+        {/* {loading ? (
           <OwlCarousel adClass="owl-theme owl-nav-full" options={productSlider}>
             {[1, 2, 3, 4, 5].map((item) => (
               <div
@@ -42,7 +57,7 @@ function FeaturedCollection(props) {
                 </Reveal>
               ))}
           </OwlCarousel>
-        )}
+        )} */}
       </section>
     </Reveal>
   );

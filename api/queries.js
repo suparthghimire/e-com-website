@@ -1,4 +1,8 @@
 import { BASE_URL } from "../config";
+export const GET_HOME_DATA_NEW = async ({ queryKey }) => {
+  const response = await fetch(`${BASE_URL}/home/`);
+  return response.json();
+};
 export const GET_SINGLE_PRODUCT = async ({ queryKey }) => {
   const [_key, { slug }] = queryKey;
   const response = await fetch(`${BASE_URL}/product/${slug}/`);

@@ -8,15 +8,28 @@ import ProductThree from "~/components/features/product/product-three";
 import { productSlider } from "~/utils/data/carousel";
 import { fadeIn, fadeInLeftShorter } from "~/utils/data/keyframes";
 
-function NewArrivalCollection(props) {
-  const { products, loading } = props;
+function Trending(props) {
+  const { featured } = props;
 
   return (
     <Reveal keyframes={fadeIn} delay={200} duration={1200} triggerOnce>
       <section className="product-wrapper mt-9">
-        <h2 className="title title-simple">What's New</h2>
-
-        {loading ? (
+        <h2 className="title title-simple">Trending</h2>
+        <OwlCarousel adClass="owl-theme owl-nav-full" options={productSlider}>
+          {featured &&
+            featured.map((item, index) => (
+              <Reveal
+                keyframes={fadeInLeftShorter}
+                delay={Math.max(700 - index * 100, 200)}
+                duration={1200}
+                triggerOnce
+                key={`top-rated-product ${index}`}
+              >
+                <ProductThree product={item} isCat={false} />
+              </Reveal>
+            ))}
+        </OwlCarousel>
+        {/* {loading ? (
           <OwlCarousel adClass="owl-theme owl-nav-full" options={productSlider}>
             {[1, 2, 3, 4, 5, 6].map((item) => (
               <div
@@ -40,10 +53,10 @@ function NewArrivalCollection(props) {
                 </Reveal>
               ))}
           </OwlCarousel>
-        )}
+        )} */}
       </section>
     </Reveal>
   );
 }
 
-export default React.memo(NewArrivalCollection);
+export default React.memo(Trending);
