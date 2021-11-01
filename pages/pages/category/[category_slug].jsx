@@ -1,11 +1,22 @@
 import React from "react";
 import Helmet from "react-helmet";
-
 import ALink from "~/components/features/custom-link";
-
 import SidebarFilterOne from "~/components/partials/shop/sidebar/sidebar-filter-one";
+import { useQuery } from "react-query";
+import { GET_CATEGORY } from "~/api/queries";
+import ProductListOne from "../../../components/partials/shop/product-list/product-list-one";
+import { useRouter } from "next/router";
+import CustomLoader from "~/components/common/custom-loader";
 
 function Shop() {
+  const router = useRouter();
+  const slug = router.query.category_slug;
+  const { data, status } = useQuery(
+    ["single-category", { slug: slug }],
+    GET_CATEGORY
+  );
+  console.log(data, status);
+  if (status === "loading") return <CustomLoader type="Grid" />;
   return (
     <main className="main shop">
       <Helmet>
@@ -31,7 +42,6 @@ function Shop() {
         <div className="container">
           <div className="row gutter-lg main-content-wrap">
             <SidebarFilterOne type="banner" />
-
             <div className="col-lg-9 main-content">
               <div
                 className="shop-banner banner"
@@ -58,8 +68,12 @@ function Shop() {
                   </ALink>
                 </div>
               </div>
-
-              {/* <ProductListOne type="banner" /> */}
+              <ProductListOne
+                type="banner"
+                slug={slug}
+                products={data.results}
+                total_products={data.count}
+              />
             </div>
           </div>
         </div>
