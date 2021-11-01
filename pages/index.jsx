@@ -5,8 +5,8 @@ import Helmet from "react-helmet";
 import { useQuery } from "react-query";
 
 // Import Apollo Server and Query
-import withApollo from "../server/apollo";
-import { GET_HOME_DATA } from "../server/queries";
+// import withApollo from "../server/apollo";
+// import { GET_HOME_DATA } from "../server/queries";
 
 // import Home Components
 import NewsletterModal from "~/components/features/modals/newsletter-modal";
@@ -61,4 +61,5 @@ function HomePage() {
   );
 }
 
-export default withApollo({ ssr: typeof window === "undefined" })(HomePage);
+// export default withApollo({ ssr: typeof window === "undefined" })(HomePage);
+export default HomePage;

@@ -4,7 +4,6 @@ import { useQuery } from "react-query";
 import Helmet from "react-helmet";
 import imagesLoaded from "imagesloaded";
 
-import withApollo from "~/server/apollo";
 import { GET_SINGLE_PRODUCT } from "~/api/queries";
 import OwlCarousel from "~/components/features/owl-carousel";
 
@@ -107,9 +106,10 @@ function ProductDefault() {
   );
 }
 
-export default withApollo({ ssr: typeof window === "undefined" })(
-  ProductDefault
-);
+// export default withApollo({ ssr: typeof window === "undefined" })(
+//   ProductDefault
+// );
+export default ProductDefault;
 
 ProductDefault.getInitialProps = async (ctx) => {
   const slug = ctx.query.slug;

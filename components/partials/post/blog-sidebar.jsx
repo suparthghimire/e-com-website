@@ -223,4 +223,5 @@ function BlogSidebar() {
   );
 }
 
-export default withApollo({ ssr: typeof window === "undefined" })(BlogSidebar);
+// export default withApollo({ ssr: typeof window === "undefined" })(BlogSidebar);
+export default BlogSidebar;

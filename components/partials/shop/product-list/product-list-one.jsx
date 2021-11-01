@@ -110,6 +110,7 @@ function ProductListOne(props) {
   );
 }
 
-export default withApollo({ ssr: typeof window === "undefined" })(
-  ProductListOne
-);
+// export default withApollo({ ssr: typeof window === "undefined" })(
+//   ProductListOne
+// );
+export default ProductListOne;

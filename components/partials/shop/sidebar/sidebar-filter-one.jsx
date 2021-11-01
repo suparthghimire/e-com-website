@@ -372,6 +372,7 @@ function SidebarFilterOne(props) {
   );
 }
 
-export default withApollo({ ssr: typeof window === "undefined" })(
-  SidebarFilterOne
-);
+// export default withApollo({ ssr: typeof window === "undefined" })(
+//   SidebarFilterOne
+// );
+export default SidebarFilterOne;
