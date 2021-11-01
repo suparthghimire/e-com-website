@@ -36,7 +36,9 @@ export const GET_NAV_ITEMS = async ({ queryKey }) => {
 };
 
 export const GET_CATEGORY = async ({ queryKey }) => {
-  const [_key, { slug }] = queryKey;
-  const response = await fetch(`${BASE_URL}/category/${slug}/`);
+  const [_key, { slug, min_price, max_price, color, size }] = queryKey;
+  const url = `${BASE_URL}/category/${slug}/?min_price=${min_price}&max_price=${max_price}&color=${color}&size=${size}`;
+  console.log(url);
+  const response = await fetch(url);
   return response.json();
 };

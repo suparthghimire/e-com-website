@@ -11,7 +11,13 @@ import withApollo from "~/server/apollo";
 import { GET_PRODUCTS } from "~/server/queries";
 
 function ProductListOne(props) {
-  const { itemsPerRow = 3, type = "left", isToolbox = true, products } = props;
+  const {
+    itemsPerRow = 3,
+    type = "left",
+    isToolbox = true,
+    products,
+    total_products,
+  } = props;
   const router = useRouter();
   const query = router.query;
   const [getProducts, { data, loading, error }] = useLazyQuery(GET_PRODUCTS);
@@ -31,7 +37,6 @@ function ProductListOne(props) {
     : 1;
   const page = query.page ? query.page : 1;
   const gridType = query.type ? query.type : "grid";
-  console.log(products);
   useEffect(() => {
     getProducts({
       variables: {
@@ -76,52 +81,31 @@ function ProductListOne(props) {
       ) : (
         ""
       )}
-      {/* <div className="row product-wrapper">
-
-      </div> */}
-      {gridType === "grid" ? (
-        <div className={`row product-wrapper ${gridClasses[itemsPerRow]}`}>
-          {products &&
-            products.map((item) => (
-              <div className="product-wrap" key={"shop-" + item.slug}>
-                <ProductThree product={item} isCat={false} />
-              </div>
-            ))}
-        </div>
-      ) : (
-        <div className="product-lists product-wrapper">
-          {products &&
-            products.map((item) => {
-              /* <ProductEight product={ item } key={ 'shop-list-' + item.slug } /> */
-            })}
-        </div>
-      )}
-
+      <div className={`row product-wrapper ${gridClasses[itemsPerRow]}`}>
+        {products &&
+          products.map((item) => (
+            <div className="product-wrap" key={"shop-" + item.slug}>
+              <ProductThree product={item} isCat={false} />
+            </div>
+          ))}
+      </div>
       {products && products.length === 0 ? (
         <p className="ml-1">No products were found matching your selection.</p>
       ) : (
         ""
       )}
+      <div className="toolbox toolbox-pagination">
+        <p className="show-info">
+          Showing
+          <span>
+            {/* {perPage * (page - 1) + 1} -{" "} */}
+            {Math.min(perPage * page, products.length)} of {total_products}
+          </span>
+          Products
+        </p>
 
-      {data && data.products.total > 0 ? (
-        <div className="toolbox toolbox-pagination">
-          {data && (
-            <p className="show-info">
-              Showing{" "}
-              <span>
-                {perPage * (page - 1) + 1} -{" "}
-                {Math.min(perPage * page, data.products.total)} of{" "}
-                {data.products.total}
-              </span>
-              Products
-            </p>
-          )}
-
-          <Pagination totalPage={totalPage} />
-        </div>
-      ) : (
-        ""
-      )}
+        <Pagination totalPage={total_products} />
+      </div>
     </>
   );
 }

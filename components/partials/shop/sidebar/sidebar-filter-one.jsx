@@ -242,7 +242,7 @@ function SidebarFilterOne(props) {
                     <div className="filter-price-slider noUi-target noUi-ltr noUi-horizontal shop-input-range">
                       <InputRange
                         formatLabel={(value) => `$${value}`}
-                        maxValue={1000}
+                        maxValue={10000}
                         minValue={0}
                         step={50}
                         value={filterPrice}
@@ -335,41 +335,6 @@ function SidebarFilterOne(props) {
                 </ul>
               </Card>
             </div>
-
-            <div className="widget widget-collapsible">
-              <Card
-                title="<h3 className='widget-title'>Brand<span className='toggle-btn p-0 parse-content'></span></h3>"
-                type="parse"
-                expanded={true}
-              >
-                <ul className="widget-body filter-items">
-                  {filterData.brands.map((item, index) => (
-                    <li
-                      className={
-                        containsAttrInUrl("brands", item.slug) ? "active" : ""
-                      }
-                      key={item + " - " + index}
-                    >
-                      <ALink
-                        scroll={false}
-                        href={{
-                          pathname: router.pathname,
-                          query: {
-                            ...query,
-                            page: 1,
-                            brands: getUrlForAttrs("brands", item.slug),
-                            type: router.query.type ? router.query.type : null,
-                          },
-                        }}
-                      >
-                        {item.name}
-                      </ALink>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </div>
-
             {isFeatured ? (
               <div className="widget widget-products widget-collapsible">
                 <h4 className="widget-title">Our Featured</h4>

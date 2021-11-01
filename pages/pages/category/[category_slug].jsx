@@ -11,8 +11,12 @@ import CustomLoader from "~/components/common/custom-loader";
 function Shop() {
   const router = useRouter();
   const slug = router.query.category_slug;
+  const min_price = router.query.min_price || "";
+  const max_price = router.query.max_price || "";
+  const color = router.query.colors || "";
+  const size = router.query.sizes || "";
   const { data, status } = useQuery(
-    ["single-category", { slug: slug }],
+    ["single-category", { slug, min_price, max_price, size, color }],
     GET_CATEGORY
   );
   console.log(data, status);
@@ -43,31 +47,6 @@ function Shop() {
           <div className="row gutter-lg main-content-wrap">
             <SidebarFilterOne type="banner" />
             <div className="col-lg-9 main-content">
-              <div
-                className="shop-banner banner"
-                style={{
-                  backgroundImage: "url(./images/home/shop-banner.jpg)",
-                  backgroundColor: "#f2f2f3",
-                }}
-              >
-                <div className="banner-content">
-                  <h4 className="banner-subtitle font-weight-bold text-grey text-uppercase">
-                    Flash Sales
-                  </h4>
-                  <h1 className="banner-title font-weight-bold ls-m">
-                    Jackets Collection
-                  </h1>
-                  <p className="font-primary text-uppercase text-dark lh-1">
-                    <strong>Up To 70</strong>% Discount
-                  </p>
-                  <ALink
-                    href="#"
-                    className="btn btn-outline btn-dark btn-rounded"
-                  >
-                    Shop now
-                  </ALink>
-                </div>
-              </div>
               <ProductListOne
                 type="banner"
                 slug={slug}
