@@ -65,7 +65,7 @@ function IntroSection(props) {
                           delay={900}
                         >
                           <ALink
-                            href="/shop"
+                            href={"/pages/category/" + item.slug}
                             className="btn btn-dark btn-link btn-underline text-white"
                           >
                             Shop Now<i className="d-icon-arrow-right"></i>

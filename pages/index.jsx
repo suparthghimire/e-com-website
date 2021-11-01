@@ -56,7 +56,7 @@ function HomePage() {
         </div>
       </div>
 
-      <NewsletterModal />
+      {/* <NewsletterModal /> */}
     </div>
   );
 }
