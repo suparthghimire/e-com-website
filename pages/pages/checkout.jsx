@@ -6,6 +6,8 @@ import ALink from "~/components/features/custom-link";
 import CustomLoader from "../../components/common/custom-loader";
 import CheckoutForm from "~/components/features/modals/forms/CheckoutForm";
 import { useQuery } from "react-query";
+import StepByStep from "~/components/common/step-by-step";
+
 function Checkout(props) {
   const router = useRouter();
 
@@ -26,7 +28,7 @@ function Checkout(props) {
             cartList.length > 0 ? "mb-10" : "mb-2"
           }`}
         >
-          <Header />
+          <StepByStep active="checkout" />
           <div className="container mt-7">
             {cartList.length > 0 ? (
               <>

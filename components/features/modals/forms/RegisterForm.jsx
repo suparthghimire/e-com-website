@@ -166,7 +166,7 @@ function RegisterForm() {
           )}
         </div>
         <div className="form-group">
-          <label htmlFor="singin-phone">Your Gender:</label>
+          <label htmlFor="singin-gender">Your Gender:</label>
           <select
             className="form-control"
             id="gender"

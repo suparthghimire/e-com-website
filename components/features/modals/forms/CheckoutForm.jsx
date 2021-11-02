@@ -200,6 +200,7 @@ export default function CheckoutForm({ cartList }) {
                     Contact Number is Required
                   </small>
                 )}
+
                 <input
                   type="number"
                   className="form-control"

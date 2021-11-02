@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import Helmet from "react-helmet";
 
 import ALink from "~/components/features/custom-link";
+import StepByStep from "~/components/common/step-by-step";
 
 import CustomLoader from "../../components/common/custom-loader";
 import { GET_ALL_ORDERS } from "~/api/queries";
@@ -41,17 +42,7 @@ function Order(props) {
         <h1 className="d-none">Riode React eCommerce Template - Order</h1>
 
         <div className="page-content pt-7 pb-10 mb-10">
-          <div className="step-by pr-4 pl-4">
-            <h3 className="title title-simple title-step">
-              <ALink href="/pages/cart">1. Shopping Cart</ALink>
-            </h3>
-            <h3 className="title title-simple title-step">
-              <ALink href="/pages/checkout">2. Checkout</ALink>
-            </h3>
-            <h3 className="title title-simple title-step active">
-              <ALink href="#">3. Order Complete</ALink>
-            </h3>
-          </div>
+          <StepByStep active="order" />
           <div className="container mt-8">
             <div className="order-message mr-auto ml-auto">
               <div className="icon-box d-inline-flex align-items-center">
