@@ -11,7 +11,7 @@ import OwlCarousel from "~/components/features/owl-carousel";
 
 import SmallProduct from "~/components/features/product/product-sm";
 
-import withApollo from "../../../../server/apollo";
+// import withApollo from "../../../../server/apollo";
 
 import filterData from "~/utils/data/shop";
 import { scrollTopHandler } from "~/utils";

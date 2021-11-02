@@ -7,14 +7,14 @@ import OwlCarousel from "~/components/features/owl-carousel";
 
 import ProductThree from "~/components/features/product/product-three";
 
-import withApollo from "~/server/apollo";
-import { GET_PRODUCTS } from "~/server/queries";
+// import withApollo from "~/server/apollo";
+// import { GET_PRODUCTS } from "~/server/queries";
 
 import { fadeIn, fadeInUpShorter } from "~/utils/data/keyframes";
 import { productSlider } from "~/utils/data/carousel";
 
 function ProductCollection() {
-  const [getProducts, { data, loading, error }] = useLazyQuery(GET_PRODUCTS);
+  // const [getProducts, { data, loading, error }] = useLazyQuery(GET_PRODUCTS);
   const products = data && data.products.data;
 
   let categoryList = [
