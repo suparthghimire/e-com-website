@@ -2,7 +2,10 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../../../config";
 import { useForm } from "react-hook-form";
+import Cookie from "js-cookie";
+import { useRouter } from "next/router";
 function RegisterForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -14,7 +17,7 @@ function RegisterForm() {
     toast.info("Registering You. Please Wait...", {
       autoClose: 1200,
     });
-    console.log(user);
+    user.wholesaler = false;
     try {
       const response = await fetch(`${BASE_URL}/register/`, {
         method: "POST",
@@ -40,6 +43,48 @@ function RegisterForm() {
         throw error;
       }
       toast.success("Registered Successfully!", { autoClose: 1200 });
+      const register_response = await fetch(`${BASE_URL}/token`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ email: user.email, password: user.password }),
+      });
+      const tokens = await register_response.json();
+      if (register_response.status === 400) {
+        //validation error
+        const error = new Error("Validation Error");
+        error.status = 400;
+        error.data = tokens;
+        throw error;
+      }
+      if (register_response.status === 401) {
+        //validation error
+        const error = new Error("Invalid Token Error");
+        error.status = 401;
+        error.data = tokens;
+        throw error;
+      } else if (register_response.status !== 200) {
+        const error = new Error("Unexpected Error");
+        error.status = register_response.status;
+        error.data = { detail: "Unexpected Error Occured" };
+        throw error;
+      }
+      if (!tokens) {
+        // undefined error
+        const error = new Error("Token Not Found Error");
+        error.status = register_response.status;
+        error.data = { detail: "Failed to Grab Tokens" };
+        throw error;
+      }
+      Cookie.set("rameti_ec_access", tokens.access);
+      Cookie.set("rameti_ec_refresh", tokens.refresh);
+      toast.success("Login Successful!", {
+        autoClose: 1200,
+      });
+      setServerErrors(null);
+
+      router.push("/");
     } catch (error) {
       toast.error("Error While Registering!", { autoClose: 1200 });
       console.error(error, error.data);
@@ -193,22 +238,6 @@ function RegisterForm() {
           {errors.address && (
             <small className="error-msg">Address is Required</small>
           )}
-        </div>
-        <div className="form-footer">
-          <div className="form-checkbox">
-            <input
-              type="checkbox"
-              className="custom-checkbox"
-              id="wholesaler"
-              {...register("wholesaler")}
-            />
-            <label className="form-control-label" htmlFor="wholesaler">
-              I am Wholseller
-            </label>
-            {errors.wholesaler && (
-              <small className="error-msg">Wholesaler is Required</small>
-            )}
-          </div>
         </div>
         <button className="btn btn-dark btn-block btn-rounded" type="submit">
           Register
