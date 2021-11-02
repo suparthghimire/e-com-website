@@ -2,71 +2,71 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useLazyQuery } from "@apollo/react-hooks";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
+import { useQuery } from "react-query";
 import ALink from "~/components/features/custom-link";
-
 // import { GET_PRODUCTS } from "~/server/queries";
 // import withApollo from '~/server/apollo';
 
 import { toDecimal } from "~/utils";
+import { GET_ALL_PRODUCTS } from "~/api/queries";
 
 function SearchForm() {
   const router = useRouter();
   const [search, setSearch] = useState("");
-  // const [ searchProducts, { data } ] = useLazyQuery( GET_PRODUCTS );
   const [timer, setTimer] = useState(null);
+  const { data, status } = useQuery(["all_products", {}], GET_ALL_PRODUCTS);
+  const products = data?.results;
+  const [filterProducts, setFilterProducts] = useState([]);
+  // useEffect(() => {
+  //   document.querySelector("body").addEventListener("click", onBodyClick);
 
-  useEffect(() => {
-    document.querySelector("body").addEventListener("click", onBodyClick);
+  //   return () => {
+  //     document.querySelector("body").removeEventListener("click", onBodyClick);
+  //   };
+  // }, []);
 
-    return () => {
-      document.querySelector("body").removeEventListener("click", onBodyClick);
-    };
-  }, []);
+  // useEffect(() => {
+  //   setSearch("");
+  // }, [router.query.slug]);
 
-  useEffect(() => {
-    setSearch("");
-  }, [router.query.slug]);
+  // useEffect(() => {
+  //   if (search.length > 2) {
+  //     if (timer) clearTimeout(timer);
+  //     let timerId = setTimeout(() => {
+  //       searchProducts({ variables: { search: search } });
+  //       setTimer(null);
+  //     }, 500);
 
-  useEffect(() => {
-    if (search.length > 2) {
-      if (timer) clearTimeout(timer);
-      let timerId = setTimeout(() => {
-        searchProducts({ variables: { search: search } });
-        setTimer(null);
-      }, 500);
+  //     setTimer(timerId);
+  //   }
+  // }, [search]);
 
-      setTimer(timerId);
-    }
-  }, [search]);
+  // useEffect(() => {
+  //   document.querySelector(".header-search.show-results") &&
+  //     document
+  //       .querySelector(".header-search.show-results")
+  //       .classList.remove("show-results");
+  // }, [router.pathname]);
 
-  useEffect(() => {
-    document.querySelector(".header-search.show-results") &&
-      document
-        .querySelector(".header-search.show-results")
-        .classList.remove("show-results");
-  }, [router.pathname]);
+  // function removeXSSAttacks(html) {
+  //   const SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+  //   // Removing the <script> tags
+  //   while (SCRIPT_REGEX.test(html)) {
+  //     html = html.replace(SCRIPT_REGEX, "");
+  //   }
 
-  function removeXSSAttacks(html) {
-    const SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+  //   // Removing all events from tags...
+  //   html = html.replace(/ on\w+="[^"]*"/g, "");
 
-    // Removing the <script> tags
-    while (SCRIPT_REGEX.test(html)) {
-      html = html.replace(SCRIPT_REGEX, "");
-    }
+  //   return {
+  //     __html: html,
+  //   };
+  // }
 
-    // Removing all events from tags...
-    html = html.replace(/ on\w+="[^"]*"/g, "");
-
-    return {
-      __html: html,
-    };
-  }
-
-  function matchEmphasize(name) {
-    let regExp = new RegExp(search, "i");
-    return name.replace(regExp, (match) => "<strong>" + match + "</strong>");
-  }
+  // function matchEmphasize(name) {
+  //   let regExp = new RegExp(search, "i");
+  //   return name.replace(regExp, (match) => "<strong>" + match + "</strong>");
+  // }
 
   function showSearchBox(e) {
     e.preventDefault();
@@ -74,33 +74,46 @@ function SearchForm() {
     e.currentTarget.closest(".header-search").classList.toggle("show");
   }
 
-  function onBodyClick(e) {
-    if (e.target.closest(".header-search"))
-      return (
-        e.target.closest(".header-search").classList.contains("show-results") ||
-        e.target.closest(".header-search").classList.add("show-results")
-      );
+  // function onBodyClick(e) {
+  //   if (e.target.closest(".header-search"))
+  //     return (
+  //       e.target.closest(".header-search").classList.contains("show-results") ||
+  //       e.target.closest(".header-search").classList.add("show-results")
+  //     );
 
-    document.querySelector(".header-search.show") &&
-      document.querySelector(".header-search.show").classList.remove("show");
-    document.querySelector(".header-search.show-results") &&
-      document
-        .querySelector(".header-search.show-results")
-        .classList.remove("show-results");
-  }
+  //   document.querySelector(".header-search.show") &&
+  //     document.querySelector(".header-search.show").classList.remove("show");
+  //   document.querySelector(".header-search.show-results") &&
+  //     document
+  //       .querySelector(".header-search.show-results")
+  //       .classList.remove("show-results");
+  // }
 
   function onSearchChange(e) {
+    if (search === "") setFilterProducts([]);
+    document.querySelector(".live-search-list").style.display = "block";
     setSearch(e.target.value);
+    const filteredProducts = products.filter((product) => {
+      let title = product.title.split("");
+      const contains = search
+        .split("")
+        .some((letter) => title.includes(letter));
+      console.log(title, search.split(""), contains);
+      return contains;
+    });
+    setFilterProducts(filteredProducts);
   }
 
   function onSubmitSearchForm(e) {
     e.preventDefault();
-    router.push({
-      pathname: "/shop",
-      query: {
-        search: search,
-      },
-    });
+    setSearch("");
+    router.push(`/pages/search/?title=${search}`);
+    // router.push({
+    //   pathname: `/category/search/?title=${search}`,
+    //   query: {
+    //     search: search,
+    //   },
+    // });
   }
 
   return (
@@ -127,29 +140,31 @@ function SearchForm() {
           <i className="d-icon-search"></i>
         </button>
 
-        <div className="live-search-list scrollable bg-white">
-          Search Box
-          {/* { search.length > 2 && data && data.products.data.map( ( product, index ) => (
-                        <ALink href={ `/product/default/${ product.slug }` } className="autocomplete-suggestion" key={ `search-result-${ index }` }>
-                            <LazyLoadImage src={ process.env.NEXT_PUBLIC_ASSET_URI + product.pictures[ 0 ].url } width={ 40 } height={ 40 } alt="product" />
-                            <div className="search-name" dangerouslySetInnerHTML={ removeXSSAttacks( matchEmphasize( product.name ) ) }></div>
-                            <span className="search-price">
-                                {
-                                    product.price[ 0 ] !== product.price[ 1 ] ?
-                                        product.variants.length === 0 ?
-                                            <>
-                                                <span className="new-price mr-1">${ toDecimal( product.price[ 0 ] ) }</span>
-                                                <span className="old-price">${ toDecimal( product.price[ 1 ] ) }</span>
-                                            </>
-                                            :
-                                            < span className="new-price">${ toDecimal( product.price[ 0 ] ) } – ${ toDecimal( product.price[ 1 ] ) }</span>
-                                        : <span className="new-price">${ toDecimal( product.price[ 0 ] ) }</span>
-                                }
-                            </span>
-                        </ALink>
-                    ) )
-                    } */}
-        </div>
+        {/* TODO: ADD BASE URL TO IMAGES */}
+        {/* <div className="live-search-list scrollable bg-white">
+          {filterProducts.length > 0
+            ? filterProducts.map((product, index) => (
+                <ALink
+                  href={`/product/default/${product.slug}`}
+                  className="autocomplete-suggestion"
+                  key={`search-result-${index}`}
+                >
+                  <LazyLoadImage
+                    src={product.product_image[0].url}
+                    width={40}
+                    height={40}
+                    alt="product"
+                  />
+                  <div className="search-name">{product.title}</div>
+                  <span className="search-price">
+                    <span className="new-price mr-1">
+                      Npr. {toDecimal(product.display_price)} /-
+                    </span>
+                  </span>
+                </ALink>
+              ))
+            : ""}
+        </div> */}
       </form>
     </div>
   );

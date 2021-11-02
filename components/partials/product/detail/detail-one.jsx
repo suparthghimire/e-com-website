@@ -178,7 +178,7 @@ function DetailOne(props) {
         <del className="old-price">{product.price}</del>
       </div>
 
-      <div className="ratings-container">
+      {/* <div className="ratings-container">
         <div className="ratings-full">
           <span className="ratings" style={{ width: 20 * 5 + "%" }}></span>
           <span className="tooltiptext tooltip-top">{toDecimal(5)}</span>
@@ -186,7 +186,7 @@ function DetailOne(props) {
         <ALink href="#" className="rating-reviews">
           ( 5 reviews )
         </ALink>
-      </div>
+      </div> */}
 
       <p className="product-short-desc">{product.description}</p>
 
