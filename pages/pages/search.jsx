@@ -7,6 +7,7 @@ import { GET_SEARCH_PRODUCTS } from "../../api/queries";
 import ProductListOne from "~/components/partials/shop/product-list/product-list-one";
 import { useRouter } from "next/router";
 import CustomLoader from "~/components/common/custom-loader";
+import { TITLE } from "~/config";
 
 function Shop() {
   const router = useRouter();
@@ -20,7 +21,7 @@ function Shop() {
   return (
     <main className="main shop">
       <Helmet>
-        <title>Riode React eCommerce Template - Shop Page</title>
+        <title>{TITLE} - Shop Page</title>
       </Helmet>
 
       <h1 className="d-none">Riode React eCommerce Template - Shop Page</h1>

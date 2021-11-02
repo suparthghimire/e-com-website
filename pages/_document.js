@@ -1,5 +1,5 @@
 import Document, { NextScript, Head, Main, Html } from "next/document";
-
+import { TITLE } from "~/config";
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
         <Head>
           {/* <base href="/react/riode/demo-25/"></base> */}
           <base href="/"></base>
-          <title>Riode - React eCommerce Template</title>
+          <title>{TITLE}</title>
           <link rel="icon" href="images/icons/favicon.png" />
           <link
             rel="stylesheet"

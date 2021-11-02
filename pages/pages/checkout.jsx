@@ -6,6 +6,9 @@ import ALink from "~/components/features/custom-link";
 import CustomLoader from "../../components/common/custom-loader";
 import CheckoutForm from "~/components/features/modals/forms/CheckoutForm";
 import { useQuery } from "react-query";
+import StepByStep from "~/components/common/step-by-step";
+import { TITLE } from "~/config";
+
 function Checkout(props) {
   const router = useRouter();
 
@@ -16,7 +19,7 @@ function Checkout(props) {
     return (
       <main className="main checkout">
         <Helmet>
-          <title>Riode React eCommerce Template | Checkout</title>
+          <title>{TITLE} | Checkout</title>
         </Helmet>
 
         <h1 className="d-none">Riode React eCommerce Template - Checkout</h1>
@@ -26,7 +29,7 @@ function Checkout(props) {
             cartList.length > 0 ? "mb-10" : "mb-2"
           }`}
         >
-          <Header />
+          <StepByStep active="checkout" />
           <div className="container mt-7">
             {cartList.length > 0 ? (
               <>

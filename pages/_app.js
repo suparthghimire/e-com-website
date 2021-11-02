@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import Helmet from "react-helmet";
 import { QueryClient, QueryClientProvider } from "react-query";
-
+import { TITLE } from "~/config";
 import Layout from "~/components/layout";
 
 import makeStore from "~/store";
@@ -79,7 +79,7 @@ const App = ({ Component, pageProps, store }) => {
               content="width=device-width, initial-scale=1, shrink-to-fit=no"
             />
 
-            <title>Riode - React eCommerce Template</title>
+            <title>{TITLE}</title>
 
             <meta name="keywords" content="React Template" />
             <meta

@@ -1,23 +1,24 @@
-import React from 'react'
-import { useRouter } from 'next/router'
-import Helmet from 'react-helmet'
-import { Tabs, Tab, TabList, TabPanel } from 'react-tabs'
-import CustomLoader from '../../components/common/custom-loader'
-import EditProfile from '~/components/features/modals/forms/EditProfileForm'
-import ChangePassword from '~/components/features/modals/forms/ChangePasswordForm'
-import Orders from '~/components/partials/account/orders'
-import Dashboard from '~/components/partials/account/dashboard'
-import ALink from '~/components/features/custom-link'
+import React from "react";
+import { useRouter } from "next/router";
+import Helmet from "react-helmet";
+import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
+import CustomLoader from "../../components/common/custom-loader";
+import EditProfile from "~/components/features/modals/forms/EditProfileForm";
+import ChangePassword from "~/components/features/modals/forms/ChangePasswordForm";
+import Orders from "~/components/partials/account/orders";
+import Dashboard from "~/components/partials/account/dashboard";
+import ALink from "~/components/features/custom-link";
+import { TITLE } from "~/config";
 
 function Account(props) {
-  const router = useRouter()
+  const router = useRouter();
 
-  if (!props.loadingAuth && !props.auth) router.push('/pages/login')
+  if (!props.loadingAuth && !props.auth) router.push("/pages/login");
   if (!props.loadingAuth && props.auth)
     return (
       <main className="main account">
         <Helmet>
-          <title>Riode React eCommerce Template | Account</title>
+          <title>{TITLE} | Account</title>
         </Helmet>
 
         <h1 className="d-none">Riode React eCommerce Template - Account</h1>
@@ -45,7 +46,10 @@ function Account(props) {
               defaultIndex={0}
               className="tab tab-vertical gutter-lg"
             >
-              <TabList className="nav nav-tabs mb-4 col-lg-3 col-md-4" role="tablist">
+              <TabList
+                className="nav nav-tabs mb-4 col-lg-3 col-md-4"
+                role="tablist"
+              >
                 <Tab className="nav-item">
                   <a className="nav-link">Dashboard</a>
                 </Tab>
@@ -128,8 +132,8 @@ function Account(props) {
           </div>
         </div>
       </main>
-    )
-  return <CustomLoader type="Grid" />
+    );
+  return <CustomLoader type="Grid" />;
 }
 
-export default React.memo(Account)
+export default React.memo(Account);
