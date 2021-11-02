@@ -3,26 +3,35 @@ import Helmet from "react-helmet";
 
 import ALink from "~/components/features/custom-link";
 
-import { toDecimal, getTotalPrice } from "~/utils";
 import CustomLoader from "../../components/common/custom-loader";
 import { GET_ALL_ORDERS } from "~/api/queries";
 import { useQuery } from "react-query";
 import Cookie from "js-cookie";
 import Error404 from "../404";
-
+import { useRouter } from "next/router";
 function Order(props) {
-  const { cartList } = props;
+  const router = useRouter();
   if (!props.loadingAuth && !props.auth) router.push("/pages/login");
   if (!props.loadingAuth && props.auth) {
     const access = Cookie.get("rameti_ec_access");
     const { data, status } = useQuery(
-      ["single-product", { access }],
+      ["all-orders", { access }],
       GET_ALL_ORDERS
     );
     console.log(data, status);
     if (status === "loading") return <CustomLoader type="Grid" />;
     if (status === "error") return <Error404 />;
     console.log(data);
+    const toggleAccordian = (index) => {
+      document
+        .getElementById(`accordian-body-${index}`)
+        .classList.toggle("accordian-body-show");
+      document
+        .getElementById(`accordian-toggle-btn-${index}`)
+        .classList.toggle("accordian-toggle-btn-active");
+    };
+
+    const { cartList } = props;
     return (
       <main className="main order">
         <Helmet>
@@ -134,7 +143,10 @@ function Order(props) {
                         <td className="product-name w-100">
                           <div className="d-flex align-items-center justify-content-between">
                             <div>
-                              Order - {index + 1}: {item.id}{" "}
+                              <span className="font-weight-bold">
+                                Order - {index + 1}:
+                              </span>{" "}
+                              {item.id}{" "}
                               {item.promo_code !== "" ? (
                                 <p>Promo Code: {item.promo_code} Applied</p>
                               ) : (
@@ -142,120 +154,119 @@ function Order(props) {
                               )}
                               <h6>Your order has been {item.order_status}</h6>
                             </div>
+                            <div
+                              className="d-flex align-items-center"
+                              style={{ gap: "5px" }}
+                            >
+                              <button
+                                className="accordian-toggle-btn"
+                                id={"accordian-toggle-btn-" + index}
+                                onClick={() => {
+                                  toggleAccordian(index);
+                                }}
+                              >
+                                <i class="fas fa-chevron-down"></i>
+                              </button>
+                            </div>
+                          </div>
+                          <div
+                            className="accordian-body"
+                            id={"accordian-body-" + index}
+                          >
+                            <span>
+                              <div className="d-flex flex-wrap">
+                                {item.orders.map((order, index) => {
+                                  return (
+                                    <ALink
+                                      href={
+                                        "/product/default/" + order.product.slug
+                                      }
+                                    >
+                                      <div className="d-flex mr-5 flex-column align-items-center mt-1">
+                                        <div className="order-img-container">
+                                          <img
+                                            src={
+                                              order.product.product_image[0].url
+                                            }
+                                            alt={order.product.title}
+                                          />
+                                        </div>
+                                        <div className="mt-2 text-center">
+                                          {order.product.title}
+                                          <br />
+                                          Nrs. {order.product.display_price}
+                                          <br />
+                                          <i className="fas fa-times"></i>{" "}
+                                          {order.quantity}
+                                        </div>
+                                      </div>
+                                    </ALink>
+                                  );
+                                })}
+                              </div>
+                            </span>
+                            <div className="mt-5 d-flex justify-content-between align-items-center summary-subtotal"></div>
+                            <div className="d-flex justify-content-between align-items-center summary-subtotal">
+                              <div>
+                                <h4 className="summary-subtitle">Sub Total</h4>
+                              </div>
+                              <div className="summary-subtotal-price">
+                                Nrs. {item.sub_total}
+                              </div>
+                            </div>
+                            <div className="d-flex justify-content-between align-items-center summary-subtotal">
+                              <div>
+                                <h4 className="summary-subtitle">
+                                  Grand Total <small>(After 13% Tax)</small>
+                                </h4>
+                              </div>
+                              <div className="summary-subtotal-price">
+                                Nrs. {item.total}
+                              </div>
+                            </div>
+                            <div className="d-flex justify-content-between align-items-center summary-subtotal">
+                              <div>
+                                <h4 className="summary-subtitle">
+                                  Delivery Address
+                                </h4>
+                              </div>
+                              <div className="summary-subtotal-price">
+                                {item.delivery_address}
+                              </div>
+                            </div>
+                            <div className="d-flex justify-content-between align-items-center summary-subtotal">
+                              <div>
+                                <h4 className="summary-subtitle">
+                                  Contact Number
+                                </h4>
+                              </div>
+                              <div className="summary-subtotal-price">
+                                {item.contact_number}
+                              </div>
+                            </div>
                             {item.order_status === "ORDERED" ? (
-                              <ALink href="#">
-                                <button className="btn btn-danger btn-sm">
-                                  Cancel This Order
-                                </button>
-                              </ALink>
+                              <div className="summary-subtotal">
+                                <div>
+                                  {item.order_status === "ORDERED" ? (
+                                    <ALink
+                                      href={"/pages/cancel-order/" + item.id}
+                                    >
+                                      <button className="btn mt-2 mb-2 btn-sm align-end">
+                                        Cancel this Order
+                                      </button>
+                                    </ALink>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </div>
                             ) : (
                               ""
                             )}
                           </div>
-                          <span>
-                            <div className="d-flex flex-wrap">
-                              {item.orders.map((order, index) => {
-                                return (
-                                  <ALink
-                                    href={
-                                      "/product/default/" + order.product.slug
-                                    }
-                                  >
-                                    <div className="d-flex mr-5 flex-column align-items-center mt-1">
-                                      <div className="order-img-container">
-                                        <img
-                                          src={
-                                            order.product.product_image[0].url
-                                          }
-                                          alt={order.product.title}
-                                        />
-                                      </div>
-                                      <div className="mt-2 text-center">
-                                        {order.product.title}
-                                        <br />
-                                        Nrs. {order.product.display_price}
-                                        <br />
-                                        <i className="fas fa-times"></i>{" "}
-                                        {order.quantity}
-                                      </div>
-                                    </div>
-                                  </ALink>
-                                );
-                              })}
-                            </div>
-                          </span>
-                          <div className="d-flex justify-content-between align-items-center summary-subtotal">
-                            <div>
-                              <h4 className="summary-subtitle">Sub Total</h4>
-                            </div>
-                            <div className="summary-subtotal-price">
-                              Nrs. {item.sub_total}
-                            </div>
-                          </div>
-                          <div className="d-flex justify-content-between align-items-center summary-subtotal">
-                            <div>
-                              <h4 className="summary-subtitle">
-                                Grand Total <small>(After 13% Tax)</small>
-                              </h4>
-                            </div>
-                            <div className="summary-subtotal-price">
-                              Nrs. {item.total}
-                            </div>
-                          </div>
-                          <div className="d-flex justify-content-between align-items-center summary-subtotal">
-                            <div>
-                              <h4 className="summary-subtitle">
-                                Delivery Address
-                              </h4>
-                            </div>
-                            <div className="summary-subtotal-price">
-                              {item.delivery_address}
-                            </div>
-                          </div>
-                          <div className="d-flex justify-content-between align-items-center summary-subtotal">
-                            <div>
-                              <h4 className="summary-subtitle">
-                                Contact Number
-                              </h4>
-                            </div>
-                            <div className="summary-subtotal-price">
-                              {item.contact_number}
-                            </div>
-                          </div>
-                          <hr />
                         </td>
                       </tr>
                     ))}
-                    {/* <tr className="summary-subtotal">
-                    <td>
-                      <h4 className="summary-subtitle">Subtotal:</h4>
-                    </td>
-                    <td className="summary-subtotal-price">
-                      ${toDecimal(getTotalPrice(cartList))}
-                    </td>
-                  </tr>
-                  <tr className="summary-subtotal">
-                    <td>
-                      <h4 className="summary-subtitle">Shipping:</h4>
-                    </td>
-                    <td className="summary-subtotal-price">Free shipping</td>
-                  </tr>
-                  <tr className="summary-subtotal">
-                    <td>
-                      <h4 className="summary-subtitle">Payment method:</h4>
-                    </td>
-                    <td className="summary-subtotal-price">Cash on delivery</td>
-                  </tr>
-                  <tr className="summary-subtotal">
-                    <td>
-                      <h4 className="summary-subtitle">Total:</h4>
-                    </td>
-                    <td>
-                      <p className="summary-total-price">
-                        ${toDecimal(getTotalPrice(cartList))}
-                      </p>
-                    </td>
-                  </tr> */}
                   </tbody>
                 </table>
               </div>

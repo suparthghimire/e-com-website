@@ -1,60 +1,62 @@
-import { useState } from 'react'
-import { toast } from 'react-toastify'
-import { BASE_URL } from '../../../../config'
-import { useForm } from 'react-hook-form'
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { BASE_URL } from "../../../../config";
+import { useForm } from "react-hook-form";
 function RegisterForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
-  const [serverErrors, setServerErrors] = useState(null)
+  } = useForm();
+  const [serverErrors, setServerErrors] = useState(null);
 
   const handle_register = async (user) => {
-    toast.info('Regestering You. Please Wait...', {
+    toast.info("Registering You. Please Wait...", {
       autoClose: 1200,
-    })
-    console.log(user)
+    });
+    console.log(user);
     try {
       const response = await fetch(`${BASE_URL}/register/`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'content-type': 'application/json',
+          "content-type": "application/json",
         },
         body: JSON.stringify(user),
-      })
-      const response_user = await response.json()
-      console.log('user:', response_user)
+      });
+      const response_user = await response.json();
+      console.log("user:", response_user);
       if (response.status == 400) {
         // Validation Error
-        const error = new Error('Validation Error')
-        error.status = 400
-        error.data = response_user
-        throw error
+        const error = new Error("Validation Error");
+        error.status = 400;
+        error.data = response_user;
+        throw error;
       } else if (response.status !== 201) {
-        const error = new Error('Unexpected Error')
-        error.status = response.status
+        const error = new Error("Unexpected Error");
+        error.status = response.status;
         error.data = {
-          message: ['Unexpected Error Occured'],
-        }
-        throw error
+          message: ["Unexpected Error Occured"],
+        };
+        throw error;
       }
-      toast.success('Registered Successfully!', { autoClose: 1200 })
+      toast.success("Registered Successfully!", { autoClose: 1200 });
     } catch (error) {
-      toast.error('Error While Regestering!', { autoClose: 1200 })
-      console.error(error, error.data)
-      let errors = []
+      toast.error("Error While Registering!", { autoClose: 1200 });
+      console.error(error, error.data);
+      let errors = [];
       Object.keys(error.data).forEach((key) => {
         error.data[key].forEach((error) => {
-          errors.push(error)
-        })
-      })
-      setServerErrors(errors)
+          errors.push(error);
+        });
+      });
+      setServerErrors(errors);
     } finally {
-      document.querySelectorAll('input').forEach((item) => (item.value = ''))
-      document.querySelectorAll("input[type='checkbox']").forEach((item) => (item.checked = false))
+      document.querySelectorAll("input").forEach((item) => (item.value = ""));
+      document
+        .querySelectorAll("input[type='checkbox']")
+        .forEach((item) => (item.checked = false));
     }
-  }
+  };
   return (
     <div>
       {serverErrors && (
@@ -72,10 +74,12 @@ function RegisterForm() {
             type="text"
             className="form-control"
             id="full_name"
-            {...register('full_name', { required: true })}
+            {...register("full_name", { required: true })}
             placeholder="Your Full Name *"
           />
-          {errors.full_name && <small className="error-msg">Full Name is Required</small>}
+          {errors.full_name && (
+            <small className="error-msg">Full Name is Required</small>
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="singin-email">Your email address:</label>
@@ -83,10 +87,12 @@ function RegisterForm() {
             type="email"
             className="form-control"
             id="email"
-            {...register('email', { required: true })}
+            {...register("email", { required: true })}
             placeholder="Your Email address *"
           />
-          {errors.email && <small className="error-msg">Email is Required</small>}
+          {errors.email && (
+            <small className="error-msg">Email is Required</small>
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="singin-password">Password:</label>
@@ -94,10 +100,12 @@ function RegisterForm() {
             type="password"
             className="form-control"
             id="password"
-            {...register('password', { required: true })}
+            {...register("password", { required: true })}
             placeholder="Password *"
           />
-          {errors.email && <small className="error-msg">Password is Required</small>}
+          {errors.email && (
+            <small className="error-msg">Password is Required</small>
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="singin-phone">Your Phone Number:</label>
@@ -105,22 +113,34 @@ function RegisterForm() {
             type="number"
             className="form-control"
             id="phone_number"
-            {...register('phone_number', { required: true })}
+            {...register("phone_number", { required: true })}
             placeholder="Your Phone Number *"
           />
-          {errors.phone_number && <small className="error-msg">Phone Number is Required</small>}
+          {errors.phone_number && (
+            <small className="error-msg">Phone Number is Required</small>
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="singin-phone">Your Gender:</label>
-          <select className="form-control" id="gender" {...register('gender', { required: true })}>
+          <select
+            className="form-control"
+            id="gender"
+            {...register("gender", { required: true })}
+          >
             <option value="M"> Male </option>
             <option value="F"> Female </option>
           </select>
-          {errors.gender && <small className="error-msg">Gender is Required</small>}
+          {errors.gender && (
+            <small className="error-msg">Gender is Required</small>
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="singin-state">State:</label>
-          <select {...register('state', { required: true })} className="form-control" id="state">
+          <select
+            {...register("state", { required: true })}
+            className="form-control"
+            id="state"
+          >
             <option value="province-1">Province 1</option>
             <option value="bagmati">Bagmati</option>
             <option value="gandaki">Gandaki</option>
@@ -128,7 +148,9 @@ function RegisterForm() {
             <option value="karnali">Karnali</option>
             <option value="sudurpashchim">Sudurpashchim</option>
           </select>
-          {errors.state && <small className="error-msg">State is Required</small>}
+          {errors.state && (
+            <small className="error-msg">State is Required</small>
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="singin-district">District:</label>
@@ -136,12 +158,14 @@ function RegisterForm() {
             type="text"
             className="form-control"
             placeholder="Your District *"
-            {...register('district', {
+            {...register("district", {
               required: true,
             })}
             id="district"
           />
-          {errors.district && <small className="error-msg">District is Required</small>}
+          {errors.district && (
+            <small className="error-msg">District is Required</small>
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="singin-city">City:</label>
@@ -150,7 +174,7 @@ function RegisterForm() {
             className="form-control"
             placeholder="City *"
             name="city"
-            {...register('city', { required: true })}
+            {...register("city", { required: true })}
             id="city"
           />
           {errors.city && <small className="error-msg">City is Required</small>}
@@ -161,12 +185,14 @@ function RegisterForm() {
             type="text"
             className="form-control"
             placeholder="Address *"
-            {...register('address', {
+            {...register("address", {
               required: true,
             })}
             id="address"
           />
-          {errors.address && <small className="error-msg">Address is Required</small>}
+          {errors.address && (
+            <small className="error-msg">Address is Required</small>
+          )}
         </div>
         <div className="form-footer">
           <div className="form-checkbox">
@@ -174,12 +200,14 @@ function RegisterForm() {
               type="checkbox"
               className="custom-checkbox"
               id="wholesaler"
-              {...register('wholesaler')}
+              {...register("wholesaler")}
             />
             <label className="form-control-label" htmlFor="wholesaler">
               I am Wholseller
             </label>
-            {errors.wholesaler && <small className="error-msg">Wholesaler is Required</small>}
+            {errors.wholesaler && (
+              <small className="error-msg">Wholesaler is Required</small>
+            )}
           </div>
         </div>
         <button className="btn btn-dark btn-block btn-rounded" type="submit">
@@ -187,7 +215,7 @@ function RegisterForm() {
         </button>
       </form>
     </div>
-  )
+  );
 }
 
-export default RegisterForm
+export default RegisterForm;

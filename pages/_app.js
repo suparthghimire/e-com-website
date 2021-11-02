@@ -10,7 +10,7 @@ import Layout from "~/components/layout";
 import makeStore from "~/store";
 import { demoActions } from "~/store/demo";
 import Cookie from "js-cookie";
-import { currentDemo } from "~/server/queries";
+// import { currentDemo } from "~/server/queries";
 import { ToastContainer } from "react-toastify";
 import "~/public/sass/style.scss";
 import { BASE_URL } from "../config";
@@ -24,9 +24,9 @@ const App = ({ Component, pageProps, store }) => {
   const access = Cookie.get("rameti_ec_access");
 
   useEffect(() => {
-    if (store.getState().demo.current !== currentDemo) {
-      store.dispatch(demoActions.refreshStore(currentDemo));
-    }
+    // if (store.getState().demo.current !== currentDemo) {
+    //   store.dispatch(demoActions.refreshStore(currentDemo));
+    // }
 
     if (!access || access == "" || access.trim() == "") {
       setAuth(false);

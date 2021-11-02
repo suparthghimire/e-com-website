@@ -6,39 +6,35 @@ import OwlCarousel from "~/components/features/owl-carousel";
 import ProductThree from "~/components/features/product/product-three";
 
 import { productSlider } from "~/utils/data/carousel";
-import { fadeIn, fadeInRightShorter } from "~/utils/data/keyframes";
+import { fadeIn, fadeInLeftShorter } from "~/utils/data/keyframes";
 
-function FeaturedCollection(props) {
-  const { products } = props;
+function Trending(props) {
+  const { featured } = props;
 
   return (
-    <Reveal keyframes={fadeIn} delay={300} duration={1200} triggerOnce>
-      <section className="product-wrapper mt-10 pt-3">
-        <Reveal keyframes={fadeIn} delay={300} duration={1200} triggerOnce>
-          <h2 className="title title-simple">Featured Products</h2>
-        </Reveal>
-
+    <Reveal keyframes={fadeIn} delay={200} duration={1200} triggerOnce>
+      <section className="product-wrapper mt-9">
+        <h2 className="title title-simple">Trending</h2>
         <OwlCarousel adClass="owl-theme owl-nav-full" options={productSlider}>
-          {products &&
-            products.map((item, index) => (
+          {featured &&
+            featured.map((item, index) => (
               <Reveal
-                keyframes={fadeInRightShorter}
-                delay={300 + 100 * index}
+                keyframes={fadeInLeftShorter}
+                delay={Math.max(700 - index * 100, 200)}
                 duration={1200}
                 triggerOnce
-                key={`featured-product-${index}`}
+                key={`top-rated-product ${index}`}
               >
                 <ProductThree product={item} isCat={false} />
               </Reveal>
             ))}
         </OwlCarousel>
-
         {/* {loading ? (
           <OwlCarousel adClass="owl-theme owl-nav-full" options={productSlider}>
-            {[1, 2, 3, 4, 5].map((item) => (
+            {[1, 2, 3, 4, 5, 6].map((item) => (
               <div
                 className="product-loading-overlay"
-                key={"featured-skel-" + item}
+                key={"top-rated-skel-" + item}
               ></div>
             ))}
           </OwlCarousel>
@@ -47,11 +43,11 @@ function FeaturedCollection(props) {
             {products &&
               products.map((item, index) => (
                 <Reveal
-                  keyframes={fadeInRightShorter}
-                  delay={300 + 100 * index}
+                  keyframes={fadeInLeftShorter}
+                  delay={Math.max(700 - index * 100, 200)}
                   duration={1200}
                   triggerOnce
-                  key={`featured-product-${index}`}
+                  key={`top-rated-product ${index}`}
                 >
                   <ProductThree product={item} isCat={false} />
                 </Reveal>
@@ -63,4 +59,4 @@ function FeaturedCollection(props) {
   );
 }
 
-export default React.memo(FeaturedCollection);
+export default React.memo(Trending);

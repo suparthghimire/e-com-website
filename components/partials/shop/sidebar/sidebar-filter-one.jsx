@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useQuery } from "@apollo/react-hooks";
+// import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "react-query";
 import InputRange from "react-input-range";
 import SlideToggle from "react-slide-toggle";
 
@@ -10,47 +11,49 @@ import OwlCarousel from "~/components/features/owl-carousel";
 
 import SmallProduct from "~/components/features/product/product-sm";
 
-import withApollo from "../../../../server/apollo";
-import { GET_SHOP_SIDEBAR_DATA } from "../../../../server/queries";
+// import withApollo from "../../../../server/apollo";
 
 import filterData from "~/utils/data/shop";
 import { scrollTopHandler } from "~/utils";
+import { GET_HOME_DATA_NEW } from "~/api/queries";
 
 function SidebarFilterOne(props) {
   const { type = "left", isFeatured = false } = props;
   const router = useRouter();
   const query = router.query;
-  const { data, loading, error } = useQuery(GET_SHOP_SIDEBAR_DATA, {
-    variables: { demo: 25, featured: true },
-  });
+
+  const { data, status } = useQuery(["home-data", {}], GET_HOME_DATA_NEW);
+  console.log(data?.results?.category);
+
   let tmpPrice = {
     max: query.max_price ? parseInt(query.max_price) : 1000,
     min: query.min_price ? parseInt(query.min_price) : 0,
   };
   const [filterPrice, setPrice] = useState(tmpPrice);
   const [isFirst, setFirst] = useState(true);
-  let sidebarData = data && data.shopSidebarData;
-  let timerId;
+  let sidebarData = data && data?.results?.category;
+  console.log("Sudebar: ", sidebarData);
+  // let timerId;
 
-  useEffect(() => {
-    window.addEventListener("resize", hideSidebar);
+  // useEffect(() => {
+  //   window.addEventListener("resize", hideSidebar);
 
-    return () => {
-      window.removeEventListener("resize", hideSidebar);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("resize", hideSidebar);
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    setPrice({
-      max: query.max_price ? parseInt(query.max_price) : 1000,
-      min: query.min_price ? parseInt(query.min_price) : 0,
-    });
-    if (isFirst) {
-      setFirst(false);
-    } else {
-      scrollTopHandler();
-    }
-  }, [query]);
+  // useEffect(() => {
+  //   setPrice({
+  //     max: query.max_price ? parseInt(query.max_price) : 1000,
+  //     min: query.min_price ? parseInt(query.min_price) : 0,
+  //   });
+  //   if (isFirst) {
+  //     setFirst(false);
+  //   } else {
+  //     scrollTopHandler();
+  //   }
+  // }, [query]);
 
   const filterByPrice = (e) => {
     e.preventDefault();
@@ -90,40 +93,40 @@ function SidebarFilterOne(props) {
     setPrice(value);
   };
 
-  const toggleSidebar = (e) => {
-    e.preventDefault();
-    document
-      .querySelector("body")
-      .classList.remove(
-        `${
-          type === "left" || type === "off-canvas"
-            ? "sidebar-active"
-            : "right-sidebar-active"
-        }`
-      );
+  // const toggleSidebar = (e) => {
+  //   e.preventDefault();
+  //   document
+  //     .querySelector("body")
+  //     .classList.remove(
+  //       `${
+  //         type === "left" || type === "off-canvas"
+  //           ? "sidebar-active"
+  //           : "right-sidebar-active"
+  //       }`
+  //     );
 
-    let stickyWraper = e.currentTarget.closest(".sticky-sidebar-wrapper");
+  //   let stickyWraper = e.currentTarget.closest(".sticky-sidebar-wrapper");
 
-    let mainContent = e.currentTarget.closest(".main-content-wrap");
-    if (mainContent && type !== "off-canvas" && query.grid !== "4cols")
-      mainContent.querySelector(".row.product-wrapper") &&
-        mainContent
-          .querySelector(".row.product-wrapper")
-          .classList.toggle("cols-md-4");
+  //   let mainContent = e.currentTarget.closest(".main-content-wrap");
+  //   if (mainContent && type !== "off-canvas" && query.grid !== "4cols")
+  //     mainContent.querySelector(".row.product-wrapper") &&
+  //       mainContent
+  //         .querySelector(".row.product-wrapper")
+  //         .classList.toggle("cols-md-4");
 
-    if (mainContent && stickyWraper) {
-      stickyWraper.classList.toggle("closed");
+  //   if (mainContent && stickyWraper) {
+  //     stickyWraper.classList.toggle("closed");
 
-      if (stickyWraper.classList.contains("closed")) {
-        mainContent.classList.add("overflow-hidden");
-        clearTimeout(timerId);
-      } else {
-        timerId = setTimeout(() => {
-          mainContent.classList.remove("overflow-hidden");
-        }, 500);
-      }
-    }
-  };
+  //     if (stickyWraper.classList.contains("closed")) {
+  //       mainContent.classList.add("overflow-hidden");
+  //       clearTimeout(timerId);
+  //     } else {
+  //       timerId = setTimeout(() => {
+  //         mainContent.classList.remove("overflow-hidden");
+  //       }, 500);
+  //     }
+  //   }
+  // };
 
   const showSidebar = (e) => {
     e.preventDefault();
@@ -144,7 +147,6 @@ function SidebarFilterOne(props) {
         }`
       );
   };
-
   return (
     <aside
       className={`col-lg-3 shop-sidebar skeleton-body ${
@@ -173,7 +175,7 @@ function SidebarFilterOne(props) {
       </ALink>
 
       <div className="sidebar-content">
-        {!loading && sidebarData ? (
+        {status !== "loading" && sidebarData ? (
           <div className="sticky-sidebar">
             {type === "boxed" || type === "banner" ? (
               ""
@@ -215,107 +217,16 @@ function SidebarFilterOne(props) {
               >
                 <ul className="widget-body filter-items search-ul">
                   {data &&
-                    sidebarData.categories.map((item, index) =>
-                      item.children ? (
-                        <li
-                          key={item.name + " - " + index}
-                          className={`with-ul overflow-hidden ${
-                            item.slug === query.category ||
-                            item.children.findIndex(
-                              (subCat) => subCat.slug === query.category
-                            ) > -1
-                              ? "show"
-                              : ""
-                          } `}
-                        >
-                          <SlideToggle collapsed={true}>
-                            {({
-                              onToggle,
-                              setCollapsibleElement,
-                              toggleState,
-                            }) => (
-                              <>
-                                <ALink
-                                  href={{
-                                    pathname: router.pathname,
-                                    query: {
-                                      category: item.slug,
-                                      grid: query.grid,
-                                      type: router.query.type
-                                        ? router.query.type
-                                        : null,
-                                    },
-                                  }}
-                                  scroll={false}
-                                >
-                                  {item.name}
-                                  <i
-                                    className={`fas fa-chevron-down ${toggleState.toLowerCase()}`}
-                                    onClick={(e) => {
-                                      e.preventDefault();
-                                      e.stopPropagation();
-                                      onToggle();
-                                    }}
-                                  ></i>
-                                </ALink>
-
-                                <div ref={setCollapsibleElement}>
-                                  <ul style={{ display: "block" }}>
-                                    {item.children.map((subItem, index) => (
-                                      <li
-                                        key={subItem.name + " - " + index}
-                                        className={`with-ul overflow-hidden ${
-                                          subItem.slug === query.category
-                                            ? "show"
-                                            : ""
-                                        } `}
-                                      >
-                                        <ALink
-                                          scroll={false}
-                                          href={{
-                                            pathname: router.pathname,
-                                            query: {
-                                              category: subItem.slug,
-                                              grid: query.grid,
-                                              type: router.query.type
-                                                ? router.query.type
-                                                : null,
-                                            },
-                                          }}
-                                        >
-                                          {subItem.name}
-                                        </ALink>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              </>
-                            )}
-                          </SlideToggle>
-                        </li>
-                      ) : (
-                        <li
-                          className={query.category === item.slug ? "show" : ""}
-                          key={item.name + " - " + index}
-                        >
-                          <ALink
-                            href={{
-                              pathname: router.pathname,
-                              query: {
-                                category: item.slug,
-                                grid: query.grid,
-                                type: router.query.type
-                                  ? router.query.type
-                                  : null,
-                              },
-                            }}
-                            scroll={false}
-                          >
-                            {item.name}
-                          </ALink>
-                        </li>
-                      )
-                    )}
+                    sidebarData.map((item, index) => (
+                      <li
+                        className={query.category === item.slug ? "show" : ""}
+                        key={item.title + " - " + index}
+                      >
+                        <ALink href={"/pages/category/" + item.slug}>
+                          {item.title}
+                        </ALink>
+                      </li>
+                    ))}
                 </ul>
               </Card>
             </div>
@@ -331,7 +242,7 @@ function SidebarFilterOne(props) {
                     <div className="filter-price-slider noUi-target noUi-ltr noUi-horizontal shop-input-range">
                       <InputRange
                         formatLabel={(value) => `$${value}`}
-                        maxValue={1000}
+                        maxValue={10000}
                         minValue={0}
                         step={50}
                         value={filterPrice}
@@ -424,41 +335,6 @@ function SidebarFilterOne(props) {
                 </ul>
               </Card>
             </div>
-
-            <div className="widget widget-collapsible">
-              <Card
-                title="<h3 className='widget-title'>Brand<span className='toggle-btn p-0 parse-content'></span></h3>"
-                type="parse"
-                expanded={true}
-              >
-                <ul className="widget-body filter-items">
-                  {filterData.brands.map((item, index) => (
-                    <li
-                      className={
-                        containsAttrInUrl("brands", item.slug) ? "active" : ""
-                      }
-                      key={item + " - " + index}
-                    >
-                      <ALink
-                        scroll={false}
-                        href={{
-                          pathname: router.pathname,
-                          query: {
-                            ...query,
-                            page: 1,
-                            brands: getUrlForAttrs("brands", item.slug),
-                            type: router.query.type ? router.query.type : null,
-                          },
-                        }}
-                      >
-                        {item.name}
-                      </ALink>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </div>
-
             {isFeatured ? (
               <div className="widget widget-products widget-collapsible">
                 <h4 className="widget-title">Our Featured</h4>
@@ -496,6 +372,7 @@ function SidebarFilterOne(props) {
   );
 }
 
-export default withApollo({ ssr: typeof window === "undefined" })(
-  SidebarFilterOne
-);
+// export default withApollo({ ssr: typeof window === "undefined" })(
+//   SidebarFilterOne
+// );
+export default SidebarFilterOne;

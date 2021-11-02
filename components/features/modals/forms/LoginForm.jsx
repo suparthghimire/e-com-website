@@ -112,7 +112,7 @@ export default function LoginForm() {
           )}
         </div>
         <div className="form-footer">
-          <ALink href="#" className="lost-link">
+          <ALink href="/pages/forgot-password" className="lost-link">
             Lost your password?
           </ALink>
         </div>

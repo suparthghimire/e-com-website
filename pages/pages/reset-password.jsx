@@ -1,17 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Helmet from "react-helmet";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
-import { SHOP_NAME } from "../../config";
+import { SHOP_NAME } from "~/config";
 import ALink from "~/components/features/custom-link";
-import ForgotPasswordForm from "~/components/features/modals/forms/ForgotPasswordForm";
+import ResetPasswordForm from "~/components/features/modals/forms/ResetPasswordForm";
 import { useRouter } from "next/router";
-import CustomLoader from "../../components/common/custom-loader";
-
+import CustomLoader from "~/components/common/custom-loader";
+import { toast } from "react-toastify";
+import { BASE_URL } from "../../config";
 function ForgotPassword(props) {
   const router = useRouter();
+  const [loadingToken, setLoadingToken] = useState(true);
+  const token = router.query.token;
 
+  useEffect(() => {
+    if (!token || token === "") {
+      toast.info("Token Is Empty", { autoClose: 1200 });
+      setLoadingToken(false);
+      router.push("/");
+    }
+    setLoadingToken(true);
+    fetch(`${BASE_URL}/password_reset/validate_token/`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ token }),
+    })
+      .then((res) => {
+        if (res.status === 404) throw new Error("Not Found");
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("Token Not Valid", { autoClose: 1200 });
+        router.push("/");
+      })
+      .finally(() => {
+        setLoadingToken(false);
+      });
+  }, []);
+  if (loadingToken) return <CustomLoader type="Grid" />;
   if (!props.loadingAuth && props.auth) router.push("/");
-  if (!props.loadingAuth && !props.auth)
+  if (!props.loadingAuth && !props.auth) {
     return (
       <main className="main">
         <Helmet>
@@ -46,19 +80,18 @@ function ForgotPassword(props) {
                     <TabList className="nav nav-tabs nav-fill align-items-center border-no justify-content-center mb-5">
                       <Tab className="nav-item">
                         <span className="nav-link border-no lh-1 ls-normal">
-                          Forgot Password
+                          Reset Password
                         </span>
                       </Tab>
                     </TabList>
 
                     <div className="tab-content">
                       <p className="text-dark text-center">
-                        Lost Your Password? Don't Worry! We have got you
-                        covered. Enter Your Email Below to Proceed
+                        Enter New Password
                       </p>
                       <hr />
                       <TabPanel className="tab-pane">
-                        <ForgotPasswordForm />
+                        <ResetPasswordForm token={token} />
                       </TabPanel>
                     </div>
                   </Tabs>
@@ -69,6 +102,7 @@ function ForgotPassword(props) {
         </div>
       </main>
     );
+  }
   return <CustomLoader type="Grid" />;
 }
 
