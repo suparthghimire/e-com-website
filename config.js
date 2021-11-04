@@ -1,6 +1,15 @@
 export const SHOP_NAME = "Rameti";
 export const BASE_URL = "https://rameti.asparksys.com/api";
 export const TITLE = "Rameti E-Commerce";
+
+export const KHALTI_CREDS = {
+  KHALTI_PUBLIC_KEY: "test_public_key_994f0245765a492bb9294826d059c284",
+  KHALTI_PRIVATE_KEY: "test_public_key_994f0245765a492bb9294826d059c284",
+  KHALTI_PRODUCT_IDENTITY: "1078bd247209f8af4070fb1",
+  PRODUCT_NAME: "Rameti Ecommerce",
+  PRODUCT_URL: "https://localhost:3000",
+};
+
 export const STATE_DISTRICTS = [
   {
     name: "province-1",

@@ -1,4 +1,6 @@
-import { BASE_URL } from "../config";
+import { BASE_URL, KHALTI_CREDS } from "../config";
+import Cookie from "js-cookie";
+
 export const GET_HOME_DATA_NEW = async ({ queryKey }) => {
   const response = await fetch(`${BASE_URL}/home/`);
   return response.json();
@@ -49,4 +51,41 @@ export const GET_CATEGORY = async ({ queryKey }) => {
   console.log(url);
   const response = await fetch(url);
   return response.json();
+};
+
+export const POST_PROMO = async (promoCodeValue) => {
+  try {
+    const response = await fetch(`${BASE_URL}/promo/${promoCodeValue}/`);
+    const data = await response.json();
+    if (response.status === 404) {
+      const error = new Error("Promo Code Not Found");
+      error.status = response.status;
+      throw error;
+    } else if (response.status !== 200) {
+      const error = new Error("Unexpected Error Occured");
+      error.status = response.status;
+      throw error;
+    }
+    return [data, null];
+  } catch (error) {
+    return [null, error];
+  }
+};
+
+export const POST_ORDER = async (order_data) => {
+  try {
+    const response = await fetch(`${BASE_URL}/order/`, {
+      headers: {
+        Authorization: `Bearer ${Cookie.get("rameti_ec_access")}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order_data),
+      method: "POST",
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return [null, error];
+  }
 };

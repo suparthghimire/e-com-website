@@ -12,7 +12,7 @@ import { toDecimal, getTotalPrice } from "~/utils";
 function Cart(props) {
   const { cartList, removeFromCart, updateCart } = props;
   const [cartItems, setCartItems] = useState([]);
-
+  console.log(updateCart);
   useEffect(() => {
     setCartItems([...cartList]);
   }, [cartList]);
@@ -38,7 +38,6 @@ function Cart(props) {
   const update = () => {
     updateCart(cartItems);
   };
-  console.log(cartItems);
   return (
     <div className="main cart">
       <div className="page-content pt-7 pb-10">
