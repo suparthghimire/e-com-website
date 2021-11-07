@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import ALink from "~/components/features/custom-link";
 import Quantity from "~/components/features/quantity";
+import StepByStep from "~/components/common/step-by-step";
 
 import { cartActions } from "~/store/cart";
 
@@ -11,7 +12,7 @@ import { toDecimal, getTotalPrice } from "~/utils";
 function Cart(props) {
   const { cartList, removeFromCart, updateCart } = props;
   const [cartItems, setCartItems] = useState([]);
-
+  console.log(updateCart);
   useEffect(() => {
     setCartItems([...cartList]);
   }, [cartList]);
@@ -37,21 +38,10 @@ function Cart(props) {
   const update = () => {
     updateCart(cartItems);
   };
-  console.log(cartItems);
   return (
     <div className="main cart">
       <div className="page-content pt-7 pb-10">
-        <div className="step-by pr-4 pl-4">
-          <h3 className="title title-simple title-step active">
-            <ALink href="#">1. Shopping Cart</ALink>
-          </h3>
-          <h3 className="title title-simple title-step">
-            <ALink href="/pages/checkout">2. Checkout</ALink>
-          </h3>
-          <h3 className="title title-simple title-step">
-            <ALink href="/pages/order">3. Order Complete</ALink>
-          </h3>
-        </div>
+        <StepByStep active="cart" />
 
         <div className="container mt-7 mb-2">
           <div className="row">

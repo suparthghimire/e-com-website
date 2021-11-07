@@ -15,12 +15,7 @@ export default function Menu(props) {
             return (
               <li key={index}>
                 {/* If there are sub menu, add submenu class to li above */}
-                <ALink
-                  href={{
-                    pathname: "/shop",
-                    query: { category: "travel-and-clothing" },
-                  }}
-                >
+                <ALink href={"/pages/category/" + item.slug}>
                   {/* <i
                     className="d-icon-t-shirt1"
                     style={{

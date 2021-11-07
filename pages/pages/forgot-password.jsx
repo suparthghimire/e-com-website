@@ -6,7 +6,7 @@ import ALink from "~/components/features/custom-link";
 import ForgotPasswordForm from "~/components/features/modals/forms/ForgotPasswordForm";
 import { useRouter } from "next/router";
 import CustomLoader from "../../components/common/custom-loader";
-
+import { TITLE } from "~/config";
 function ForgotPassword(props) {
   const router = useRouter();
 
@@ -15,7 +15,7 @@ function ForgotPassword(props) {
     return (
       <main className="main">
         <Helmet>
-          <title>Riode React eCommerce Template | Login</title>
+          <title>{TITLE} | Login</title>
         </Helmet>
 
         <h1 className="d-none">Riode React eCommerce Template - Login</h1>

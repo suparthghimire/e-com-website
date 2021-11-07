@@ -3,25 +3,21 @@ import Helmet from "react-helmet";
 import ALink from "~/components/features/custom-link";
 import SidebarFilterOne from "~/components/partials/shop/sidebar/sidebar-filter-one";
 import { useQuery } from "react-query";
-import { GET_CATEGORY } from "~/api/queries";
-import ProductListOne from "../../../components/partials/shop/product-list/product-list-one";
+import { GET_SEARCH_PRODUCTS } from "../../api/queries";
+import ProductListOne from "~/components/partials/shop/product-list/product-list-one";
 import { useRouter } from "next/router";
 import CustomLoader from "~/components/common/custom-loader";
 import { TITLE } from "~/config";
 
 function Shop() {
   const router = useRouter();
-  const slug = router.query.category_slug;
-  const min_price = router.query.min_price || "";
-  const max_price = router.query.max_price || "";
-  const color = router.query.colors || "";
-  const size = router.query.sizes || "";
+  const title = router.query.title;
+  console.log(title);
   const { data, status } = useQuery(
-    ["single-category", { slug, min_price, max_price, size, color }],
-    GET_CATEGORY
+    ["search-products", { title }],
+    GET_SEARCH_PRODUCTS
   );
   console.log(data, status);
-  if (status === "loading") return <CustomLoader type="Grid" />;
   return (
     <main className="main shop">
       <Helmet>
@@ -42,22 +38,25 @@ function Shop() {
           </ul>
         </div>
       </nav>
-
-      <div className="page-content mb-10">
-        <div className="container">
-          <div className="row gutter-lg main-content-wrap">
-            <SidebarFilterOne type="banner" />
-            <div className="col-lg-9 main-content">
-              <ProductListOne
-                type="banner"
-                slug={slug}
-                products={data.results}
-                total_products={data.count}
-              />
+      {status === "loading" ? (
+        <CustomLoader type="Grid" />
+      ) : (
+        <div className="page-content mb-10">
+          <div className="container">
+            <div className="row gutter-lg main-content-wrap">
+              <SidebarFilterOne type="banner" />
+              <div className="col-lg-9 main-content">
+                {/* slug={slug} */}
+                <ProductListOne
+                  type="banner"
+                  products={data.results}
+                  total_products={data.count}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </main>
   );
 }

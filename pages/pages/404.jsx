@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Helmet from "react-helmet";
+import { TITLE } from "~/config";
 
 import ALink from "~/components/features/custom-link";
 
@@ -17,7 +18,7 @@ function Error404() {
   return (
     <main className="main">
       <Helmet>
-        <title>Riode React eCommerce Template | 404</title>
+        <title>{TITLE} | 404</title>
       </Helmet>
 
       <h1 className="d-none">Riode React eCommerce Template - 404</h1>

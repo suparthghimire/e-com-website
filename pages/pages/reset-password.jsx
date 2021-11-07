@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import CustomLoader from "~/components/common/custom-loader";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../config";
+import { TITLE } from "~/config";
+
 function ForgotPassword(props) {
   const router = useRouter();
   const [loadingToken, setLoadingToken] = useState(true);
@@ -49,7 +51,7 @@ function ForgotPassword(props) {
     return (
       <main className="main">
         <Helmet>
-          <title>Riode React eCommerce Template | Login</title>
+          <title>{TITLE} Login</title>
         </Helmet>
 
         <h1 className="d-none">Riode React eCommerce Template - Login</h1>

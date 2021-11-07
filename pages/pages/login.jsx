@@ -1,21 +1,22 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import { Tabs, TabList, Tab, TabPanel } from 'react-tabs'
-import { useRouter } from 'next/router'
-import { SHOP_NAME } from '../../config'
-import ALink from '~/components/features/custom-link'
-import LoginForm from '~/components/features/modals/forms/LoginForm'
-import RegisterForm from '~/components/features/modals/forms/RegisterForm'
-import CustomLoader from '../../components/common/custom-loader'
+import React from "react";
+import Helmet from "react-helmet";
+import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
+import { useRouter } from "next/router";
+import { SHOP_NAME } from "../../config";
+import ALink from "~/components/features/custom-link";
+import LoginForm from "~/components/features/modals/forms/LoginForm";
+import RegisterForm from "~/components/features/modals/forms/RegisterForm";
+import CustomLoader from "../../components/common/custom-loader";
+import { TITLE } from "~/config";
 
 function Login(props) {
-  const router = useRouter()
-  if (props.auth) router.push('/')
+  const router = useRouter();
+  if (props.auth) router.push("/");
   else if (!props.loadingAuth)
     return (
       <main className="main">
         <Helmet>
-          <title>Riode React eCommerce Template | Login</title>
+          <title>{TITLE} | Login</title>
         </Helmet>
 
         <h1 className="d-none">Riode React eCommerce Template - Login</h1>
@@ -39,14 +40,21 @@ function Login(props) {
             <div className="login-popup">
               <div className="form-box">
                 <div className="tab tab-nav-simple tab-nav-boxed form-tab">
-                  <Tabs selectedTabClassName="active" selectedTabPanelClassName="active">
+                  <Tabs
+                    selectedTabClassName="active"
+                    selectedTabPanelClassName="active"
+                  >
                     <TabList className="nav nav-tabs nav-fill align-items-center border-no justify-content-center mb-5">
                       <Tab className="nav-item">
-                        <span className="nav-link border-no lh-1 ls-normal">Sign in</span>
+                        <span className="nav-link border-no lh-1 ls-normal">
+                          Sign in
+                        </span>
                       </Tab>
                       <li className="delimiter">or</li>
                       <Tab className="nav-item">
-                        <span className="nav-link border-no lh-1 ls-normal">Register</span>
+                        <span className="nav-link border-no lh-1 ls-normal">
+                          Register
+                        </span>
                       </Tab>
                     </TabList>
 
@@ -66,8 +74,8 @@ function Login(props) {
           </div>
         </div>
       </main>
-    )
-  return <CustomLoader type="Grid" />
+    );
+  return <CustomLoader type="Grid" />;
 }
 
-export default React.memo(Login)
+export default React.memo(Login);

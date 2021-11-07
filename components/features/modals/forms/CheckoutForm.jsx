@@ -1,78 +1,69 @@
 import { toDecimal, getTotalPrice } from "~/utils";
 import ALink from "~/components/features/custom-link";
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import Card from "~/components/features/accordion/card";
-import { BASE_URL } from "../../../../config";
 import { toast } from "react-toastify";
-import Cookie from "js-cookie";
 import router from "next/router";
-export default function CheckoutForm({ cartList }) {
+import { KHALTI_CREDS } from "~/config";
+import KhaltiCheckout from "khalti-checkout-web";
+import { POST_ORDER, POST_PROMO } from "~/api/queries";
+import { cartActions } from "~/store/cart";
+export default function CheckoutForm(props) {
   const [promoServerError, setPromoServerError] = useState({ message: null });
   const [promoCodeValue, setPromoCodeValue] = useState("");
   const [promoDiscount, setPromoDiscount] = useState(0);
+  const empty_cart = () => {
+    cartActions.updateCart([]);
+  };
+  // order form
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-
+  //promo
   const {
     register: register2,
-    formState: { errors: errors2 },
     handleSubmit: handleSubmit2,
+    formState: { errors: errors2 },
   } = useForm();
-  const router = useRouter();
-  const handle_promo = async (data) => {
+
+  const handle_promo = async (form_data) => {
+    toast.info("Applying Promo Code", { autoClose: 1200 });
     try {
-      toast.info("Applying Promo Code", { autoClose: 1200 });
-      const response = await fetch(`${BASE_URL}/promo/${promoCodeValue}/`);
-      const data = await response.json();
-      if (response.status == 404) {
-        const error = new Error("Not Found");
-        error.status = response.status;
-        error.data = "Promo Code Not Valid";
-        throw error;
-      } else if (response.status !== 200) {
-        const error = new Error("Unexpected Error");
-        error.status = response.status;
-        error.data = "Unexpected Error Occured";
-        throw error;
-      } else {
-        toast.success("Coupon Code Applied", { autoClose: 1200 });
-        console.log(data);
-        setPromoDiscount(data.amount);
+      const data = await POST_PROMO(promoCodeValue);
+      if (data[1]) throw data[1];
+      else if (data[0]) {
+        toast.success("Promo Code Applied Successfully!", { autoClose: 1200 });
+        console.log(data[0]);
+        setPromoDiscount(data[0].amount);
         setPromoServerError({ message: null });
       }
     } catch (error) {
       console.error(error);
       toast.error("Error", { autoClose: 1200 });
-      setPromoServerError({ message: error.data });
-      console.error(error.data);
       setPromoDiscount(0);
+      setPromoServerError({ message: error.message });
     } finally {
-      document.querySelectorAll("input").forEach((inp) => (inp.value = ""));
-      document.querySelector("textarea").value = "";
+      setPromoCodeValue("");
     }
   };
-  console.log(cartList);
-  const handle_order = async (data) => {
-    delete data["terms_condition"];
 
-    const submit_data = {
-      ...data,
+  const handle_order = async (form_data) => {
+    let submit_data = {
+      ...form_data,
       promo_code: promoCodeValue,
-      sub_total: getTotalPrice(cartList, {
+      sub_total: getTotalPrice(props.cartList, {
         promo_discount: promoDiscount,
       }),
-      total: getTotalPrice(cartList, {
+      total: getTotalPrice(props.cartList, {
         promo_discount: promoDiscount,
         shipping_fee: 40,
-        tax: getTotalPrice(cartList) * 0.13,
+        tax: getTotalPrice(props.cartList) * 0.13,
       }),
       order_status: "ORDERED",
-      orders: cartList.map((item) => ({
+      orders: props.cartList.map((item) => ({
         product: item.id,
         quantity: item.qty,
         color: item.color,
@@ -80,49 +71,75 @@ export default function CheckoutForm({ cartList }) {
         order_status: "ORDERED",
       })),
     };
-
-    const access = Cookie.get("rameti_ec_access");
-    console.log(submit_data);
-    try {
-      toast.info("Placing Your Order", {
-        autoClose: 1200,
-      });
-      const response = await fetch(`${BASE_URL}/order/`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${access}`,
+    delete submit_data["terms_condition"];
+    delete submit_data["payment_method"];
+    if (form_data["payment_method"] === "khalti") {
+      const KHALTI_CONFIG = {
+        publicKey: KHALTI_CREDS.KHALTI_PUBLIC_KEY,
+        productIdentity: KHALTI_CREDS.KHALTI_PRODUCT_IDENTITY,
+        productName: KHALTI_CREDS.PRODUCT_NAME,
+        productUrl: KHALTI_CREDS.PRODUCT_URL,
+        eventHandler: {
+          onSuccess(payload) {
+            console.log(payload);
+            const payment = {
+              phone: payload.mobile,
+              idx: payload.idx,
+              token: payload.token,
+              amount: payload.amount,
+              fee_amount: 0,
+            };
+            submit_data = {
+              ...submit_data,
+              payment,
+            };
+            POST_ORDER(submit_data)
+              .then((data) => {
+                console.log(data);
+                toast.success("Order Placed and Paid Successfully!");
+                empty_cart();
+                router.push("/pages/order");
+              })
+              .catch((error) => {
+                toast.error("Error While Placing your Order!");
+                console.error(error);
+              });
+          },
+          onError(error) {
+            // handle errors
+            toast.error("THere Was an Error While Processing Payment", {
+              autoClose: 1200,
+            });
+            console.log(error);
+          },
+          onClose() {
+            console.log("widget is closing");
+          },
         },
-        body: JSON.stringify(submit_data),
+        paymentPreference: [
+          "KHALTI",
+          "EBANKING",
+          "MOBILE_BANKING",
+          "CONNECT_IPS",
+          "SCT",
+        ],
+      };
+      const Khalti_Checkout = new KhaltiCheckout(KHALTI_CONFIG);
+      //TODO: replace 200*100 with total
+      Khalti_Checkout.show({
+        amount: 200 * 100,
       });
-      const data = await response.json();
-      if (response.status === 400) {
-        const error = new Error("Validation Error");
-        error.status = response.status;
-        error.data = {
-          message: "Validation Error",
-          data: data,
-        };
-        throw error;
-      } else if (response.status !== 200) {
-        const error = new Error("Unexpected Error");
-        error.status = response.status;
-        error.data = {
-          message: "Unable to Place Order",
-          data: data,
-        };
-        throw error;
-      } else {
-        toast.success("Order Placed Successfully!");
-        localStorage.removeItem("riode-cart");
-        console.log(data);
-        router.push("/pages/order");
-      }
-    } catch (error) {
-      toast.error("Error", {
-        autoClose: 1200,
-      });
-      console.error(error.data);
+    } else if (form_data["payment_method"] === "cod") {
+      POST_ORDER(submit_data)
+        .then((data) => {
+          toast.success("Order Placed Successfully!", { autoClose: 1200 });
+          empty_cart([]);
+          router.push("/pages/order");
+        })
+        .catch((err) => {
+          toast.error("Order Placed Successfully!", { autoClose: 1200 });
+          console.error(err);
+        });
     }
   };
   return (
@@ -200,6 +217,7 @@ export default function CheckoutForm({ cartList }) {
                     Contact Number is Required
                   </small>
                 )}
+
                 <input
                   type="number"
                   className="form-control"
@@ -209,229 +227,6 @@ export default function CheckoutForm({ cartList }) {
                 />
               </div>
             </div>
-            {/* <div className="row">
-              <div className="col-xs-6">
-                <label>First Name *</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="first-name"
-                  required
-                />
-              </div>
-              <div className="col-xs-6">
-                <label>Last Name *</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="last-name"
-                  required
-                />
-              </div>
-            </div>
-            <label>Company Name (Optional)</label>
-            <input
-              type="text"
-              className="form-control"
-              name="company-name"
-              required
-            />
-            <label>Country / Region *</label>
-            <div className="select-box">
-              <select name="country" className="form-control" defaultValue="us">
-                <option value="us">United States (US)</option>
-                <option value="uk"> United Kingdom</option>
-                <option value="fr">France</option>
-                <option value="aus">Austria</option>
-              </select>
-            </div>
-            <label>Street Address *</label>
-            <input
-              type="text"
-              className="form-control"
-              name="address1"
-              required
-              placeholder="House number and street name"
-            />
-            <input
-              type="text"
-              className="form-control"
-              name="address2"
-              required
-              placeholder="Apartment, suite, unit, etc. (optional)"
-            />
-            <div className="row">
-              <div className="col-xs-6">
-                <label>Town / City *</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="city"
-                  required
-                />
-              </div>
-              <div className="col-xs-6">
-                <label>State *</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="state"
-                  required
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-xs-6">
-                <label>ZIP *</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="zip"
-                  required
-                />
-              </div>
-              <div className="col-xs-6">
-                <label>Phone *</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="phone"
-                  required
-                />
-              </div>
-            </div>
-            <label>Email Address *</label>
-            <input
-              type="text"
-              className="form-control"
-              name="email-address"
-              required
-            />
-
-            <SlideToggle duration={300} collapsed>
-              {({ onToggle, setCollapsibleElement }) => (
-                <div className="form-checkbox mb-6">
-                  <input
-                    type="checkbox"
-                    className="custom-checkbox"
-                    id="different-address"
-                    name="different-address"
-                    onChange={onToggle}
-                  />
-                  <label
-                    className="form-control-label ls-s"
-                    htmlFor="different-address"
-                  >
-                    Ship to a different address?
-                  </label>
-
-                  <div
-                    ref={setCollapsibleElement}
-                    style={{ overflow: "hidden" }}
-                  >
-                    <div className="row pt-4">
-                      <div className="col-xs-6">
-                        <label>First Name *</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="first-name"
-                          required
-                        />
-                      </div>
-                      <div className="col-xs-6">
-                        <label>Last Name *</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="last-name"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <label>Company Name (Optional)</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="company-name"
-                      required
-                    />
-                    <label>Country / Region *</label>
-                    <div className="select-box">
-                      <select
-                        name="country"
-                        className="form-control"
-                        defaultValue="us"
-                      >
-                        <option value="us">United States (US)</option>
-                        <option value="uk"> United Kingdom</option>
-                        <option value="fr">France</option>
-                        <option value="aus">Austria</option>
-                      </select>
-                    </div>
-                    <label>Street Address *</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="address1"
-                      required
-                      placeholder="House number and street name"
-                    />
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="address2"
-                      required
-                      placeholder="Apartment, suite, unit, etc. (optional)"
-                    />
-                    <div className="row">
-                      <div className="col-xs-6">
-                        <label>Town / City *</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="city"
-                          required
-                        />
-                      </div>
-                      <div className="col-xs-6">
-                        <label>State *</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="state"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-xs-6">
-                        <label>ZIP *</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="zip"
-                          required
-                        />
-                      </div>
-                      <div className="col-xs-6">
-                        <label>Phone *</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="phone"
-                          required
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </SlideToggle>
-
-            <h2 className="title title-simple text-uppercase text-left mt-6">
-              Additional Information
-            </h2> */}
             <label>Order Notes (Optional)</label>
             <textarea
               className="form-control pb-2 pt-2 mb-0"
@@ -462,7 +257,7 @@ export default function CheckoutForm({ cartList }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {cartList.map((item) => (
+                    {props.cartList.map((item) => (
                       <tr key={"checkout-" + item.name}>
                         <td className="product-name">
                           {item.name}{" "}
@@ -496,7 +291,7 @@ export default function CheckoutForm({ cartList }) {
                       >
                         Nrs.&nbsp;
                         {toDecimal(
-                          getTotalPrice(cartList, {
+                          getTotalPrice(props.cartList, {
                             promo_discount: promoDiscount,
                           })
                         )}
@@ -572,10 +367,10 @@ export default function CheckoutForm({ cartList }) {
                         <p className="summary-total-price ls-s text-primary">
                           Nrs.&nbsp;
                           {toDecimal(
-                            getTotalPrice(cartList, {
+                            getTotalPrice(props.cartList, {
                               promo_discount: promoDiscount,
                               shipping_fee: 40,
-                              tax: getTotalPrice(cartList) * 0.13,
+                              tax: getTotalPrice(props.cartList) * 0.13,
                             })
                           )}
                         </p>
@@ -594,16 +389,21 @@ export default function CheckoutForm({ cartList }) {
                       <div className="custom-radio">
                         <input
                           type="radio"
-                          id="payment_method"
-                          name="payment_method"
-                          className="custom-control-input"
-                          defaultChecked
+                          {...register("payment_method")}
+                          value="cod"
+                          id="cod"
                         />
-                        <label
-                          className="custom-control-label"
-                          htmlFor="payment_method"
-                        >
-                          Cash on Delivery
+                        <label htmlFor="cod">Cash on Delivery</label>
+                      </div>
+                      <div className="custom-radio">
+                        <input
+                          type="radio"
+                          {...register("payment_method")}
+                          value="khalti"
+                          id="khalti"
+                        />
+                        <label className="form-control-label" htmlFor="khalti">
+                          Pay With Khalti
                         </label>
                       </div>
                     </div>
@@ -629,6 +429,7 @@ export default function CheckoutForm({ cartList }) {
                     <small className="error-msg">This Field is Required</small>
                   )}
                 </div>
+
                 <button
                   type="submit"
                   className="btn btn-dark btn-rounded btn-order"

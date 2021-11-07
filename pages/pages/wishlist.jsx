@@ -7,6 +7,7 @@ import { cartActions } from "~/store/cart";
 import { wishlistActions } from "~/store/wishlist";
 
 import { toDecimal } from "~/utils";
+import { TITLE } from "~/config";
 
 function Wishlist(props) {
   const { wishlist, addToCart, removeFromWishlist } = props;
@@ -20,7 +21,7 @@ function Wishlist(props) {
   return (
     <main className="main">
       <Helmet>
-        <title>Riode React eCommerce Template | Wishlist</title>
+        <title>{TITLE} | Wishlist</title>
       </Helmet>
 
       <h1 className="d-none">Riode React eCommerce Template - Wishlist</h1>

@@ -13,6 +13,7 @@ import DescOne from "~/components/partials/product/desc/desc-one";
 import RelatedProducts from "~/components/partials/product/related-products";
 import { mainSlider17 } from "~/utils/data/carousel";
 import Error404 from "../../404";
+import { TITLE } from "~/config";
 
 function ProductDefault() {
   const slug = useRouter().query.slug;
@@ -42,7 +43,7 @@ function ProductDefault() {
   return (
     <main className="main mt-6 single-product">
       <Helmet>
-        <title>Riode React eCommerce Template | Product Masonry</title>
+        <title>{TITLE} | Product Masonry</title>
       </Helmet>
 
       <h1 className="d-none">

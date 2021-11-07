@@ -64,11 +64,13 @@ function DescOne(props) {
         ) : (
           ""
         )}
-        <Tab className="nav-item">
+
+        {/*TODO: ADD REVIEWS LATER ({product.reviews})*/}
+        {/* <Tab className="nav-item">
           <span className="nav-link">
-            Reviews {/*TODO: ADD REVIEWS LATER ({product.reviews})*/}
+            Reviews 
           </span>
-        </Tab>
+        </Tab> */}
       </TabList>
 
       <div className="tab-content">
@@ -331,8 +333,8 @@ function DescOne(props) {
           ""
         )}
 
-        <TabPanel className="tab-pane product-tab-reviews">
-          {/* TODO: REPLACE 0 BELOW WITH THIS: product.ratings */}
+        {/* TODO: REPLACE 0 BELOW WITH THIS: product.ratings */}
+        {/* <TabPanel className="tab-pane product-tab-reviews">
           {0 === 0 ? (
             <div className="comments mb-2 pt-2 pb-2 border-no">
               There are no reviews yet.
@@ -359,10 +361,8 @@ function DescOne(props) {
                             className="ratings"
                             style={{ width: 5 * 20 + "%" }}
                           ></span>
-                          {/* TODO: REPLACE 5 BELOW WITH THIS: product.ratings */}
                           <span className="tooltiptext tooltip-top">
                             {toDecimal(5)}
-                            {/* TODO: REPLACE 5 BELOW WITH THIS: product.ratings */}
                           </span>
                         </div>
                       </div>
@@ -387,7 +387,6 @@ function DescOne(props) {
                     </div>
                   </div>
                 </li>
-                {/* TODO: REPLACE 5 BELOW WITH THIS product.reviews */}
                 {5 > 1 ? (
                   <li>
                     <div className="comment">
@@ -409,10 +408,8 @@ function DescOne(props) {
                               className="ratings"
                               style={{ width: 5 * 20 + "%" }}
                             ></span>
-                            {/*product.ratings TODO: REPLACE 5 above with this*/}
                             <span className="tooltiptext tooltip-top">
                               {toDecimal(5)}
-                              {/*product.ratings TODO: REPLACE 5 above with this*/}
                             </span>
                           </div>
                         </div>
@@ -451,7 +448,6 @@ function DescOne(props) {
           <div className="reply">
             <div className="title-wrapper text-left">
               <h3 className="title title-simple text-left text-normal">
-                {/*product.ratings TODO: REPLACE 5 BELOW  with this*/}
 
                 {5 > 0
                   ? "Add a Review"
@@ -541,7 +537,7 @@ function DescOne(props) {
               </button>
             </form>
           </div>
-        </TabPanel>
+        </TabPanel> */}
       </div>
     </Tabs>
   );
