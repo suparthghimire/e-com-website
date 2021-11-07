@@ -16,7 +16,6 @@ export default function Header(props) {
 
   const { data, status } = useQuery(["nav-items", {}], GET_NAV_ITEMS);
   if (status === "loading") return <CustomLoader type="Grid" />;
-  console.log(data, status);
 
   const showMobileMenu = () => {
     document.querySelector("body").classList.add("mmenu-active");

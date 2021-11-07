@@ -1,3 +1,5 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css);
+
 /* 
 Demo 25
 */
@@ -940,14 +942,39 @@ input[type="number"] {
 }
 
 .color-div:hover,
-.color-div:focus {
+.active-color-box {
   box-shadow: 0 0 6px 0 #2a2a2a2a;
-  border: 2px solid #2a2a2a;
+  border: 2px solid orangered;
+  position: relative;
 }
 
-.active-color-div {
-  box-shadow: 0 0 6px 0 #2a2a2a2a;
-  border: 2px solid #2a2a2a;
+.active-color-box::before {
+  position: absolute;
+  left: calc(0px - 2px);
+  border: 0;
+  border-right: 2px solid orangered;
+  border-bottom: 2px solid orangered;
+  background-color: orangered;
+  content: "\f00c";
+  color: white;
+  display: grid;
+  font-size: 0.9rem;
+  // padding-bottom: 5rem;
+  place-items: center;
+  font-family: "Font Awesome 5 Free";
+  width: 1.7rem;
+  height: 100%;
+  animation: slide 150ms ease-in-out forwards;
+  transform-origin: left;
+}
+
+@keyframes slide {
+  0% {
+    transform: scale(0, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
 
 .color-picker-label {

@@ -22,11 +22,11 @@ function DetailOne(props) {
   const [curSize, setCurSize] = useState("null");
   const [cartActive, setCartActive] = useState(false);
   const [quantity, setQauntity] = useState(1);
-  // decide if the product is wishlisted
   let isWishlisted,
     colors = [] && product.product_image.map((pdt) => pdt.color),
     sizes = [] && product.available_sizes;
-  console.log(sizes, colors);
+  const [colorList, setColorList] = useState({ active: null, colors: colors });
+
   isWishlisted =
     wishlist.findIndex((item) => item.slug === product.slug) > -1
       ? true
@@ -74,11 +74,18 @@ function DetailOne(props) {
     }
   };
 
-  const setColorHandler = (e) => {
-    setCurColor(e.target.value);
-    e.target.focus();
+  const setColorHandler = (color, index) => {
+    setCurColor(color);
+    const active_color = colorList.colors[index];
+    console.log("active_color", active_color);
+    setColorList({ ...colorList, active: active_color });
   };
-
+  const toggleActiveColorBtnStyle = (index) => {
+    if (colorList.colors[index] === colorList.active) {
+      return "active-color-box";
+    }
+    return "";
+  };
   const setSizeHandler = (e) => {
     setCurSize(e.target.value);
   };
@@ -193,8 +200,34 @@ function DetailOne(props) {
       <div className="product-form product-variations product-color d-flex align-items-end">
         {colors.length > 0 ? (
           <>
-            <label>Color:</label>
-            {product.product_image.map((item) => {
+            <label>Colors:</label>
+            {colorList.colors.map((item, index) => (
+              <div className="ml-1" key={index}>
+                {/* <input
+                  type="radio"
+                  id={item.color}
+                  name="shipping"
+                  className="color-picker-input d-none"
+                  value={item.color}
+                />
+                onChange={setColorHandler} */}
+                <label className="color-picker-label" htmlFor={item}>
+                  <div
+                    className={
+                      toggleActiveColorBtnStyle(index) +
+                      " color-div ml-0 mr-0 pl-0 pr-0"
+                    }
+                    style={{
+                      background: item,
+                    }}
+                    onClick={() => {
+                      setColorHandler(item, index);
+                    }}
+                  ></div>
+                </label>
+              </div>
+            ))}
+            {/* {product.product_image.map((item) => {
               return (
                 <div className="ml-1">
                   <input
@@ -211,12 +244,14 @@ function DetailOne(props) {
                       style={{
                         background: item.color,
                       }}
+                      onClick={() => {
+                        changeColorBtnStyle(item.color);
+                      }}
                     ></div>
-                    {/* {item.color} */}
                   </label>
                 </div>
               );
-            })}
+            })} */}
           </>
         ) : (
           ""

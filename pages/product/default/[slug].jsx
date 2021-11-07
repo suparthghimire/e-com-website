@@ -24,7 +24,6 @@ function ProductDefault() {
     ["single-product", { slug }],
     GET_SINGLE_PRODUCT
   );
-  console.log(data, status);
   if (data?.detail) return <Error404 />;
   const [loaded, setLoadingState] = useState(false);
   const product = data;

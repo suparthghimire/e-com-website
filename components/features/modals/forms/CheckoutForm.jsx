@@ -194,37 +194,56 @@ export default function CheckoutForm(props) {
             </h3>
             <div className="row">
               <div className="col-xs-6">
-                <label htmlFor="delivery_address">
-                  Enter Billing and Shipping Address
-                </label>
-                {errors.delivery_address && (
-                  <small className="error-msg mt-0">
-                    Billing/Shipping Address is Required
-                  </small>
-                )}
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Address *"
-                  id="delivery_address"
-                  {...register("delivery_address", { required: true })}
-                />
+                <div className="form-group">
+                  <label htmlFor="delivery_address">
+                    Enter Billing and Shipping Address
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control mb-0"
+                    placeholder="Address *"
+                    id="delivery_address"
+                    {...register("delivery_address", { required: true })}
+                  />
+                  {errors.delivery_address && (
+                    <small className="error-msg mt-0">
+                      Billing/Shipping Address is Required
+                    </small>
+                  )}
+                </div>
               </div>
               <div className="col-xs-6">
-                <label htmlFor="contact_number">Contact Number</label>
-                {errors.contact_number && (
-                  <small className="error-msg mt-0">
-                    Contact Number is Required
-                  </small>
-                )}
-
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder="Contact Number *"
-                  id="contact_number"
-                  {...register("contact_number", { required: true })}
-                />
+                <div className="form-group mb-3">
+                  <label htmlFor="contact_number">Contact Number</label>
+                  <input
+                    type="number"
+                    className="form-control mb-0"
+                    placeholder="Contact Number *"
+                    id="contact_number"
+                    {...register("contact_number", {
+                      required: true,
+                      validate: (phone_no) => {
+                        if (isNaN(phone_no)) return false;
+                        if (phone_no.length === 10) return phone_no[0] == 9;
+                        else if (phone_no.length === 8) return phone_no[0] == 0;
+                        return false;
+                      },
+                    })}
+                  />
+                  {errors.contact_number ? (
+                    errors.contact_number.type === "validate" ? (
+                      <small className="error-msg">
+                        Contact Number Format Invalid
+                      </small>
+                    ) : (
+                      <small className="error-msg">
+                        Contact Number is Required
+                      </small>
+                    )
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
             </div>
             <label>Order Notes (Optional)</label>
@@ -389,7 +408,7 @@ export default function CheckoutForm(props) {
                       <div className="custom-radio">
                         <input
                           type="radio"
-                          {...register("payment_method")}
+                          {...register("payment_method", { required: true })}
                           value="cod"
                           id="cod"
                         />
@@ -398,14 +417,20 @@ export default function CheckoutForm(props) {
                       <div className="custom-radio">
                         <input
                           type="radio"
-                          {...register("payment_method")}
+                          {...register("payment_method", { required: true })}
                           value="khalti"
                           id="khalti"
                         />
+
                         <label className="form-control-label" htmlFor="khalti">
                           Pay With Khalti
                         </label>
                       </div>
+                      {errors.payment_method ?? (
+                        <small className="error-msg">
+                          Select Atleast One Payment Method
+                        </small>
+                      )}
                     </div>
                   </div>
                 </div>
