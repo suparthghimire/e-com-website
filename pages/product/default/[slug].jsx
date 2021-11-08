@@ -21,7 +21,7 @@ function ProductDefault() {
   if (!slug) return "";
 
   const { data, status } = useQuery(
-    ["single-product", { slug }],
+    ["single-product", { slug, page, page_size }],
     GET_SINGLE_PRODUCT
   );
   if (data?.detail) return <Error404 />;
@@ -61,9 +61,7 @@ function ProductDefault() {
                 <DetailOne product={data} isSticky={true} isDesc={true} />
               </div>
             </div>
-
             <DescOne product={data} isGuide={false} isShipping={true} />
-
             <RelatedProducts products={related} />
           </div>
         </div>

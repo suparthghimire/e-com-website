@@ -15,7 +15,10 @@ function CategorySection(props) {
         <Reveal keyframes={fadeIn} delay={300} duration={1200} triggerOnce>
           <h2 className="title title-simple">Category</h2>
         </Reveal>
-        <OwlCarousel adClass="owl-theme owl-nav-full" options={categorySlider}>
+        <OwlCarousel
+          adClass="carousel owl-theme owl-nav-full"
+          options={categorySlider}
+        >
           {props.category &&
             props.category.map((item, index) => (
               <Reveal

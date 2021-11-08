@@ -1155,3 +1155,24 @@ input[type="number"] {
   min-height: 500px !important;
   overflow: hidden !important;
 }
+
+.carousel {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.owl-item {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-bg {
+  background: #ececec !important;
+}
+
+.red-btn {
+  background: rgb(247, 75, 75) !important;
+  color: white !important;
+}

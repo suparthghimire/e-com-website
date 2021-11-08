@@ -14,11 +14,13 @@ import { TITLE } from "~/config";
 import { useRouter } from "next/router";
 function Order(props) {
   const router = useRouter();
+  const limit = "10" && router.query.limit;
+  const offset = "0" && router.query.offset;
   if (!props.loadingAuth && !props.auth) router.push("/pages/login");
   if (!props.loadingAuth && props.auth) {
     const access = Cookie.get("rameti_ec_access");
     const { data, status } = useQuery(
-      ["all-orders", { access }],
+      ["all-orders", { access, limit, offset }],
       GET_ALL_ORDERS
     );
     console.log(data, status);
@@ -33,8 +35,14 @@ function Order(props) {
         .getElementById(`accordian-toggle-btn-${index}`)
         .classList.toggle("accordian-toggle-btn-active");
     };
-
-    const { cartList } = props;
+    const next_page_url = data && data.next ? new URL(data.next) : null;
+    const next_offset = next_page_url
+      ? next_page_url.searchParams.get("offset")
+      : null;
+    const next_limit = next_page_url
+      ? next_page_url.searchParams.get("limit")
+      : null;
+    console.log(next_page_url, next_offset, next_limit);
     return (
       <main className="main order">
         <Helmet>
@@ -44,36 +52,55 @@ function Order(props) {
         <h1 className="d-none">Riode React eCommerce Template - Order</h1>
 
         <div className="page-content pt-7 pb-10 mb-10">
-          {/* <StepByStep active="order" /> */}
           <div className="container mt-8">
-            {/* <OrderMessage /> */}
-
             <div className="order-results">
-              {/* <div className="overview-item">
-                <span>Order number:</span>
-                <strong>4935</strong>
-              </div> */}
-              {/* <div className="overview-item">
-                <span>Status:</span>
-                <strong>Processing</strong>
-              </div> */}
-              {/* <div className="overview-item">
-                <span>Date:</span>
-                <strong>November 20, 2020</strong>
-              </div> */}
               <div className="overview-item">
-                <span>Email:</span>
-                <strong>{props.user.email}</strong>
+                <strong>{props.user.full_name}</strong>
               </div>
-              {/* <div className="overview-item">
-                <span>Total:</span>
-                <strong>${toDecimal(getTotalPrice(cartList))}</strong>
-              </div> */}
             </div>
             <hr />
-            <h2 className="title title-simple text-left pt-4 font-weight-bold text-uppercase">
-              Order Details
-            </h2>
+            <div className="d-flex justify-content-between">
+              <h2 className="title title-simple text-left pt-4 font-weight-bold text-uppercase">
+                Order Details
+              </h2>
+              <ul className="pagination">
+                {data.previous && (
+                  <li className="page-item">
+                    <ALink
+                      href={{
+                        pathname: router.pathname,
+                        query: {
+                          limit: next_limit,
+                          offset: (
+                            parseInt(offset) - parseInt(limit)
+                          ).toString(),
+                        },
+                      }}
+                      scroll={false}
+                    >
+                      <i className="d-icon-arrow-left"></i>
+                    </ALink>
+                  </li>
+                )}
+
+                {data.next && (
+                  <li className="page-item">
+                    <ALink
+                      href={{
+                        pathname: router.pathname,
+                        query: {
+                          limit: next_limit,
+                          offset: next_offset,
+                        },
+                      }}
+                      scroll={false}
+                    >
+                      <i className="d-icon-arrow-right"></i>
+                    </ALink>
+                  </li>
+                )}
+              </ul>
+            </div>
             {data.count === 0 ? (
               <h5>Opps! Looks Like There Are No Orders To Show!</h5>
             ) : (
@@ -89,8 +116,11 @@ function Order(props) {
                   </thead>
                   <tbody>
                     {data.results.map((item, index) => (
-                      <tr key={"order-" + item.id}>
-                        <td className="product-name w-100">
+                      <tr
+                        key={"order-" + item.id}
+                        className={index % 2 !== 0 ? "dark-bg" : "light-bg"}
+                      >
+                        <td className="product-name w-100 pl-2 pr-2">
                           <div className="d-flex align-items-center justify-content-between">
                             <div>
                               <span className="font-weight-bold">
@@ -202,7 +232,7 @@ function Order(props) {
                                     <ALink
                                       href={"/pages/cancel-order/" + item.id}
                                     >
-                                      <button className="btn mt-2 mb-2 btn-sm align-end">
+                                      <button className="btn mt-2 mb-2 btn-sm align-end red-btn">
                                         Cancel this Order
                                       </button>
                                     </ALink>

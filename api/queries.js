@@ -6,7 +6,10 @@ export const GET_HOME_DATA_NEW = async ({ queryKey }) => {
   return response.json();
 };
 export const GET_ALL_PRODUCTS = async ({ queryKey }) => {
-  const response = await fetch(`${BASE_URL}/product/`);
+  const [_key, { page, page_size }] = queryKey;
+  const response = await fetch(
+    `${BASE_URL}/product/?page=${page}&page_size=${page_size}`
+  );
   return response.json();
 };
 export const GET_SINGLE_PRODUCT = async ({ queryKey }) => {
@@ -20,12 +23,16 @@ export const GET_SEARCH_PRODUCTS = async ({ queryKey }) => {
   return response.json();
 };
 export const GET_ALL_ORDERS = async ({ queryKey }) => {
-  const [_key, { access }] = queryKey;
-  const response = await fetch(`${BASE_URL}/order/?limit=100&offset=0`, {
-    headers: {
-      Authorization: `Bearer ${access}`,
-    },
-  });
+  const [_key, { access, offset, limit }] = queryKey;
+  console.log(offset, limit);
+  const response = await fetch(
+    `${BASE_URL}/order/?limit=${limit}&offset=${offset}`,
+    {
+      headers: {
+        Authorization: `Bearer ${access}`,
+      },
+    }
+  );
   return response.json();
 };
 
@@ -46,8 +53,10 @@ export const GET_NAV_ITEMS = async ({ queryKey }) => {
 };
 
 export const GET_CATEGORY = async ({ queryKey }) => {
-  const [_key, { slug, min_price, max_price, color, size }] = queryKey;
-  const url = `${BASE_URL}/category/${slug}/?min_price=${min_price}&max_price=${max_price}&color=${color}&size=${size}`;
+  const [_key, { slug, min_price, max_price, color, size, page, page_size }] =
+    queryKey;
+  console.log("page, page_size", page, page_size);
+  const url = `${BASE_URL}/category/${slug}/?min_price=${min_price}&max_price=${max_price}&color=${color}&size=${size}&page=${page}&page_size=${page_size}`;
   console.log(url);
   const response = await fetch(url);
   return response.json();
