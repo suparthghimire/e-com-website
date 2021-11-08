@@ -164,7 +164,7 @@ export default function Footer() {
           <div className="footer-left">
             <figure className="payment">
               <img
-                src="./images/payment.png"
+                src="./images/payment_new.png"
                 alt="payment"
                 width="159"
                 height="29"

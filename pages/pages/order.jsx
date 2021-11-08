@@ -115,7 +115,7 @@ function Order(props) {
                                   toggleAccordian(index);
                                 }}
                               >
-                                <i class="fas fa-chevron-down"></i>
+                                <i className="fas fa-chevron-down"></i>
                               </button>
                             </div>
                           </div>
@@ -128,6 +128,7 @@ function Order(props) {
                                 {item.orders.map((order, index) => {
                                   return (
                                     <ALink
+                                      key={index}
                                       href={
                                         "/product/default/" + order.product.slug
                                       }

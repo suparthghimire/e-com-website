@@ -1,21 +1,19 @@
 import { connect } from "react-redux";
 import Helmet from "react-helmet";
 import { useRouter } from "next/router";
-import Header from "~/components/partials/checkout/header";
 import ALink from "~/components/features/custom-link";
 import CustomLoader from "../../components/common/custom-loader";
 import CheckoutForm from "~/components/features/modals/forms/CheckoutForm";
-import { useQuery } from "react-query";
 import StepByStep from "~/components/common/step-by-step";
 import { TITLE } from "~/config";
+import { cartActions } from "~/store/cart";
 
 function Checkout(props) {
   const router = useRouter();
 
   if (!props.loadingAuth && !props.auth) router.push("/pages/login");
   if (!props.loadingAuth && props.auth) {
-    const { cartList } = props;
-
+    const { cartList, removeFromCart } = props;
     return (
       <main className="main checkout">
         <Helmet>
@@ -33,7 +31,10 @@ function Checkout(props) {
           <div className="container mt-7">
             {cartList.length > 0 ? (
               <>
-                <CheckoutForm cartList={cartList} />
+                <CheckoutForm
+                  cartList={cartList}
+                  removeFromCart={removeFromCart}
+                />
               </>
             ) : (
               <div className="empty-cart text-center">
@@ -63,4 +64,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Checkout);
+export default connect(mapStateToProps, {
+  removeFromCart: cartActions.removeFromCart,
+})(Checkout);
+
+// export default connect(mapStateToProps)(Checkout);

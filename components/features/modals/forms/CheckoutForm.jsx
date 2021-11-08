@@ -8,13 +8,15 @@ import router from "next/router";
 import { KHALTI_CREDS } from "~/config";
 import KhaltiCheckout from "khalti-checkout-web";
 import { POST_ORDER, POST_PROMO } from "~/api/queries";
-import { cartActions } from "~/store/cart";
 export default function CheckoutForm(props) {
   const [promoServerError, setPromoServerError] = useState({ message: null });
   const [promoCodeValue, setPromoCodeValue] = useState("");
   const [promoDiscount, setPromoDiscount] = useState(0);
   const empty_cart = () => {
-    cartActions.updateCart([]);
+    console.log("cart remove", props);
+    props.cartList.forEach((product) => {
+      props.removeFromCart(product);
+    });
   };
   // order form
   const {

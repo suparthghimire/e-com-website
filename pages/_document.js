@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
           {/* <base href="/react/riode/demo-25/"></base> */}
           <base href="/"></base>
           <title>{TITLE}</title>
-          <link rel="icon" href="images/icons/favicon.png" />
+          <link rel="icon" href="images/icons/favicon_new.png" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
