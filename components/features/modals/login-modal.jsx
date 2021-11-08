@@ -1,53 +1,59 @@
-import React, { useState } from 'react'
-import { Tabs, TabList, Tab, TabPanel } from 'react-tabs'
-import Modal from 'react-modal'
-import Cookie from 'js-cookie'
+import React, { useState, useEffect } from "react";
+import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
+import Modal from "react-modal";
+import Cookie from "js-cookie";
 
-import ALink from '~/components/features/custom-link'
-import LoginForm from './forms/LoginForm'
-import RegisterForm from './forms/RegisterForm'
-import { useRouter } from 'next/router'
-import { toast } from 'react-toastify'
+import ALink from "~/components/features/custom-link";
+import LoginForm from "./forms/LoginForm";
+import RegisterForm from "./forms/RegisterForm";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(0,0,0,0.4)',
-    display: 'flex',
+    backgroundColor: "rgba(0,0,0,0.4)",
+    display: "flex",
   },
-}
+};
 
-let index = 0
+let index = 0;
 
-Modal.setAppElement('#__next')
+Modal.setAppElement("#__next");
 
 function LoginModal(props) {
-  const [open, setOpen] = useState(false)
-  const router = useRouter()
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
   function closeModal() {
-    document.querySelector('.ReactModal__Overlay').classList.add('removed')
+    document.querySelector(".ReactModal__Overlay").classList.add("removed");
     document
-      .querySelector('.login-popup.ReactModal__Content')
-      .classList.remove('ReactModal__Content--after-open')
+      .querySelector(".login-popup.ReactModal__Content")
+      .classList.remove("ReactModal__Content--after-open");
     document
-      .querySelector('.login-popup-overlay.ReactModal__Overlay')
-      .classList.remove('ReactModal__Overlay--after-open')
+      .querySelector(".login-popup-overlay.ReactModal__Overlay")
+      .classList.remove("ReactModal__Overlay--after-open");
     setTimeout(() => {
-      setOpen(false)
-    }, 330)
+      setOpen(false);
+    }, 330);
   }
+  useEffect(() => {
+    if (props.auth) {
+      setOpen(false);
+    }
+  }, [props.auth]);
 
   function openModal(e, loginIndex = 0) {
-    e.preventDefault()
-    index = loginIndex
-    setOpen(true)
+    e.preventDefault();
+    index = loginIndex;
+    setOpen(true);
   }
   const handle_logout = () => {
-    Cookie.set('rameti_ec_access', '', {
+    Cookie.set("rameti_ec_access", "", {
       expires: 0.000000001,
-    })
-    router.push('/')
-    toast.success('Successfully Logged Out', { autoClose: 1200 })
-  }
-  let auth_nav
+    });
+    setOpen(false);
+    router.push("/");
+    toast.success("Successfully Logged Out", { autoClose: 1200 });
+  };
+  let auth_nav;
   if (!props.auth) {
     auth_nav = (
       <>
@@ -55,11 +61,15 @@ function LoginModal(props) {
           <i className="d-icon-user"></i>Sign in
         </a>
         <span className="delimiter">/</span>
-        <a className="register-link ml-0" onClick={(e) => openModal(e, 1)} href="#">
+        <a
+          className="register-link ml-0"
+          onClick={(e) => openModal(e, 1)}
+          href="#"
+        >
           Register
         </a>
       </>
-    )
+    );
   } else {
     auth_nav = (
       <div className="dropdown">
@@ -77,7 +87,7 @@ function LoginModal(props) {
           </li>
         </ul>
       </div>
-    )
+    );
   }
   return (
     <>
@@ -102,11 +112,15 @@ function LoginModal(props) {
               >
                 <TabList className="nav nav-tabs nav-fill align-items-center border-no justify-content-center mb-5">
                   <Tab className="nav-item">
-                    <span className="nav-link border-no lh-1 ls-normal">Sign in</span>
+                    <span className="nav-link border-no lh-1 ls-normal">
+                      Sign in
+                    </span>
                   </Tab>
                   <li className="delimiter">or</li>
                   <Tab className="nav-item">
-                    <span className="nav-link border-no lh-1 ls-normal">Register</span>
+                    <span className="nav-link border-no lh-1 ls-normal">
+                      Register
+                    </span>
                   </Tab>
                 </TabList>
 
@@ -123,15 +137,20 @@ function LoginModal(props) {
             </div>
           </div>
 
-          <button title="Close (Esc)" type="button" className="mfp-close" onClick={closeModal}>
+          <button
+            title="Close (Esc)"
+            type="button"
+            className="mfp-close"
+            onClick={closeModal}
+          >
             <span>×</span>
           </button>
         </Modal>
       ) : (
-        ''
+        ""
       )}
     </>
-  )
+  );
 }
 
-export default LoginModal
+export default LoginModal;
