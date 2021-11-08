@@ -57,7 +57,7 @@ function ProductListOne(props) {
 
   return (
     <>
-      {<ToolBox type={type} />}
+      {/* {<ToolBox type={type} />} */}
       {/* {gridType === "grid" ? (
         <div className={`row product-wrapper ${gridClasses[itemsPerRow]}`}>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
@@ -100,7 +100,7 @@ function ProductListOne(props) {
           Products
         </p>
 
-        <Pagination totalPage={total_products} />
+        {/* <Pagination totalPage={total_products} /> */}
       </div>
     </>
   );

@@ -110,17 +110,3 @@ function ProductDefault() {
 //   ProductDefault
 // );
 export default ProductDefault;
-
-ProductDefault.getInitialProps = async (ctx) => {
-  const slug = ctx.query.slug;
-  try {
-    const product = await GET_SINGLE_PRODUCT(slug);
-    const api_product = {
-      product: product[0],
-      error: product[1],
-    };
-    return { api_product };
-  } catch (error) {
-    console.error(error);
-  }
-};

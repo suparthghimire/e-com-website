@@ -1,7 +1,6 @@
 import ALink from "~/components/features/custom-link";
 
 export default function CategorySingle(props) {
-  console.log(props);
   return (
     <ALink href={"/pages/category/" + props.category.slug}>
       <div className="category-item">

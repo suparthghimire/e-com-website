@@ -14,36 +14,81 @@ import Cookie from "js-cookie";
 import { ToastContainer } from "react-toastify";
 import "~/public/sass/style.scss";
 import { BASE_URL } from "../config";
+import { AUTHENTICATE } from "~/api/queries";
 const queryClient = new QueryClient();
 
 const App = ({ Component, pageProps, store }) => {
   const [auth, setAuth] = useState(false);
   const [loadingAuth, setLoadingAuth] = useState(true);
+  const [accessToken, setAccessToken] = useState("");
   const [user, setUser] = useState(null);
   const refresh = Cookie.get("rameti_ec_refresh");
   const access = Cookie.get("rameti_ec_access");
 
+  // useEffect(() => {
+  //   if (!access || access == "" || access.trim() == "") {
+  //     setAuth(false);
+  //     setLoadingAuth(false);
+  //   } else {
+  //     setLoadingAuth(true);
+  //     fetch(`${BASE_URL}/me/`, {
+  //       headers: {
+  //         Authorization: `Bearer ${access}`,
+  //       },
+  //     })
+  //       .then((res) => res.json())
+  //       .then((user) => {
+  //         if (user.code && user.code === "token_not_valid")
+  //           throw Error("Invalid Token Error");
+  //         setUser(user);
+  //         setAuth(true);
+  //       })
+  //       .catch((err) => {
+  //         console.error(err.message);
+  //         setAuth(false);
+  //       })
+  //       .finally(() => {
+  //         setLoadingAuth(false);
+  //       });
+  //   }
+  // }, [access]);
   useEffect(() => {
-    // if (store.getState().demo.current !== currentDemo) {
-    //   store.dispatch(demoActions.refreshStore(currentDemo));
-    // }
-
     if (!access || access == "" || access.trim() == "") {
       setAuth(false);
       setLoadingAuth(false);
     } else {
+      setAccessToken(access);
       setLoadingAuth(true);
       fetch(`${BASE_URL}/me/`, {
         headers: {
-          Authorization: `Bearer ${access}`,
+          Authorization: `Bearer ${accessToken}`,
         },
       })
         .then((res) => res.json())
         .then((user) => {
-          if (user.code && user.code === "token_not_valid")
-            throw Error("Invalid Token Error");
-          setUser(user);
-          setAuth(true);
+          if (user.code && user.code === "token_not_valid") {
+            fetch(`${BASE_URL}/token/refresh/`, {
+              body: JSON.stringify({ refresh }),
+              headers: {
+                "content-type": "application/json",
+              },
+              method: "POST",
+            })
+              .then((res) => res.json())
+              .then((token) => {
+                console.log(token);
+                if (token && token.access) {
+                  setAccessToken(token.access);
+                  Cookie.set("rameti_ec_access", token.access);
+                }
+                if (token.code === "token_not_valid")
+                  throw Error("Invalid Token Error");
+              });
+          } else {
+            console.log(user);
+            setUser(user);
+            setAuth(true);
+          }
         })
         .catch((err) => {
           console.error(err.message);
@@ -53,7 +98,7 @@ const App = ({ Component, pageProps, store }) => {
           setLoadingAuth(false);
         });
     }
-  }, [access]);
+  }, [accessToken, access]);
 
   return (
     <QueryClientProvider client={queryClient}>

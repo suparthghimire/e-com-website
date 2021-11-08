@@ -45,10 +45,10 @@ export default function Header(props) {
 
             <ALink href="/" className="logo">
               <img
-                src="./images/home/logo.png"
+                src="./images/home/vamalogo.png"
                 alt="logo"
-                width="153"
-                height="44"
+                width="250"
+                height="71.8"
               />
             </ALink>
             <SearchBox />

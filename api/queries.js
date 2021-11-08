@@ -89,3 +89,72 @@ export const POST_ORDER = async (order_data) => {
     return [null, error];
   }
 };
+const get_access_token = async (refresh) => {
+  try {
+    const response = await fetch(`${BASE_URL}/refresh`, {
+      body: JSON.stringify({ refresh }),
+    });
+    const access = await response.json();
+
+    if (
+      response.status == 401 ||
+      (access && access.code && access.code == "token_not_valid")
+    ) {
+      const error = Error("Token Not Valid");
+      error.status = response.status;
+      error.data = access.detail;
+      throw error;
+    } else if (response.status !== 201) {
+      const error = Error("Unexpected Error");
+      error.status = response.status;
+      error.data = "Unexpected Error Occured";
+      throw error;
+    }
+    return [{ token: access.access }, null];
+  } catch (error) {
+    console.error(error);
+    return [null, error];
+  }
+};
+const fetch_user = async (access) => {
+  try {
+    const response = await fetch(`${BASE_URL}/me/`, {
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${access}`,
+      },
+    });
+    const user = await response.json();
+    if (response.code === 401) {
+      const error = new Error("Token Not Valid");
+      error.data = user.detail;
+      error.status = response.status;
+      throw error;
+    } else if (response.code !== 201) {
+      const error = new Error("Unexpected Error");
+      error.data = "Unexpected Error Occured";
+      error.status = response.status;
+      throw error;
+    }
+    return [user, null];
+  } catch (error) {
+    console.error(error);
+    return [null, error];
+  }
+};
+export const AUTHENTICATE = async (access, refresh) => {
+  try {
+    let user = await fetch_user(access);
+    if (user && user.code && user.code === "token_not_valid") {
+      access = await get_access_token(refresh);
+      if (access[1]) throw access[1];
+      else {
+        user = await fetch_user(access);
+      }
+    }
+    if (user.code !== "token_not_valid") return [user, null];
+  } catch (error) {
+    console.error(error);
+    return [null, error];
+  }
+};
