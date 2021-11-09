@@ -19,7 +19,23 @@ export default function OrderCancel(props) {
     if (status === "loading") return <CustomLoader type="Grid" />;
     if (data.order_status !== "ORDERED")
       return (
-        <h3>The Order is already in Processing, so it cannot be Cancelled</h3>
+        <div
+          className="container d-flex flex-column justify-content-center align-items-center pt-2 pb-2"
+          style={{ minHeight: "300px" }}
+        >
+          <h6>
+            Cannot Cancel This Order As its Order Status is {data.order_status}4
+          </h6>
+          <button
+            onClick={() => {
+              router.back();
+            }}
+            className="btn btn-primary btn-sm"
+          >
+            <i className="d-icon-arrow-left"></i>
+            &nbsp; Go Back
+          </button>
+        </div>
       );
 
     return (

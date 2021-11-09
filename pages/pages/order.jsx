@@ -75,7 +75,10 @@ function Order(props) {
                       }}
                       scroll={false}
                     >
-                      <i className="d-icon-arrow-left"></i>
+                      <button className="btn btn-sm btn-transparent hover-dark">
+                        <i className="d-icon-arrow-left"></i>
+                        {/* Previous */}
+                      </button>
                     </ALink>
                   </li>
                 )}
@@ -92,7 +95,10 @@ function Order(props) {
                       }}
                       scroll={false}
                     >
-                      <i className="d-icon-arrow-right"></i>
+                      <button className="btn btn-sm btn-transparent hover-dark">
+                        {/* Next */}
+                        <i className="d-icon-arrow-right"></i>
+                      </button>
                     </ALink>
                   </li>
                 )}

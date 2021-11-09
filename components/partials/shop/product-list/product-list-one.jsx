@@ -1,14 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/router";
-import { useLazyQuery } from "@apollo/react-hooks";
+import CustomLoader from "~/components/common/custom-loader";
 
 import ToolBox from "~/components/partials/shop/toolbox";
 import ProductThree from "~/components/features/product/product-three";
-import ProductEight from "~/components/features/product/product-eight";
-import Pagination from "~/components/features/pagination";
-
-// import withApollo from "~/server/apollo";
-// import { GET_PRODUCTS } from "~/server/queries";
 
 function ProductListOne(props) {
   const {
@@ -17,11 +12,14 @@ function ProductListOne(props) {
     isToolbox = true,
     products,
     total_products,
+    setPageNo,
+    pageNo,
+    loading,
+    errors,
+    hasMore,
   } = props;
   const router = useRouter();
   const query = router.query;
-  // const [getProducts, { data, loading, error }] = useLazyQuery(GET_PRODUCTS);
-  //   const products = data && data.products.data;
   const gridClasses = {
     3: "cols-2 cols-sm-3",
     4: "cols-2 cols-sm-3 cols-md-4",
@@ -31,13 +29,21 @@ function ProductListOne(props) {
     8: "cols-2 cols-sm-3 cols-md-4 cols-lg-5 cols-xl-8",
   };
   const perPage = query.per_page ? parseInt(query.per_page) : 12;
-  // const totalPage = data
-  //   ? parseInt(data.products.total / perPage) +
-  //     (data.products.total % perPage ? 1 : 0)
-  //   : 1;
-  const page = query.page ? query.page : 1;
   const gridType = query.type ? query.type : "grid";
-
+  const observer = useRef();
+  const lastProductRef = useCallback(
+    (el) => {
+      if (loading) return "";
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          setPageNo((prevPageNo) => parseInt(prevPageNo) + 1);
+        }
+      });
+      if (el) observer.current.observe(el);
+    },
+    [loading, hasMore]
+  );
   return (
     <>
       {/* {<ToolBox type={type} />} */}
@@ -64,18 +70,33 @@ function ProductListOne(props) {
         <>
           <div className={`row product-wrapper ${gridClasses[itemsPerRow]}`}>
             {products &&
-              products.map((item) => (
-                <div className="product-wrap" key={"shop-" + item.slug}>
-                  <ProductThree product={item} isCat={false} />
-                </div>
-              ))}
+              products.map((item, index) => {
+                if (index + 1 === total_products) {
+                  return (
+                    <div
+                      className="product-wrap"
+                      id="last-one"
+                      ref={lastProductRef}
+                      key={"shop-" + item.slug}
+                    >
+                      <ProductThree product={item} isCat={false} />
+                    </div>
+                  );
+                }
+                return (
+                  <div className="product-wrap" key={"shop-" + item.slug}>
+                    <ProductThree product={item} isCat={false} />
+                  </div>
+                );
+              })}
           </div>
           <div className="toolbox toolbox-pagination">
             <p className="show-info">
               Showing
               <span>
                 {/* {perPage * (page - 1) + 1} -{" "} */}
-                {Math.min(perPage * page, products.length)} of {total_products}
+                {Math.min(perPage * pageNo, products.length)} of{" "}
+                {total_products}
               </span>
               Products
             </p>
