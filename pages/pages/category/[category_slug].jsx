@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Helmet from "react-helmet";
 import ALink from "~/components/features/custom-link";
 import SidebarFilterOne from "~/components/partials/shop/sidebar/sidebar-filter-one";
 import { useQuery } from "react-query";
-import { GET_CATEGORY } from "~/api/queries";
+// import { GET_CATEGORY, GET_CATEGORY_INFINITE } from "../../api/queries";
+import { GET_CATEGORY } from "../../../api/queries";
 import ProductListOne from "../../../components/partials/shop/product-list/product-list-one";
 import { useRouter } from "next/router";
 import CustomLoader from "~/components/common/custom-loader";
@@ -16,24 +17,21 @@ function Shop() {
   const max_price = router.query.max_price || "";
   const color = router.query.colors || "";
   const size = router.query.sizes || "";
-  const page_size = router.query.page_size || "100";
-  const page = router.query.page || "1";
-  const { data, status } = useQuery(
-    [
-      "single-category",
-      { slug, min_price, max_price, size, color, page, page_size },
-    ],
-    GET_CATEGORY
-  );
-  const next_page_url = data && data.next ? new URL(data.next) : null;
-  const next_page = next_page_url
-    ? next_page_url.searchParams.get("page")
-    : null;
-  const next_page_size = next_page_url
-    ? next_page_url.searchParams.get("page_size")
-    : null;
+  const page_size = router.query.page_size || "7";
 
-  if (status === "loading") return <CustomLoader type="Grid" />;
+  const [pageNo, setPageNo] = useState("1");
+
+  const { products, loading, errors, hasMore } = GET_CATEGORY({
+    slug,
+    min_price,
+    max_price,
+    size,
+    color,
+    page: pageNo,
+    page_size,
+  });
+
+  if (loading) "";
   return (
     <main className="main shop">
       <Helmet>
@@ -53,44 +51,9 @@ function Shop() {
               </li>
               <li>Shop</li>
             </ul>
-            <ul className="pagination">
-              {data.previous && (
-                <li className="page-item">
-                  <ALink
-                    href={{
-                      pathname: "/pages/category/" + slug + "/",
-                      query: {
-                        page_size: next_page_size,
-                        page: (parseInt(page) - 1).toString(),
-                      },
-                    }}
-                    scroll={false}
-                  >
-                    <i className="d-icon-arrow-left"></i>
-                  </ALink>
-                </li>
-              )}
-              {data.next && (
-                <li className="page-item">
-                  <ALink
-                    href={{
-                      pathname: "/pages/category/" + slug + "/",
-                      query: {
-                        page_size: next_page_size,
-                        page: next_page,
-                      },
-                    }}
-                    scroll={false}
-                  >
-                    <i className="d-icon-arrow-right"></i>
-                  </ALink>
-                </li>
-              )}
-            </ul>
           </div>
         </div>
       </nav>
-
       <div className="page-content mb-10">
         <div className="container">
           <div className="row gutter-lg main-content-wrap">
@@ -99,8 +62,13 @@ function Shop() {
               <ProductListOne
                 type="banner"
                 slug={slug}
-                products={data.results}
-                total_products={data.count}
+                products={products}
+                total_products={products.length}
+                loading={loading}
+                errors={errors}
+                hasMore={hasMore}
+                pageNo={pageNo}
+                setPageNo={setPageNo}
               />
             </div>
           </div>

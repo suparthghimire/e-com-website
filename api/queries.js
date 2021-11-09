@@ -1,6 +1,7 @@
 import { BASE_URL, KHALTI_CREDS } from "../config";
 import Cookie from "js-cookie";
 import { http_validation } from "~/utils/helpers";
+import { useState, useEffect } from "react";
 export const GET_HOME_DATA_NEW = async ({ queryKey }) => {
   const response = await fetch(`${BASE_URL}/home/`);
   return response.json();
@@ -57,9 +58,13 @@ export const GET_NAV_ITEMS = async ({ queryKey }) => {
   return response.json();
 };
 
-export const GET_CATEGORY = async ({ queryKey }) => {
-  const [_key, { slug, min_price, max_price, color, size, page, page_size }] =
-    queryKey;
+export const GET_CATEGORY = (data) => {
+  const { slug, min_price, max_price, color, size, page, page_size } = data;
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [errors, setErrors] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+
   const url_params = new URLSearchParams({
     min_price,
     max_price,
@@ -69,8 +74,24 @@ export const GET_CATEGORY = async ({ queryKey }) => {
     page_size,
   });
   const url = `${BASE_URL}/category/${slug}/?${url_params.toString()}`;
-  const response = await fetch(url);
-  return response.json();
+  useEffect(() => {
+    setLoading(true);
+    setErrors(false);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts((prevProducts) => {
+          return [...prevProducts, ...data.results];
+        });
+        setHasMore(data.next ? true : false);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setErrors(error);
+      });
+  }, [min_price, max_price, color, size, page, page_size]);
+  return { products, loading, errors, hasMore };
 };
 
 export const POST_PROMO = async (promoCodeValue) => {
