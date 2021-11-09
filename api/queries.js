@@ -7,9 +7,13 @@ export const GET_HOME_DATA_NEW = async ({ queryKey }) => {
 };
 export const GET_ALL_PRODUCTS = async ({ queryKey }) => {
   const [_key, { page, page_size }] = queryKey;
-  const response = await fetch(
-    `${BASE_URL}/product/?page=${page}&page_size=${page_size}`
-  );
+  const url_params = new URLSearchParams({
+    page,
+    page_size,
+  });
+  // const url = `${BASE_URL}/product/?page=${page}&page_size=${page_size}`;
+  const url = `${BASE_URL}/product/?${url_params.toString()}`;
+  const response = await fetch(url);
   return response.json();
 };
 export const GET_SINGLE_PRODUCT = async ({ queryKey }) => {
@@ -19,19 +23,22 @@ export const GET_SINGLE_PRODUCT = async ({ queryKey }) => {
 };
 export const GET_SEARCH_PRODUCTS = async ({ queryKey }) => {
   const [_key, { title }] = queryKey;
-  const response = await fetch(`${BASE_URL}/search?title=${title}`);
+  const url_params = new URLSearchParams({ title });
+  // const url = `${BASE_URL}/search?title=${title}`;
+  const url = `${BASE_URL}/search?${url_params.toString()}`;
+  const response = await fetch(url);
   return response.json();
 };
 export const GET_ALL_ORDERS = async ({ queryKey }) => {
   const [_key, { access, offset, limit }] = queryKey;
-  const response = await fetch(
-    `${BASE_URL}/order/?limit=${limit}&offset=${offset}`,
-    {
-      headers: {
-        Authorization: `Bearer ${access}`,
-      },
-    }
-  );
+  const url_params = new URLSearchParams({ offset, limit });
+  // const url = `${BASE_URL}/order/?limit=${limit}&offset=${offset}`,
+  const url = `${BASE_URL}/order/?${url_params.toString()}`;
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${access}`,
+    },
+  });
   return response.json();
 };
 
@@ -53,7 +60,15 @@ export const GET_NAV_ITEMS = async ({ queryKey }) => {
 export const GET_CATEGORY = async ({ queryKey }) => {
   const [_key, { slug, min_price, max_price, color, size, page, page_size }] =
     queryKey;
-  const url = `${BASE_URL}/category/${slug}/?min_price=${min_price}&max_price=${max_price}&color=${color}&size=${size}&page=${page}&page_size=${page_size}`;
+  const url_params = new URLSearchParams({
+    min_price,
+    max_price,
+    color,
+    size,
+    page,
+    page_size,
+  });
+  const url = `${BASE_URL}/category/${slug}/?${url_params.toString()}`;
   const response = await fetch(url);
   return response.json();
 };

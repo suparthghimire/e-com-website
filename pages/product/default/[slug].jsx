@@ -21,7 +21,7 @@ function ProductDefault() {
   if (!slug) return "";
 
   const { data, status } = useQuery(
-    ["single-product", { slug, page, page_size }],
+    ["single-product", { slug }],
     GET_SINGLE_PRODUCT
   );
   if (data?.detail) return <Error404 />;
