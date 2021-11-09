@@ -25,32 +25,6 @@ const App = ({ Component, pageProps, store }) => {
   const refresh = Cookie.get("rameti_ec_refresh");
   const access = Cookie.get("rameti_ec_access");
 
-  // useEffect(() => {
-  //   if (!access || access == "" || access.trim() == "") {
-  //     setAuth(false);
-  //     setLoadingAuth(false);
-  //   } else {
-  //     setLoadingAuth(true);
-  //     fetch(`${BASE_URL}/me/`, {
-  //       headers: {
-  //         Authorization: `Bearer ${access}`,
-  //       },
-  //     })
-  //       .then((res) => res.json())
-  //       .then((user) => {
-  //         if (user.code && user.code === "token_not_valid")
-  //           throw Error("Invalid Token Error");
-  //         setUser(user);
-  //         setAuth(true);
-  //       })
-  //       .catch((err) => {
-  //         setAuth(false);
-  //       })
-  //       .finally(() => {
-  //         setLoadingAuth(false);
-  //       });
-  //   }
-  // }, [access]);
   useEffect(() => {
     if (!access || access == "" || access.trim() == "") {
       setAuth(false);

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../../../config";
+import { LOGIN } from "~/api/queries";
 import Cookie from "js-cookie";
 import ALink from "~/components/features/custom-link";
 import { useForm } from "react-hook-form";
@@ -18,43 +19,8 @@ export default function LoginForm() {
   const handle_login = async (data) => {
     toast.info("Logging You In. Please Wait", { autoClose: 1200 });
     try {
-      const response = await fetch(`${BASE_URL}/token`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const tokens = await response.json();
-      if (response.status === 400) {
-        //validation error
-        const error = new Error("Validation Error");
-        error.status = 400;
-        error.data = tokens;
-        throw error;
-      }
-      if (response.status === 401) {
-        //validation error
-        const error = new Error("Invalid Token Error");
-        error.status = 401;
-        error.data = tokens;
-        throw error;
-      } else if (response.status !== 200) {
-        const error = new Error("Unexpected Error");
-        error.status = response.status;
-        error.data = { detail: "Unexpected Error Occured" };
-        throw error;
-      }
-      if (!tokens) {
-        // undefined error
-        const error = new Error("Token Not Found Error");
-        error.status = response.status;
-        error.data = { detail: "Failed to Grab Tokens" };
-        throw error;
-      }
-
-      Cookie.set("rameti_ec_access", tokens.access);
-      Cookie.set("rameti_ec_refresh", tokens.refresh);
+      const [tokens, error] = await LOGIN(data);
+      if (!tokens) throw error;
       toast.success("Login Successful!", {
         autoClose: 1200,
       });
@@ -63,6 +29,7 @@ export default function LoginForm() {
       });
       router.push("/");
     } catch (error) {
+      console.error("error", error);
       toast.error("Error", {
         autoClose: 1200,
       });
