@@ -30,7 +30,6 @@ function RegisterForm() {
         email: user.email,
         password: user.password,
       });
-      console.log(tokens, login_error);
       if (!tokens) throw { type: "login", data: login_error };
       toast.success("Login Successful!", { autoClose: 1200 });
       router.push("/");
@@ -38,7 +37,6 @@ function RegisterForm() {
     } catch (error) {
       if (error.type === "reg") {
         let errors = [];
-        console.log(error);
         Object.keys(error.data.data).forEach((err) => {
           error.data.data[err].forEach((item) => errors.push(item));
         });

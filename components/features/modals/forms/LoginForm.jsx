@@ -29,7 +29,6 @@ export default function LoginForm() {
       });
       router.push("/");
     } catch (error) {
-      console.error("error", error);
       toast.error("Error", {
         autoClose: 1200,
       });
