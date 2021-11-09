@@ -14,7 +14,12 @@ function SearchForm() {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [timer, setTimer] = useState(null);
-  const { data, status } = useQuery(["all_products", {}], GET_ALL_PRODUCTS);
+  const page = "1" || router.query.page;
+  const page_size = "" || router.query.page;
+  const { data, status } = useQuery(
+    ["all_products", { page, page_size }],
+    GET_ALL_PRODUCTS
+  );
   const products = data?.results;
   const [filterProducts, setFilterProducts] = useState([]);
   // useEffect(() => {
@@ -98,7 +103,6 @@ function SearchForm() {
       const contains = search
         .split("")
         .some((letter) => title.includes(letter));
-      console.log(title, search.split(""), contains);
       return contains;
     });
     setFilterProducts(filteredProducts);

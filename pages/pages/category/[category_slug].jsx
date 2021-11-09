@@ -16,11 +16,23 @@ function Shop() {
   const max_price = router.query.max_price || "";
   const color = router.query.colors || "";
   const size = router.query.sizes || "";
+  const page_size = router.query.page_size || "100";
+  const page = router.query.page || "1";
   const { data, status } = useQuery(
-    ["single-category", { slug, min_price, max_price, size, color }],
+    [
+      "single-category",
+      { slug, min_price, max_price, size, color, page, page_size },
+    ],
     GET_CATEGORY
   );
-  console.log(data, status);
+  const next_page_url = data && data.next ? new URL(data.next) : null;
+  const next_page = next_page_url
+    ? next_page_url.searchParams.get("page")
+    : null;
+  const next_page_size = next_page_url
+    ? next_page_url.searchParams.get("page_size")
+    : null;
+
   if (status === "loading") return <CustomLoader type="Grid" />;
   return (
     <main className="main shop">
@@ -32,14 +44,50 @@ function Shop() {
 
       <nav className="breadcrumb-nav">
         <div className="container">
-          <ul className="breadcrumb breadcrumb-sm">
-            <li>
-              <ALink href="/">
-                <i className="d-icon-home"></i>
-              </ALink>
-            </li>
-            <li>Shop</li>
-          </ul>
+          <div className="d-flex justify-content-between">
+            <ul className="breadcrumb breadcrumb-sm">
+              <li>
+                <ALink href="/">
+                  <i className="d-icon-home"></i>
+                </ALink>
+              </li>
+              <li>Shop</li>
+            </ul>
+            <ul className="pagination">
+              {data.previous && (
+                <li className="page-item">
+                  <ALink
+                    href={{
+                      pathname: "/pages/category/" + slug + "/",
+                      query: {
+                        page_size: next_page_size,
+                        page: (parseInt(page) - 1).toString(),
+                      },
+                    }}
+                    scroll={false}
+                  >
+                    <i className="d-icon-arrow-left"></i>
+                  </ALink>
+                </li>
+              )}
+              {data.next && (
+                <li className="page-item">
+                  <ALink
+                    href={{
+                      pathname: "/pages/category/" + slug + "/",
+                      query: {
+                        page_size: next_page_size,
+                        page: next_page,
+                      },
+                    }}
+                    scroll={false}
+                  >
+                    <i className="d-icon-arrow-right"></i>
+                  </ALink>
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
       </nav>
 

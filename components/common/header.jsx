@@ -15,8 +15,8 @@ export default function Header(props) {
   const router = useRouter();
 
   const { data, status } = useQuery(["nav-items", {}], GET_NAV_ITEMS);
-  if (status === "loading") return <CustomLoader type="Grid" />;
-  console.log(data, status);
+  // if (status === "loading") return <CustomLoader type="Grid" />;
+  if (status === "loading") return "";
 
   const showMobileMenu = () => {
     document.querySelector("body").classList.add("mmenu-active");
@@ -46,10 +46,10 @@ export default function Header(props) {
 
             <ALink href="/" className="logo">
               <img
-                src="./images/home/logo.png"
+                src="./images/home/vamalogo.png"
                 alt="logo"
-                width="153"
-                height="44"
+                width="250"
+                height="71.8"
               />
             </ALink>
             <SearchBox />

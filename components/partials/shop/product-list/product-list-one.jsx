@@ -37,27 +37,10 @@ function ProductListOne(props) {
   //   : 1;
   const page = query.page ? query.page : 1;
   const gridType = query.type ? query.type : "grid";
-  // useEffect(() => {
-  //   getProducts({
-  //     variables: {
-  //       search: query.search,
-  //       colors: query.colors ? query.colors.split(",") : [],
-  //       sizes: query.sizes ? query.sizes.split(",") : [],
-  //       brands: query.brands ? query.brands.split(",") : [],
-  //       min_price: parseInt(query.min_price),
-  //       max_price: parseInt(query.max_price),
-  //       category: query.category,
-  //       tag: query.tag,
-  //       sortBy: query.sortby,
-  //       from: perPage * (page - 1),
-  //       to: perPage * page,
-  //     },
-  //   });
-  // }, [query]);
 
   return (
     <>
-      {<ToolBox type={type} />}
+      {/* {<ToolBox type={type} />} */}
       {/* {gridType === "grid" ? (
         <div className={`row product-wrapper ${gridClasses[itemsPerRow]}`}>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
@@ -77,31 +60,32 @@ function ProductListOne(props) {
           ))}
         </div>
       )} */}
-      <div className={`row product-wrapper ${gridClasses[itemsPerRow]}`}>
-        {products &&
-          products.map((item) => (
-            <div className="product-wrap" key={"shop-" + item.slug}>
-              <ProductThree product={item} isCat={false} />
-            </div>
-          ))}
-      </div>
-      {products && products.length === 0 ? (
-        <p className="ml-1">No products were found matching your selection.</p>
-      ) : (
-        ""
-      )}
-      <div className="toolbox toolbox-pagination">
-        <p className="show-info">
-          Showing
-          <span>
-            {/* {perPage * (page - 1) + 1} -{" "} */}
-            {Math.min(perPage * page, products.length)} of {total_products}
-          </span>
-          Products
-        </p>
+      {products && products.length > 0 ? (
+        <>
+          <div className={`row product-wrapper ${gridClasses[itemsPerRow]}`}>
+            {products &&
+              products.map((item) => (
+                <div className="product-wrap" key={"shop-" + item.slug}>
+                  <ProductThree product={item} isCat={false} />
+                </div>
+              ))}
+          </div>
+          <div className="toolbox toolbox-pagination">
+            <p className="show-info">
+              Showing
+              <span>
+                {/* {perPage * (page - 1) + 1} -{" "} */}
+                {Math.min(perPage * page, products.length)} of {total_products}
+              </span>
+              Products
+            </p>
 
-        <Pagination totalPage={total_products} />
-      </div>
+            {/* <Pagination totalPage={total_products} /> */}
+          </div>
+        </>
+      ) : (
+        <p className="ml-1">No products were found matching your selection.</p>
+      )}
     </>
   );
 }

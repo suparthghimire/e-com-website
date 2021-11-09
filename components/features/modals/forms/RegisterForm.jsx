@@ -27,7 +27,6 @@ function RegisterForm() {
         body: JSON.stringify(user),
       });
       const response_user = await response.json();
-      console.log("user:", response_user);
       if (response.status == 400) {
         // Validation Error
         const error = new Error("Validation Error");
@@ -83,11 +82,9 @@ function RegisterForm() {
         autoClose: 1200,
       });
       setServerErrors(null);
-
       router.push("/");
     } catch (error) {
       toast.error("Error While Registering!", { autoClose: 1200 });
-      console.error(error, error.data);
       let errors = [];
       Object.keys(error.data).forEach((key) => {
         error.data[key].forEach((error) => {
@@ -158,11 +155,25 @@ function RegisterForm() {
             type="number"
             className="form-control"
             id="phone_number"
-            {...register("phone_number", { required: true })}
+            {...register("phone_number", {
+              required: true,
+              validate: (phone) => {
+                if (isNaN(phone)) return false;
+                if (phone.length === 10) return phone[0] == 9;
+                else if (phone.length === 8) return phone[0] == 0;
+                return false;
+              },
+            })}
             placeholder="Your Phone Number *"
           />
-          {errors.phone_number && (
-            <small className="error-msg">Phone Number is Required</small>
+          {errors.phone_number ? (
+            errors.phone_number.type === "validate" ? (
+              <small className="error-msg">Phone Number Format Invalid</small>
+            ) : (
+              <small className="error-msg">Phone Number is Required</small>
+            )
+          ) : (
+            ""
           )}
         </div>
         <div className="form-group">

@@ -12,7 +12,6 @@ import { toDecimal, getTotalPrice } from "~/utils";
 function Cart(props) {
   const { cartList, removeFromCart, updateCart } = props;
   const [cartItems, setCartItems] = useState([]);
-  console.log(updateCart);
   useEffect(() => {
     setCartItems([...cartList]);
   }, [cartList]);

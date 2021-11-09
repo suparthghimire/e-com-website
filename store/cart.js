@@ -27,7 +27,6 @@ function cartReducer(state = initialState, action) {
         ) > -1
       ) {
         let tmpData = state.data.reduce((acc, cur) => {
-          console.log(cur, tmpProduct);
           if (
             cur.name === tmpProduct.name &&
             cur.color === tmpProduct.color &&

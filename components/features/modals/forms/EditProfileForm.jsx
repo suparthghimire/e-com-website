@@ -21,7 +21,6 @@ export default function EditProfileForm({ user }) {
       phone_number: data.phone,
       state: data.state,
     };
-    console.log(formUser);
     toast.info("Saving Changes", {
       autoClose: 2000,
     });
@@ -35,7 +34,6 @@ export default function EditProfileForm({ user }) {
         body: JSON.stringify(formUser),
       });
       const data = await response.json();
-      console.log(data);
       if (response.status === 400) {
         //validation error
         const error = new Error("Validation Error");
@@ -60,7 +58,6 @@ export default function EditProfileForm({ user }) {
       toast.error("Error While Saving Changes!", {
         autoClose: 1200,
       });
-      console.error(error, error.data);
       let errors = [];
       Object.keys(error.data).forEach((key) => {
         error.data[key].forEach((error) => {
@@ -118,11 +115,25 @@ export default function EditProfileForm({ user }) {
                 {...register("phone", {
                   required: true,
                   value: user.phone_number,
+                  validate: (phone_no) => {
+                    if (isNaN(phone_no)) return false;
+                    if (phone_no.length === 10) return phone_no[0] == 9;
+                    else if (phone_no.length === 8) return phone_no[0] == 0;
+                    return false;
+                  },
                 })}
                 id="phone"
               />
-              {errors.phone && (
-                <small className="error-msg">Phone Number is Required</small>
+              {errors.phone ? (
+                errors.phone.type === "validate" ? (
+                  <small className="error-msg">
+                    Phone Number Format Invalid
+                  </small>
+                ) : (
+                  <small className="error-msg">Phone Number is Required</small>
+                )
+              ) : (
+                ""
               )}
             </div>
           </div>

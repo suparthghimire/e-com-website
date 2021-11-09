@@ -10,10 +10,10 @@ export default function Footer() {
               <div className="widget widget-about">
                 <ALink href="/" className="logo-footer">
                   <img
-                    src="./images/home/logo-footer.png"
+                    src="./images/home/vamalogo.png"
                     alt="logo-footer"
-                    width="154"
-                    height="43"
+                    width="250"
+                    height="71.8"
                   />
                 </ALink>
 
@@ -164,7 +164,7 @@ export default function Footer() {
           <div className="footer-left">
             <figure className="payment">
               <img
-                src="./images/payment.png"
+                src="./images/payment_new.png"
                 alt="payment"
                 width="159"
                 height="29"

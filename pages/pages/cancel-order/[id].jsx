@@ -16,7 +16,6 @@ export default function OrderCancel(props) {
       ["single-order", { id, access }],
       GET_SINGLE_ORDER
     );
-    console.log(data, status);
     if (status === "loading") return <CustomLoader type="Grid" />;
     if (data.order_status !== "ORDERED")
       return (

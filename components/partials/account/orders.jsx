@@ -8,7 +8,6 @@ export default function Orders() {
     ["All Orders", { access: Cookie.get("rameti_ec_access") }],
     GET_ALL_ORDERS
   );
-  console.log(data, status);
   if (status === "loading") return <CustomLoader type="Grid" />;
   return (
     <>

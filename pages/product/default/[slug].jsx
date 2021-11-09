@@ -24,7 +24,6 @@ function ProductDefault() {
     ["single-product", { slug }],
     GET_SINGLE_PRODUCT
   );
-  console.log(data, status);
   if (data?.detail) return <Error404 />;
   const [loaded, setLoadingState] = useState(false);
   const product = data;
@@ -62,9 +61,7 @@ function ProductDefault() {
                 <DetailOne product={data} isSticky={true} isDesc={true} />
               </div>
             </div>
-
             <DescOne product={data} isGuide={false} isShipping={true} />
-
             <RelatedProducts products={related} />
           </div>
         </div>
@@ -111,17 +108,3 @@ function ProductDefault() {
 //   ProductDefault
 // );
 export default ProductDefault;
-
-ProductDefault.getInitialProps = async (ctx) => {
-  const slug = ctx.query.slug;
-  try {
-    const product = await GET_SINGLE_PRODUCT(slug);
-    const api_product = {
-      product: product[0],
-      error: product[1],
-    };
-    return { api_product };
-  } catch (error) {
-    console.error(error);
-  }
-};

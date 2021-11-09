@@ -12,12 +12,10 @@ import { TITLE } from "~/config";
 function Shop() {
   const router = useRouter();
   const title = router.query.title;
-  console.log(title);
   const { data, status } = useQuery(
     ["search-products", { title }],
     GET_SEARCH_PRODUCTS
   );
-  console.log(data, status);
   return (
     <main className="main shop">
       <Helmet>

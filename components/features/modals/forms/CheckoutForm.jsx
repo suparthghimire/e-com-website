@@ -8,13 +8,14 @@ import router from "next/router";
 import { KHALTI_CREDS } from "~/config";
 import KhaltiCheckout from "khalti-checkout-web";
 import { POST_ORDER, POST_PROMO } from "~/api/queries";
-import { cartActions } from "~/store/cart";
 export default function CheckoutForm(props) {
   const [promoServerError, setPromoServerError] = useState({ message: null });
   const [promoCodeValue, setPromoCodeValue] = useState("");
   const [promoDiscount, setPromoDiscount] = useState(0);
   const empty_cart = () => {
-    cartActions.updateCart([]);
+    props.cartList.forEach((product) => {
+      props.removeFromCart(product);
+    });
   };
   // order form
   const {
@@ -36,12 +37,10 @@ export default function CheckoutForm(props) {
       if (data[1]) throw data[1];
       else if (data[0]) {
         toast.success("Promo Code Applied Successfully!", { autoClose: 1200 });
-        console.log(data[0]);
         setPromoDiscount(data[0].amount);
         setPromoServerError({ message: null });
       }
     } catch (error) {
-      console.error(error);
       toast.error("Error", { autoClose: 1200 });
       setPromoDiscount(0);
       setPromoServerError({ message: error.message });
@@ -81,7 +80,6 @@ export default function CheckoutForm(props) {
         productUrl: KHALTI_CREDS.PRODUCT_URL,
         eventHandler: {
           onSuccess(payload) {
-            console.log(payload);
             const payment = {
               phone: payload.mobile,
               idx: payload.idx,
@@ -95,14 +93,12 @@ export default function CheckoutForm(props) {
             };
             POST_ORDER(submit_data)
               .then((data) => {
-                console.log(data);
                 toast.success("Order Placed and Paid Successfully!");
                 empty_cart();
                 router.push("/pages/order");
               })
               .catch((error) => {
                 toast.error("Error While Placing your Order!");
-                console.error(error);
               });
           },
           onError(error) {
@@ -110,11 +106,8 @@ export default function CheckoutForm(props) {
             toast.error("THere Was an Error While Processing Payment", {
               autoClose: 1200,
             });
-            console.log(error);
           },
-          onClose() {
-            console.log("widget is closing");
-          },
+          onClose() {},
         },
         paymentPreference: [
           "KHALTI",
@@ -138,7 +131,6 @@ export default function CheckoutForm(props) {
         })
         .catch((err) => {
           toast.error("Order Placed Successfully!", { autoClose: 1200 });
-          console.error(err);
         });
     }
   };
@@ -194,37 +186,56 @@ export default function CheckoutForm(props) {
             </h3>
             <div className="row">
               <div className="col-xs-6">
-                <label htmlFor="delivery_address">
-                  Enter Billing and Shipping Address
-                </label>
-                {errors.delivery_address && (
-                  <small className="error-msg mt-0">
-                    Billing/Shipping Address is Required
-                  </small>
-                )}
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Address *"
-                  id="delivery_address"
-                  {...register("delivery_address", { required: true })}
-                />
+                <div className="form-group">
+                  <label htmlFor="delivery_address">
+                    Enter Billing and Shipping Address
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control mb-0"
+                    placeholder="Address *"
+                    id="delivery_address"
+                    {...register("delivery_address", { required: true })}
+                  />
+                  {errors.delivery_address && (
+                    <small className="error-msg mt-0">
+                      Billing/Shipping Address is Required
+                    </small>
+                  )}
+                </div>
               </div>
               <div className="col-xs-6">
-                <label htmlFor="contact_number">Contact Number</label>
-                {errors.contact_number && (
-                  <small className="error-msg mt-0">
-                    Contact Number is Required
-                  </small>
-                )}
-
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder="Contact Number *"
-                  id="contact_number"
-                  {...register("contact_number", { required: true })}
-                />
+                <div className="form-group mb-3">
+                  <label htmlFor="contact_number">Contact Number</label>
+                  <input
+                    type="number"
+                    className="form-control mb-0"
+                    placeholder="Contact Number *"
+                    id="contact_number"
+                    {...register("contact_number", {
+                      required: true,
+                      validate: (phone_no) => {
+                        if (isNaN(phone_no)) return false;
+                        if (phone_no.length === 10) return phone_no[0] == 9;
+                        else if (phone_no.length === 8) return phone_no[0] == 0;
+                        return false;
+                      },
+                    })}
+                  />
+                  {errors.contact_number ? (
+                    errors.contact_number.type === "validate" ? (
+                      <small className="error-msg">
+                        Contact Number Format Invalid
+                      </small>
+                    ) : (
+                      <small className="error-msg">
+                        Contact Number is Required
+                      </small>
+                    )
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
             </div>
             <label>Order Notes (Optional)</label>
@@ -389,7 +400,7 @@ export default function CheckoutForm(props) {
                       <div className="custom-radio">
                         <input
                           type="radio"
-                          {...register("payment_method")}
+                          {...register("payment_method", { required: true })}
                           value="cod"
                           id="cod"
                         />
@@ -398,14 +409,20 @@ export default function CheckoutForm(props) {
                       <div className="custom-radio">
                         <input
                           type="radio"
-                          {...register("payment_method")}
+                          {...register("payment_method", { required: true })}
                           value="khalti"
                           id="khalti"
                         />
+
                         <label className="form-control-label" htmlFor="khalti">
                           Pay With Khalti
                         </label>
                       </div>
+                      {errors.payment_method ?? (
+                        <small className="error-msg">
+                          Select Atleast One Payment Method
+                        </small>
+                      )}
                     </div>
                   </div>
                 </div>

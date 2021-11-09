@@ -20,8 +20,6 @@ export default function ForgotPasswordForm(props) {
       password: data.new_password,
       token: props.token,
     };
-    console.log("Here");
-    console.log(submit_data, data);
     try {
       const response = await fetch(`${BASE_URL}/password_reset/confirm/`, {
         method: "POST",
@@ -31,7 +29,6 @@ export default function ForgotPasswordForm(props) {
         body: JSON.stringify(submit_data),
       });
       const response_data = await response.json();
-      console.log(response_data);
       if (response.status === 400) {
         //validation error
         const error = new Error("Validation Error");
@@ -47,7 +44,6 @@ export default function ForgotPasswordForm(props) {
       toast.success("Password Changed Successfully!", { autoClose: 1200 });
       router.push("/pages/login");
     } catch (error) {
-      console.error(error);
       let errors = [];
       Object.keys(error.data).forEach((key) => {
         error.data[key].forEach((item) => {

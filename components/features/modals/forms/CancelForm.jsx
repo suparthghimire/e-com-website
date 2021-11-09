@@ -13,7 +13,6 @@ export default function CancelForm(props) {
   const [serverError, setServerError] = useState([]);
   const handle_cancel = async (data) => {
     data = { ...data, order_status: "CANCELED" };
-    console.log(data);
     try {
       toast.info("Cancelling Your Order", { autoClose: 1200 });
       const response = await fetch(`${BASE_URL}/order/${props.id}/cancel/`, {
@@ -51,7 +50,6 @@ export default function CancelForm(props) {
       router.push("/pages/order/");
     } catch (error) {
       setServerError(error);
-      console.error(error);
     } finally {
       document.querySelector("textarea").value = "";
     }

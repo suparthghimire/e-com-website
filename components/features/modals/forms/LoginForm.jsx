@@ -33,7 +33,6 @@ export default function LoginForm() {
         error.data = tokens;
         throw error;
       }
-      console.log(response.status);
       if (response.status === 401) {
         //validation error
         const error = new Error("Invalid Token Error");
@@ -54,7 +53,6 @@ export default function LoginForm() {
         throw error;
       }
 
-      console.log("Tokens: ", tokens);
       Cookie.set("rameti_ec_access", tokens.access);
       Cookie.set("rameti_ec_refresh", tokens.refresh);
       toast.success("Login Successful!", {
@@ -68,8 +66,6 @@ export default function LoginForm() {
       toast.error("Error", {
         autoClose: 1200,
       });
-      console.error(error.data);
-      console.error(error.message);
       setServerError({
         message: error.data,
       });

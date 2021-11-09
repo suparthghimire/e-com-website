@@ -436,15 +436,21 @@ export const categorySlider = {
   margin: 10,
   responsive: {
     0: {
-      items: 2,
-      dots: true,
+      items: 1,
+      dots: false,
       nav: false,
+    },
+    550: {
+      items: 2,
     },
     768: {
       items: 3,
     },
     992: {
       items: 3,
+    },
+    1100: {
+      items: 4,
     },
     1200: {
       items: 4,
