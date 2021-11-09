@@ -18,7 +18,6 @@ function Shop() {
   const size = router.query.sizes || "";
   const page_size = router.query.page_size || "100";
   const page = router.query.page || "1";
-  console.log(page_size, page);
   const { data, status } = useQuery(
     [
       "single-category",
@@ -26,7 +25,6 @@ function Shop() {
     ],
     GET_CATEGORY
   );
-  console.log("router.pathname", router);
   const next_page_url = data && data.next ? new URL(data.next) : null;
   const next_page = next_page_url
     ? next_page_url.searchParams.get("page")

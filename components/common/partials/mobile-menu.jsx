@@ -12,7 +12,6 @@ function MobileMenu(props) {
   const [timer, setTimer] = useState(null);
   const router = useRouter();
   const { data, status } = useQuery(["nav-items", {}], GET_NAV_ITEMS);
-  console.log(data);
   useEffect(() => {
     window.addEventListener("resize", hideMobileMenuHandler);
     document.querySelector("body").addEventListener("click", onBodyClick);

@@ -77,7 +77,6 @@ function DetailOne(props) {
   const setColorHandler = (color, index) => {
     setCurColor(color);
     const active_color = colorList.colors[index];
-    console.log("active_color", active_color);
     setColorList({ ...colorList, active: active_color });
   };
   const toggleActiveColorBtnStyle = (index) => {

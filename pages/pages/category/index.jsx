@@ -11,8 +11,6 @@ export default function Category() {
   if (status === "loading") return <CustomLoader type="Grid" />;
   const category = data?.results?.category;
   const banner = data?.results?.banner;
-  console.log(category);
-  console.log(data);
   return (
     <>
       {/* caurosel */}

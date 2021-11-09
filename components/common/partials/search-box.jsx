@@ -98,7 +98,6 @@ function SearchForm() {
       const contains = search
         .split("")
         .some((letter) => title.includes(letter));
-      console.log(title, search.split(""), contains);
       return contains;
     });
     setFilterProducts(filteredProducts);

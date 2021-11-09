@@ -49,7 +49,6 @@ export default function ForgotPasswordForm() {
         });
       });
       setServerError(errors);
-      console.error(error);
     } finally {
       setLoadingSend(false);
       document.querySelectorAll("input").forEach((inp) => (inp.value = ""));

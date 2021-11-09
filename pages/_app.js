@@ -44,7 +44,6 @@ const App = ({ Component, pageProps, store }) => {
   //         setAuth(true);
   //       })
   //       .catch((err) => {
-  //         console.error(err.message);
   //         setAuth(false);
   //       })
   //       .finally(() => {
@@ -76,7 +75,6 @@ const App = ({ Component, pageProps, store }) => {
             })
               .then((res) => res.json())
               .then((token) => {
-                console.log(token);
                 if (token && token.access) {
                   setAccessToken(token.access);
                   Cookie.set("rameti_ec_access", token.access);
@@ -85,13 +83,11 @@ const App = ({ Component, pageProps, store }) => {
                   throw Error("Invalid Token Error");
               });
           } else {
-            console.log(user);
             setUser(user);
             setAuth(true);
           }
         })
         .catch((err) => {
-          console.error(err.message);
           setAuth(false);
         })
         .finally(() => {

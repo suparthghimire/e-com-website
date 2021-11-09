@@ -13,7 +13,6 @@ export default function CheckoutForm(props) {
   const [promoCodeValue, setPromoCodeValue] = useState("");
   const [promoDiscount, setPromoDiscount] = useState(0);
   const empty_cart = () => {
-    console.log("cart remove", props);
     props.cartList.forEach((product) => {
       props.removeFromCart(product);
     });
@@ -38,12 +37,10 @@ export default function CheckoutForm(props) {
       if (data[1]) throw data[1];
       else if (data[0]) {
         toast.success("Promo Code Applied Successfully!", { autoClose: 1200 });
-        console.log(data[0]);
         setPromoDiscount(data[0].amount);
         setPromoServerError({ message: null });
       }
     } catch (error) {
-      console.error(error);
       toast.error("Error", { autoClose: 1200 });
       setPromoDiscount(0);
       setPromoServerError({ message: error.message });
@@ -83,7 +80,6 @@ export default function CheckoutForm(props) {
         productUrl: KHALTI_CREDS.PRODUCT_URL,
         eventHandler: {
           onSuccess(payload) {
-            console.log(payload);
             const payment = {
               phone: payload.mobile,
               idx: payload.idx,
@@ -97,14 +93,12 @@ export default function CheckoutForm(props) {
             };
             POST_ORDER(submit_data)
               .then((data) => {
-                console.log(data);
                 toast.success("Order Placed and Paid Successfully!");
                 empty_cart();
                 router.push("/pages/order");
               })
               .catch((error) => {
                 toast.error("Error While Placing your Order!");
-                console.error(error);
               });
           },
           onError(error) {
@@ -112,11 +106,8 @@ export default function CheckoutForm(props) {
             toast.error("THere Was an Error While Processing Payment", {
               autoClose: 1200,
             });
-            console.log(error);
           },
-          onClose() {
-            console.log("widget is closing");
-          },
+          onClose() {},
         },
         paymentPreference: [
           "KHALTI",
@@ -140,7 +131,6 @@ export default function CheckoutForm(props) {
         })
         .catch((err) => {
           toast.error("Order Placed Successfully!", { autoClose: 1200 });
-          console.error(err);
         });
     }
   };

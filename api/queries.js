@@ -24,7 +24,6 @@ export const GET_SEARCH_PRODUCTS = async ({ queryKey }) => {
 };
 export const GET_ALL_ORDERS = async ({ queryKey }) => {
   const [_key, { access, offset, limit }] = queryKey;
-  console.log(offset, limit);
   const response = await fetch(
     `${BASE_URL}/order/?limit=${limit}&offset=${offset}`,
     {
@@ -38,7 +37,6 @@ export const GET_ALL_ORDERS = async ({ queryKey }) => {
 
 export const GET_SINGLE_ORDER = async ({ queryKey }) => {
   const [_key, { id, access }] = queryKey;
-  console.log(id, access);
   const response = await fetch(`${BASE_URL}/order/${id}/`, {
     headers: {
       Authorization: `Bearer ${access}`,
@@ -55,9 +53,7 @@ export const GET_NAV_ITEMS = async ({ queryKey }) => {
 export const GET_CATEGORY = async ({ queryKey }) => {
   const [_key, { slug, min_price, max_price, color, size, page, page_size }] =
     queryKey;
-  console.log("page, page_size", page, page_size);
   const url = `${BASE_URL}/category/${slug}/?min_price=${min_price}&max_price=${max_price}&color=${color}&size=${size}&page=${page}&page_size=${page_size}`;
-  console.log(url);
   const response = await fetch(url);
   return response.json();
 };
@@ -94,7 +90,6 @@ export const POST_ORDER = async (order_data) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(error);
     return [null, error];
   }
 };
@@ -121,7 +116,6 @@ const get_access_token = async (refresh) => {
     }
     return [{ token: access.access }, null];
   } catch (error) {
-    console.error(error);
     return [null, error];
   }
 };
@@ -147,7 +141,6 @@ const fetch_user = async (access) => {
     }
     return [user, null];
   } catch (error) {
-    console.error(error);
     return [null, error];
   }
 };
@@ -163,7 +156,6 @@ export const AUTHENTICATE = async (access, refresh) => {
     }
     if (user.code !== "token_not_valid") return [user, null];
   } catch (error) {
-    console.error(error);
     return [null, error];
   }
 };

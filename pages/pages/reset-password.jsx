@@ -33,11 +33,8 @@ function ForgotPassword(props) {
         if (res.status === 404) throw new Error("Not Found");
         return res.json();
       })
-      .then((data) => {
-        console.log(data);
-      })
+      .then((data) => {})
       .catch((err) => {
-        console.error(err);
         toast.error("Token Not Valid", { autoClose: 1200 });
         router.push("/");
       })

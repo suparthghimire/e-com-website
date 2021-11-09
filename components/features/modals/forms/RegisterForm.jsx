@@ -27,7 +27,6 @@ function RegisterForm() {
         body: JSON.stringify(user),
       });
       const response_user = await response.json();
-      console.log("user:", response_user);
       if (response.status == 400) {
         // Validation Error
         const error = new Error("Validation Error");
@@ -86,7 +85,6 @@ function RegisterForm() {
       router.push("/");
     } catch (error) {
       toast.error("Error While Registering!", { autoClose: 1200 });
-      console.error(error, error.data);
       let errors = [];
       Object.keys(error.data).forEach((key) => {
         error.data[key].forEach((error) => {

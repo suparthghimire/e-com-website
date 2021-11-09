@@ -23,7 +23,6 @@ function SidebarFilterOne(props) {
   const query = router.query;
 
   const { data, status } = useQuery(["home-data", {}], GET_HOME_DATA_NEW);
-  console.log(data?.results?.category);
 
   let tmpPrice = {
     max: query.max_price ? parseInt(query.max_price) : 1000,
@@ -32,7 +31,6 @@ function SidebarFilterOne(props) {
   const [filterPrice, setPrice] = useState(tmpPrice);
   const [isFirst, setFirst] = useState(true);
   let sidebarData = data && data?.results?.category;
-  console.log("Sudebar: ", sidebarData);
   // let timerId;
 
   // useEffect(() => {

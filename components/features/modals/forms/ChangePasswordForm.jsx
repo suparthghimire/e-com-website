@@ -1,8 +1,8 @@
-import { useForm } from 'react-hook-form'
-import { useRef, useState } from 'react'
-import { toast } from 'react-toastify'
-import { BASE_URL } from '../../../../config'
-import Cookie from 'js-cookie'
+import { useForm } from "react-hook-form";
+import { useRef, useState } from "react";
+import { toast } from "react-toastify";
+import { BASE_URL } from "../../../../config";
+import Cookie from "js-cookie";
 
 export default function ChangePassword() {
   const {
@@ -10,64 +10,63 @@ export default function ChangePassword() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm()
-  const [serverErrors, setServerErrors] = useState(null)
-  const new_password = useRef({})
-  new_password.current = watch('new_password', '')
+  } = useForm();
+  const [serverErrors, setServerErrors] = useState(null);
+  const new_password = useRef({});
+  new_password.current = watch("new_password", "");
 
   const handle_change_pwd = async (data) => {
     const body = {
       old_password: data.old_password,
       new_password: data.new_password,
-    }
-    toast.info('Changing your Password', {
+    };
+    toast.info("Changing your Password", {
       autoClose: 1200,
-    })
+    });
     try {
-      const access = Cookie.get('rameti_ec_access')
+      const access = Cookie.get("rameti_ec_access");
       const response = await fetch(`${BASE_URL}/changepassword/`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'content-type': 'application/json',
+          "content-type": "application/json",
           Authorization: `Bearer ${access}`,
         },
         body: JSON.stringify(body),
-      })
-      const data = await response.json()
-      console.log(data, response.status)
+      });
+      const data = await response.json();
       if (response.status == 400) {
         //validation error
-        const error = new Error('Validation Error')
-        error.status = 400
-        error.data = data
-        throw error
+        const error = new Error("Validation Error");
+        error.status = 400;
+        error.data = data;
+        throw error;
       } else if (response.status !== 200) {
-        const error = new Error('Unexpected Error')
-        error.status = 400
-        error.data = { message: ['Unexpected Error Occured'] }
-        throw error
+        const error = new Error("Unexpected Error");
+        error.status = 400;
+        error.data = { message: ["Unexpected Error Occured"] };
+        throw error;
       }
-      toast.success('Password Changed Successfully!', {
+      toast.success("Password Changed Successfully!", {
         autoClose: 1200,
-      })
-      setServerErrors(null)
+      });
+      setServerErrors(null);
     } catch (error) {
-      toast.error('Error. Passwords Reverted', {
+      toast.error("Error. Passwords Reverted", {
         autoClose: 1200,
-      })
-      console.error(error, error.data)
-      let errors = []
+      });
+      let errors = [];
       Object.keys(error.data).forEach((key) => {
-        if (!Array.isArray(error.data[key])) error.data[key] = [error.data[key]]
+        if (!Array.isArray(error.data[key]))
+          error.data[key] = [error.data[key]];
         error.data[key].forEach((error) => {
-          errors.push(error)
-        })
-      })
-      setServerErrors(errors)
+          errors.push(error);
+        });
+      });
+      setServerErrors(errors);
     } finally {
-      document.querySelectorAll('input').forEach((input) => (input.value = ''))
+      document.querySelectorAll("input").forEach((input) => (input.value = ""));
     }
-  }
+  };
 
   return (
     <div>
@@ -100,13 +99,15 @@ export default function ChangePassword() {
                 className="form-control"
                 placeholder="Old Password *"
                 name="old_password"
-                {...register('old_password', {
-                  required: 'Old Password is Required',
+                {...register("old_password", {
+                  required: "Old Password is Required",
                 })}
                 id="old_password"
               />
               {errors.old_password && (
-                <small className="error-msg">{errors.old_password.message}</small>
+                <small className="error-msg">
+                  {errors.old_password.message}
+                </small>
               )}
             </div>
           </div>
@@ -119,17 +120,19 @@ export default function ChangePassword() {
                 type="password"
                 className="form-control"
                 placeholder="New Password *"
-                {...register('new_password', {
-                  required: 'New Password is Required',
+                {...register("new_password", {
+                  required: "New Password is Required",
                   minLength: {
                     value: 5,
-                    message: 'Password Must be Atleast 5 Characters Long',
+                    message: "Password Must be Atleast 5 Characters Long",
                   },
                 })}
                 id="new_password"
               />
               {errors.new_password && (
-                <small className="error-msg">{errors.new_password.message}</small>
+                <small className="error-msg">
+                  {errors.new_password.message}
+                </small>
               )}
             </div>
           </div>
@@ -142,13 +145,16 @@ export default function ChangePassword() {
                 type="password"
                 className="form-control"
                 placeholder="New Password *"
-                {...register('re_new_password', {
-                  validate: (value) => value === new_password.current || 'Passwords Donot Match',
+                {...register("re_new_password", {
+                  validate: (value) =>
+                    value === new_password.current || "Passwords Donot Match",
                 })}
                 id="re_new_password"
               />
               {errors.re_new_password && (
-                <small className="error-msg">{errors.re_new_password.message}</small>
+                <small className="error-msg">
+                  {errors.re_new_password.message}
+                </small>
               )}
             </div>
           </div>
@@ -165,5 +171,5 @@ export default function ChangePassword() {
         </div>
       </form>
     </div>
-  )
+  );
 }

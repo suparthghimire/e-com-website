@@ -23,10 +23,8 @@ function Order(props) {
       ["all-orders", { access, limit, offset }],
       GET_ALL_ORDERS
     );
-    console.log(data, status);
     if (status === "loading") return <CustomLoader type="Grid" />;
     if (status === "error") return <Error404 />;
-    console.log(data);
     const toggleAccordian = (index) => {
       document
         .getElementById(`accordian-body-${index}`)
@@ -42,7 +40,6 @@ function Order(props) {
     const next_limit = next_page_url
       ? next_page_url.searchParams.get("limit")
       : null;
-    console.log(next_page_url, next_offset, next_limit);
     return (
       <main className="main order">
         <Helmet>
