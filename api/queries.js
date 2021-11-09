@@ -1,6 +1,6 @@
 import { BASE_URL, KHALTI_CREDS } from "../config";
 import Cookie from "js-cookie";
-
+import { http_validation } from "~/utils/helpers";
 export const GET_HOME_DATA_NEW = async ({ queryKey }) => {
   const response = await fetch(`${BASE_URL}/home/`);
   return response.json();
@@ -108,68 +108,81 @@ export const POST_ORDER = async (order_data) => {
     return [null, error];
   }
 };
-const get_access_token = async (refresh) => {
-  try {
-    const response = await fetch(`${BASE_URL}/refresh`, {
-      body: JSON.stringify({ refresh }),
-    });
-    const access = await response.json();
 
-    if (
-      response.status == 401 ||
-      (access && access.code && access.code == "token_not_valid")
-    ) {
-      const error = Error("Token Not Valid");
-      error.status = response.status;
-      error.data = access.detail;
-      throw error;
-    } else if (response.status !== 201) {
-      const error = Error("Unexpected Error");
-      error.status = response.status;
-      error.data = "Unexpected Error Occured";
-      throw error;
-    }
-    return [{ token: access.access }, null];
+export const GET_ACCESS_TOKEN = async (refresh) => {
+  try {
+    const response = await fetch(`${BASE_URL}/token/refresh/`, {
+      body: JSON.stringify({ refresh }),
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    const tokens = await response.json();
+    const validate_response = http_validation(response.status, tokens);
+    if (validate_response.message === "error") throw validate_response.detail;
+    Cookie.set("rameti_ec_access", tokens.access);
+    Cookie.set("rameti_ec_refresh", tokens.refresh);
+    return [tokens, null];
   } catch (error) {
     return [null, error];
   }
 };
-const fetch_user = async (access) => {
+
+export const GET_USER = async (access, refresh) => {
   try {
     const response = await fetch(`${BASE_URL}/me/`, {
       headers: {
-        "content-type": "application/json",
         Authorization: `Bearer ${access}`,
       },
     });
     const user = await response.json();
-    if (response.code === 401) {
-      const error = new Error("Token Not Valid");
-      error.data = user.detail;
-      error.status = response.status;
-      throw error;
-    } else if (response.code !== 201) {
-      const error = new Error("Unexpected Error");
-      error.data = "Unexpected Error Occured";
-      error.status = response.status;
-      throw error;
-    }
+    const validation_response = http_validation(response.status, user);
+    if (validation_response.message === "error")
+      throw validation_response.detail;
     return [user, null];
   } catch (error) {
     return [null, error];
   }
 };
-export const AUTHENTICATE = async (access, refresh) => {
+
+export const LOGIN = async (data) => {
   try {
-    let user = await fetch_user(access);
-    if (user && user.code && user.code === "token_not_valid") {
-      access = await get_access_token(refresh);
-      if (access[1]) throw access[1];
-      else {
-        user = await fetch_user(access);
-      }
-    }
-    if (user.code !== "token_not_valid") return [user, null];
+    const response = await fetch(`${BASE_URL}/token`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const tokens = await response.json();
+    const validate_response = http_validation(response.status, tokens);
+    if (validate_response.message === "error") throw validate_response.detail;
+    const time_in_seconds = 10;
+    const expire_date = new Date(new Date().getTime() + 10 * 60 * 60 * 1000);
+    Cookie.set("rameti_ec_access", tokens.access, { expires: expire_date });
+    Cookie.set("rameti_ec_refresh", tokens.refresh);
+    return [tokens, null];
+  } catch (error) {
+    return [null, error];
+  }
+};
+
+export const REGISTER = async (user) => {
+  try {
+    user.wholesaler = false;
+    const response = await fetch(`${BASE_URL}/register/`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    const response_user = await response.json();
+    const validation_response = http_validation(response.status, response_user);
+    if (validation_response.message === "error")
+      throw validation_response.detail;
+    return [response_user, null];
   } catch (error) {
     return [null, error];
   }

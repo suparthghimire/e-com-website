@@ -28,7 +28,7 @@ function IntroSection(props) {
           {props.category.map((item, index) => {
             if (index === 0)
               return (
-                <div className="grid-item height-x2">
+                <div className="grid-item height-x2" key={index}>
                   <Reveal keyframes={fadeIn} delay={200} triggerOnce>
                     <div
                       className="intro-slide1 banner banner-fixed overlay-dark banner-radius"
@@ -78,7 +78,7 @@ function IntroSection(props) {
               );
             else if (index < 3)
               return (
-                <div className="grid-item height-x1">
+                <div className="grid-item height-x1" key={index}>
                   <Reveal keyframes={fadeInLeftShorter} delay={200} triggerOnce>
                     <div
                       className="intro-banner intro-banner1 banner banner-fixed banner-radius 

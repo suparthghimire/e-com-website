@@ -6,96 +6,72 @@ import Helmet from "react-helmet";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { TITLE } from "~/config";
 import Layout from "~/components/layout";
-
 import makeStore from "~/store";
-import { demoActions } from "~/store/demo";
 import Cookie from "js-cookie";
-// import { currentDemo } from "~/server/queries";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "~/public/sass/style.scss";
-import { BASE_URL } from "../config";
-import { AUTHENTICATE } from "~/api/queries";
+import { GET_USER, GET_ACCESS_TOKEN } from "~/api/queries";
 const queryClient = new QueryClient();
 
 const App = ({ Component, pageProps, store }) => {
   const [auth, setAuth] = useState(false);
   const [loadingAuth, setLoadingAuth] = useState(true);
   const [accessToken, setAccessToken] = useState("");
+  const [refreshToken, setRefreshToken] = useState("");
   const [user, setUser] = useState(null);
   const refresh = Cookie.get("rameti_ec_refresh");
   const access = Cookie.get("rameti_ec_access");
 
-  // useEffect(() => {
-  //   if (!access || access == "" || access.trim() == "") {
-  //     setAuth(false);
-  //     setLoadingAuth(false);
-  //   } else {
-  //     setLoadingAuth(true);
-  //     fetch(`${BASE_URL}/me/`, {
-  //       headers: {
-  //         Authorization: `Bearer ${access}`,
-  //       },
-  //     })
-  //       .then((res) => res.json())
-  //       .then((user) => {
-  //         if (user.code && user.code === "token_not_valid")
-  //           throw Error("Invalid Token Error");
-  //         setUser(user);
-  //         setAuth(true);
-  //       })
-  //       .catch((err) => {
-  //         setAuth(false);
-  //       })
-  //       .finally(() => {
-  //         setLoadingAuth(false);
-  //       });
-  //   }
-  // }, [access]);
   useEffect(() => {
-    if (!access || access == "" || access.trim() == "") {
+    if (!access || access === undefined) {
       setAuth(false);
       setLoadingAuth(false);
+      GET_ACCESS_TOKEN(refresh)
+        .then(([tokens, error]) => {
+          //ask refresh token to generate another access token and set that access token for the user
+          if (error) throw error;
+          setAccessToken(tokens.access);
+          setRefreshToken(tokens.refresh);
+        })
+        .catch((error) => {
+          console.error(error);
+          // toast.error(
+          //   "Failed to Fetch Access Token Using Refresh Token. Login Again",
+          //   { autoClose: 1200 }
+          // );
+        });
+    } else if (
+      access === "" ||
+      access.trim() === "" ||
+      !refresh ||
+      refresh === "" ||
+      refresh.trim() === ""
+    ) {
+      const error = new Error("Unauthorized Error");
+      error.status = 401;
+      throw error;
     } else {
       setAccessToken(access);
+      setRefreshToken(refresh);
       setLoadingAuth(true);
-      fetch(`${BASE_URL}/me/`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((user) => {
-          if (user.code && user.code === "token_not_valid") {
-            fetch(`${BASE_URL}/token/refresh/`, {
-              body: JSON.stringify({ refresh }),
-              headers: {
-                "content-type": "application/json",
-              },
-              method: "POST",
-            })
-              .then((res) => res.json())
-              .then((token) => {
-                if (token && token.access) {
-                  setAccessToken(token.access);
-                  Cookie.set("rameti_ec_access", token.access);
-                }
-                if (token.code === "token_not_valid")
-                  throw Error("Invalid Token Error");
-              });
-          } else {
-            setUser(user);
-            setAuth(true);
-          }
+      GET_USER(access, refresh)
+        .then(([user, error]) => {
+          if (error) throw error;
+          setUser(user);
+          setAuth(true);
         })
-        .catch((err) => {
-          setAuth(false);
+        .catch((error) => {
+          if (error.status === 401) {
+            toast.error("Access/Refresh Token Invalid. Login Again", {
+              autoClose: 1200,
+            });
+          }
         })
         .finally(() => {
           setLoadingAuth(false);
         });
     }
-  }, [accessToken, access]);
-
+  }, [access, refresh, refreshToken, accessToken]);
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>

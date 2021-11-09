@@ -948,25 +948,6 @@ input[type="number"] {
   position: relative;
 }
 
-// .active-color-box::before {
-//     position: absolute;
-//     left: calc(0px - 2px);
-//     border: 0;
-//     border-right: 2px solid orangered;
-//     border-bottom: 2px solid orangered;
-//     background-color: orangered;
-//     content: "\f00c";
-//     color: white;
-//     display: grid;
-//     font-size: 0.9rem;
-//     // padding-bottom: 5rem;
-//     place-items: center;
-//     font-family: "Font Awesome 5 Free";
-//     width: 1.7rem;
-//     height: 100%;
-//     animation: slide 150ms ease-in-out forwards;
-//     transform-origin: left;
-// }
 @keyframes slide {
   0% {
     transform: scale(0, 1);

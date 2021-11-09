@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { BASE_URL } from "../../../../config";
+import { LOGIN, REGISTER } from "~/api/queries";
 import { useForm } from "react-hook-form";
-import Cookie from "js-cookie";
 import { useRouter } from "next/router";
 function RegisterForm() {
   const router = useRouter();
@@ -11,7 +10,10 @@ function RegisterForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [serverErrors, setServerErrors] = useState(null);
+  const [serverErrors, setServerErrors] = useState({
+    type: null,
+    errors: null,
+  });
 
   const handle_register = async (user) => {
     toast.info("Registering You. Please Wait...", {
@@ -19,95 +21,46 @@ function RegisterForm() {
     });
     user.wholesaler = false;
     try {
-      const response = await fetch(`${BASE_URL}/register/`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
-      const response_user = await response.json();
-      if (response.status == 400) {
-        // Validation Error
-        const error = new Error("Validation Error");
-        error.status = 400;
-        error.data = response_user;
-        throw error;
-      } else if (response.status !== 201) {
-        const error = new Error("Unexpected Error");
-        error.status = response.status;
-        error.data = {
-          message: ["Unexpected Error Occured"],
-        };
-        throw error;
+      const [reg_user, reg_error] = await REGISTER(user);
+      if (!reg_user) {
+        throw { type: "reg", data: reg_error };
       }
       toast.success("Registered Successfully!", { autoClose: 1200 });
-      const register_response = await fetch(`${BASE_URL}/token`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ email: user.email, password: user.password }),
+      const [tokens, login_error] = await LOGIN({
+        email: user.email,
+        password: user.password,
       });
-      const tokens = await register_response.json();
-      if (register_response.status === 400) {
-        //validation error
-        const error = new Error("Validation Error");
-        error.status = 400;
-        error.data = tokens;
-        throw error;
-      }
-      if (register_response.status === 401) {
-        //validation error
-        const error = new Error("Invalid Token Error");
-        error.status = 401;
-        error.data = tokens;
-        throw error;
-      } else if (register_response.status !== 200) {
-        const error = new Error("Unexpected Error");
-        error.status = register_response.status;
-        error.data = { detail: "Unexpected Error Occured" };
-        throw error;
-      }
-      if (!tokens) {
-        // undefined error
-        const error = new Error("Token Not Found Error");
-        error.status = register_response.status;
-        error.data = { detail: "Failed to Grab Tokens" };
-        throw error;
-      }
-      Cookie.set("rameti_ec_access", tokens.access);
-      Cookie.set("rameti_ec_refresh", tokens.refresh);
-      toast.success("Login Successful!", {
-        autoClose: 1200,
-      });
-      setServerErrors(null);
+      if (!tokens) throw { type: "login", data: login_error };
+      toast.success("Login Successful!", { autoClose: 1200 });
       router.push("/");
+      setServerErrors(null);
     } catch (error) {
-      toast.error("Error While Registering!", { autoClose: 1200 });
-      let errors = [];
-      Object.keys(error.data).forEach((key) => {
-        error.data[key].forEach((error) => {
-          errors.push(error);
+      if (error.type === "reg") {
+        let errors = [];
+        Object.keys(error.data.data).forEach((err) => {
+          error.data.data[err].forEach((item) => errors.push(item));
         });
-      });
-      setServerErrors(errors);
-    } finally {
-      document.querySelectorAll("input").forEach((item) => (item.value = ""));
-      document
-        .querySelectorAll("input[type='checkbox']")
-        .forEach((item) => (item.checked = false));
+        setServerErrors({ type: "reg", errors });
+      } else if (error.type === "login") {
+        setServerErrors({ type: "login", errors: error.data.data });
+      }
     }
   };
   return (
     <div>
-      {serverErrors && (
+      {serverErrors && serverErrors.type === "reg" ? (
         <div className="alert alert-danger mb-2">
           Errors:
-          {serverErrors.map((err) => (
+          {serverErrors.errors.map((err) => (
             <li>{err}</li>
           ))}
         </div>
+      ) : serverErrors && serverErrors.type === "login" ? (
+        <div className="alert alert-danger mb-2">
+          Error: {serverError?.message.detail}
+        </div>
+      ) : (
+        ""
       )}
       <form onSubmit={handleSubmit(handle_register)}>
         <div className="form-group">

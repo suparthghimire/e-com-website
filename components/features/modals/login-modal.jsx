@@ -49,6 +49,9 @@ function LoginModal(props) {
     Cookie.set("rameti_ec_access", "", {
       expires: 0.000000001,
     });
+    Cookie.set("rameti_ec_refresh", "", {
+      expires: 0.000000001,
+    });
     setOpen(false);
     router.push("/");
     toast.success("Successfully Logged Out", { autoClose: 1200 });
