@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Helmet from "react-helmet";
 import ALink from "~/components/features/custom-link";
 import SidebarFilterOne from "~/components/partials/shop/sidebar/sidebar-filter-one";
@@ -18,9 +18,7 @@ function Shop() {
   const color = router.query.colors || "";
   const size = router.query.sizes || "";
   const page_size = router.query.page_size || "7";
-
   const [pageNo, setPageNo] = useState("1");
-
   const { products, loading, errors, hasMore } = GET_CATEGORY({
     slug,
     min_price,
@@ -30,8 +28,7 @@ function Shop() {
     page: pageNo,
     page_size,
   });
-
-  if (loading) "";
+  if (loading) return <CustomLoader type="Grid" />;
   return (
     <main className="main shop">
       <Helmet>

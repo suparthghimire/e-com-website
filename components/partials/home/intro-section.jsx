@@ -12,7 +12,9 @@ import {
 } from "~/utils/data/keyframes";
 
 function IntroSection(props) {
-  if (props.category.length <= 0) return <div>No Categories Found!</div>;
+  if (props.category.length <= 0)
+    return <div className="">No Categories Found!</div>;
+  console.log(props.category);
   return (
     <section className="intro-section">
       <div className="container">

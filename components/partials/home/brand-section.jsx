@@ -6,7 +6,14 @@ import OwlCarousel from "~/components/features/owl-carousel";
 import { brandSlider } from "~/utils/data/carousel";
 import { fadeIn } from "~/utils/data/keyframes";
 
-function BrandSection() {
+function BrandSection(props) {
+  const { brands } = props;
+  // if (!brands || brands === null || brands.length <= 0)
+  //   return (
+  //     <div className="d-flex mt-5 mb-5 w-100 justify-content-center">
+  //       <h5>No Brands Found</h5>
+  //     </div>
+  //   );
   return (
     <Reveal keyframes={fadeIn} duration={1200} delay={300} triggerOnce>
       <section className="brands mt-10 pt-3 mb-7">

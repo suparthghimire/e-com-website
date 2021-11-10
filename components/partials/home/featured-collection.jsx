@@ -10,7 +10,12 @@ import { fadeIn, fadeInRightShorter } from "~/utils/data/keyframes";
 
 function FeaturedCollection(props) {
   const { products } = props;
-
+  if (products.length <= 0)
+    return (
+      <div className="d-flex mt-5 mb-5 w-100 justify-content-center">
+        <h5>No Featured Products Found</h5>
+      </div>
+    );
   return (
     <Reveal keyframes={fadeIn} delay={300} duration={1200} triggerOnce>
       <section className="product-wrapper mt-10 pt-3">
@@ -32,32 +37,6 @@ function FeaturedCollection(props) {
               </Reveal>
             ))}
         </OwlCarousel>
-
-        {/* {loading ? (
-          <OwlCarousel adClass="owl-theme owl-nav-full" options={productSlider}>
-            {[1, 2, 3, 4, 5].map((item) => (
-              <div
-                className="product-loading-overlay"
-                key={"featured-skel-" + item}
-              ></div>
-            ))}
-          </OwlCarousel>
-        ) : (
-          <OwlCarousel adClass="owl-theme owl-nav-full" options={productSlider}>
-            {products &&
-              products.map((item, index) => (
-                <Reveal
-                  keyframes={fadeInRightShorter}
-                  delay={300 + 100 * index}
-                  duration={1200}
-                  triggerOnce
-                  key={`featured-product-${index}`}
-                >
-                  <ProductThree product={item} isCat={false} />
-                </Reveal>
-              ))}
-          </OwlCarousel>
-        )} */}
       </section>
     </Reveal>
   );

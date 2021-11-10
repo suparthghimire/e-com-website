@@ -10,11 +10,11 @@ export default function Footer() {
               <div className="widget widget-about">
                 <ALink href="/" className="logo-footer">
                   <img
-                    src="./images/home/vamalogo.png"
+                    src="./images/home/vamalogo_edit.png"
                     alt="logo-footer"
-                    width="250"
-                    height="71.8"
+                    width="100"
                   />
+                  {/* height="71.8" */}
                 </ALink>
 
                 <div className="widget-contact-info widget-collapsible">
