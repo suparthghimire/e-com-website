@@ -8,7 +8,7 @@ export const fadeIn = keyframes`{
     to {
         opacity:1;
     }
-}`
+}`;
 
 export const fadeInRightShorter = keyframes`
 from {
@@ -45,7 +45,7 @@ export const fadeInLeftShorter = keyframes`{
         opacity: 1;
         transform: none
     }
-}`
+}`;
 
 export const fadeInLeft = keyframes`
 0% {
@@ -69,7 +69,7 @@ from {
 to {
     opacity:1;
     transform:none
-}`
+}`;
 
 export const fadeInUp = keyframes`
 0% {
@@ -82,7 +82,7 @@ to {
     -webkit-transform: translateZ( 0 );
     opacity: 1;
     transform: translateZ( 0 )
-}`
+}`;
 
 export const fadeInDownShorter = keyframes`
 from {
@@ -94,7 +94,7 @@ from {
 to {
     opacity: 1;
     transform: none
-}`
+}`;
 
 export const fadeInDown = keyframes`
 0% {
@@ -107,7 +107,7 @@ to {
     -webkit-transform: translateZ( 0 );
     opacity: 1;
     transform: translateZ( 0 )
-}`
+}`;
 
 export const blurIn = keyframes`{
     from {
@@ -120,7 +120,7 @@ export const blurIn = keyframes`{
         filter: blur(0);
         transform: none 
     }
-}`
+}`;
 
 export const grayOut = keyframes`{
     from {
@@ -134,7 +134,7 @@ export const grayOut = keyframes`{
         opacity: .0;
         filter: grayscale(100%);
     }
-}`
+}`;
 
 export const dotPulse = keyframes`{
     from {
@@ -146,7 +146,7 @@ export const dotPulse = keyframes`{
         opacity:0;
         transform:scale(1)
     }
-}`
+}`;
 
 export const maskUp = keyframes`{
     from {
@@ -156,7 +156,7 @@ export const maskUp = keyframes`{
     to {
         transform: translate(0,0)
     }
-}`
+}`;
 
 export const maskRight = keyframes`{
     from {
@@ -165,7 +165,7 @@ export const maskRight = keyframes`{
     to {
         transform: translate(0,0)
     }
-}`
+}`;
 
 export const maskDown = keyframes`{
     from {
@@ -174,7 +174,7 @@ export const maskDown = keyframes`{
     to {
         transform: translate(0,0)
     }
-}`
+}`;
 
 export const maskLeft = keyframes`{
     from {
@@ -183,7 +183,7 @@ export const maskLeft = keyframes`{
     to {
         transform: translate(0,0)
     }
-}`
+}`;
 
 export const slideInUp = keyframes`{
     0% {
@@ -194,7 +194,7 @@ export const slideInUp = keyframes`{
     to {
         transform: translateZ(0)
     }
-}`
+}`;
 
 export const slideInDown = keyframes`{
     0% {
@@ -205,7 +205,7 @@ export const slideInDown = keyframes`{
     to {
         transform: translateZ(0)
     }
-}`
+}`;
 
 export const slideInLeft = keyframes`{
     0% {
@@ -216,7 +216,7 @@ export const slideInLeft = keyframes`{
     to {
         transform: translateZ(0)
     }
-}`
+}`;
 
 export const slideInRight = keyframes`{
     0% {
@@ -227,7 +227,7 @@ export const slideInRight = keyframes`{
     to {
         transform: translateZ(0)
     }
-}`
+}`;
 
 export const flipInX = keyframes`{
     0% {
@@ -239,7 +239,7 @@ export const flipInX = keyframes`{
     to {
         transform: perspective(400px)
     }
-}`
+}`;
 
 export const flipInY = keyframes`{
   0% {
@@ -251,7 +251,7 @@ export const flipInY = keyframes`{
   to {
       transform: perspective(400px);
   }
-}`
+}`;
 
 export const flipOutY = keyframes`{
     0% {
@@ -263,7 +263,7 @@ export const flipOutY = keyframes`{
         opacity: 0;
         transform: perspective(400px) rotateY(90deg)
     }
-}`
+}`;
 
 export const brightIn = keyframes` {
     0% {
@@ -274,7 +274,7 @@ export const brightIn = keyframes` {
     to {
         filter: brightness(100%)
     }
-}`
+}`;
 
 export const zoomInShorter = keyframes`{
     0%{
@@ -285,7 +285,7 @@ export const zoomInShorter = keyframes`{
     50%{
         opacity:1
     }
-}`
+}`;
 
 export const bounceInUp = keyframes`{
     from, 60%, 75%, 90%, to {
@@ -313,7 +313,7 @@ export const bounceInUp = keyframes`{
     to {
         transform: translate3d(0, 0, 0);
     }
-}`
+}`;
 
 export const slideZoomIn = keyframes`{
     0%{
@@ -324,7 +324,7 @@ export const slideZoomIn = keyframes`{
         transform:scale3d(1.1,1.1,1);
         opacity: 1;
     }
-}`
+}`;
 
 export const zoomIn = keyframes`{
     0% {
@@ -334,4 +334,4 @@ export const zoomIn = keyframes`{
     50% {
         opacity: 1;
     }
-}`
+}`;

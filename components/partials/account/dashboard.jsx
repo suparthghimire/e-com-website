@@ -1,4 +1,4 @@
-import ALink from '~/components/features/custom-link'
+import ALink from "~/components/features/custom-link";
 
 export default function Dashboard(props) {
   return (
@@ -9,12 +9,12 @@ export default function Dashboard(props) {
         Hello <span>{props.user.full_name}</span>
       </p>
       <p className="mb-8">
-        From your account dashboard you can view your recent orders, manage and edit your password
-        and account details.
+        From your account dashboard you can view your recent orders, manage and
+        edit your password and account details.
       </p>
       <ALink href="/shop" className="btn btn-dark btn-rounded">
         Go To Shop<i className="d-icon-arrow-right"></i>
       </ALink>
     </>
-  )
+  );
 }
