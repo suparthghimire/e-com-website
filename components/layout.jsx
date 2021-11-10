@@ -80,7 +80,7 @@ function Layout(props) {
         className="scroll-top"
         onClick={() => scrollTopHandler(false)}
       >
-        <i className="d-icon-arrow-up"></i>
+        <i className="d-icon-arrow-up "></i>
       </ALink>
 
       <MobileMenu />
