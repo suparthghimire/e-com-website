@@ -1,23 +1,26 @@
 import { connect } from "react-redux";
 import Helmet from "react-helmet";
+import { modalActions } from "~/store/modal";
 
 import ALink from "~/components/features/custom-link";
-
+import { useRouter } from "next/router";
 import { cartActions } from "~/store/cart";
 import { wishlistActions } from "~/store/wishlist";
 
 import { toDecimal } from "~/utils";
 import { TITLE } from "~/config";
-
 function Wishlist(props) {
-  const { wishlist, addToCart, removeFromWishlist } = props;
-
+  const router = useRouter();
+  const { wishlist, addToCart, openQuickview, removeFromWishlist } = props;
+  console.log(openQuickview);
+  const showQuickviewHandler = (slug) => {
+    openQuickview(slug);
+  };
   const moveToCart = (e, item) => {
     e.preventDefault();
     addToCart({ ...item, qty: 1, price: item.price[0] });
     removeFromWishlist(item);
   };
-
   return (
     <main className="main">
       <Helmet>
@@ -51,10 +54,10 @@ function Wishlist(props) {
                     <th>
                       <span>Product Name</span>
                     </th>
-                    <th className="product-price">
+                    <th colspan="2" className="product-price">
                       <span>Price</span>
                     </th>
-                    <th className="product-remove"></th>
+                    <th className="product-remove">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="wishlist-items-wrapper">
@@ -74,87 +77,71 @@ function Wishlist(props) {
                         </ALink>
                       </td>
                       <td className="product-name">
-                        <div className="product-name-section">
+                        <div
+                          className="product-name-section"
+                          style={{
+                            width: "fit-content",
+                            maxWidth: "70%",
+                          }}
+                        >
                           <ALink href={"/product/default/" + item.slug}>
-                            <h5>{item.name}</h5>
+                            <h5>{item.name} </h5>
                           </ALink>
                         </div>
                       </td>
-                      <td className="product-price">
+                      <td colspan="2" className="product-price">
                         <span className="amount">
                           ${toDecimal(item.display_price)}
                         </span>
                       </td>
                       <td className="product-remove">
-                        <div>
-                          <ALink
-                            href="#"
-                            className="remove"
-                            title="Remove this product"
-                          >
-                            <i
-                              className="fas fa-times"
-                              onClick={() => removeFromWishlist(item)}
-                            ></i>
-                          </ALink>
+                        <div className="d-flex" style={{ gap: "10px" }}>
+                          <div>
+                            <ALink
+                              href="#"
+                              className="remove"
+                              title="Remove this product"
+                            >
+                              <i
+                                className="d-icon-search"
+                                onClick={() => {
+                                  showQuickviewHandler(item.slug);
+                                }}
+                              ></i>
+                            </ALink>
+                          </div>
+                          <div>
+                            <ALink
+                              href="#"
+                              className="remove"
+                              title="Remove this product"
+                            >
+                              <i
+                                className="fas fa-times"
+                                onClick={() => removeFromWishlist(item)}
+                              ></i>
+                            </ALink>
+                          </div>
                         </div>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-              <div className="social-links share-on">
-                <h5 className="text-uppercase font-weight-bold mb-0 mr-4 ls-s">
-                  Share on:
-                </h5>
-                <ALink
-                  href="#"
-                  className="social-link social-icon social-facebook"
-                  title="Facebook"
-                >
-                  <i className="fab fa-facebook-f"></i>
-                </ALink>
-                <ALink
-                  href="#"
-                  className="social-link social-icon social-twitter"
-                  title="Twitter"
-                >
-                  <i className="fab fa-twitter"></i>
-                </ALink>
-                <ALink
-                  href="#"
-                  className="social-link social-icon social-pinterest"
-                  title="Pinterest"
-                >
-                  <i className="fab fa-pinterest-p"></i>
-                </ALink>
-                <ALink
-                  href="#"
-                  className="social-link social-icon social-email"
-                  title="Email"
-                >
-                  <i className="far fa-envelope"></i>
-                </ALink>
-                <ALink
-                  href="#"
-                  className="social-link social-icon social-whatsapp"
-                  title="Whatsapp"
-                >
-                  <i className="fab fa-whatsapp"></i>
-                </ALink>
-              </div>
             </>
           ) : (
             <div className="empty-cart text-center">
               <i className="wishlist-empty far fa-heart"></i>
               <p>No products added to the wishlist.</p>
               <p className="return-to-shop mb-0">
-                <ALink
+                <button
                   className="button wc-backward btn btn-dark btn-md"
-                  href="/shop"
+                  onClick={() => {
+                    router.back();
+                  }}
                 >
                   Return to shop
-                </ALink>
+                </button>
               </p>
             </div>
           )}
@@ -173,4 +160,5 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   addToCart: cartActions.addToCart,
   removeFromWishlist: wishlistActions.removeFromWishlist,
+  ...modalActions,
 })(Wishlist);

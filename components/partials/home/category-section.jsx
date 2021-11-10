@@ -9,6 +9,7 @@ import { categorySlider } from "~/utils/data/carousel";
 import { fadeIn, fadeInRightShorter } from "~/utils/data/keyframes";
 
 function CategorySection(props) {
+  if (props.category.length <= 0) return <div>No Categories Found</div>;
   return (
     <Reveal keyframes={fadeIn} delay={300} duration={1200} triggerOnce>
       <section className="product-wrapper mt-10 pt-3">

@@ -10,7 +10,12 @@ import { fadeIn, fadeInLeftShorter } from "~/utils/data/keyframes";
 
 function Trending(props) {
   const { featured } = props;
-
+  if (featured.length <= 0)
+    return (
+      <div className="d-flex mt-5 mb-5 w-100 justify-content-center">
+        <h5>No Trending Products Found</h5>
+      </div>
+    );
   return (
     <Reveal keyframes={fadeIn} delay={200} duration={1200} triggerOnce>
       <section className="product-wrapper mt-9">

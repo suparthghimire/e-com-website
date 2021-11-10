@@ -39,8 +39,6 @@ function Quickview(props) {
     GET_SINGLE_PRODUCT
   );
   const router = useRouter();
-  const product = data;
-
   useEffect(() => {
     isOpen && closeQuickview() && setLoadingState(false);
     router.events.on("routeChangeStart", closeQuickview);
@@ -50,9 +48,9 @@ function Quickview(props) {
       router.events.off("routeChangeStart", closeQuickview);
     };
   }, []);
-
-  if (slug === "" || !data) return "";
-
+  if (!data || (data && data?.detail) || slug === "") {
+    return "";
+  }
   const closeQuick = () => {
     document.querySelector(".ReactModal__Overlay").classList.add("removed");
     document.querySelector(".quickview-modal").classList.add("removed");
@@ -80,8 +78,8 @@ function Quickview(props) {
                 adClass="product-single-carousel owl-theme owl-nav-inner"
                 options={mainSlider3}
               >
-                {product &&
-                  product.product_image.map((item, index) => (
+                {data &&
+                  data.product_image.map((item, index) => (
                     <Magnifier
                       key={"quickview-image-" + index}
                       imageSrc={item.url}

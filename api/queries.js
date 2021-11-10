@@ -74,7 +74,9 @@ export const GET_CATEGORY = (data) => {
     page_size,
   });
   const url = `${BASE_URL}/category/${slug}/?${url_params.toString()}`;
+
   useEffect(() => {
+    setProducts([]);
     setLoading(true);
     setErrors(false);
     fetch(url)
@@ -90,7 +92,7 @@ export const GET_CATEGORY = (data) => {
         console.error(error);
         setErrors(error);
       });
-  }, [min_price, max_price, color, size, page, page_size]);
+  }, [min_price, max_price, color, size, page, page_size, slug]);
   return { products, loading, errors, hasMore };
 };
 

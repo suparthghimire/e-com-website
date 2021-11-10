@@ -11,16 +11,8 @@ import { wishlistActions } from "~/store/wishlist";
 import { toDecimal } from "~/utils";
 
 function ProductThree(props) {
-  const {
-    product,
-    adClass,
-    toggleWishlist,
-    wishlist,
-    addToCart,
-    openQuickview,
-    isCat = true,
-  } = props;
-
+  const { product, adClass, toggleWishlist, wishlist, openQuickview } = props;
+  console.log(openQuickview);
   // decide if the product is wishlisted
   let isWishlisted;
   isWishlisted =
@@ -45,19 +37,6 @@ function ProductThree(props) {
       currentTarget.classList.remove("load-more-overlay", "loading");
     }, 1000);
   };
-
-  const addToCartHandler = (e) => {
-    e.preventDefault();
-    addToCart({
-      ...product,
-      qty: 1,
-      price: product.display_price,
-      name: product.title,
-    });
-  };
-  {
-    /* TODO: ADD BASE URL TO IMAGES */
-  }
   return (
     <div className={`product product-classic ${adClass} `}>
       <figure className="product-media">
@@ -68,7 +47,6 @@ function ProductThree(props) {
             threshold={500}
             effect="opacity"
             width="300"
-            height="338"
           />
 
           {product.product_image.length >= 2 ? (
@@ -77,7 +55,6 @@ function ProductThree(props) {
               src={product.product_image[1].url}
               threshold={500}
               width="300"
-              height="338"
               effect="opacity"
               wrapperClassName="product-image-hover"
             />
@@ -85,7 +62,6 @@ function ProductThree(props) {
             ""
           )}
         </ALink>
-
         <div className="product-label-group">
           {product.is_new ? (
             <label className="product-label label-new">New</label>
@@ -97,43 +73,10 @@ function ProductThree(props) {
           ) : (
             ""
           )}
-          {/* {product.discount > 0 ? (
-            product.variants.length === 0 ? (
-              <label className="product-label label-sale">
-                {product.discount}% OFF
-              </label>
-            ) : (
-              <label className="product-label label-sale">Sale</label>
-            )
-          ) : (
-            ""
-          )} */}
         </div>
       </figure>
 
       <div className="product-details">
-        {/* {isCat ? (
-          <div className="product-cat">
-            {product.categories
-              ? product.categories.map((item, index) => (
-                  <React.Fragment key={item.name + "-" + index}>
-                    <ALink
-                      href={{
-                        pathname: "/shop",
-                        query: { category: item.slug },
-                      }}
-                    >
-                      {item.name}
-                      {index < product.categories.length - 1 ? ", " : ""}
-                    </ALink>
-                  </React.Fragment>
-                ))
-              : ""}
-          </div>
-        ) : (
-          ""
-        )} */}
-
         <h3 className="product-name">
           <ALink href={`/product/default/${product.slug}`}>
             {product.title}
@@ -146,16 +89,6 @@ function ProductThree(props) {
             <del className="old-price">${toDecimal(product.price)}</del>
           </>
         </div>
-
-        {/* <div className="ratings-container">
-                    <div className="ratings-full">
-                        <span className="ratings" style={ { width: 20 * product.ratings + '%' } }></span>
-                        <span className="tooltiptext tooltip-top">{ toDecimal( product.ratings ) }</span>
-                    </div>
-
-                    <ALink href={ `/product/default/${ product.slug }` } className="rating-reviews">( { product.reviews } reviews )</ALink>
-                </div> */}
-
         <div className="product-action">
           <ALink href={`/product/default/${product.slug}`}>
             <a
