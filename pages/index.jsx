@@ -18,6 +18,7 @@ import { GET_HOME_DATA_NEW } from "~/api/queries";
 function HomePage() {
   const { data, status } = useQuery(["home-data", {}], GET_HOME_DATA_NEW);
   if (status === "loading") return <CustomLoader type="Grid" />;
+  console.log(data);
   return (
     <div className="main home mt-lg-4 homepage">
       <Helmet>
@@ -35,7 +36,7 @@ function HomePage() {
 
           <FeaturedCollection products={data.results.featured} />
 
-          <BrandSection brands={data.results.brands} />
+          <BrandSection brands={data.results.brand} />
         </div>
       </div>
 

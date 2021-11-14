@@ -7,67 +7,31 @@ import { brandSlider } from "~/utils/data/carousel";
 import { fadeIn } from "~/utils/data/keyframes";
 
 function BrandSection(props) {
-  const { brands } = props;
-  // if (!brands || brands === null || brands.length <= 0)
-  //   return (
-  //     <div className="d-flex mt-5 mb-5 w-100 justify-content-center">
-  //       <h5>No Brands Found</h5>
-  //     </div>
-  //   );
+  let { brands } = props;
+  if (!brands || brands === null || brands.length <= 0)
+    return (
+      <div className="d-flex mt-5 mb-5 w-100 justify-content-center">
+        <h5>No Brands Found</h5>
+      </div>
+    );
   return (
     <Reveal keyframes={fadeIn} duration={1200} delay={300} triggerOnce>
       <section className="brands mt-10 pt-3 mb-7">
         <h2 className="title title-simple">Our Brands</h2>
 
         <OwlCarousel adClass="owl-theme brand-carousel" options={brandSlider}>
-          <figure>
-            <img
-              src="./images/brands/1.png"
-              alt="Brand"
-              width="180"
-              height="100"
-            />
-          </figure>
-          <figure>
-            <img
-              src="./images/brands/2.png"
-              alt="Brand"
-              width="180"
-              height="100"
-            />
-          </figure>
-          <figure>
-            <img
-              src="./images/brands/3.png"
-              alt="Brand"
-              width="180"
-              height="100"
-            />
-          </figure>
-          <figure>
-            <img
-              src="./images/brands/4.png"
-              alt="Brand"
-              width="180"
-              height="100"
-            />
-          </figure>
-          <figure>
-            <img
-              src="./images/brands/5.png"
-              alt="Brand"
-              width="180"
-              height="100"
-            />
-          </figure>
-          <figure>
-            <img
-              src="./images/brands/6.png"
-              alt="Brand"
-              width="180"
-              height="100"
-            />
-          </figure>
+          {brands.map((brand) => {
+            return (
+              <figure>
+                <img
+                  src={brand.image_url}
+                  alt="Brand"
+                  width="180"
+                  height="100"
+                />
+              </figure>
+            );
+          })}
         </OwlCarousel>
       </section>
     </Reveal>

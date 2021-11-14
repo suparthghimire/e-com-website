@@ -57,9 +57,13 @@ export const GET_NAV_ITEMS = async ({ queryKey }) => {
   const response = await fetch(`${BASE_URL}/nav/`);
   return response.json();
 };
-
+export const GET_ALL_BRANDS = async ({ queryKey }) => {
+  const response = await fetch(`${BASE_URL}​/brand​/`);
+  return response.json();
+};
 export const GET_CATEGORY = (data) => {
-  const { slug, min_price, max_price, color, size, page, page_size } = data;
+  const { slug, min_price, max_price, color, size, page, page_size, brand } =
+    data;
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [errors, setErrors] = useState(false);
@@ -72,6 +76,7 @@ export const GET_CATEGORY = (data) => {
     size,
     page,
     page_size,
+    brand,
   });
   const url = `${BASE_URL}/category/${slug}/?${url_params.toString()}`;
 
@@ -92,7 +97,7 @@ export const GET_CATEGORY = (data) => {
         console.error(error);
         setErrors(error);
       });
-  }, [min_price, max_price, color, size, page, page_size, slug]);
+  }, [min_price, max_price, color, size, page, page_size, brand, slug]);
   return { products, loading, errors, hasMore };
 };
 
