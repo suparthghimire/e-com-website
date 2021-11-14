@@ -18,6 +18,7 @@ function Shop() {
   const color = router.query.colors || "";
   const size = router.query.sizes || "";
   const page_size = router.query.page_size || "7";
+  const brand = router.query.brand || "";
   const [pageNo, setPageNo] = useState("1");
   const { products, loading, errors, hasMore } = GET_CATEGORY({
     slug,
@@ -27,8 +28,9 @@ function Shop() {
     color,
     page: pageNo,
     page_size,
+    brand,
   });
-  if (loading) return <CustomLoader type="Grid" />;
+  // if (loading) return <CustomLoader type="Grid" />;
   return (
     <main className="main shop">
       <Helmet>
@@ -56,17 +58,21 @@ function Shop() {
           <div className="row gutter-lg main-content-wrap">
             <SidebarFilterOne type="banner" />
             <div className="col-lg-9 main-content">
-              <ProductListOne
-                type="banner"
-                slug={slug}
-                products={products}
-                total_products={products.length}
-                loading={loading}
-                errors={errors}
-                hasMore={hasMore}
-                pageNo={pageNo}
-                setPageNo={setPageNo}
-              />
+              {loading ? (
+                <CustomLoader type="Grid" />
+              ) : (
+                <ProductListOne
+                  type="banner"
+                  slug={slug}
+                  products={products}
+                  total_products={products.length}
+                  loading={loading}
+                  errors={errors}
+                  hasMore={hasMore}
+                  pageNo={pageNo}
+                  setPageNo={setPageNo}
+                />
+              )}
             </div>
           </div>
         </div>

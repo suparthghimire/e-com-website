@@ -3,18 +3,11 @@ import { useRouter } from "next/router";
 // import { useQuery } from "@apollo/react-hooks";
 import { useQuery } from "react-query";
 import InputRange from "react-input-range";
-import SlideToggle from "react-slide-toggle";
 
 import ALink from "~/components/features/custom-link";
 import Card from "~/components/features/accordion/card";
-import OwlCarousel from "~/components/features/owl-carousel";
-
-import SmallProduct from "~/components/features/product/product-sm";
-
-// import withApollo from "../../../../server/apollo";
 
 import filterData from "~/utils/data/shop";
-import { scrollTopHandler } from "~/utils";
 import { GET_HOME_DATA_NEW } from "~/api/queries";
 
 function SidebarFilterOne(props) {
@@ -23,7 +16,7 @@ function SidebarFilterOne(props) {
   const query = router.query;
 
   const { data, status } = useQuery(["home-data", {}], GET_HOME_DATA_NEW);
-
+  console.log(data);
   let tmpPrice = {
     max: query.max_price ? parseInt(query.max_price) : 1000,
     min: query.min_price ? parseInt(query.min_price) : 0,
@@ -31,6 +24,7 @@ function SidebarFilterOne(props) {
   const [filterPrice, setPrice] = useState(tmpPrice);
   const [isFirst, setFirst] = useState(true);
   let sidebarData = data && data?.results?.category;
+  let brands = data && data?.results?.brand;
   // let timerId;
 
   // useEffect(() => {
@@ -213,7 +207,7 @@ function SidebarFilterOne(props) {
                 type="parse"
                 expanded={true}
               >
-                <ul className="widget-body filter-items search-ul">
+                <ul className="widget-body filter-items search-ul category-list-sidebar">
                   {data &&
                     sidebarData.map((item, index) => (
                       <li
@@ -286,9 +280,7 @@ function SidebarFilterOne(props) {
                           pathname: router.pathname,
                           query: {
                             ...query,
-                            page: 1,
                             sizes: getUrlForAttrs("sizes", item.slug),
-                            type: router.query.type ? router.query.type : null,
                           },
                         }}
                       >
@@ -320,9 +312,7 @@ function SidebarFilterOne(props) {
                           pathname: router.pathname,
                           query: {
                             ...query,
-                            page: 1,
                             colors: getUrlForAttrs("colors", item.slug),
-                            type: router.query.type ? router.query.type : null,
                           },
                         }}
                       >
@@ -333,34 +323,38 @@ function SidebarFilterOne(props) {
                 </ul>
               </Card>
             </div>
-            {isFeatured ? (
-              <div className="widget widget-products widget-collapsible">
-                <h4 className="widget-title">Our Featured</h4>
-
-                <div className="widget-body">
-                  <OwlCarousel adClass="owl-nav-top">
-                    <div className="products-col">
-                      {sidebarData.featured.slice(0, 3).map((item, index) => (
-                        <SmallProduct
-                          product={item}
-                          key={item.name + " - " + index}
-                        />
-                      ))}
-                    </div>
-                    <div className="products-col">
-                      {sidebarData.featured.slice(3, 6).map((item, index) => (
-                        <SmallProduct
-                          product={item}
-                          key={item.name + " - " + index}
-                        />
-                      ))}
-                    </div>
-                  </OwlCarousel>
-                </div>
-              </div>
-            ) : (
-              ""
-            )}
+            <div className="widget widget-collapsible">
+              <Card
+                title="<h3 className='widget-title'>Brands<span className='toggle-btn p-0 parse-content'></span></h3>"
+                type="parse"
+                expanded={true}
+              >
+                <ul className="widget-body filter-items">
+                  {data &&
+                    brands.map((item, index) => (
+                      <li
+                        className={
+                          containsAttrInUrl("brand", item.slug) ? "active" : ""
+                        }
+                        key={item + " - " + index}
+                      >
+                        <ALink
+                          scroll={false}
+                          href={{
+                            pathname: router.pathname,
+                            query: {
+                              ...query,
+                              brand: getUrlForAttrs("brand", item.slug),
+                            },
+                          }}
+                        >
+                          {item.title}
+                        </ALink>
+                      </li>
+                    ))}
+                </ul>
+              </Card>
+            </div>
           </div>
         ) : (
           <div className="widget-2 mt-10 pt-5"></div>
