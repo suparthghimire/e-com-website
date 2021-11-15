@@ -5,6 +5,7 @@ import OwlCarousel from "~/components/features/owl-carousel";
 
 import { brandSlider } from "~/utils/data/carousel";
 import { fadeIn } from "~/utils/data/keyframes";
+import ALink from "~/components/features/custom-link";
 
 function BrandSection(props) {
   let { brands } = props;
@@ -22,14 +23,16 @@ function BrandSection(props) {
         <OwlCarousel adClass="owl-theme brand-carousel" options={brandSlider}>
           {brands.map((brand) => {
             return (
-              <figure>
-                <img
-                  src={brand.image_url}
-                  alt="Brand"
-                  width="180"
-                  height="100"
-                />
-              </figure>
+              <ALink href={"/pages/brand/" + brand.slug}>
+                <figure>
+                  <img
+                    src={brand.image_url}
+                    alt="Brand"
+                    width="180"
+                    height="100"
+                  />
+                </figure>
+              </ALink>
             );
           })}
         </OwlCarousel>
