@@ -18,7 +18,6 @@ import { GET_HOME_DATA_NEW } from "~/api/queries";
 function HomePage() {
   const { data, status } = useQuery(["home-data", {}], GET_HOME_DATA_NEW);
   if (status === "loading") return <CustomLoader type="Grid" />;
-  console.log(data);
   return (
     <div className="main home mt-lg-4 homepage">
       <Helmet>

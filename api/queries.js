@@ -101,6 +101,34 @@ export const GET_CATEGORY = (data) => {
   return { products, loading, errors, hasMore };
 };
 
+export const GET_BRAND_PRODUCTS = (data) => {
+  const { slug } = data;
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [errors, setErrors] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+  const url = `${BASE_URL}/brand/${slug}/product/`;
+  useEffect(() => {
+    setProducts([]);
+    setLoading(true);
+    setErrors(false);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts((prevProducts) => {
+          return [...prevProducts, ...data.results];
+        });
+        setHasMore(data.next ? true : false);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setErrors(error);
+      });
+  }, [slug]);
+  return { products, loading, errors, hasMore };
+};
+
 export const POST_PROMO = async (promoCodeValue) => {
   try {
     const response = await fetch(`${BASE_URL}/promo/${promoCodeValue}/`);

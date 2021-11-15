@@ -12,7 +12,6 @@ import { TITLE } from "~/config";
 function Wishlist(props) {
   const router = useRouter();
   const { wishlist, addToCart, openQuickview, removeFromWishlist } = props;
-  console.log(openQuickview);
   const showQuickviewHandler = (slug) => {
     openQuickview(slug);
   };
