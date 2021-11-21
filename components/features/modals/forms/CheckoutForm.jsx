@@ -139,10 +139,10 @@ export default function CheckoutForm(props) {
       <div className="card accordion">
         <Card
           title="
-            <div className='alert alert-light alert-primary alert-icon mb-4 pb-2 card-header'>
-                <i className='fas fa-exclamation-circle'></i>
-                <span className='text-body'>Have a coupon?</span>
-                <a href='#' className='text-primary'>Click here to enter your code</a>
+            <div class='alert alert-light alert-primary alert-icon mb-4 pb-2 card-header'>
+                <i class='fas fa-exclamation-circle'></i>
+                <span class='text-body'>Have a coupon?</span>
+                <a href='#' class='text-primary'>Click here to enter your code</a>
             </div>"
           type="parse"
         >
@@ -262,29 +262,57 @@ export default function CheckoutForm(props) {
                   <thead>
                     <tr>
                       <th>Product</th>
-                      <th>Color</th>
+                      {/* <th>Color</th> */}
                       <th>Size</th>
                       <th>Price</th>
                     </tr>
                   </thead>
                   <tbody>
                     {props.cartList.map((item) => (
-                      <tr key={"checkout-" + item.name}>
+                      <tr
+                        key={"checkout-" + item.name}
+                        style={{ verticalAlign: "top" }}
+                      >
                         <td className="product-name">
-                          {item.name}{" "}
+                          <ALink href={"/product/default/" + item.slug}>
+                            {item.name}
+                          </ALink>
                           <span className="product-quantity">
                             ×&nbsp;{item.qty}
                           </span>
+                          <br />
+                          <div className="d-flex" style={{ gap: "10px" }}>
+                            <span className="font-weight-bold">Color </span>
+                            <div
+                              className="color-div ml-0 mr-0 pl-0 pr-0 no-hover"
+                              style={{
+                                backgroundColor: item.color,
+                                width: "30px",
+                                height: "30px",
+                              }}
+                            ></div>
+                          </div>
                         </td>
-                        <td className="product-total">{item.color}</td>
-                        <td className="product-total">{item.size}</td>
+                        {/* <td className="product-total d-flex align-items-center justify-content-center">
+                          <div
+                            className="color-div ml-0 mr-0 pl-0 pr-0 no-hover"
+                            style={{
+                              backgroundColor: item.color,
+                              width: "30px",
+                              height: "30px",
+                            }}
+                          ></div>
+                        </td> */}
+                        <td className="product-total text-center">
+                          {item.size}
+                        </td>
                         <td className="product-total text-body">
                           Nrs. {toDecimal(item.price * item.qty)}
                         </td>
                       </tr>
                     ))}
                     <tr>
-                      <td colSpan="3" className="product-name">
+                      <td colSpan="2" className="product-name">
                         Promo Discount
                       </td>
                       <td className="product-total text-body">
@@ -329,40 +357,6 @@ export default function CheckoutForm(props) {
                               </label>
                             </div>
                           </li>
-
-                          {/* <li>
-                            <div className="custom-radio">
-                              <input
-                                type="radio"
-                                id="free-shipping"
-                                name="shipping"
-                                className="custom-control-input"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="free-shipping"
-                              >
-                                Free shipping
-                              </label>
-                            </div>
-                          </li> */}
-
-                          {/* <li>
-                            <div className="custom-radio">
-                              <input
-                                type="radio"
-                                id="local_pickup"
-                                name="shipping"
-                                className="custom-control-input"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="local_pickup"
-                              >
-                                Local pickup
-                              </label>
-                            </div>
-                          </li> */}
                         </ul>
                       </td>
                       <td colSpan="3">Nrs. 40</td>
@@ -403,6 +397,7 @@ export default function CheckoutForm(props) {
                           {...register("payment_method", { required: true })}
                           value="cod"
                           id="cod"
+                          checked={true}
                         />
                         <label htmlFor="cod">Cash on Delivery</label>
                       </div>
@@ -418,11 +413,11 @@ export default function CheckoutForm(props) {
                           Pay With Khalti
                         </label>
                       </div>
-                      {errors.payment_method ?? (
+                      {/* {errors.payment_method ?? (
                         <small className="error-msg">
                           Select Atleast One Payment Method
                         </small>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 </div>

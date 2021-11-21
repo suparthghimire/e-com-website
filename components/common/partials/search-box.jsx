@@ -96,7 +96,7 @@ function SearchForm() {
 
   function onSearchChange(e) {
     if (search === "") setFilterProducts([]);
-    document.querySelector(".live-search-list").style.display = "block";
+    // document.querySelector(".live-search-list").style.display = "block";
     setSearch(e.target.value);
     const filteredProducts = products.filter((product) => {
       let title = product.title.split("");
@@ -110,7 +110,7 @@ function SearchForm() {
 
   function onSubmitSearchForm(e) {
     e.preventDefault();
-    setSearch("");
+    // setSearch("");
     router.push(`/pages/search/?title=${search}`);
     // router.push({
     //   pathname: `/category/search/?title=${search}`,

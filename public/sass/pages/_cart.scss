@@ -12,12 +12,13 @@
     &.main {
         border-top: 1px solid #e1e1e1;
     }
-
     .accordion {
         border-bottom: 1px solid $border-color;
     }
     .card-header {
-        > a { padding-left: 2px; }
+        >a {
+            padding-left: 2px;
+        }
         font-size: 1.4rem;
     }
     .card-body {
@@ -63,14 +64,12 @@
         border-color: #333;
         background-color: #333;
     }
-
     .product-thumbnail {
         figure {
             position: relative;
             display: inline-block;
         }
     }
-
     .product-name-section {
         // max-width: 200px;
     }
@@ -83,10 +82,8 @@
             line-height: 1;
             letter-spacing: -.025em;
         }
-
         td {
             padding: 1.6rem 2rem 1.6rem 0;
-
             &:last-child {
                 padding-right: 0;
             }
@@ -94,12 +91,10 @@
                 padding: 2rem 2rem 1.5rem 0;
             }
         }
-
         .quantity.form-control {
             font-weight: 700;
         }
     }
-
     .product-remove {
         display: flex;
         align-items: center;
@@ -113,9 +108,12 @@
         background-color: #fff;
         color: $dark-color;
     }
-    .shipping { margin-bottom: .3rem; }
-    .btn { border-width: 1px; }
-
+    .shipping {
+        margin-bottom: .3rem;
+    }
+    .btn {
+        border-width: 1px;
+    }
     .shipping-row-last {
         .summary-subtitle {
             padding: 2.4rem 0 1.9rem;
@@ -125,12 +123,12 @@
         }
     }
 }
+
 .step-by {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     padding: .9rem 0;
-
     .title.title-step {
         margin: 0 3.4rem 0 1rem;
         font-size: 2rem;
@@ -139,7 +137,6 @@
         color: $body-color;
         letter-spacing: -0.5px;
         padding: .4rem 0;
-
         &:not(:last-child)::after {
             content: '\f054';
             display: inline-block;
@@ -154,20 +151,17 @@
             background-color: #fff;
             color: $light-color;
         }
-
         &.visited {
-            ~ .active {
+            ~.active {
                 &::before {
                     color: $dark-color;
                 }
             }
             color: $dark-color;
         }
-
         &.active {
             color: $primary-color;
         }
-
         &:first-child {
             margin-left: 0;
             &::before {
@@ -179,15 +173,18 @@
         }
     }
 }
+
 .summary {
     padding: 2.4rem 3rem 3rem;
-    border:1px solid #e1e1e1;
+    border: 1px solid #e1e1e1;
     border-radius: 2px;
     td:last-child,
-    th:last-child { 
-        text-align: right; 
+    th:last-child {
+        text-align: right;
     }
-    th { text-align: left; }
+    th {
+        text-align: left;
+    }
     .form-control {
         width: 100%;
         max-width: 100%;
@@ -204,10 +201,12 @@
     margin-bottom: 0;
     border-bottom: 1px solid #e1e1e1;
 }
+
 //?
 .summary-subtotal {
     border-bottom: 1px solid #e1e1e1;
 }
+
 //?
 .summary-subtitle {
     font-size: 1.6rem;
@@ -235,10 +234,9 @@
     text-align: right;
     margin-bottom: 0;
     font-family: $font-family;
-
 }
 
-.total .summary-subtitle { 
+.total .summary-subtitle {
     padding: 2.4rem 0 2.3rem;
 }
 
@@ -248,13 +246,11 @@
         font-weight: 600;
         color: #777;
     }
-
     i.cart-empty {
         margin-bottom: 3rem;
         font-size: 8rem;
         color: #aaa;
     }
-
     .btn.btn-md {
         border-radius: 2px;
         border: 2px solid #222;
@@ -267,24 +263,22 @@
         padding-left: 2rem;
         padding-right: 2rem;
     }
-
     .cart .shop-table td {
         padding: 0;
-
         &.product-price {
             display: block;
             width: 100%;
-            text-align: center;
+            text-align: left;
         }
     }
-
     .cart .shop-table tr {
         padding: 2rem 0 3rem;
     }
-
-    .cart .shop-table  {
-        .product-subtotal, .product-thumbnail, .product-quantity { 
-            margin-bottom: .5rem; 
+    .cart .shop-table {
+        .product-subtotal,
+        .product-thumbnail,
+        .product-quantity {
+            margin-bottom: .5rem;
         }
     }
 }
@@ -296,7 +290,6 @@
         margin-bottom: 1.4rem;
         font-size: 1.5rem;
     }
-
     .form-control {
         margin-bottom: 1.5rem;
         padding: 1rem 1.4rem;
@@ -306,10 +299,13 @@
         min-height: 4.1rem;
     }
     border-bottom: 1px solid #e1e1e1;
-    .btn { padding: 0.9em 1.7em; }
+    .btn {
+        padding: 0.9em 1.7em;
+    }
 }
 
-.shipping-address, .checkout {
+.shipping-address,
+.checkout {
     input.form-control,
     .select-box {
         background: #fff;
@@ -323,7 +319,7 @@
             content: '\e953';
             right: 1.5rem;
             font-size: 1.1rem;
-            z-index: 2; 
+            z-index: 2;
         }
     }
 }
@@ -333,24 +329,32 @@
     .btn-calc {
         margin-bottom: 1.8rem;
     }
-    td, th {
+    td,
+    th {
         border-top: 1px solid $border-color;
     }
 }
+
 .cart-subtotal {
-    th { font-weight: 400; }
-    td,th {
+    th {
+        font-weight: 400;
+    }
+    td,
+    th {
         padding: 1.5rem 0;
     }
 }
+
 .order-total {
     font-size: 1.6rem;
     font-weight: 600;
     color: $primary-color;
-    td, th {
+    td,
+    th {
         padding-top: 1.9rem;
     }
 }
+
 .cart-table {
     .product-name {
         font-weight: 600;
@@ -368,11 +372,19 @@
         color: $dark-color;
     }
     .input-group {
-        button, input { border-color: $border-color-light; }
-        .quantity-minus { border-radius: .3rem 0 0 .3rem; }
-        .quantity-plus { border-radius: 0 .3rem .3rem 0; }
+        button,
+        input {
+            border-color: $border-color-light;
+        }
+        .quantity-minus {
+            border-radius: .3rem 0 0 .3rem;
+        }
+        .quantity-plus {
+            border-radius: 0 .3rem .3rem 0;
+        }
     }
 }
+
 .cart-actions {
     display: flex;
     align-items: flex-start;
@@ -397,9 +409,11 @@
         }
     }
 }
+
 .cart .custom-radio .custom-control-label {
     cursor: pointer;
 }
+
 .cart-coupon-box {
     .coupon-title {
         margin-bottom: 2.3rem;
@@ -423,15 +437,12 @@
         .product-thumbnail {
             width: 12rem;
         }
-    
         .product-price {
             width: 11rem;
         }
-    
         .product-quantity {
             width: 17.7rem
         }
-
         .product-subtotal {
             width: 13.2rem;
         }

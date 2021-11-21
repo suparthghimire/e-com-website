@@ -7,38 +7,35 @@
     &.main {
         border-top: 1px solid #e1e1e1;
     }
-
     .alert.card-header {
         padding-top: 1.2rem;
         padding-bottom: 1.3rem;
         background-color: $white-color;
         border: 1px dashed #cacbcc;
         text-transform: none;
-        & > a {
+        &>a {
             display: inline-block;
             padding: 0;
-            &::after, &::before {
+            &::after,
+            &::before {
                 content: none;
             }
         }
     }
-
-    .alert-icon > i {
+    .alert-icon>i {
         margin-right: .8rem;
     }
-
     // .parse-content {
-        &.expanded .text-body::after {
-            width: .8rem;
-            height: .8rem;
-            left: .5rem;
-            background: #666;
-        }
+    &.expanded .text-body::after {
+        width: .8rem;
+        height: .8rem;
+        left: .5rem;
+        background: #666;
+    }
     // }
-
     .alert-body {
         transition: display .3s;
-        p { 
+        p {
             font-size: 1.3rem;
         }
         &.expanding {
@@ -51,11 +48,9 @@
             margin: 0;
         }
     }
-
     .checkbox {
         margin: .6rem 0 1.6rem .2rem;
     }
-
     .link-group {
         .btn {
             padding: 1em 2.5em;
@@ -65,12 +60,10 @@
             font-size: 1.4rem;
         }
     }
-
     .lost-link {
         font-size: 1.3rem;
         color: #000;
     }
-
     .social-link {
         border-radius: .3rem;
         color: $white-color;
@@ -87,7 +80,6 @@
             border-color: $social-twitter;
         }
     }
-
     .check-coupon-box {
         .form-control {
             max-width: 42.5rem;
@@ -97,7 +89,6 @@
             border-width: 1px;
         }
     }
-    
     label {
         display: block;
         padding-left: .2rem;
@@ -105,15 +96,13 @@
         font-size: 1.4rem;
         line-height: .9;
     }
-
     .form .title.title-simple {
         margin-top: .3rem;
         font-size: 1.8rem;
     }
-
     .select-box select {
         max-width: 100%;
-        width:100%;
+        width: 100%;
     }
     .form-control {
         margin-bottom: 2.1rem;
@@ -135,7 +124,6 @@
     textarea.form-control {
         padding-top: 1.5rem;
     }
-
     .form-checkbox {
         padding-top: .7rem;
         margin-bottom: 2.8rem;
@@ -151,7 +139,6 @@
         letter-spacing: 0;
         white-space: normal;
     }
-
     .btn-order {
         width: 100%;
         border-color: #333;
@@ -161,13 +148,14 @@
             opacity: .9;
         }
     }
-    .card { background: transparent; }
+    .card {
+        background: transparent;
+    }
     .card-header {
         font-size: 1.4rem;
         line-height: 3rem;
         text-transform: capitalize;
         font-weight: 400;
-        
         a {
             padding: 0 0 0 2.5rem;
             &::before,
@@ -198,7 +186,6 @@
         padding: 0.2rem 0 1.1rem 2.9rem;
         line-height: 1.4;
     }
-
     .payment.accordion {
         border-bottom: 1px solid #e1e1e1;
         padding-bottom: 2rem;
@@ -206,7 +193,6 @@
             font-size: 1.5rem;
         }
     }
-
     .checkout-info {
         padding: 1.5rem 0;
         margin: 0;
@@ -215,29 +201,25 @@
         letter-spacing: .01em;
         font-family: $font-family;
     }
-
     .product-quantity {
         margin-left: .4rem;
     }
-
     .title.title-simple {
         font-weight: 700;
     }
-
     .summary .form-control-label {
         line-height: 1.4;
         &::before {
             top: 0;
             transform: none;
         }
-        a { 
-            color: #000; 
+        a {
+            color: #000;
             &:hover {
                 color: $primary-color;
             }
         }
     }
-
     .toggle-button.expanded::after,
     .toggle-button.expanding::after {
         width: .8rem;
@@ -252,9 +234,9 @@
     padding-bottom: 2.2rem;
     border-bottom: 1px solid #e1e1e1;
 }
+
 .order-table {
     color: #222;
-
     th {
         padding: 0 0 .7rem 0;
         font-size: 1.6rem;
@@ -276,31 +258,29 @@
             padding: 1.2rem 0 0;
         }
     }
-
     .shipping-row {
         label {
             margin-bottom: 1.5rem;
         }
     }
-
     .shipping-row-last {
         border-bottom: 1px solid #e1e1e1;
-
         label {
             margin-bottom: 2.1rem;
             color: $body-color;
             cursor: pointer;
         }
     }
-    .summary-subtotal { 
-        
-        border-top: 1px solid $border-color; 
+    .summary-subtotal {
+        border-top: 1px solid $border-color;
         td:first-child {
             padding: .4rem 0 .3rem;
         }
     }
-    .summary-subtotal-price { padding-top: 1rem; }
-    tbody > tr:nth-child(2) td {
+    .summary-subtotal-price {
+        padding-top: 1rem;
+    }
+    tbody>tr:nth-child(2) td {
         padding-bottom: 1.6rem;
     }
 }
@@ -312,7 +292,6 @@
         padding: 0;
         text-align: left;
     }
-
     .summary-subtitle {
         padding-bottom: 2.2rem;
         text-align: left;
@@ -325,14 +304,16 @@
         padding: 2.3rem 0 2.1rem;
     }
 }
+
 @include mq(xs, 'max') {
     .order-table {
         tbody {
-            .product-name, .product-total {
+            .product-name,
+            .product-total {
                 padding-bottom: 2rem;
                 line-height: 1.2;
             }
-            > tr:nth-child(2) td {
+            >tr:nth-child(2) td {
                 padding-bottom: 2rem;
             }
         }

@@ -90,19 +90,19 @@ function ProductListOne(props) {
                 );
               })}
           </div>
-          <div className="toolbox toolbox-pagination">
+          {/* <div className="toolbox toolbox-pagination">
             <p className="show-info">
               Showing
               <span>
-                {/* {perPage * (page - 1) + 1} -{" "} */}
+                {perPage * (page - 1) + 1} -{" "}
                 {Math.min(perPage * pageNo, products.length)} of{" "}
                 {total_products}
               </span>
               Products
             </p>
 
-            {/* <Pagination totalPage={total_products} /> */}
-          </div>
+            <Pagination totalPage={total_products} />
+          </div> */}
         </>
       ) : (
         <p className="ml-1">No products were found matching your selection.</p>

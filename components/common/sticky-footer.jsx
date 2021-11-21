@@ -64,7 +64,7 @@ export default function StickyFooter() {
         <i className="d-icon-home"></i>
         <span>Home</span>
       </ALink>
-      <ALink href="/shop" className="sticky-link">
+      <ALink href="/pages/category" className="sticky-link">
         <i className="d-icon-volume"></i>
         <span>Categories</span>
       </ALink>
@@ -76,7 +76,6 @@ export default function StickyFooter() {
         <i className="d-icon-user"></i>
         <span>Account</span>
       </ALink>
-
       <FooterSearchBox />
     </div>
   );
