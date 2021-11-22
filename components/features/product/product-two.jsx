@@ -28,8 +28,6 @@ function ProductTwo(props) {
       : false;
 
   const showQuickviewHandler = () => {
-    console.log("Slug");
-    console.log(product.slug);
     openQuickview(product.slug);
   };
 

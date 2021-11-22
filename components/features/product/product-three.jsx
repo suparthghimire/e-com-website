@@ -12,7 +12,6 @@ import { toDecimal } from "~/utils";
 
 function ProductThree(props) {
   const { product, adClass, toggleWishlist, wishlist, openQuickview } = props;
-  console.log(openQuickview);
   // decide if the product is wishlisted
   let isWishlisted;
   isWishlisted =
@@ -85,8 +84,10 @@ function ProductThree(props) {
 
         <div className="product-price">
           <>
-            <ins className="new-price">${toDecimal(product.display_price)}</ins>
-            <del className="old-price">${toDecimal(product.price)}</del>
+            <ins className="new-price">
+              Npr. {toDecimal(product.display_price)}
+            </ins>
+            <del className="old-price">Npr. {toDecimal(product.price)}</del>
           </>
         </div>
         <div className="product-action">

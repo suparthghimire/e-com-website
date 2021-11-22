@@ -16,7 +16,6 @@ function SidebarFilterOne(props) {
   const query = router.query;
 
   const { data, status } = useQuery(["home-data", {}], GET_HOME_DATA_NEW);
-  console.log(data);
   let tmpPrice = {
     max: query.max_price ? parseInt(query.max_price) : 1000,
     min: query.min_price ? parseInt(query.min_price) : 0,

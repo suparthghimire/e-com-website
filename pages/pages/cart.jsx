@@ -46,10 +46,10 @@ function Cart(props) {
           <div className="row">
             {cartItems.length > 0 ? (
               <>
-                <div className="col-lg-12 col-md-12 pr-lg-">
+                <div className="col-lg-12 col-md-12">
                   <table className="shop-table cart-table">
                     <thead>
-                      <tr>
+                      <tr className="pl-2 pr-2">
                         <th>
                           <span>Product</span>
                         </th>
@@ -67,7 +67,7 @@ function Cart(props) {
                     </thead>
                     <tbody>
                       {cartItems.map((item) => (
-                        <tr key={"cart" + item.name}>
+                        <tr key={"cart" + item.name} className="pl-2 pr-2">
                           <td className="product-thumbnail">
                             <figure>
                               <ALink href={"/product/default/" + item.slug}>
@@ -91,14 +91,17 @@ function Cart(props) {
                             </div>
                           </td>
                           <td className="product-name">
-                            <span className="amount">{item.color}</span>
+                            <div
+                              className="color-div ml-0 mr-0 pl-0 pr-0 no-hover"
+                              style={{ backgroundColor: item.color }}
+                            ></div>
                           </td>
                           <td className="product-name">
-                            <span className="amount">{item.size}</span>
+                            <span className="amount">Size: {item.size}</span>
                           </td>
                           <td className="product-subtotal">
                             <span className="amount">
-                              ${toDecimal(item.price)}
+                              Nrs. {toDecimal(item.price)}
                             </span>
                           </td>
 
@@ -111,13 +114,25 @@ function Cart(props) {
                           </td>
                           <td className="product-price">
                             <span className="amount">
-                              ${toDecimal(item.price * item.qty)}
+                              Nrs. {toDecimal(item.price * item.qty)}
                             </span>
                           </td>
                           <td className="product-close">
                             <ALink
                               href="#"
-                              className="product-remove"
+                              className="product-remove btn-lg"
+                              style={
+                                {
+                                  // width: "30px",
+                                  // height: "30px",
+                                  // display: "flex",
+                                  // fontSize: "1.5rem",
+                                  // alignItems: "center",
+                                  // justifyContent: "center",
+                                  // color: "white",
+                                  // backgroundColor: "red",
+                                }
+                              }
                               title="Remove this product"
                               onClick={() => removeFromCart(item)}
                             >
@@ -145,185 +160,19 @@ function Cart(props) {
                       Update Cart
                     </button>
                   </div>
-                  {/* <div className="cart-coupon-box mb-8">
-                    <h4 className="title coupon-title text-uppercase ls-m">
-                      Coupon Discount
-                    </h4>
-                    <input
-                      type="text"
-                      name="coupon_code"
-                      className="input-text form-control text-grey ls-m mb-4"
-                      id="coupon_code"
-                      placeholder="Enter coupon code here..."
-                    />
-                    <button
-                      type="submit"
-                      className="btn btn-md btn-dark btn-rounded btn-outline"
-                    >
-                      Apply Coupon
-                    </button>
-                  </div> */}
                 </div>
-                {/* <aside className="col-lg-4 sticky-sidebar-wrapper">
-                  <div
-                    className="sticky-sidebar"
-                    data-sticky-options="{'bottom': 20}"
-                  >
-                    <div className="summary mb-4">
-                      <h3 className="summary-title text-left">Cart Totals</h3>
-                      <table className="shipping">
-                        <tbody>
-                          <tr className="summary-subtotal">
-                            <td>
-                              <h4 className="summary-subtitle">Subtotal</h4>
-                            </td>
-                            <td>
-                              <p className="summary-subtotal-price">
-                                ${toDecimal(getTotalPrice(cartItems))}
-                              </p>
-                            </td>
-                          </tr>
-                          <tr className="sumnary-shipping shipping-row-last">
-                            <td colSpan="2">
-                              <h4 className="summary-subtitle">
-                                Calculate Shipping
-                              </h4>
-                              <ul>
-                                <li>
-                                  <div className="custom-radio">
-                                    <input
-                                      type="radio"
-                                      id="flat_rate"
-                                      name="shipping"
-                                      className="custom-control-input"
-                                      defaultChecked
-                                    />
-                                    <label
-                                      className="custom-control-label"
-                                      htmlFor="flat_rate"
-                                    >
-                                      Flat rate
-                                    </label>
-                                  </div>
-                                </li>
-                                <li>
-                                  <div className="custom-radio">
-                                    <input
-                                      type="radio"
-                                      id="free-shipping"
-                                      name="shipping"
-                                      className="custom-control-input"
-                                    />
-                                    <label
-                                      className="custom-control-label"
-                                      htmlFor="free-shipping"
-                                    >
-                                      Free shipping
-                                    </label>
-                                  </div>
-                                </li>
 
-                                <li>
-                                  <div className="custom-radio">
-                                    <input
-                                      type="radio"
-                                      id="local_pickup"
-                                      name="shipping"
-                                      className="custom-control-input"
-                                    />
-                                    <label
-                                      className="custom-control-label"
-                                      htmlFor="local_pickup"
-                                    >
-                                      Local pickup
-                                    </label>
-                                  </div>
-                                </li>
-                              </ul>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <div className="shipping-address">
-                        <label>
-                          Shipping to <strong>CA.</strong>
-                        </label>
-                        <div className="select-box">
-                          <select
-                            name="country"
-                            className="form-control"
-                            defaultValue="us"
-                          >
-                            <option value="us">United States (US)</option>
-                            <option value="uk"> United Kingdom</option>
-                            <option value="fr">France</option>
-                            <option value="aus">Austria</option>
-                          </select>
-                        </div>
-                        <div className="select-box">
-                          <select
-                            name="country"
-                            className="form-control"
-                            defaultValue="us"
-                          >
-                            <option value="us">California</option>
-                            <option value="uk">Alaska</option>
-                            <option value="fr">Delaware</option>
-                            <option value="aus">Hawaii</option>
-                          </select>
-                        </div>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="code"
-                          placeholder="Town / City"
-                        />
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="code"
-                          placeholder="ZIP"
-                        />
-                        <ALink
-                          href="#"
-                          className="btn btn-md btn-dark btn-rounded btn-outline"
-                        >
-                          Update totals
-                        </ALink>
-                      </div>
-                      <table className="total">
-                        <tbody>
-                          <tr className="summary-subtotal">
-                            <td>
-                              <h4 className="summary-subtitle">Total</h4>
-                            </td>
-                            <td>
-                              <p className="summary-total-price ls-s">
-                                ${toDecimal(getTotalPrice(cartItems))}
-                              </p>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <ALink
-                        href="/pages/checkout"
-                        className="btn btn-dark btn-rounded btn-checkout"
-                      >
-                        Proceed to checkout
-                      </ALink>
-                    </div>
-                  </div>
-                </aside> */}
-                <div className="row pr-0 mr-0">
-                  <div className="col-8"></div>
-                  <div className="col-4">
-                    <ALink
-                      href="/pages/checkout"
-                      className="btn btn-dark btn-rounded btn-checkout"
-                    >
-                      Proceed to checkout
-                    </ALink>
-                  </div>
+                <div className="row pr-0 mr-0 d-flex justify-content-end">
+                  {/* <div className="col-8"></div> */}
+                  {/* <div className="col-8"> */}
+                  <ALink
+                    href="/pages/checkout"
+                    className="btn btn-dark btn-rounded btn-checkout"
+                    style={{ width: "fit-content" }}
+                  >
+                    Proceed to checkout
+                  </ALink>
+                  {/* </div> */}
                 </div>
               </>
             ) : (

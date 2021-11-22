@@ -34,31 +34,6 @@ function Trending(props) {
               </Reveal>
             ))}
         </OwlCarousel>
-        {/* {loading ? (
-          <OwlCarousel adClass="owl-theme owl-nav-full" options={productSlider}>
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div
-                className="product-loading-overlay"
-                key={"top-rated-skel-" + item}
-              ></div>
-            ))}
-          </OwlCarousel>
-        ) : (
-          <OwlCarousel adClass="owl-theme owl-nav-full" options={productSlider}>
-            {products &&
-              products.map((item, index) => (
-                <Reveal
-                  keyframes={fadeInLeftShorter}
-                  delay={Math.max(700 - index * 100, 200)}
-                  duration={1200}
-                  triggerOnce
-                  key={`top-rated-product ${index}`}
-                >
-                  <ProductThree product={item} isCat={false} />
-                </Reveal>
-              ))}
-          </OwlCarousel>
-        )} */}
       </section>
     </Reveal>
   );

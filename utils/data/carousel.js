@@ -430,30 +430,34 @@ export const productSlider = {
 export const categorySlider = {
   items: 5,
   nav: true,
-  dots: false,
+  dots: true,
   autoplay: false,
   loop: false,
   margin: 10,
   responsive: {
     0: {
       items: 1,
-      dots: false,
-      nav: false,
+      dotsEach: 10,
     },
     550: {
       items: 2,
+      dotsEach: 10,
     },
     768: {
       items: 3,
+      dotsEach: 10,
     },
     992: {
       items: 3,
+      dotsEach: 10,
     },
     1100: {
       items: 4,
+      dotsEach: 10,
     },
     1200: {
       items: 4,
+      dotsEach: 10,
     },
   },
 };

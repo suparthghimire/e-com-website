@@ -14,7 +14,6 @@ import {
 function IntroSection(props) {
   if (props.category.length <= 0)
     return <div className="">No Categories Found!</div>;
-  console.log(props.category);
   return (
     <section className="intro-section">
       <div className="container">
@@ -36,21 +35,23 @@ function IntroSection(props) {
                       className="intro-slide1 banner banner-fixed overlay-dark banner-radius"
                       style={{ backgroundColor: "#f6f5f7" }}
                     >
-                      <figure>
-                        <img
-                          src={item.featured_image}
-                          width="580"
-                          height="508"
-                          alt="banner"
-                        />
-                      </figure>
+                      <ALink href={"/pages/category/" + item.slug}>
+                        <figure>
+                          <img
+                            src={item.featured_image}
+                            width="580"
+                            height="508"
+                            alt="banner"
+                          />
+                        </figure>
+                      </ALink>
                       <div className="banner-content y-50">
                         <Reveal
                           keyframes={fadeInLeftShorter}
                           duration={1000}
                           delay={400}
                         >
-                          <h4 className="banner-title font-weight-bold ls-md text-white">
+                          <h4 className="banner-title font-weight-bold ls-md">
                             {item.title}
                           </h4>
                         </Reveal>
@@ -68,7 +69,7 @@ function IntroSection(props) {
                         >
                           <ALink
                             href={"/pages/category/" + item.slug}
-                            className="btn btn-dark btn-link btn-underline text-white"
+                            className="btn btn-dark btn-link btn-underline"
                           >
                             Shop Now<i className="d-icon-arrow-right"></i>
                           </ALink>
@@ -87,7 +88,7 @@ function IntroSection(props) {
                                     overlay-dark"
                       style={{ backgroundColor: "#eeeeee" }}
                     >
-                      <ALink href="#">
+                      <ALink href={"/pages/category/" + item.slug}>
                         <figure>
                           <img
                             src={item.featured_image}
@@ -98,12 +99,12 @@ function IntroSection(props) {
                         </figure>
                       </ALink>
                       <div className="banner-content">
-                        <h3 className="banner-title text-capitalize ls-md text-white">
+                        <h3 className="banner-title text-capitalize ls-md ">
                           {item.title}
                         </h3>
                         <ALink
-                          href="/shop"
-                          className="btn btn-dark btn-link btn-underline text-white"
+                          href={"/pages/category/" + item.slug}
+                          className="btn btn-dark btn-link btn-underline "
                         >
                           Shop Now<i className="d-icon-arrow-right"></i>
                         </ALink>
