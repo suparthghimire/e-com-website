@@ -22,7 +22,7 @@ function SidebarFilterOne(props) {
   };
   const [filterPrice, setPrice] = useState(tmpPrice);
   const [isFirst, setFirst] = useState(true);
-  let sidebarData = data && data?.results?.category;
+  let sidebarData = data && data?.results?.category_products;
   let brands = data && data?.results?.brand;
   // let timerId;
 

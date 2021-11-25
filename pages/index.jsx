@@ -17,6 +17,7 @@ import { GET_HOME_DATA_NEW } from "~/api/queries";
 
 function HomePage() {
   const { data, status } = useQuery(["home-data", {}], GET_HOME_DATA_NEW);
+  console.log(data);
   if (status === "loading") return <CustomLoader type="Grid" />;
   return (
     <div className="main home mt-lg-4 homepage">
@@ -26,14 +27,15 @@ function HomePage() {
       <h1 className="d-none">Riode React eCommerce Template - Home</h1>
       <div className="page-content">
         <IntroSection
-          category={data.results.category}
+          category={data.results.category_products}
           promo={data.results.promo}
+          nav={data.results.nav}
         />
         <div className="container">
-          <CategorySection category={data.results.category} />
-          <Trending featured={data.results.featured} />
+          <CategorySection category={data.results.category_products} />
+          <Trending featured={data.results.trending_products} />
 
-          <FeaturedCollection products={data.results.featured} />
+          <FeaturedCollection products={data.results.featured_products} />
 
           <BrandSection brands={data.results.brand} />
         </div>

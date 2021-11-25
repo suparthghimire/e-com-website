@@ -1,244 +1,70 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import ALink from "~/components/features/custom-link";
-
+import SubCategory from "~/components/features/category/sub-category";
 export default function Menu(props) {
   console.log(props);
   return (
     <div className="grid-item height-x2 category-list d-lg-block d-none w-1">
       <ul className="menu menu-options vertical-menu category-menu home-page-menu">
         <li>
-          <ALink href="#" className="menu-title">
+          <ALink href="#" className="menu-title menu-li">
             Browse Our Categories
           </ALink>
         </li>
-        {props.category.map((item, index) => {
+        {props.nav.map((item, index) => {
           if (index < 8)
             return (
               <li key={index}>
                 {/* If there are sub menu, add submenu class to li above */}
-                <ALink href={"/pages/category/" + item.slug}>
-                  {/* <i
-                    className="d-icon-t-shirt1"
-                    style={{
-                      fontSize: "23px",
-                      marginLeft: "-1px",
-                      marginRight: "1rem",
-                    }}
-                  ></i> */}
-                  {item.title}
+                <ALink
+                  href={"/pages/category/" + item.slug}
+                  className="menu-li"
+                >
+                  <div className="d-flex align-items-center justify-content-between">
+                    <span className="text-black">{item.title}</span>
+
+                    {item.sub_category && item.sub_category.length > 0 && (
+                      <i
+                        class="fas fa-angle-right font-weight-bold"
+                        style={{ fontSize: "1.25rem" }}
+                      ></i>
+                    )}
+                  </div>
                 </ALink>
-                {/* <div className="megamenu">
-                  <div className="row">
-                    <div className="col-lg-4">
-                      <h4 className="menu-title">Women’s Clothing</h4>
-                      <ul>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "bottoms" },
-                            }}
-                          >
-                            Bottoms
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "dresses" },
-                            }}
-                          >
-                            Dresses
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "outwear" },
-                            }}
-                          >
-                            Outwear
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "sleepwear" },
-                            }}
-                          >
-                            Sleepwear
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "swimwear" },
-                            }}
-                          >
-                            Swimwear
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "tops" },
-                            }}
-                          >
-                            Tops
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "two-piece-set" },
-                            }}
-                          >
-                            Two-Piece Set
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "women-s-accessories" },
-                            }}
-                          >
-                            Women's Accessories
-                          </ALink>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-lg-4">
-                      <h4 className="menu-title">Men’s Clothing</h4>
-                      <ul>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "bottoms" },
-                            }}
-                          >
-                            Bottoms
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "men-s-accessories" },
-                            }}
-                          >
-                            Men's Accessories
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "outdoors" },
-                            }}
-                          >
-                            Outdoors
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "outwear" },
-                            }}
-                          >
-                            Outwear
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "sleepwear" },
-                            }}
-                          >
-                            Sleepwear
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "swimwear" },
-                            }}
-                          >
-                            Swimwear
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "tops" },
-                            }}
-                          >
-                            Tops
-                          </ALink>
-                        </li>
-                        <li>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "underwear" },
-                            }}
-                          >
-                            Underwear
-                          </ALink>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-lg-4">
-                      <div className="menu-banner menu-banner3 banner banner-fixed">
-                        <figure>
-                          <LazyLoadImage
-                            effect="opacity"
-                            src="./images/menu/banner-3.jpg"
-                            alt="Banner"
-                            width="280"
-                            height="374"
-                          />
-                        </figure>
-                        <div className="banner-content banner-date">
-                          <h6 className=" text-white text-right font-weight-bold text-uppercase lh-1 mb-0">
-                            20-22<sup>tm</sup>April
-                          </h6>
-                        </div>
-                        <div className="banner-content x-50 w-100 text-center">
-                          <h4 className="banner-subtitle bg-primary d-inline-block mb-1 text-white lh-1 ls-normal text-uppercase font-weight-semi-bold">
-                            Ultimate Sale
-                          </h4>
-                          <h3 className="banner-title text-white text-uppercase font-weight-bold lh-1 ls-l mb-0">
-                            Up To 70%
-                          </h3>
-                          <p className="text-white font-weight-normal ls-normal mb-2">
-                            Discount Selected Items
-                          </p>
-                          <ALink
-                            href={{
-                              pathname: "/shop",
-                              query: { category: "" },
-                            }}
-                            className="btn btn-white btn-link btn-underline d-inline-block"
-                          >
-                            Shop Now<i className="d-icon-arrow-right"></i>
-                          </ALink>
-                        </div>
+                {item.sub_category && item.sub_category.length > 0 ? (
+                  <div className="megamenu">
+                    <div className="row">
+                      <div className="col-lg-12">
+                        <h4 className="menu-title">{item.title}</h4>
+                        <ul
+                          className="d-flex flex-row flex-wrap"
+                          style={{ gap: "5rem" }}
+                        >
+                          {item.sub_category.map((sub_cat, index) => {
+                            return (
+                              <li key={index}>
+                                <ALink href={"/pages/category/" + sub_cat.slug}>
+                                  <div className="d-flex align-items-center">
+                                    {sub_cat.title}
+                                    <i
+                                      className="fas fa-angle-right"
+                                      style={{
+                                        fontSize: "1.5rem",
+                                        gap: "20px",
+                                      }}
+                                    ></i>
+                                  </div>
+                                </ALink>
+                              </li>
+                            );
+                          })}
+                        </ul>
                       </div>
                     </div>
                   </div>
-                </div> */}
+                ) : (
+                  ""
+                )}
               </li>
             );
         })}
