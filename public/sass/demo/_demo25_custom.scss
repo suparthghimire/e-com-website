@@ -1160,7 +1160,7 @@ input[type="number"] {
 // nav
 .header-nav-active,
 .header-nav:hover {
-    color: white;
+    color: white !important;
     background-color: $primary-color;
 }
 
@@ -1193,4 +1193,8 @@ input[type="number"] {
     border-color: #2a2a2a !important;
     background-color: #2a2a2a !important;
     color: white !important;
+}
+
+.width-sm {
+    min-width: max-content;
 }

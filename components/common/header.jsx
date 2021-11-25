@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import ALink from "~/components/features/custom-link";
 import CustomLoader from "../../components/common/custom-loader";
-
+import SubCategory from "../../components/features/category/sub-category";
 import CartMenu from "~/components/common/partials/cart-menu";
 import SearchBox from "~/components/common/partials/search-box";
 import LoginModal from "~/components/features/modals/login-modal";
@@ -93,32 +93,31 @@ export default function Header(props) {
                         style={{ width: "max-content" }}
                       >
                         <ALink href={"/pages/category/" + nav.slug}>
-                          {nav.title}
+                          <div
+                            className="d-flex align-items-center"
+                            style={{ gap: "5px" }}
+                          >
+                            {nav.title}
+                            {nav.sub_category &&
+                              nav.sub_category.length > 0 && (
+                                <i className="fas fa-angle-down"></i>
+                              )}
+                          </div>
                         </ALink>
+
+                        {nav.sub_category && nav.sub_category.length > 0 ? (
+                          <SubCategory
+                            category={nav.sub_category}
+                            title={nav.title}
+                          />
+                        ) : (
+                          ""
+                        )}
                       </li>
                     ))}
                   </ul>
                 </nav>
               </div>
-
-              {/* <div className="header-right mr-0">
-                <nav className="other-links">
-                  <ul className="menu">
-                    <li className="d-xl-show">
-                      <ALink href="#">Daily deals</ALink>
-                    </li>
-                    <li>
-                      <a
-                        href="https://d-themes.com/buynow/riodereact"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        Buy Riode!
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-              </div> */}
             </div>
           </div>
         </div>
