@@ -9,7 +9,7 @@ import ALink from "~/components/features/custom-link";
 export default function Category() {
   const { data, status } = useQuery(["All Categories", {}], GET_HOME_DATA_NEW);
   if (status === "loading") return <CustomLoader type="Grid" />;
-  const category = data?.results?.category;
+  const category = data?.results?.category_products;
   const banner = data?.results?.banner;
   return (
     <>

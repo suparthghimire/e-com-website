@@ -13,8 +13,8 @@ export default function SubCategory(props) {
           <ul>
             {props.category.map((sub_cat, index) => {
               return (
-                <li>
-                  <ALink href={"/" + sub_cat.url}>
+                <li key={index}>
+                  <ALink href={"/pages/category/" + sub_cat.slug}>
                     <div
                       className="d-flex align-items-center"
                       style={{ gap: "5px" }}

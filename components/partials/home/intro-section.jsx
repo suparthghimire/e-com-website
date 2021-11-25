@@ -24,7 +24,11 @@ function IntroSection(props) {
             triggerOnce
             style={{ display: "contents" }}
           >
-            <Menu promo={props.promo} category={props.category} />
+            <Menu
+              promo={props.promo}
+              category={props.category}
+              nav={props.nav}
+            />
           </Reveal>
           {props.category.map((item, index) => {
             if (index === 0)
