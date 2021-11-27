@@ -4,17 +4,14 @@ import { useRouter } from "next/router";
 import Collapse from "react-bootstrap/Collapse";
 
 import ALink from "~/components/features/custom-link";
-import Countdown from "~/components/features/countdown";
 import Quantity from "~/components/features/quantity";
-
-import ProductNav from "~/components/partials/product/product-nav";
 
 import { wishlistActions } from "~/store/wishlist";
 import { cartActions } from "~/store/cart";
 
 import { toDecimal } from "~/utils";
 
-function DetailOne(props) {
+function ModalDetailOne(props) {
   let router = useRouter();
   const { product, isStickyCart = false, adClass = "", isNav = true } = props;
   const { toggleWishlist, addToCart, wishlist } = props;
@@ -133,66 +130,14 @@ function DetailOne(props) {
   }
 
   return (
-    <div
-      className={"product-details p-sticky" + adClass}
-      style={{ top: "70px" }}
-    >
-      {isNav ? (
-        <div className="product-navigation">
-          <ul className="breadcrumb breadcrumb-lg">
-            <li>
-              <ALink href="/">
-                <i className="d-icon-home"></i>
-              </ALink>
-            </li>
-            <li>
-              <ALink href="#" className="active">
-                Products
-              </ALink>
-            </li>
-            <li>Detail</li>
-          </ul>
-
-          {/* <ProductNav product={product} /> */}
-        </div>
-      ) : (
-        ""
-      )}
-
+    <div className={"product-details p-sticky" + adClass}>
       <h2 className="product-name">{product.title}</h2>
-
-      {/* <div className="product-meta">
-        SKU: <span className="product-sku">{product.data.sku}</span>
-        CATEGORIES:{" "}
-        <span className="product-brand">
-          {product.data.categories.map((item, index) => (
-            <React.Fragment key={item.name + "-" + index}>
-              <ALink
-                href={{ pathname: "/shop", query: { category: item.slug } }}
-              >
-                {item.name}
-              </ALink>
-              {index < product.data.categories.length - 1 ? ", " : ""}
-            </React.Fragment>
-          ))}
-        </span>
-      </div> */}
 
       <div className="product-price">
         <ins className="new-price">{product.display_price}</ins>
 
         <del className="old-price">{product.price}</del>
       </div>
-
-      {/* <div className="ratings-container">
-        <div className="ratings-full">
-          <span className="ratings" style={{ width: 20 * 5 + "%" }}></span>
-          <span className="tooltiptext tooltip-top">{toDecimal(5)}</span>
-        </div>
-        <ALink href="#" className="rating-reviews">
-          ( 5 reviews )
-        </ALink>
-      </div> */}
 
       <p className="product-short-desc">{product.description}</p>
 
@@ -202,14 +147,6 @@ function DetailOne(props) {
             <label>Colors:</label>
             {colorList.colors.map((item, index) => (
               <div className="ml-1" key={index}>
-                {/* <input
-                  type="radio"
-                  id={item.color}
-                  name="shipping"
-                  className="color-picker-input d-none"
-                  value={item.color}
-                />
-                onChange={setColorHandler} */}
                 <label className="color-picker-label" htmlFor={item}>
                   <div
                     className={
@@ -226,31 +163,6 @@ function DetailOne(props) {
                 </label>
               </div>
             ))}
-            {/* {product.product_image.map((item) => {
-              return (
-                <div className="ml-1">
-                  <input
-                    type="radio"
-                    id={item.color}
-                    name="shipping"
-                    className="color-picker-input d-none"
-                    value={item.color}
-                    onChange={setColorHandler}
-                  />
-                  <label className="color-picker-label" htmlFor={item.color}>
-                    <div
-                      className="color-div ml-0 mr-0 pl-0 pr-0"
-                      style={{
-                        background: item.color,
-                      }}
-                      onClick={() => {
-                        changeColorBtnStyle(item.color);
-                      }}
-                    ></div>
-                  </label>
-                </div>
-              );
-            })} */}
           </>
         ) : (
           ""
@@ -258,35 +170,6 @@ function DetailOne(props) {
       </div>
       {(product && sizes.length > 0) || colors.length ? (
         <>
-          {product.product_image ? (
-            <></>
-          ) : (
-            /* <div className="product-form product-variations product-color">
-              <label>Color:</label>
-              <div className="select-box">
-                <select
-                  name="color"
-                  className="form-control select-color"
-                  onChange={setColorHandler}
-                  value={curColor}
-                >
-                  <option value="null">Choose an Option</option>
-                  {product.product_image.map((item) =>
-                    !isDisabled(item.name, curSize) ? (
-                      <option value={item.color} key={"color-" + item.color}>
-                        {item.color}
-                      </option>
-                    ) : (
-                      ""
-                    )
-                  )}
-                </select>
-              </div>
-            </div> */
-
-            ""
-          )}
-
           {product.available_sizes ? (
             <div className="product-form product-variations product-size mb-0 pb-2">
               <label>Size:</label>
@@ -366,21 +249,7 @@ function DetailOne(props) {
       <hr className="product-divider mb-3"></hr>
 
       <div className="product-footer">
-        {/* <div className="social-links mr-4">
-          <ALink
-            href="#"
-            className="social-link social-facebook fab fa-facebook-f"
-          ></ALink>
-          <ALink
-            href="#"
-            className="social-link social-twitter fab fa-twitter"
-          ></ALink>
-          <ALink
-            href="#"
-            className="social-link social-pinterest fab fa-pinterest-p"
-          ></ALink>
-        </div> */}
-        <span className="divider d-lg-show"></span>{" "}
+        <span className="divider d-lg-show"></span>
         <a
           href="#"
           className={`btn-product btn-wishlist`}
@@ -406,4 +275,4 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   toggleWishlist: wishlistActions.toggleWishlist,
   addToCart: cartActions.addToCart,
-})(DetailOne);
+})(ModalDetailOne);

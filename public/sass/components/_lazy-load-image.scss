@@ -1,16 +1,20 @@
 .lazy-load-image-background {
     display: block !important;
-
     &.lazy-load-image-loaded {
         display: inline !important;
+    }
+    img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        aspect-ratio: 1/1;
     }
 }
 
 .lazy-load-image-background.opacity:not(.lazy-load-image-loaded) {
-    background-color: #f4f4f4;
-
+    background-color: #ffffff;
     img {
-        opacity: 0; 
+        opacity: 0;
     }
 }
 

@@ -11,7 +11,7 @@ import { GET_SINGLE_PRODUCT } from "~/api/queries";
 
 import OwlCarousel from "~/components/features/owl-carousel";
 
-import DetailOne from "~/components/partials/product/detail/detail-one";
+import ModalDetailOne from "~/components/partials/product/detail/quick-view-detail";
 
 import { modalActions } from "~/store/modal";
 
@@ -96,7 +96,11 @@ function Quickview(props) {
           </div>
 
           <div className="col-md-6">
-            <DetailOne product={data} adClass="scrollable pr-3" isNav={false} />
+            <ModalDetailOne
+              product={data}
+              adClass="scrollable pr-3"
+              isNav={false}
+            />
           </div>
         </div>
 

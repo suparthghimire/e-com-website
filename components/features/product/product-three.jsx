@@ -42,10 +42,9 @@ function ProductThree(props) {
         <ALink href={`/product/default/${product.slug}`}>
           <LazyLoadImage
             alt="product"
-            src={product.product_image[0].url}
+            src={product.product_image[0]?.url}
             threshold={500}
             effect="opacity"
-            width="300"
           />
 
           {product.product_image.length >= 2 ? (
@@ -53,7 +52,6 @@ function ProductThree(props) {
               alt="product"
               src={product.product_image[1].url}
               threshold={500}
-              width="300"
               effect="opacity"
               wrapperClassName="product-image-hover"
             />
@@ -91,13 +89,15 @@ function ProductThree(props) {
           </>
         </div>
         <div className="product-action">
-          <ALink href={`/product/default/${product.slug}`}>
-            <a
-              href="#"
-              className="btn btn-transparent pl-2 pr-2 border-primary btn-block"
-            >
-              <span>View Product</span>
-            </a>
+          <ALink
+            href="#"
+            className="btn-product btn-cart color-primary"
+            style={{ borderRadius: "0.5rem" }}
+            title="Add to cart"
+            onClick={showQuickviewHandler}
+          >
+            <i className="d-icon-bag"></i>
+            <span>Add to cart</span>
           </ALink>
           <a
             href="#"
@@ -110,12 +110,11 @@ function ProductThree(props) {
             ></i>
           </a>
           <ALink
-            href="#"
+            href={"/product/default/" + product.slug}
             className="btn-product-icon btn-quickview"
             title="Quick View"
-            onClick={showQuickviewHandler}
           >
-            <i className="d-icon-search"></i>
+            <i className="d-icon-bag"></i>
           </ALink>
         </div>
       </div>

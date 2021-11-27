@@ -11,6 +11,7 @@ export default function Category() {
   if (status === "loading") return <CustomLoader type="Grid" />;
   const category = data?.results?.category_products;
   const banner = data?.results?.banner;
+  const brands = data?.results.brand;
   return (
     <>
       {/* caurosel */}
@@ -41,7 +42,7 @@ export default function Category() {
               );
             })}
           </div>
-          <BrandSection />
+          <BrandSection brands={brands} />
         </div>
       </div>
     </>
