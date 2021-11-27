@@ -1,18 +1,20 @@
 import { connect } from "react-redux";
 import Helmet from "react-helmet";
 import { modalActions } from "~/store/modal";
-
 import ALink from "~/components/features/custom-link";
 import { useRouter } from "next/router";
 import { cartActions } from "~/store/cart";
 import { wishlistActions } from "~/store/wishlist";
-
+import WishListProduct from "~/components/partials/product/wishlist-product";
 import { toDecimal } from "~/utils";
 import { TITLE } from "~/config";
 function Wishlist(props) {
   const router = useRouter();
   const { wishlist, addToCart, openQuickview, removeFromWishlist } = props;
   const showQuickviewHandler = (slug) => {
+    console.log("slug");
+    console.log(slug);
+    console.log(openQuickview(slug));
     openQuickview(slug);
   };
   const moveToCart = (e, item) => {
@@ -44,6 +46,8 @@ function Wishlist(props) {
         <div className="container">
           {wishlist.length > 0 ? (
             <>
+              <h3>My Wishlist in Rameti</h3>
+
               <table className="shop-table wishlist-table mt-2 mb-4">
                 <thead>
                   <tr>
@@ -51,79 +55,25 @@ function Wishlist(props) {
                       <span>Product</span>
                     </th>
                     <th>
-                      <span>Product Name</span>
+                      <span></span>
                     </th>
-                    <th colspan="2" className="product-price">
+                    <th>
+                      <span>Stock Status</span>
+                    </th>
+                    <th className="product-price">
                       <span>Price</span>
                     </th>
-                    <th className="product-remove">Actions</th>
+                    <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody className="wishlist-items-wrapper">
                   {wishlist.map((item) => (
-                    <tr key={"wishlist-" + item.name}>
-                      <td className="product-thumbnail">
-                        <ALink href={"/product/default/" + item.slug}>
-                          <figure>
-                            {/* TODO: ADD BASE URL TO IMAGE */}
-                            <img
-                              src={item.product_image[0].url}
-                              width="100"
-                              height="100"
-                              alt="product"
-                            />
-                          </figure>
-                        </ALink>
-                      </td>
-                      <td className="product-name">
-                        <div
-                          className="product-name-section"
-                          style={{
-                            width: "fit-content",
-                            maxWidth: "70%",
-                          }}
-                        >
-                          <ALink href={"/product/default/" + item.slug}>
-                            <h5>{item.name} </h5>
-                          </ALink>
-                        </div>
-                      </td>
-                      <td colspan="2" className="product-price">
-                        <span className="amount">
-                          ${toDecimal(item.display_price)}
-                        </span>
-                      </td>
-                      <td className="product-remove">
-                        <div className="d-flex" style={{ gap: "10px" }}>
-                          <div>
-                            <ALink
-                              href="#"
-                              className="remove"
-                              title="Remove this product"
-                            >
-                              <i
-                                className="d-icon-search"
-                                onClick={() => {
-                                  showQuickviewHandler(item.slug);
-                                }}
-                              ></i>
-                            </ALink>
-                          </div>
-                          <div>
-                            <ALink
-                              href="#"
-                              className="remove"
-                              title="Remove this product"
-                            >
-                              <i
-                                className="fas fa-times"
-                                onClick={() => removeFromWishlist(item)}
-                              ></i>
-                            </ALink>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+                    <WishListProduct
+                      item={item}
+                      openQuickview={openQuickview}
+                      removeFromWishlist={removeFromWishlist}
+                    />
                   ))}
                 </tbody>
               </table>
@@ -157,6 +107,7 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
+  toggleWishlist: wishlistActions.toggleWishlist,
   addToCart: cartActions.addToCart,
   removeFromWishlist: wishlistActions.removeFromWishlist,
   ...modalActions,
