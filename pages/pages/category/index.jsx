@@ -15,7 +15,7 @@ export default function Category() {
   return (
     <>
       {/* caurosel */}
-      <OwlCarousel adClass="owl-theme owl-nav-full">
+      <OwlCarousel adClass="owl-theme owl-nav-full h-700">
         {banner.map((item, index) => {
           return (
             <figure
@@ -23,12 +23,13 @@ export default function Category() {
               key={"banner-" + index}
               autoplay={true}
             >
-              <img src={item.feature_image} alt={item.title} />
+              {/* <img src={item.feature_image} alt={item.title} /> */}
+              <img src="./images/banners/banner1.jpg" alt={item.title} />
             </figure>
           );
         })}
       </OwlCarousel>
-      <div className="container home">
+      <div className="container home mt-5">
         <div className="page-content">
           <h2 className="title title-simple">Categories</h2>
           <div className="category-list">
@@ -36,7 +37,7 @@ export default function Category() {
               return (
                 <ALink href={"/pages/category/" + item.slug}>
                   <div className="row" key={"category" + index}>
-                    <SingleCategory key={"categiry-" + index} category={item} />
+                    <SingleCategory key={"category-" + index} category={item} />
                   </div>
                 </ALink>
               );
