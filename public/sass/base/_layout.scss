@@ -1,6 +1,7 @@
 /* -------------------------------------------
     Layout
 ---------------------------------------------- */
+
 .container,
 .container-fluid {
     width: 100%;
@@ -17,12 +18,15 @@
         padding-right: 15px;
     }
 }
+
 .container-fluid {
     @include css(max-width, base, _container-fluid-width);
 }
+
 .container {
     @include css(max-width, base, _container-width);
 }
+
 .divider {
     display: inline-block;
     vertical-align: middle;

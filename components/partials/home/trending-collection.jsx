@@ -4,6 +4,7 @@ import Reveal from "react-awesome-reveal";
 import OwlCarousel from "~/components/features/owl-carousel";
 
 import ProductThree from "~/components/features/product/product-three";
+import ALink from "~/components/features/custom-link";
 
 import { productSlider } from "~/utils/data/carousel";
 import { fadeIn, fadeInLeftShorter } from "~/utils/data/keyframes";
@@ -19,7 +20,12 @@ function Trending(props) {
   return (
     <Reveal keyframes={fadeIn} delay={200} duration={1200} triggerOnce>
       <section className="product-wrapper mt-9">
-        <h2 className="title title-simple">Trending</h2>
+        <div className="d-flex align-items-center justify-content-between">
+          <h2 className="title title-simple">Trending</h2>
+          <ALink href="/pages/category" className="text-primary">
+            View More
+          </ALink>
+        </div>
         <OwlCarousel adClass="owl-theme owl-nav-full" options={productSlider}>
           {featured &&
             featured.map((item, index) => (

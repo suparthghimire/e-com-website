@@ -84,8 +84,9 @@ _color-border: 1px solid $border-color, _image-border: 0, ), list-sm: ( name: ( 
         content: "";
         display: block;
         // padding-top: calc( 900% / 8 );
-        padding-top: calc(334% / 3);
-        background-color: #f4f4f4;
+        // padding-top: calc(334% / 3);
+        padding-top: 100%;
+        background-color: #ffffff;
     }
     img {
         display: block;
@@ -523,7 +524,7 @@ _color-border: 1px solid $border-color, _image-border: 0, ), list-sm: ( name: ( 
 
 .product:hover {
     .product-action .btn-cart {
-        color: #fff;
+        color: #fff !important;
         background-color: $primary-color;
         border-color: $primary-color;
     }

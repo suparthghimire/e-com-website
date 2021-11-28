@@ -6,6 +6,48 @@ export const GET_HOME_DATA_NEW = async ({ queryKey }) => {
   const response = await fetch(`${BASE_URL}/home/`);
   return response.json();
 };
+
+export const GET_ALL_PRODUCTS_SHOP = (data) => {
+  const { min_price, max_price, color, size, page, page_size, brand } = data;
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [errors, setErrors] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+
+  const url_params = new URLSearchParams({
+    min_price,
+    max_price,
+    color,
+    size,
+    page,
+    page_size,
+    brand,
+  });
+  const url = `${BASE_URL}/product/?${url_params.toString()}`;
+  useEffect(() => {
+    setProducts([]);
+  }, []);
+  useEffect(() => {
+    setLoading(true);
+    setErrors(false);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts((prevProducts) => {
+          console.log("Up", prevProducts);
+          return [...prevProducts, ...data.results];
+        });
+        setHasMore(data.next ? true : false);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setErrors(error);
+      });
+  }, [min_price, max_price, color, size, page, page_size, brand]);
+  return { products, loading, errors, hasMore };
+};
+
 export const GET_ALL_PRODUCTS = async ({ queryKey }) => {
   const [_key, { page, page_size }] = queryKey;
   const url_params = new URLSearchParams({
@@ -79,9 +121,10 @@ export const GET_CATEGORY = (data) => {
     brand,
   });
   const url = `${BASE_URL}/category/${slug}/?${url_params.toString()}`;
-
   useEffect(() => {
     setProducts([]);
+  }, []);
+  useEffect(() => {
     setLoading(true);
     setErrors(false);
     fetch(url)
@@ -108,6 +151,9 @@ export const GET_BRAND_PRODUCTS = (data) => {
   const [errors, setErrors] = useState(false);
   const [hasMore, setHasMore] = useState(false);
   const url = `${BASE_URL}/brand/${slug}/product/`;
+  useEffect(() => {
+    setProducts([]);
+  }, []);
   useEffect(() => {
     setProducts([]);
     setLoading(true);
