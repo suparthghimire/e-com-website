@@ -21,7 +21,7 @@ export default function SubCategoryHome(props) {
                   className={
                     sub_cat.sub_category &&
                     sub_cat.sub_category.length > 0 &&
-                    "submenu"
+                    "submenu "
                   }
                 >
                   <ALink

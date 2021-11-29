@@ -86,10 +86,16 @@ function CartMenu(props) {
                       href={"/product/default/" + item.slug}
                       onClick={hideCartMenu}
                     >
+                      {console.log(
+                        item.product_image.length > 0
+                          ? item.product_image[0].url
+                          : "./images/banners/banner1.jpg"
+                      )}
                       <img
                         src={
-                          item.product_image[0]
-                            .url /* TODO: ADD BASE URL HERE  */
+                          item.product_image.length <= 0
+                            ? "./images/banners/banner1.jpg" /* TODO: ADD BASE URL HERE  */
+                            : item.product_image[0].url
                         }
                         alt="product"
                         width="80"

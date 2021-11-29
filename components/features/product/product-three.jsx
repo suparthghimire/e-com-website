@@ -12,6 +12,7 @@ import { toDecimal } from "~/utils";
 
 function ProductThree(props) {
   const { product, adClass, toggleWishlist, wishlist, openQuickview } = props;
+  console.log(product);
   // decide if the product is wishlisted
   let isWishlisted;
   isWishlisted =
@@ -109,13 +110,13 @@ function ProductThree(props) {
               className={isWishlisted ? "d-icon-heart-full" : "d-icon-heart"}
             ></i>
           </a>
-          <ALink
+          {/* <ALink
             href={"/product/default/" + product.slug}
             className="btn-product-icon btn-quickview"
             title="Quick View"
           >
             <i className="d-icon-bag"></i>
-          </ALink>
+          </ALink> */}
         </div>
       </div>
     </div>

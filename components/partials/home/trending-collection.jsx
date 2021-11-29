@@ -22,7 +22,7 @@ function Trending(props) {
       <section className="product-wrapper mt-9">
         <div className="d-flex align-items-center justify-content-between">
           <h2 className="title title-simple">Trending</h2>
-          <ALink href="/pages/category" className="text-primary">
+          <ALink href="/pages/shop" className="text-primary">
             View More
           </ALink>
         </div>
