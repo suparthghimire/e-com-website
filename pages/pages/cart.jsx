@@ -12,6 +12,9 @@ import { toDecimal, getTotalPrice } from "~/utils";
 function Cart(props) {
   const { cartList, removeFromCart, updateCart } = props;
   const [cartItems, setCartItems] = useState([]);
+
+  console.log(cartList);
+
   useEffect(() => {
     setCartItems([...cartList]);
   }, [cartList]);
@@ -73,8 +76,9 @@ function Cart(props) {
                               <ALink href={"/product/default/" + item.slug}>
                                 <img
                                   src={
-                                    /*TODO: ADD BASE URL */ item
-                                      .product_image[0].url
+                                    item.product_image.length <= 0
+                                      ? "./images/product.jpg"
+                                      : item.product_image[0].url
                                   }
                                   width="100"
                                   height="100"
@@ -108,7 +112,7 @@ function Cart(props) {
                           <td className="product-quantity">
                             <Quantity
                               qty={item.qty}
-                              max={2}
+                              max={999999999999}
                               onChangeQty={(qty) => onChangeQty(item.name, qty)}
                             />
                           </td>

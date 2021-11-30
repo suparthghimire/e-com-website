@@ -60,7 +60,7 @@ function Shop() {
             <SidebarFilterOne type="banner" />
             <div className="col-lg-9 main-content">
               {loading ? (
-                <CustomLoader type="Grid" />
+                <CustomLoader type="Oval" />
               ) : (
                 <ProductListOne
                   type="banner"

@@ -16,7 +16,11 @@ export default function CartPopup(props) {
           <figure className="product-media pure-media">
             <ALink href={`/product/default/${product.slug}`}>
               <img
-                src={product.product_image[0].url /* TODO: ADD BASE URL HERE */}
+                src={
+                  product.product_image.length <= 0
+                    ? "./images/product.jpg"
+                    : product.product_image[0].url
+                }
                 alt="product"
                 width="90"
                 height="90"

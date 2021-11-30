@@ -22,16 +22,16 @@ function DetailOne(props) {
   const [curSize, setCurSize] = useState("null");
   const [cartActive, setCartActive] = useState(false);
   const [quantity, setQauntity] = useState(1);
+  // const [colors, setColors] = useState([]);
+  // const [sizes, setSizes] = useState([]);
   let isWishlisted,
     colors = [] && product.product_image.map((pdt) => pdt.color),
     sizes = [] && product.available_sizes;
   const [colorList, setColorList] = useState({ active: null, colors: colors });
-
   isWishlisted =
     wishlist.findIndex((item) => item.slug === product.slug) > -1
       ? true
       : false;
-
   useEffect(() => {
     return () => {
       resetValueHandler();
@@ -52,12 +52,26 @@ function DetailOne(props) {
     } else {
       setCartActive(true);
     }
+    const av_colors = product.product_image.map((pdt) => pdt.color);
+    const av_sizes = product.available_sizes;
+    if (av_colors.length === 0 && av_sizes.length === 0) setCartActive(true);
+
+    if (av_colors.length === 0 && curSize !== "null") setCartActive(true);
+    if (av_sizes.length === 0 && curColor !== "null") setCartActive(true);
 
     if (product.stock === 0) {
       setCartActive(false);
     }
   }, [curColor, curSize, product]);
+  // useEffect(() => {
+  //   console.log("here");
+  //   console.log(product);
 
+  //   const new_colors = product?.product_image.map((pdt) => pdt.color);
+  //   const new_sizes = product?.available_sizes;
+  //   setColors(new_colors);
+  //   setSizes(new_sizes);
+  // }, [product]);
   const wishlistHandler = (e) => {
     e.preventDefault();
 
@@ -131,7 +145,7 @@ function DetailOne(props) {
   function changeQty(qty) {
     setQauntity(qty);
   }
-
+  console.log(sizes);
   return (
     <div
       className={"product-details p-sticky" + adClass}
@@ -179,9 +193,9 @@ function DetailOne(props) {
       </div> */}
 
       <div className="product-price">
-        <ins className="new-price">{product.display_price}</ins>
+        <ins className="new-price">NPR {product.display_price}</ins>
 
-        <del className="old-price">{product.price}</del>
+        <del className="old-price">NPR {product.price}</del>
       </div>
 
       {/* <div className="ratings-container">
@@ -287,7 +301,7 @@ function DetailOne(props) {
             ""
           )}
 
-          {product.available_sizes ? (
+          {sizes.length > 0 ? (
             <div className="product-form product-variations product-size mb-0 pb-2">
               <label>Size:</label>
               <div className="product-form-group">
@@ -303,6 +317,7 @@ function DetailOne(props) {
                       !isDisabled(curColor, item) ? (
                         <option value={item} key={"size-" + item}>
                           {item}
+                          {console.log(item)}
                         </option>
                       ) : (
                         ""
@@ -334,9 +349,11 @@ function DetailOne(props) {
                 <div className="single-product-price">
                   <div className="product-price mb-0">
                     <ins className="new-price">
-                      ${toDecimal(product.display_price)}
+                      NPR {toDecimal(product.display_price)}
                     </ins>
-                    <del className="old-price">${toDecimal(product.price)}</del>
+                    <del className="old-price">
+                      NPR {toDecimal(product.price)}
+                    </del>
                   </div>
                 </div>
               </div>

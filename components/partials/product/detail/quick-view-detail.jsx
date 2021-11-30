@@ -49,6 +49,12 @@ function ModalDetailOne(props) {
     } else {
       setCartActive(true);
     }
+    const av_colors = product.product_image.map((pdt) => pdt.color);
+    const av_sizes = product.available_sizes;
+    if (av_colors.length === 0 && av_sizes.length === 0) setCartActive(true);
+
+    if (av_colors.length === 0 && curSize !== "null") setCartActive(true);
+    if (av_sizes.length === 0 && curColor !== "null") setCartActive(true);
 
     if (product.stock === 0) {
       setCartActive(false);
