@@ -112,7 +112,12 @@ export default function MediaThree(props) {
         )}
       </div>
       {/* TODO: THIS CAN BE DONE IF IMAGES HAVE THEIR OWN API ENDPOINT */}
-      {/* <MediaLightBox images={ product.product_images } isOpen={ isOpen } changeOpenState={ changeOpenState } index={ index } product={ product } /> */}
+      <MediaLightBox
+        isOpen={isOpen}
+        changeOpenState={changeOpenState}
+        index={index}
+        product={product}
+      />
     </>
   );
 }

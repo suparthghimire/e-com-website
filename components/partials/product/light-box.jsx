@@ -3,10 +3,12 @@ import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
 function MediaLightBox(props) {
-  const { images, product } = props;
+  const { product } = props;
+  const size = product.product_image.length;
+
   const [isOpen, setOpenState] = useState(false);
   const [index, setIndex] = useState(0);
-
+  console.log(product);
   useEffect(() => {
     setOpenState(props.isOpen);
   }, [props.isOpen]);
@@ -20,26 +22,21 @@ function MediaLightBox(props) {
   };
 
   const setNextHandler = () => {
-    setIndex((index + 1) % images.length);
+    setIndex((index + 1) % size);
   };
 
   const setPrevHandler = () => {
-    setIndex((index + images.length - 1) % images.length);
+    setIndex((index + size - 1) % size);
   };
 
+  // return <>{isOpen ? <div>Hello</div> : ""}</>;
   return (
     <>
       {isOpen ? (
         <Lightbox
-          mainSrc={process.env.NEXT_PUBLIC_ASSET_URI + images[index].url}
-          nextSrc={
-            process.env.NEXT_PUBLIC_ASSET_URI +
-            images[(index + 1) % images.length].url
-          }
-          prevSrc={
-            process.env.NEXT_PUBLIC_ASSET_URI +
-            images[(index + images.length - 1) % images.length].url
-          }
+          mainSrc={product.product_image[index].url}
+          nextSrc={product.product_image[(index + 1) % size]?.url}
+          prevSrc={product.product_image[(index - 1) % size]?.url}
           onCloseRequest={closeLightBox}
           onMovePrevRequest={setPrevHandler}
           onMoveNextRequest={setNextHandler}
