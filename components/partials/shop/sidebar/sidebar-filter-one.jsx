@@ -243,7 +243,7 @@ function SidebarFilterOne(props) {
 
                     <div className="filter-actions">
                       <div className="filter-price-text mb-4">
-                        Price: ${filterPrice.min} - ${filterPrice.max}
+                        Price: NPR {filterPrice.min} - NPR {filterPrice.max}
                         <span className="filter-price-range"></span>
                       </div>
 
