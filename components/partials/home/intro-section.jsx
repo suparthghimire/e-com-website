@@ -16,7 +16,7 @@ function IntroSection(props) {
     return <div className="">No Categories Found!</div>;
   return (
     <section className="intro-section">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row grid">
           <Reveal
             keyframes={fadeInRightShorter}

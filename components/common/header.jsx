@@ -24,17 +24,17 @@ export default function Header(props) {
 
   return (
     <header className="header header-border">
-      <div className="header-top">
+      {/* <div className="header-top">
         <div className="container">
           <div className="header-right">
             <span className="divider"></span>
             <LoginModal auth={props.auth} user={props.user} />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="header-middle sticky-header fix-top sticky-content">
-        <div className="container">
+        <div className="container container-large">
           <div className="header-left">
             <ALink
               href="#"
@@ -71,6 +71,10 @@ export default function Header(props) {
             </ALink>
             <span className="divider"></span>
             <CartMenu auth={props.auth} />
+            <div className="d-flex align-items-center">
+              <span className="divider"></span>
+              <LoginModal auth={props.auth} user={props.user} />
+            </div>
           </div>
         </div>
       </div>

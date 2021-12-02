@@ -20,31 +20,34 @@ function cartReducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       let tmpProduct = { ...action.payload.product };
-
-      if (
-        state.data.findIndex(
-          (item) => item.name === action.payload.product.name
-        ) > -1
-      ) {
+      console.log(tmpProduct);
+      const index = state.data.findIndex(
+        (item) => item.name === action.payload.product.name
+      );
+      if (index > -1) {
         let tmpData = state.data.reduce((acc, cur) => {
-          if (
+          const same_product =
             cur.name === tmpProduct.name &&
             cur.color === tmpProduct.color &&
-            cur.size === tmpProduct.size
-          ) {
+            cur.size === tmpProduct.size;
+          if (same_product) {
+            console.log("This is Same Product");
             acc.push({
               ...cur,
               qty: parseInt(cur.qty) + parseInt(tmpProduct.qty),
             });
-          } else {
-            acc.push(cur);
+          } else if (!same_product) {
+            console.log("This is Not Same Product");
+            acc.push(tmpProduct);
           }
-
           return acc;
         }, []);
-
+        console.log("Data Saving Same");
+        console.log({ ...state, data: tmpData });
         return { ...state, data: tmpData };
       } else {
+        console.log("Data Saving Different");
+        console.log({ ...state, data: [...state.data, tmpProduct] });
         return { ...state, data: [...state.data, tmpProduct] };
       }
 

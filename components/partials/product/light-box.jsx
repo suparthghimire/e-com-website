@@ -29,7 +29,6 @@ function MediaLightBox(props) {
     setIndex((index + size - 1) % size);
   };
 
-  // return <>{isOpen ? <div>Hello</div> : ""}</>;
   return (
     <>
       {isOpen ? (

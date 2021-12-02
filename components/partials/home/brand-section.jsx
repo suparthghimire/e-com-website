@@ -24,13 +24,8 @@ function BrandSection(props) {
           {brands.map((brand) => {
             return (
               <ALink href={"/pages/brand/" + brand.slug}>
-                <figure>
-                  <img
-                    src={brand.image_url}
-                    alt="Brand"
-                    width="180"
-                    height="100"
-                  />
+                <figure className="brand-img">
+                  <img src={brand.image_url} alt="Brand" />
                 </figure>
               </ALink>
             );

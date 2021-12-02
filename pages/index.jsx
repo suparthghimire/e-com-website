@@ -31,7 +31,7 @@ function HomePage() {
           promo={data.results.promo}
           nav={data.results.nav}
         />
-        <div className="container">
+        <div className="container container-large">
           <CategorySection category={data.results.category_products} />
           <Trending featured={data.results.trending_products} />
 
