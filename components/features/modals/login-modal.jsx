@@ -60,12 +60,13 @@ function LoginModal(props) {
   if (!props.auth) {
     auth_nav = (
       <>
-        <a className="login-link" href="#" onClick={openModal}>
-          <i className="d-icon-user"></i>Sign in
+        <a className="login-link d-lg-ml-3" href="#" onClick={openModal}>
+          <i className="d-icon-user"></i>
+          Sign in
         </a>
-        <span className="delimiter">/</span>
+        <span className="delimiter d-lg-show">/</span>
         <a
-          className="register-link ml-0"
+          className="register-link ml-0 d-lg-show"
           onClick={(e) => openModal(e, 1)}
           href="#"
         >

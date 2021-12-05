@@ -24,16 +24,7 @@ export default function Header(props) {
 
   return (
     <header className="header header-border">
-      {/* <div className="header-top">
-        <div className="container">
-          <div className="header-right">
-            <span className="divider"></span>
-            <LoginModal auth={props.auth} user={props.user} />
-          </div>
-        </div>
-      </div> */}
-
-      <div className="header-middle sticky-header fix-top sticky-content">
+      <div className="header-middle sticky-header fix-top sticky-content flex-column">
         <div className="container container-large">
           <div className="header-left">
             <ALink
@@ -77,10 +68,10 @@ export default function Header(props) {
             </div>
           </div>
         </div>
-      </div>
+        {/* </div> */}
 
-      {router.pathname !== "/" ? (
-        <div className="header-bottom d-lg-show">
+        {/* {router.pathname !== "/" ? ( */}
+        <div className="header-bottom sticky-header fix-top sticky-content d-lg-show">
           <div className="container">
             <div className="inner-wrap">
               <div className="header-left">
@@ -125,9 +116,10 @@ export default function Header(props) {
             </div>
           </div>
         </div>
-      ) : (
+      </div>
+      {/* ) : (
         ""
-      )}
+      )} */}
     </header>
   );
 }

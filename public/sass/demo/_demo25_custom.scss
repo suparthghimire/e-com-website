@@ -1181,6 +1181,12 @@ input[type="number"] {
     }
 }
 
+@media (max-width: 991px) {
+    .d-lg-ml-3 {
+        margin-left: 2.3rem;
+    }
+}
+
 @media (min-width: 1024px) {
     .category-list {
         gap: 2rem;
@@ -1306,7 +1312,7 @@ main {
 }
 
 .container-large {
-    max-width: 1460px !important
+    max-width: 1660px !important
 }
 
 .brand-img {

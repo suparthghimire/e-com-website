@@ -430,7 +430,7 @@ export const productSlider = {
 export const categorySlider = {
   items: 5,
   nav: true,
-  dots: true,
+  dots: false,
   autoplay: false,
   loop: false,
   margin: 10,

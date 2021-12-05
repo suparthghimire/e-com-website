@@ -76,7 +76,7 @@ function DescOne(props) {
       <div className="tab-content">
         <TabPanel className="tab-pane product-tab-description">
           <div className="row mt-6">
-            <div className="col-md-6">
+            <div className="col-md-12">
               <h5 className="description-title mb-4 font-weight-semi-bold ls-m">
                 Features
               </h5>

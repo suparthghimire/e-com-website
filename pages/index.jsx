@@ -24,7 +24,6 @@ function HomePage() {
       <Helmet>
         <title>{TITLE} - Home</title>
       </Helmet>
-      <h1 className="d-none">Riode React eCommerce Template - Home</h1>
       <div className="page-content">
         <IntroSection
           category={data.results.category_products}
