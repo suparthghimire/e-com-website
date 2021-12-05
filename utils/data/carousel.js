@@ -377,27 +377,27 @@ export const serviceSlider = {
 };
 
 export const brandSlider = {
-  items: 7,
+  items: 9,
   nav: false,
   dots: false,
   autoplay: true,
   loop: false,
-  margin: 30,
+  margin: 15,
   responsive: {
     0: {
       items: 2,
     },
     576: {
-      items: 3,
-    },
-    768: {
       items: 4,
     },
-    992: {
+    768: {
       items: 5,
     },
+    992: {
+      items: 7,
+    },
     1200: {
-      items: 6,
+      items: 7,
     },
   },
 };
@@ -430,7 +430,7 @@ export const productSlider = {
 export const categorySlider = {
   items: 5,
   nav: true,
-  dots: true,
+  dots: false,
   autoplay: false,
   loop: false,
   margin: 10,

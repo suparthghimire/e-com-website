@@ -27,7 +27,7 @@ export default function SubCategory(props) {
                     </div>
                   </ALink>
                   {sub_cat.sub_category && sub_cat.sub_category.length > 0 ? (
-                    <ul className="menu horizontal-menu">
+                    <ul>
                       <SubCategory
                         category={sub_cat.sub_category}
                         title={sub_cat.title}

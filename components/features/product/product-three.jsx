@@ -12,8 +12,6 @@ import { toDecimal } from "~/utils";
 
 function ProductThree(props) {
   const { product, adClass, toggleWishlist, wishlist, openQuickview } = props;
-  console.log(product);
-  // decide if the product is wishlisted
   let isWishlisted;
   isWishlisted =
     wishlist.findIndex((item) => item.slug === product.slug) > -1

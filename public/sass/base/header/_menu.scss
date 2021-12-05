@@ -20,7 +20,9 @@
 // Default Menu Styles
 .menu {
     display: flex;
-    align-items: center;
+    min-height: 100%;
+    // overflow-y: auto;
+    // overflow-x: hidden;
     a {
         display: inline-block;
     }

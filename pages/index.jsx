@@ -24,14 +24,13 @@ function HomePage() {
       <Helmet>
         <title>{TITLE} - Home</title>
       </Helmet>
-      <h1 className="d-none">Riode React eCommerce Template - Home</h1>
       <div className="page-content">
         <IntroSection
           category={data.results.category_products}
           promo={data.results.promo}
           nav={data.results.nav}
         />
-        <div className="container">
+        <div className="container container-large">
           <CategorySection category={data.results.category_products} />
           <Trending featured={data.results.trending_products} />
 

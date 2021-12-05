@@ -42,12 +42,10 @@ function ProductDefault() {
   return (
     <main className="main mt-6 single-product">
       <Helmet>
-        <title>{TITLE} | Product Masonry</title>
+        <title>
+          {TITLE} | {data.title}
+        </title>
       </Helmet>
-
-      <h1 className="d-none">
-        Riode React eCommerce Template - Product Masonry
-      </h1>
 
       {data !== undefined ? (
         <div className={`page-content mb-10 pb-6 ${loaded ? "" : "d-none"}`}>
