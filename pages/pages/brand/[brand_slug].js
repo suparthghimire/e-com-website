@@ -17,6 +17,7 @@ function BrandSlug() {
   const { products, loading, errors, hasMore } = GET_BRAND_PRODUCTS({
     slug,
   });
+
   return (
     <main className="main shop">
       <Helmet>

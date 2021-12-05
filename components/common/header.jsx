@@ -26,7 +26,10 @@ export default function Header(props) {
     <header className="header header-border">
       <div className="header-middle sticky-header fix-top sticky-content flex-column">
         <div className="container container-large">
-          <div className="header-left">
+          <div
+            className="header-left"
+            style={{ paddingTop: "1rem", paddingBottom: "2rem" }}
+          >
             <ALink
               href="#"
               className="mobile-menu-toggle"
