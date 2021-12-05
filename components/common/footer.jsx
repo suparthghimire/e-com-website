@@ -2,7 +2,7 @@ import ALink from "~/components/features/custom-link";
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer mt-10">
       <div className="container container-large">
         <div className="footer-middle">
           <div className="row">

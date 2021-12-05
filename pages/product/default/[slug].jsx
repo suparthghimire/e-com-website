@@ -47,7 +47,7 @@ function ProductDefault() {
       </Helmet>
 
       {data !== undefined ? (
-        <div className={`page-content mb-10 pb-6 ${loaded ? "" : "d-none"}`}>
+        <div className={`page-content ${loaded ? "" : "d-none"}`}>
           <div className="container skeleton-body">
             <div className="product product-single row mb-2">
               <div className="col-md-6">

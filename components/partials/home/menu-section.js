@@ -7,7 +7,7 @@ export default function Menu(props) {
     <div className="grid-item height-x2 category-list d-lg-block d-none w-1">
       <ul className="menu menu-options vertical-menu bg-light home-page-menu">
         <li>
-          <ALink href="#" className="menu-title menu-li">
+          <ALink href="#" className="menu-title menu-li fw-600">
             Browse Our Categories
           </ALink>
         </li>
@@ -22,12 +22,10 @@ export default function Menu(props) {
               >
                 <ALink
                   href={"/pages/category/" + item.slug}
-                  className="menu-li"
+                  className="menu-li fw-normal"
                 >
                   <div className="d-flex align-items-center justify-content-between">
-                    <span className="text-black" style={{ fontWeight: "600" }}>
-                      {item.title}
-                    </span>
+                    <span className="text-black">{item.title}</span>
                   </div>
                 </ALink>
                 {item.sub_category && item.sub_category.length > 0 ? (
@@ -39,30 +37,22 @@ export default function Menu(props) {
             );
         })}
         <li>
-          <ALink href="#" className="menu-title menu-li">
+          <ALink href="#" className="menu-title menu-li fw-600">
             Browse Products by
           </ALink>
         </li>
         <li className="submenu">
-          <ALink
-            href="#"
-            className="menu-li text-black"
-            style={{ fontWeight: "600" }}
-          >
+          <ALink href="#" className="menu-li text-black fw-normal">
             Brands
           </ALink>
         </li>
         <li className="submenu">
-          <ALink
-            href="#"
-            className="menu-li text-black"
-            style={{ fontWeight: "600" }}
-          >
+          <ALink href="#" className="menu-li text-black fw-normal">
             New Arrivals
           </ALink>
         </li>
         <li className="submenu">
-          <ALink href="#" className=" text-black" style={{ fontWeight: "600" }}>
+          <ALink href="#" className=" text-black fw-normal">
             Featured Products
           </ALink>
         </li>
