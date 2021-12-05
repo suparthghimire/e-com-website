@@ -397,6 +397,7 @@ wishlist: ( icon: ( font-size: 2.8rem, ), ), contact: ( icon: ( margin-right: 0.
         .input-wrapper {
             @include css(height, header, search, round, height);
         }
+        max-width:100% !important;
         input.form-control {
             padding: 0 5rem 0 1.55rem;
             border-radius: 5px;

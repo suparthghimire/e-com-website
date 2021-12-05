@@ -24,9 +24,8 @@ function ProductDefault() {
     ["single-product", { slug }],
     GET_SINGLE_PRODUCT
   );
-  if (data?.detail) return <Error404 />;
+  if (data && data?.detail) return <Error404 />;
   const [loaded, setLoadingState] = useState(false);
-  const product = data;
   const related = data && data.category_products;
   useEffect(() => {
     if (status !== "loading" && data)
@@ -43,12 +42,12 @@ function ProductDefault() {
     <main className="main mt-6 single-product">
       <Helmet>
         <title>
-          {TITLE} | {data.title}
+          {TITLE} | {data !== undefined ? data.title : "Single Product"}
         </title>
       </Helmet>
 
       {data !== undefined ? (
-        <div className={`page-content mb-10 pb-6 ${loaded ? "" : "d-none"}`}>
+        <div className={`page-content ${loaded ? "" : "d-none"}`}>
           <div className="container skeleton-body">
             <div className="product product-single row mb-2">
               <div className="col-md-6">

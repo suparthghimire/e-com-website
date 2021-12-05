@@ -17,7 +17,7 @@ function CategorySection(props) {
         <Reveal keyframes={fadeIn} delay={300} duration={1200} triggerOnce>
           <div
             className="d-flex align-items-center justify-content-between"
-            style={{ padding: "0 1.5rem" }}
+            style={{ padding: "0 -1.5rem" }}
           >
             <h2 className="title title-simple">Category</h2>
             <ALink href="/pages/category" className="text-primary">
