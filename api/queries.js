@@ -28,13 +28,18 @@ export const GET_ALL_PRODUCTS_SHOP = (data) => {
     setProducts([]);
   }, []);
   useEffect(() => {
+    console.log("Here");
     setLoading(true);
     setErrors(false);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setProducts((prevProducts) => {
-          console.log("Up", prevProducts);
+          if (data.detail || (data.results && data.results.length <= 0)) {
+            console.log("Empty");
+            return [];
+          }
+          console.log("Iteratble");
           return [...prevProducts, ...data.results];
         });
         setHasMore(data.next ? true : false);
@@ -45,6 +50,7 @@ export const GET_ALL_PRODUCTS_SHOP = (data) => {
         setErrors(error);
       });
   }, [min_price, max_price, color, size, page, page_size, brand]);
+  console.log(products, loading, errors, hasMore);
   return { products, loading, errors, hasMore };
 };
 
