@@ -343,7 +343,7 @@ function SidebarFilterOne(props) {
                             pathname: router.pathname,
                             query: {
                               ...query,
-                              brand: getUrlForAttrs("brand", item.slug),
+                              brand: getUrlForAttrs("brand", item.id),
                             },
                           }}
                         >
