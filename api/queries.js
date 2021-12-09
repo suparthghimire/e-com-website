@@ -35,11 +35,8 @@ export const GET_ALL_PRODUCTS_SHOP = (data) => {
       .then((res) => res.json())
       .then((data) => {
         setProducts((prevProducts) => {
-          if (data.detail || (data.results && data.results.length <= 0)) {
-            console.log("Empty");
+          if (data.detail || (data.results && data.results.length <= 0))
             return [];
-          }
-          console.log("Iteratble");
           return [...prevProducts, ...data.results];
         });
         setHasMore(data.next ? true : false);
@@ -137,6 +134,8 @@ export const GET_CATEGORY = (data) => {
       .then((res) => res.json())
       .then((data) => {
         setProducts((prevProducts) => {
+          if (data.detail || (data.results && data.results.length <= 0))
+            return [];
           return [...prevProducts, ...data.results];
         });
         setHasMore(data.next ? true : false);
@@ -168,6 +167,9 @@ export const GET_BRAND_PRODUCTS = (data) => {
       .then((res) => res.json())
       .then((data) => {
         setProducts((prevProducts) => {
+          if (data.detail || (data.results && data.results.length <= 0))
+            return [];
+
           return [...prevProducts, ...data.results];
         });
         setHasMore(data.next ? true : false);

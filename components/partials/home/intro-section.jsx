@@ -115,20 +115,21 @@ function IntroSection(props) {
                         </figure>
                       </ALink>
                       <div className="banner-content">
-                        <h3 className="banner-title text-capitalize ls-md mb-0">
+                        <h3 className="banner-title text-capitalize ls-md mb-0 text-white">
                           {item.title}
                         </h3>
                         <p
-                          className="text-dark mt-0"
+                          className="text-white mt-0"
                           style={{ fontSize: "12px" }}
                         >
                           Burshes, Lashes, All cosmetics
                         </p>
                         <ALink
                           href={"/pages/category/" + item.slug}
-                          className="btn btn-dark btn-link btn-underline "
+                          className="btn btn-dark btn-link btn-underline text-white"
                         >
-                          Shop Now<i className="d-icon-arrow-right"></i>
+                          Shop Now
+                          <i className="d-icon-arrow-right text-white"></i>
                         </ALink>
                       </div>
                     </div>

@@ -36,7 +36,9 @@ export default function CartPopup(props) {
             </ALink>
             <span className="price-box">
               <span className="product-quantity">{product.qty}</span>
-              <span className="product-price">${toDecimal(product.price)}</span>
+              <span className="product-price">
+                NPR. {toDecimal(product.price)}
+              </span>
             </span>
           </div>
         </div>

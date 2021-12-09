@@ -69,7 +69,7 @@ function RegisterForm() {
             type="text"
             className="form-control"
             id="full_name"
-            {...register("full_name", { required: true })}
+            {...register("full_name", { required: false })}
             placeholder="Your Full Name *"
           />
           {errors.full_name && (
@@ -82,7 +82,7 @@ function RegisterForm() {
             type="email"
             className="form-control"
             id="email"
-            {...register("email", { required: true })}
+            {...register("email", { required: false })}
             placeholder="Your Email address *"
           />
           {errors.email && (
@@ -95,7 +95,7 @@ function RegisterForm() {
             type="password"
             className="form-control"
             id="password"
-            {...register("password", { required: true })}
+            {...register("password", { required: false })}
             placeholder="Password *"
           />
           {errors.email && (
@@ -109,7 +109,7 @@ function RegisterForm() {
             className="form-control"
             id="phone_number"
             {...register("phone_number", {
-              required: true,
+              required: false,
               validate: (phone) => {
                 if (isNaN(phone)) return false;
                 if (phone.length === 10) return phone[0] == 9;
@@ -134,7 +134,7 @@ function RegisterForm() {
           <select
             className="form-control"
             id="gender"
-            {...register("gender", { required: true })}
+            {...register("gender", { required: false })}
           >
             <option value="M"> Male </option>
             <option value="F"> Female </option>
@@ -146,7 +146,7 @@ function RegisterForm() {
         <div className="form-group">
           <label htmlFor="singin-state">State:</label>
           <select
-            {...register("state", { required: true })}
+            {...register("state", { required: false })}
             className="form-control"
             id="state"
           >
@@ -168,7 +168,7 @@ function RegisterForm() {
             className="form-control"
             placeholder="Your District *"
             {...register("district", {
-              required: true,
+              required: false,
             })}
             id="district"
           />
@@ -183,7 +183,7 @@ function RegisterForm() {
             className="form-control"
             placeholder="City *"
             name="city"
-            {...register("city", { required: true })}
+            {...register("city", { required: false })}
             id="city"
           />
           {errors.city && <small className="error-msg">City is Required</small>}
@@ -195,7 +195,7 @@ function RegisterForm() {
             className="form-control"
             placeholder="Address *"
             {...register("address", {
-              required: true,
+              required: false,
             })}
             id="address"
           />

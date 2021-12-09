@@ -119,6 +119,7 @@ function DetailOne(props) {
   const resetValueHandler = (e) => {
     setCurColor("null");
     setCurSize("null");
+    colorList.active = null;
   };
 
   function isDisabled(color, size) {
@@ -317,7 +318,6 @@ function DetailOne(props) {
                       !isDisabled(curColor, item) ? (
                         <option value={item} key={"size-" + item}>
                           {item}
-                          {console.log(item)}
                         </option>
                       ) : (
                         ""
