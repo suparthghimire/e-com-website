@@ -371,7 +371,7 @@ export default function CheckoutForm(props) {
                           {item.size}
                         </td>
                         <td className="product-total text-body">
-                          Nrs. {toDecimal(item.price * item.qty)}
+                          NPR. {toDecimal(item.price * item.qty)}
                         </td>
                       </tr>
                     ))}
@@ -380,7 +380,7 @@ export default function CheckoutForm(props) {
                         Promo Discount
                       </td>
                       <td className="product-total text-body">
-                        Nrs. {promoDiscount}
+                        NPR. {promoDiscount}
                       </td>
                     </tr>
 
@@ -392,7 +392,7 @@ export default function CheckoutForm(props) {
                         colSpan="3"
                         className="summary-subtotal-price pb-0 pt-0"
                       >
-                        Nrs.&nbsp;
+                        NPR.&nbsp;
                         {toDecimal(
                           getTotalPrice(props.cartList, {
                             promo_discount: promoDiscount,
@@ -423,7 +423,7 @@ export default function CheckoutForm(props) {
                           </li>
                         </ul>
                       </td>
-                      <td colSpan="3">Nrs. 40</td>
+                      <td colSpan="3">NPR. 40</td>
                     </tr>
                     <tr className="summary-total">
                       <td className="pb-0">
@@ -434,7 +434,7 @@ export default function CheckoutForm(props) {
                       </td>
                       <td colSpan="3" className=" pt-0 pb-0">
                         <p className="summary-total-price ls-s text-primary">
-                          Nrs.&nbsp;
+                          NPR.&nbsp;
                           {toDecimal(
                             getTotalPrice(props.cartList, {
                               promo_discount: promoDiscount,

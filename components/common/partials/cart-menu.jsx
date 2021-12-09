@@ -53,7 +53,7 @@ function CartMenu(props) {
         <span className="cart-label d-lg-show">
           <span className="cart-name">Shopping Cart:</span>
           <span className="cart-price">
-            Nrs. {toDecimal(getTotalPrice(cartList))} /-
+            NPR. {toDecimal(getTotalPrice(cartList))} /-
           </span>
         </span>
         <i className="d-icon-bag">

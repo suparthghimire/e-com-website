@@ -162,7 +162,7 @@ function SearchForm() {
                   <div className="search-name">{product.title}</div>
                   <span className="search-price">
                     <span className="new-price mr-1">
-                      Npr. {toDecimal(product.display_price)} /-
+                      NPR. {toDecimal(product.display_price)} /-
                     </span>
                   </span>
                 </ALink>

@@ -81,7 +81,7 @@ export default function OrderCancel(props) {
                           <div className="mt-2 text-center">
                             {order.product.title}
                             <br />
-                            Nrs. {order.product.display_price}
+                            NPR. {order.product.display_price}
                             <br />
                             <i className="fas fa-times"></i> {order.quantity}
                           </div>
@@ -97,7 +97,7 @@ export default function OrderCancel(props) {
                   <h4 className="summary-subtitle">Sub Total</h4>
                 </div>
                 <div className="summary-subtotal-price">
-                  Nrs. {data.sub_total}
+                  NPR. {data.sub_total}
                 </div>
               </div>
               <div className="d-flex justify-content-between align-items-center summary-subtotal">
@@ -106,7 +106,7 @@ export default function OrderCancel(props) {
                     Grand Total <small>(After 13% Tax)</small>
                   </h4>
                 </div>
-                <div className="summary-subtotal-price">Nrs. {data.total}</div>
+                <div className="summary-subtotal-price">NPR. {data.total}</div>
               </div>
               <div className="d-flex justify-content-between align-items-center summary-subtotal">
                 <div>

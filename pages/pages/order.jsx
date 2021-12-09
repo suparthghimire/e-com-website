@@ -178,7 +178,7 @@ function Order(props) {
                                         <div className="mt-2 text-center">
                                           {order.product.title}
                                           <br />
-                                          Nrs. {order.product.display_price}
+                                          NPR. {order.product.display_price}
                                           <br />
                                           <i className="fas fa-times"></i>{" "}
                                           {order.quantity}
@@ -195,7 +195,7 @@ function Order(props) {
                                 <h4 className="summary-subtitle">Sub Total</h4>
                               </div>
                               <div className="summary-subtotal-price">
-                                Nrs. {item.sub_total}
+                                NPR. {item.sub_total}
                               </div>
                             </div>
                             <div className="d-flex justify-content-between align-items-center summary-subtotal">
@@ -205,7 +205,7 @@ function Order(props) {
                                 </h4>
                               </div>
                               <div className="summary-subtotal-price">
-                                Nrs. {item.total}
+                                NPR. {item.total}
                               </div>
                             </div>
                             <div className="d-flex justify-content-between align-items-center summary-subtotal">
