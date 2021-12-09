@@ -455,7 +455,7 @@ export const categorySlider = {
       items: 4,
       dotsEach: 10,
     },
-    1200: {
+    1300: {
       items: 5,
       dotsEach: 10,
     },

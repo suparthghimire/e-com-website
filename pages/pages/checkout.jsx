@@ -10,7 +10,6 @@ import { cartActions } from "~/store/cart";
 
 function Checkout(props) {
   const router = useRouter();
-
   if (!props.loadingAuth && !props.auth) router.push("/pages/login");
   if (!props.loadingAuth && props.auth) {
     const { cartList, removeFromCart } = props;
@@ -32,6 +31,7 @@ function Checkout(props) {
             {cartList.length > 0 ? (
               <>
                 <CheckoutForm
+                  user={props.user}
                   cartList={cartList}
                   removeFromCart={removeFromCart}
                 />

@@ -105,7 +105,7 @@ function Cart(props) {
                           </td>
                           <td className="product-subtotal">
                             <span className="amount">
-                              Nrs. {toDecimal(item.price)}
+                              NPR. {toDecimal(item.price)}
                             </span>
                           </td>
 
@@ -118,7 +118,7 @@ function Cart(props) {
                           </td>
                           <td className="product-price">
                             <span className="amount">
-                              Nrs. {toDecimal(item.price * item.qty)}
+                              NPR. {toDecimal(item.price * item.qty)}
                             </span>
                           </td>
                           <td className="product-close">

@@ -175,7 +175,7 @@ export default function Footer() {
             <p className="copyright">
               All Rights Reserved to{" "}
               <span className="color-primary"> Rameti</span>
-              &nbsp;,2021 &nbsp;|&nbsp;Powered By: Aspark Systems
+              &nbsp;,2021 &nbsp;|&nbsp;Powered By: Bidhee Pvt. Ltd.
             </p>
           </div>
           <div className="footer-right">

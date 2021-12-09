@@ -6,12 +6,16 @@ import Card from "~/components/features/accordion/card";
 import { toast } from "react-toastify";
 import router from "next/router";
 import { KHALTI_CREDS } from "~/config";
+import Cookies from "js-cookie";
 import KhaltiCheckout from "khalti-checkout-web";
 import { POST_ORDER, POST_PROMO } from "~/api/queries";
+import { BASE_URL } from "~/config";
 export default function CheckoutForm(props) {
   const [promoServerError, setPromoServerError] = useState({ message: null });
   const [promoCodeValue, setPromoCodeValue] = useState("");
   const [promoDiscount, setPromoDiscount] = useState(0);
+  const [serverErrors, setServerErrors] = useState(null);
+  const [paymentMthd, setPaymentMthd] = useState(null);
   const empty_cart = () => {
     props.cartList.forEach((product) => {
       props.removeFromCart(product);
@@ -50,6 +54,49 @@ export default function CheckoutForm(props) {
   };
 
   const handle_order = async (form_data) => {
+    try {
+      const response = await fetch(`${BASE_URL}/me/`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${Cookies.get("rameti_ec_access")}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          ...props.user,
+          phone_number: form_data.contact_number,
+          address: form_data.delivery_address,
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+      if (response.status === 400) {
+        //validation error
+        const error = new Error("Validation Error");
+        error.status = 400;
+        error.data = data;
+        throw error;
+      } else if (response.status !== 200) {
+        const error = new Error("Unexpected Error");
+        error.status = response.status;
+        error.data = {
+          message: ["Unexpected Error Occured"],
+        };
+        throw error;
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Error While Saving Changes!", {
+        autoClose: 1200,
+      });
+      let errors = [];
+      Object.keys(error.data).forEach((key) => {
+        error.data[key].forEach((error) => {
+          errors.push(error);
+        });
+      });
+      setServerErrors(errors);
+    }
+
     let submit_data = {
       ...form_data,
       promo_code: promoCodeValue,
@@ -72,7 +119,7 @@ export default function CheckoutForm(props) {
     };
     delete submit_data["terms_condition"];
     delete submit_data["payment_method"];
-    if (form_data["payment_method"] === "khalti") {
+    if (paymentMthd === "khalti") {
       const KHALTI_CONFIG = {
         publicKey: KHALTI_CREDS.KHALTI_PUBLIC_KEY,
         productIdentity: KHALTI_CREDS.KHALTI_PRODUCT_IDENTITY,
@@ -122,7 +169,7 @@ export default function CheckoutForm(props) {
       Khalti_Checkout.show({
         amount: 200 * 100,
       });
-    } else if (form_data["payment_method"] === "cod") {
+    } else if (paymentMthd === "cod") {
       POST_ORDER(submit_data)
         .then((data) => {
           toast.success("Order Placed Successfully!", { autoClose: 1200 });
@@ -134,9 +181,10 @@ export default function CheckoutForm(props) {
         });
     }
   };
+
   return (
     <>
-      <div className="card accordion">
+      {/* <div className="card accordion">
         <Card
           title="
             <div class='alert alert-light alert-primary alert-icon mb-4 pb-2 card-header'>
@@ -176,8 +224,20 @@ export default function CheckoutForm(props) {
             </form>
           </div>
         </Card>
-      </div>
+      </div> */}
       <hr />
+      <div className="row">
+        <div className="col-6">
+          {serverErrors && (
+            <div className="alert alert-danger mb-2">
+              Errors:
+              {serverErrors.map((err) => (
+                <li>{err}</li>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
       <form onSubmit={handleSubmit(handle_order)}>
         <div className="row">
           <div className="col-lg-7 mb-6 mb-lg-0 pr-lg-4">
@@ -195,7 +255,10 @@ export default function CheckoutForm(props) {
                     className="form-control mb-0"
                     placeholder="Address *"
                     id="delivery_address"
-                    {...register("delivery_address", { required: true })}
+                    {...register("delivery_address", {
+                      required: true,
+                      value: props.user.address,
+                    })}
                   />
                   {errors.delivery_address && (
                     <small className="error-msg mt-0">
@@ -214,6 +277,7 @@ export default function CheckoutForm(props) {
                     id="contact_number"
                     {...register("contact_number", {
                       required: true,
+                      value: props.user.phone_number,
                       validate: (phone_no) => {
                         if (isNaN(phone_no)) return false;
                         if (phone_no.length === 10) return phone_no[0] == 9;
@@ -307,7 +371,7 @@ export default function CheckoutForm(props) {
                           {item.size}
                         </td>
                         <td className="product-total text-body">
-                          Nrs. {toDecimal(item.price * item.qty)}
+                          NPR. {toDecimal(item.price * item.qty)}
                         </td>
                       </tr>
                     ))}
@@ -316,7 +380,7 @@ export default function CheckoutForm(props) {
                         Promo Discount
                       </td>
                       <td className="product-total text-body">
-                        Nrs. {promoDiscount}
+                        NPR. {promoDiscount}
                       </td>
                     </tr>
 
@@ -328,7 +392,7 @@ export default function CheckoutForm(props) {
                         colSpan="3"
                         className="summary-subtotal-price pb-0 pt-0"
                       >
-                        Nrs.&nbsp;
+                        NPR.&nbsp;
                         {toDecimal(
                           getTotalPrice(props.cartList, {
                             promo_discount: promoDiscount,
@@ -359,25 +423,25 @@ export default function CheckoutForm(props) {
                           </li>
                         </ul>
                       </td>
-                      <td colSpan="3">Nrs. 40</td>
+                      <td colSpan="3">NPR. 40</td>
                     </tr>
                     <tr className="summary-total">
                       <td className="pb-0">
                         <h4 className="summary-subtitle pb-0 mb-0">Total</h4>
-                        <span className="font-italic">
+                        {/* <span className="font-italic">
                           After 13% Tax on Total (Without Shipping)
-                        </span>
+                        </span> */}
                       </td>
                       <td colSpan="3" className=" pt-0 pb-0">
                         <p className="summary-total-price ls-s text-primary">
-                          Nrs.&nbsp;
+                          NPR.&nbsp;
                           {toDecimal(
                             getTotalPrice(props.cartList, {
                               promo_discount: promoDiscount,
                               shipping_fee: 40,
-                              tax: getTotalPrice(props.cartList) * 0.13,
                             })
                           )}
+                          {/* tax: getTotalPrice(props.cartList) * 0.13, */}
                         </p>
                       </td>
                     </tr>
@@ -394,30 +458,39 @@ export default function CheckoutForm(props) {
                       <div className="custom-radio">
                         <input
                           type="radio"
-                          {...register("payment_method", { required: true })}
                           value="cod"
                           id="cod"
-                          checked={true}
+                          {...register("payment_method", { required: true })}
+                          onClick={(e) => {
+                            setPaymentMthd(e.target.value);
+                            console.log(e.target.value);
+                          }}
                         />
                         <label htmlFor="cod">Cash on Delivery</label>
                       </div>
                       <div className="custom-radio">
                         <input
                           type="radio"
-                          {...register("payment_method", { required: true })}
                           value="khalti"
                           id="khalti"
+                          {...register("payment_method", { required: true })}
+                          onClick={(e) => {
+                            setPaymentMthd(e.target.value);
+                            console.log(e.target.value);
+                          }}
                         />
-
                         <label className="form-control-label" htmlFor="khalti">
                           Pay With Khalti
                         </label>
                       </div>
-                      {/* {errors.payment_method ?? (
+                      {errors.payment_method !== undefined ? (
                         <small className="error-msg">
+                          {console.log(errors.payment_method)}
                           Select Atleast One Payment Method
                         </small>
-                      )} */}
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                 </div>

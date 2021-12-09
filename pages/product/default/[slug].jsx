@@ -105,3 +105,12 @@ function ProductDefault() {
 //   ProductDefault
 // );
 export default ProductDefault;
+
+/**
+ * Projection of a 3D object over a 2D Surface
+Represented by Colors, Shadings, Lines etc.
+Represented by Pixels on Digital Surfaces (Monitors, TVs, Screens, etc.)
+3D Environment on its own is not “Editable”
+A representation od 3D Environment can be “Edited"
+
+ */

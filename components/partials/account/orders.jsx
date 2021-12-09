@@ -32,7 +32,7 @@ export default function Orders() {
                 </td>
                 <td> {item.created_at.substr(0, 10)} </td>
                 <td> {item.order_status} </td>
-                <td> Nrs. {item.total} </td>
+                <td> NPR. {item.total} </td>
                 <td>
                   {" "}
                   <ALink
