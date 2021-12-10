@@ -28,7 +28,6 @@ export const GET_ALL_PRODUCTS_SHOP = (data) => {
     setProducts([]);
   }, []);
   useEffect(() => {
-    console.log("Here");
     setLoading(true);
     setErrors(false);
     fetch(url)
@@ -47,7 +46,6 @@ export const GET_ALL_PRODUCTS_SHOP = (data) => {
         setErrors(error);
       });
   }, [min_price, max_price, color, size, page, page_size, brand]);
-  console.log(products, loading, errors, hasMore);
   return { products, loading, errors, hasMore };
 };
 

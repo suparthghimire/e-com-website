@@ -30,7 +30,6 @@ function Shop() {
     page_size,
     brand,
   });
-  console.log(products, loading, errors, hasMore);
   // if (loading) return <CustomLoader type="Grid" />;
   return (
     <main className="main shop">

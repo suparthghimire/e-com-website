@@ -12,9 +12,6 @@ function Wishlist(props) {
   const router = useRouter();
   const { wishlist, addToCart, openQuickview, removeFromWishlist } = props;
   const showQuickviewHandler = (slug) => {
-    console.log("slug");
-    console.log(slug);
-    console.log(openQuickview(slug));
     openQuickview(slug);
   };
   const moveToCart = (e, item) => {

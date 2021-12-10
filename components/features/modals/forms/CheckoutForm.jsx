@@ -68,7 +68,6 @@ export default function CheckoutForm(props) {
         }),
       });
       const data = await response.json();
-      console.log(data);
       if (response.status === 400) {
         //validation error
         const error = new Error("Validation Error");
@@ -463,7 +462,6 @@ export default function CheckoutForm(props) {
                           {...register("payment_method", { required: true })}
                           onClick={(e) => {
                             setPaymentMthd(e.target.value);
-                            console.log(e.target.value);
                           }}
                         />
                         <label htmlFor="cod">Cash on Delivery</label>
@@ -476,7 +474,6 @@ export default function CheckoutForm(props) {
                           {...register("payment_method", { required: true })}
                           onClick={(e) => {
                             setPaymentMthd(e.target.value);
-                            console.log(e.target.value);
                           }}
                         />
                         <label className="form-control-label" htmlFor="khalti">
@@ -485,7 +482,6 @@ export default function CheckoutForm(props) {
                       </div>
                       {errors.payment_method !== undefined ? (
                         <small className="error-msg">
-                          {console.log(errors.payment_method)}
                           Select Atleast One Payment Method
                         </small>
                       ) : (

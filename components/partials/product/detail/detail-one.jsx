@@ -64,8 +64,6 @@ function DetailOne(props) {
     }
   }, [curColor, curSize, product]);
   // useEffect(() => {
-  //   console.log("here");
-  //   console.log(product);
 
   //   const new_colors = product?.product_image.map((pdt) => pdt.color);
   //   const new_sizes = product?.available_sizes;
@@ -146,7 +144,6 @@ function DetailOne(props) {
   function changeQty(qty) {
     setQauntity(qty);
   }
-  console.log(sizes);
   return (
     <div
       className={"product-details p-sticky" + adClass}

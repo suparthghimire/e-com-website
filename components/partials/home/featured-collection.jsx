@@ -11,7 +11,6 @@ import { fadeIn, fadeInRightShorter } from "~/utils/data/keyframes";
 
 function FeaturedCollection(props) {
   const { products } = props;
-  console.log(products);
   if (products.length <= 0)
     return (
       <div className="d-flex mt-5 mb-5 w-100 justify-content-center">
