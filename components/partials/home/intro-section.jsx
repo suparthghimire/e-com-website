@@ -30,7 +30,7 @@ function IntroSection(props) {
               nav={props.nav}
             />
           </Reveal>
-          {props.category.map((item, index) => {
+          {props.banner.map((item, index) => {
             if (index === 0)
               return (
                 <div className="grid-item height-x2" key={index}>
@@ -39,10 +39,10 @@ function IntroSection(props) {
                       className="intro-slide1 banner banner-fixed overlay-dark banner-radius"
                       style={{ backgroundColor: "#f6f5f7" }}
                     >
-                      <ALink href={"/pages/category/" + item.slug}>
+                      <ALink href={"/pages/category/" + item.callback}>
                         <figure>
                           <img
-                            src={item.featured_image}
+                            src={item.feature_image}
                             width="580"
                             height="508"
                             alt="banner"
@@ -66,9 +66,9 @@ function IntroSection(props) {
                         >
                           <p
                             className="text-white mt-0 mb-5"
-                            style={{ fontSize: "12px" }}
+                            style={{ fontSize: "1.4rem" }}
                           >
-                            Burshes, Lashes, All cosmetics
+                            {item.subtitle}
                           </p>
                         </Reveal>
 
@@ -84,10 +84,13 @@ function IntroSection(props) {
                           delay={900}
                         >
                           <ALink
-                            href={"/pages/category/" + item.slug}
-                            className="btn btn-dark btn-link btn-underline text-white"
+                            href={"/pages/category/" + item.callback}
+                            className="btn btn-dark btn-link btn-underline
+                            text-white"
                           >
-                            Shop Now<i className="d-icon-arrow-right"></i>
+                            {" "}
+                            Shop Now
+                            <i className="d-icon-arrow-right"></i>
                           </ALink>
                         </Reveal>
                       </div>
@@ -104,10 +107,10 @@ function IntroSection(props) {
                                     overlay-dark"
                       style={{ backgroundColor: "#eeeeee" }}
                     >
-                      <ALink href={"/pages/category/" + item.slug}>
+                      <ALink href={"/pages/category/" + item.callback}>
                         <figure>
                           <img
-                            src={item.featured_image}
+                            src={item.feature_image}
                             width="280"
                             height="241"
                             alt="banner"
@@ -120,14 +123,16 @@ function IntroSection(props) {
                         </h3>
                         <p
                           className="text-white mt-0"
-                          style={{ fontSize: "12px" }}
+                          style={{ fontSize: "1.4rem" }}
                         >
-                          Burshes, Lashes, All cosmetics
+                          {item.subtitle}
                         </p>
                         <ALink
-                          href={"/pages/category/" + item.slug}
-                          className="btn btn-dark btn-link btn-underline text-white"
+                          href={"/pages/category/" + item.callback}
+                          className="btn btn-dark btn-link btn-underline
+                          text-white"
                         >
+                          {" "}
                           Shop Now
                           <i className="d-icon-arrow-right text-white"></i>
                         </ALink>

@@ -17,6 +17,7 @@ import { GET_HOME_DATA_NEW } from "~/api/queries";
 
 function HomePage() {
   const { data, status } = useQuery(["home-data", {}], GET_HOME_DATA_NEW);
+  console.log(data);
   if (status === "loading") return <CustomLoader type="Grid" />;
   return (
     <div className="main home mt-lg-4 homepage">
@@ -27,6 +28,7 @@ function HomePage() {
         <IntroSection
           category={data.results.category_products}
           promo={data.results.promo}
+          banner={data.results.banner}
           nav={data.results.nav}
         />
         <div className="container container-large">
