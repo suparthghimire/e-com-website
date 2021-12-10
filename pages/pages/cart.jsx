@@ -13,8 +13,6 @@ function Cart(props) {
   const { cartList, removeFromCart, updateCart } = props;
   const [cartItems, setCartItems] = useState([]);
 
-  console.log(cartList);
-
   useEffect(() => {
     setCartItems([...cartList]);
   }, [cartList]);

@@ -21,9 +21,9 @@ function BrandSection(props) {
         <h2 className="title title-simple">Our Brands</h2>
 
         <OwlCarousel adClass="owl-theme brand-carousel" options={brandSlider}>
-          {brands.map((brand) => {
+          {brands.map((brand, i) => {
             return (
-              <ALink href={"/pages/brand/" + brand.slug}>
+              <ALink href={"/pages/brand/" + brand.slug} key={"brand-" + i}>
                 <figure className="brand-img">
                   <img src={brand.image_url} alt="Brand" />
                 </figure>

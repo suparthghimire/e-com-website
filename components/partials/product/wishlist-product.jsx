@@ -5,7 +5,6 @@ import ALink from "~/components/features/custom-link";
 
 export default function WishListProduct(props) {
   const { item, openQuickview, removeFromWishlist } = props;
-  console.log(props);
   const showQuickviewHandler = () => {
     openQuickview(item.slug);
   };

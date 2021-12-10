@@ -8,7 +8,6 @@ function MediaLightBox(props) {
 
   const [isOpen, setOpenState] = useState(false);
   const [index, setIndex] = useState(0);
-  console.log(product);
   useEffect(() => {
     setOpenState(props.isOpen);
   }, [props.isOpen]);

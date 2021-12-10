@@ -2,7 +2,6 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import ALink from "~/components/features/custom-link";
 import SubCategoryHome from "~/components/features/category/sub-category-home";
 export default function Menu(props) {
-  console.log(props);
   return (
     <div className="grid-item height-x2 category-list d-lg-block d-none w-1">
       <ul className="menu menu-options vertical-menu bg-light home-page-menu">
