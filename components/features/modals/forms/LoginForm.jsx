@@ -27,7 +27,14 @@ export default function LoginForm() {
       setServerError({
         message: null,
       });
-      router.push("/");
+      console.log(router.query);
+      if (router.query && router.query.next) {
+        const path = "/" + router.query.next;
+        console.log("path", path);
+        router.push(path);
+      } else {
+        router.push("/");
+      }
     } catch (error) {
       toast.error("Error", {
         autoClose: 1200,

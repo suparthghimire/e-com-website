@@ -14,7 +14,7 @@ import { TITLE } from "~/config";
 import { useRouter } from "next/router";
 function Order(props) {
   const router = useRouter();
-  const limit = "10" && router.query.limit;
+  const limit = "10000" && router.query.limit;
   const offset = "0" && router.query.offset;
   if (!props.loadingAuth && !props.auth) router.push("/pages/login");
   if (!props.loadingAuth && props.auth) {

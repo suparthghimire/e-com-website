@@ -13,9 +13,9 @@ export default function SubCategory(props) {
               return (
                 <li
                   className={
-                    sub_cat.sub_category &&
-                    sub_cat.sub_category.length > 0 &&
-                    "submenu"
+                    sub_cat.sub_category && sub_cat.sub_category.length > 0
+                      ? "submenu"
+                      : ""
                   }
                   key={index}
                 >

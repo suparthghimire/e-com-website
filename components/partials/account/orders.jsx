@@ -26,7 +26,7 @@ export default function Orders() {
         <tbody>
           {data.results.map((item, index) => {
             return (
-              <tr>
+              <tr key={"order-" + index}>
                 <td className="order-number">
                   {item.id.substr(0, 8) + "..."}{" "}
                 </td>

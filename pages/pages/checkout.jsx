@@ -10,7 +10,10 @@ import { cartActions } from "~/store/cart";
 
 function Checkout(props) {
   const router = useRouter();
-  if (!props.loadingAuth && !props.auth) router.push("/pages/login");
+  if (!props.loadingAuth && !props.auth) {
+    console.log("In Checkout");
+    router.push("/pages/login");
+  }
   if (!props.loadingAuth && props.auth) {
     const { cartList, removeFromCart } = props;
     return (

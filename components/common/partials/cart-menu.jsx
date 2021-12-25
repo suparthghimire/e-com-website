@@ -24,7 +24,7 @@ function CartMenu(props) {
   if (!props.auth) {
     cart_menu_button = (
       <ALink
-        href="/pages/login"
+        href="/pages/login?next=pages/checkout/"
         className="btn btn-dark"
         onClick={hideCartMenu}
       >
