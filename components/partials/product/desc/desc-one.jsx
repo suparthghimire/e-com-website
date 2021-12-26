@@ -15,9 +15,7 @@ function DescOne(props) {
     openModal,
     isShipping = false,
   } = props;
-  let colors = [] && product.product_image.map((pdt) => pdt.color_hex);
-  let sizes = [] && product.available_sizes;
-  console.log(product);
+
   const setRating = (e) => {
     e.preventDefault();
 
