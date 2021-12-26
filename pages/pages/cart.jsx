@@ -165,16 +165,23 @@ function Cart(props) {
                 </div>
 
                 <div className="row pr-0 mr-0 d-flex justify-content-end">
-                  {/* <div className="col-8"></div> */}
-                  {/* <div className="col-8"> */}
-                  <ALink
-                    href="/pages/checkout"
-                    className="btn btn-dark btn-rounded btn-checkout"
-                    style={{ width: "fit-content" }}
-                  >
-                    Proceed to checkout
-                  </ALink>
-                  {/* </div> */}
+                  {props.auth ? (
+                    <ALink
+                      href="/pages/checkout"
+                      className="btn btn-dark btn-rounded btn-checkout"
+                      style={{ width: "fit-content" }}
+                    >
+                      Proceed to checkout
+                    </ALink>
+                  ) : (
+                    <ALink
+                      href="/pages/login?next=pages/checkout/"
+                      className="btn btn-dark btn-rounded btn-checkout"
+                      style={{ width: "fit-content" }}
+                    >
+                      Login
+                    </ALink>
+                  )}
                 </div>
               </>
             ) : (

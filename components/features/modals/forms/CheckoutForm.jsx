@@ -16,6 +16,8 @@ export default function CheckoutForm(props) {
   const [promoDiscount, setPromoDiscount] = useState(0);
   const [serverErrors, setServerErrors] = useState(null);
   const [paymentMthd, setPaymentMthd] = useState(null);
+  const [pickFromShop, setPickFromShop] = useState(null);
+  const [shipCost, setShipCost] = useState(0);
   const empty_cart = () => {
     props.cartList.forEach((product) => {
       props.removeFromCart(product);
@@ -99,6 +101,7 @@ export default function CheckoutForm(props) {
     let submit_data = {
       ...form_data,
       promo_code: promoCodeValue,
+      pick_up_from_store: pickFromShop,
       sub_total: getTotalPrice(props.cartList, {
         promo_discount: promoDiscount,
       }),
@@ -356,16 +359,6 @@ export default function CheckoutForm(props) {
                             ></div>
                           </div>
                         </td>
-                        {/* <td className="product-total d-flex align-items-center justify-content-center">
-                          <div
-                            className="color-div ml-0 mr-0 pl-0 pr-0 no-hover"
-                            style={{
-                              backgroundColor: item.color,
-                              width: "30px",
-                              height: "30px",
-                            }}
-                          ></div>
-                        </td> */}
                         <td className="product-total text-center">
                           {item.size}
                         </td>
@@ -401,35 +394,52 @@ export default function CheckoutForm(props) {
                     </tr>
                     <tr className="sumnary-shipping shipping-row-last">
                       <td>
-                        <h4 className="summary-subtitle">Calculate Shipping</h4>
-                        <ul>
-                          <li>
-                            <div className="custom-radio">
-                              <input
-                                type="radio"
-                                id="flat_rate"
-                                name="shipping"
-                                className="custom-control-input"
-                                defaultChecked
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="flat_rate"
-                              >
-                                Flat rate
-                              </label>
-                            </div>
-                          </li>
-                        </ul>
+                        <h4 className="summary-subtitle">Recieving Method</h4>
+                        <div className="custom-radio">
+                          <input
+                            type="radio"
+                            value="shop_pickup"
+                            id="shop_pickup"
+                            {...register("pickup_method", {
+                              required: true,
+                            })}
+                            onClick={(e) => {
+                              setPickFromShop(true);
+                              setShipCost(0);
+                            }}
+                          />
+                          <label
+                            className="form-control-label"
+                            htmlFor="shop_pickup"
+                          >
+                            Pick Items from Shop
+                          </label>
+                        </div>
+                        <div className="custom-radio">
+                          <input
+                            type="radio"
+                            value="home_delivery"
+                            id="home_delivery"
+                            {...register("pickup_method", {
+                              required: true,
+                            })}
+                            onClick={(e) => {
+                              setPickFromShop(false);
+                              setShipCost(40);
+                            }}
+                          />
+                          <label htmlFor="home_delivery">Home Delivery</label>
+                        </div>
                       </td>
-                      <td colSpan="3">NPR. 40</td>
+                      <td colSpan="3">
+                        <div>NPR. 0</div>
+                        <div>NPR. 40</div>
+                      </td>
                     </tr>
+
                     <tr className="summary-total">
                       <td className="pb-0">
                         <h4 className="summary-subtitle pb-0 mb-0">Total</h4>
-                        {/* <span className="font-italic">
-                          After 13% Tax on Total (Without Shipping)
-                        </span> */}
                       </td>
                       <td colSpan="3" className=" pt-0 pb-0">
                         <p className="summary-total-price ls-s text-primary">
@@ -437,7 +447,7 @@ export default function CheckoutForm(props) {
                           {toDecimal(
                             getTotalPrice(props.cartList, {
                               promo_discount: promoDiscount,
-                              shipping_fee: 40,
+                              shipping_fee: shipCost,
                             })
                           )}
                           {/* tax: getTotalPrice(props.cartList) * 0.13, */}
