@@ -27,6 +27,11 @@ function DetailOne(props) {
   let isWishlisted,
     colors = [] && product.product_image.map((pdt) => pdt.color),
     sizes = [] && product.available_sizes;
+
+  if (colors.length > 0) {
+    colors = [...new Map(colors.map((item) => [item.color, item])).values()];
+  }
+
   const [colorList, setColorList] = useState({ active: null, colors: colors });
   isWishlisted =
     wishlist.findIndex((item) => item.slug === product.slug) > -1
