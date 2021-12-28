@@ -11,6 +11,7 @@ import { cartActions } from "~/store/cart";
 function Checkout(props) {
   const router = useRouter();
   if (!props.loadingAuth && !props.auth) {
+    console.log(props.loadingAuth, props.auth);
     console.log("In Checkout");
     router.push("/pages/login");
   }

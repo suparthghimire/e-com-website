@@ -201,7 +201,7 @@ function Order(props) {
                             <div className="d-flex justify-content-between align-items-center summary-subtotal">
                               <div>
                                 <h4 className="summary-subtitle">
-                                  Grand Total <small>(After 13% Tax)</small>
+                                  Grand Total
                                 </h4>
                               </div>
                               <div className="summary-subtotal-price">
