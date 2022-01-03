@@ -6,7 +6,6 @@ import ALink from "~/components/features/custom-link";
 
 import { modalActions } from "~/store/modal";
 
-import { toDecimal } from "~/utils";
 function DescOne(props) {
   const {
     product,
@@ -45,6 +44,9 @@ function DescOne(props) {
         <Tab className="nav-item">
           <span className="nav-link">Description</span>
         </Tab>
+        <Tab className="nav-item">
+          <span className="nav-link">How to Use</span>
+        </Tab>
         {/* <Tab className="nav-item">
           <span className="nav-link">Additional information</span>
         </Tab> */}
@@ -62,10 +64,6 @@ function DescOne(props) {
         ) : (
           ""
         )}
-
-        <Tab className="nav-item">
-          <span className="nav-link">How to Use</span>
-        </Tab>
       </TabList>
 
       <div className="tab-content">
@@ -76,6 +74,14 @@ function DescOne(props) {
                 Features
               </h5>
               <p className="mb-2">{product.description}</p>
+            </div>
+          </div>
+        </TabPanel>
+        <TabPanel className="tab-pane product-tab-description">
+          <div className="row mt-6">
+            <div className="col-md-12">
+              <h6 className="mb-2">How to Use</h6>
+              <p className="mb-2">{product.how_to_use}</p>
             </div>
           </div>
         </TabPanel>
@@ -100,14 +106,6 @@ function DescOne(props) {
         ) : (
           ""
         )}
-        <TabPanel className="tab-pane product-tab-description">
-          <div className="row mt-6">
-            <div className="col-md-12">
-              <h6 className="mb-2">How to Use</h6>
-              <p className="mb-2">{product.how_to_use}</p>
-            </div>
-          </div>
-        </TabPanel>
       </div>
     </Tabs>
   );
