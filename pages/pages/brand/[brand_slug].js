@@ -41,11 +41,12 @@ function BrandSlug() {
         <div className="container">
           <div className="row gutter-lg main-content-wrap">
             {/* <SidebarFilterOne type="banner" /> */}
-            <div className="col-lg-9 main-content">
+            <div className="col-lg-12 main-content">
               {loading ? (
                 <CustomLoader type="Grid" />
               ) : (
                 <ProductListOne
+                  itemsPerRow={4}
                   type="banner"
                   slug={slug}
                   products={products}
