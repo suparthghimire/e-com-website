@@ -91,78 +91,6 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
-
-            {/* <div className="col-lg-3 col-sm-6">
-              <div className="widget widget-instagram">
-                <h4 className="widget-title">Instagram</h4>
-                <figure className="widget-body row">
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/01.jpg"
-                      alt="instagram 1"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/02.jpg"
-                      alt="instagram 2"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/03.jpg"
-                      alt="instagram 3"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/04.jpg"
-                      alt="instagram 4"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/05.jpg"
-                      alt="instagram 5"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/06.jpg"
-                      alt="instagram 6"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/07.jpg"
-                      alt="instagram 7"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/08.jpg"
-                      alt="instagram 8"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                </figure>
-              </div>
-            </div> */}
           </div>
         </div>
 
@@ -180,7 +108,10 @@ export default function Footer() {
           <div className="footer-center">
             <p className="copyright">
               All Rights Reserved to{" "}
-              <span className="color-primary"> Rameti</span>
+              <span className="color-primary">
+                {" "}
+                {data.results.company.company_name}
+              </span>
               &nbsp;, 2021 &nbsp;|&nbsp;Powered By: Bidhee Pvt. Ltd.
             </p>
           </div>
@@ -189,15 +120,24 @@ export default function Footer() {
               <a
                 href={data.results.company.facebook_link}
                 className="social-link social-facebook fab fa-facebook-f"
+                target={data.results.company.facebook_link ? "_blank" : ""}
               ></a>
-              <ALink
-                href="#"
+              <a
+                href={data.results.company.twitter_link}
                 className="social-link social-twitter fab fa-twitter"
-              ></ALink>
-              <ALink
-                href="#"
-                className="social-link social-linkedin fab fa-linkedin-in"
-              ></ALink>
+                target={data.results.company.twitter_link ? "_blank" : ""}
+              ></a>
+              <a
+                href={data.results.company.instagram_link}
+                className="social-link social-instagram fab fa-instagram"
+                target={data.results.company.instagram_link ? "_blank" : ""}
+              ></a>
+
+              <a
+                href={data.results.company.youtube_link}
+                className="social-link social-youtube fab fa-youtube"
+                target={data.results.company.youtube_link ? "_blank" : ""}
+              ></a>
             </div>
           </div>
         </div>
