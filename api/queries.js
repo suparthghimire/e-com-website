@@ -95,6 +95,12 @@ export const GET_SINGLE_ORDER = async ({ queryKey }) => {
   });
   return response.json();
 };
+export const GET_PAGE_DETAILS = async ({ queryKey }) => {
+  const [_key, { slug, access }] = queryKey;
+  const response = await fetch(`${BASE_URL}/page/${slug}/`);
+  console.log(response);
+  return response.json();
+};
 
 export const GET_NAV_ITEMS = async ({ queryKey }) => {
   const response = await fetch(`${BASE_URL}/nav/`);

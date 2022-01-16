@@ -1,6 +1,12 @@
 import ALink from "~/components/features/custom-link";
 
+import CustomLoader from "~/components/common/custom-loader";
+import { GET_HOME_DATA_NEW } from "~/api/queries";
+import { useQuery } from "react-query";
+import brandSection from "../partials/home/brand-section";
 export default function Footer() {
+  const { data, status } = useQuery(["home-data", {}], GET_HOME_DATA_NEW);
+  if (status === "loading") return <CustomLoader type="Grid" />;
   return (
     <footer className="footer mt-10">
       <div className="container container-large">
@@ -21,19 +27,25 @@ export default function Footer() {
                   <ul className="contact-info">
                     <li className="info phone">
                       <label>Phone:</label>
-                      <ALink href="tel:#">Toll Free (123) 456-7890</ALink>
+                      <ALink href="tel:#">
+                        {data.results.company.contact_one}
+                      </ALink>
                     </li>
                     <li className="info email">
                       <label>Email:</label>
-                      <ALink href="mailto:mail@riode.com">riode@mail.com</ALink>
+                      <ALink href="mailto:mail@riode.com">
+                        {data.results.company.email}
+                      </ALink>
                     </li>
                     <li className="info addr">
                       <label>Address:</label>
-                      <ALink href="#">123 Street, City, Country</ALink>
+                      <ALink href="#">{data.results.company.address}</ALink>
                     </li>
                     <li className="info work">
-                      <label>WORKING DAYS / HOURS:</label>
-                      <ALink href="#">Mon - Sun / 9:00 AM - 8:00 PM</ALink>
+                      <label>Business Name:</label>
+                      <ALink href="#">
+                        {data.results.company.company_name}
+                      </ALink>
                     </li>
                   </ul>
                 </div>
@@ -44,21 +56,18 @@ export default function Footer() {
               <div className="widget widget-info">
                 <h4 className="widget-title">About Us</h4>
                 <ul className="widget-body">
-                  <li>
-                    <ALink href="/pages/about-us">About Us</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Order History</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Returns</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Custom Service</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Terms &amp; Condition</ALink>
-                  </li>
+                  {data.results.pages.map((item, index) =>
+                    item.content_type === "aboutus" ? (
+                      <li>
+                        <ALink
+                          href={"/singlepage/" + item.slug}
+                          key={"singlepage-" + index}
+                        >
+                          {item.title}
+                        </ALink>
+                      </li>
+                    ) : null
+                  )}
                 </ul>
               </div>
             </div>
@@ -67,21 +76,18 @@ export default function Footer() {
               <div className="widget widget-service">
                 <h4 className="widget-title">Customer Service</h4>
                 <ul className="widget-body">
-                  <li>
-                    <ALink href="#">Payment Methods</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Money-back Guarantee!</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Returns</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Custom Service</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Terms & Conditions</ALink>
-                  </li>
+                  {data.results.pages.map((item, index) =>
+                    item.content_type === "customer" ? (
+                      <li>
+                        <ALink
+                          href={"/singlepage/" + item.slug}
+                          key={"singlepage-" + index}
+                        >
+                          {item.title}
+                        </ALink>
+                      </li>
+                    ) : null
+                  )}
                 </ul>
               </div>
             </div>
@@ -175,15 +181,15 @@ export default function Footer() {
             <p className="copyright">
               All Rights Reserved to{" "}
               <span className="color-primary"> Rameti</span>
-              &nbsp;,2021 &nbsp;|&nbsp;Powered By: Bidhee Pvt. Ltd.
+              &nbsp;, 2021 &nbsp;|&nbsp;Powered By: Bidhee Pvt. Ltd.
             </p>
           </div>
           <div className="footer-right">
             <div className="social-links">
-              <ALink
-                href="#"
+              <a
+                href={data.results.company.facebook_link}
                 className="social-link social-facebook fab fa-facebook-f"
-              ></ALink>
+              ></a>
               <ALink
                 href="#"
                 className="social-link social-twitter fab fa-twitter"
