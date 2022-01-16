@@ -28,6 +28,7 @@ function IntroSection(props) {
               promo={props.promo}
               category={props.category}
               nav={props.nav}
+              brand={props.brand}
             />
           </Reveal>
           {props.banner.map((item, index) => {

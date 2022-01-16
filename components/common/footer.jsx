@@ -1,6 +1,20 @@
 import ALink from "~/components/features/custom-link";
 
+import CustomLoader from "~/components/common/custom-loader";
+import { GET_HOME_DATA_NEW } from "~/api/queries";
+import { useQuery } from "react-query";
+import brandSection from "../partials/home/brand-section";
 export default function Footer() {
+  const { data, status } = useQuery(["home-data", {}], GET_HOME_DATA_NEW);
+  if (status === "loading") return <CustomLoader type="Grid" />;
+  const { facebook_link, instagram_link, twitter_link, youtube_link } =
+    data.results.company;
+  const aboutus = data.results.pages.filter(
+    (page) => page.content_type === "aboutus"
+  );
+  const customer = data.results.pages.filter(
+    (page) => page.content_type === "customer"
+  );
   return (
     <footer className="footer mt-10">
       <div className="container container-large">
@@ -21,19 +35,23 @@ export default function Footer() {
                   <ul className="contact-info">
                     <li className="info phone">
                       <label>Phone:</label>
-                      <ALink href="tel:#">Toll Free (123) 456-7890</ALink>
+                      <ALink href={"tel:" + data.results.company.contact_one}>
+                        {data.results.company.contact_one}
+                      </ALink>
                     </li>
                     <li className="info email">
                       <label>Email:</label>
-                      <ALink href="mailto:mail@riode.com">riode@mail.com</ALink>
+                      <ALink href={"mailto:" + data.results.company.email}>
+                        {data.results.company.email}
+                      </ALink>
                     </li>
                     <li className="info addr">
                       <label>Address:</label>
-                      <ALink href="#">123 Street, City, Country</ALink>
+                      {data.results.company.address}
                     </li>
                     <li className="info work">
-                      <label>WORKING DAYS / HOURS:</label>
-                      <ALink href="#">Mon - Sun / 9:00 AM - 8:00 PM</ALink>
+                      <label>Business Name:</label>
+                      {data.results.company.company_name}
                     </li>
                   </ul>
                 </div>
@@ -44,21 +62,16 @@ export default function Footer() {
               <div className="widget widget-info">
                 <h4 className="widget-title">About Us</h4>
                 <ul className="widget-body">
-                  <li>
-                    <ALink href="/pages/about-us">About Us</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Order History</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Returns</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Custom Service</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Terms &amp; Condition</ALink>
-                  </li>
+                  {aboutus.map((item, index) => (
+                    <li>
+                      <ALink
+                        href={"/singlepage/" + item.slug}
+                        key={"singlepage-" + index}
+                      >
+                        {item.title}
+                      </ALink>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -67,96 +80,19 @@ export default function Footer() {
               <div className="widget widget-service">
                 <h4 className="widget-title">Customer Service</h4>
                 <ul className="widget-body">
-                  <li>
-                    <ALink href="#">Payment Methods</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Money-back Guarantee!</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Returns</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Custom Service</ALink>
-                  </li>
-                  <li>
-                    <ALink href="#">Terms & Conditions</ALink>
-                  </li>
+                  {customer.map((item, index) => (
+                    <li>
+                      <ALink
+                        href={"/singlepage/" + item.slug}
+                        key={"singlepage-" + index}
+                      >
+                        {item.title}
+                      </ALink>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
-
-            {/* <div className="col-lg-3 col-sm-6">
-              <div className="widget widget-instagram">
-                <h4 className="widget-title">Instagram</h4>
-                <figure className="widget-body row">
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/01.jpg"
-                      alt="instagram 1"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/02.jpg"
-                      alt="instagram 2"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/03.jpg"
-                      alt="instagram 3"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/04.jpg"
-                      alt="instagram 4"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/05.jpg"
-                      alt="instagram 5"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/06.jpg"
-                      alt="instagram 6"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/07.jpg"
-                      alt="instagram 7"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                  <div className="col-3">
-                    <img
-                      src="./images/instagram/08.jpg"
-                      alt="instagram 8"
-                      width="64"
-                      height="64"
-                    />
-                  </div>
-                </figure>
-              </div>
-            </div> */}
           </div>
         </div>
 
@@ -174,24 +110,36 @@ export default function Footer() {
           <div className="footer-center">
             <p className="copyright">
               All Rights Reserved to{" "}
-              <span className="color-primary"> Rameti</span>
-              &nbsp;,2021 &nbsp;|&nbsp;Powered By: Bidhee Pvt. Ltd.
+              <span className="color-primary">
+                {" "}
+                {data.results.company.company_name}
+              </span>
+              &nbsp;, 2021 &nbsp;|&nbsp;Powered By: Bidhee Pvt. Ltd.
             </p>
           </div>
           <div className="footer-right">
             <div className="social-links">
-              <ALink
-                href="#"
+              <a
+                href={facebook_link}
                 className="social-link social-facebook fab fa-facebook-f"
-              ></ALink>
-              <ALink
-                href="#"
+                target={facebook_link ? "_blank" : ""}
+              ></a>
+              <a
+                href={twitter_link}
                 className="social-link social-twitter fab fa-twitter"
-              ></ALink>
-              <ALink
-                href="#"
-                className="social-link social-linkedin fab fa-linkedin-in"
-              ></ALink>
+                target={twitter_link ? "_blank" : ""}
+              ></a>
+              <a
+                href={instagram_link}
+                className="social-link social-instagram fab fa-instagram"
+                target={instagram_link ? "_blank" : ""}
+              ></a>
+
+              <a
+                href={youtube_link}
+                className="social-link social-youtube fab fa-youtube"
+                target={youtube_link ? "_blank" : ""}
+              ></a>
             </div>
           </div>
         </div>
