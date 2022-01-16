@@ -1,6 +1,8 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import ALink from "~/components/features/custom-link";
 import SubCategoryHome from "~/components/features/category/sub-category-home";
+import BrandHome from "~/components/features/brands/brands-home";
+
 export default function Menu(props) {
   return (
     <div className="grid-item height-x2 category-list d-lg-block d-none w-1">
@@ -40,18 +42,20 @@ export default function Menu(props) {
             Browse Products by
           </ALink>
         </li>
+
         <li className="submenu">
           <ALink href="#" className="menu-li text-black fw-normal">
             Brands
           </ALink>
+          <BrandHome brand={props.brand} level={0} />
         </li>
-        <li className="submenu">
-          <ALink href="#" className="menu-li text-black fw-normal">
+        <li className="">
+          <ALink href="pages/shop/" className="menu-li text-black fw-normal">
             New Arrivals
           </ALink>
         </li>
-        <li className="submenu">
-          <ALink href="#" className=" text-black fw-normal">
+        <li className="">
+          <ALink href="pages/shop/" className=" text-black fw-normal">
             Featured Products
           </ALink>
         </li>

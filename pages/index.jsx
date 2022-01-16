@@ -30,6 +30,7 @@ function HomePage() {
           promo={data.results.promo}
           banner={data.results.banner}
           nav={data.results.nav}
+          brand={data.results.brand}
         />
         <div className="container container-large">
           <CategorySection category={data.results.category_products} />
