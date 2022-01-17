@@ -55,8 +55,16 @@ export default function Menu(props) {
           </ALink>
         </li>
         <li className="">
-          <ALink href="pages/shop/" className=" text-black fw-normal">
+          <ALink
+            href="pages/shop/featured"
+            className="menu-li text-black fw-normal"
+          >
             Featured Products
+          </ALink>
+        </li>
+        <li className="">
+          <ALink href="pages/shop/trending" className=" text-black fw-normal">
+            Trending Products
           </ALink>
         </li>
       </ul>

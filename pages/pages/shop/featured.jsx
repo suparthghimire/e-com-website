@@ -3,8 +3,7 @@ import Helmet from "react-helmet";
 import ALink from "~/components/features/custom-link";
 import SidebarFilterOne from "~/components/partials/shop/sidebar/sidebar-filter-one";
 import { useQuery } from "react-query";
-// import { GET_CATEGORY, GET_CATEGORY_INFINITE } from "../../api/queries";
-import { GET_ALL_PRODUCTS_SHOP } from "../../../api/queries";
+import { GET_ALL_FEATURED_SHOP } from "../../../api/queries";
 import ProductListOne from "../../../components/partials/shop/product-list/product-list-one";
 import { useRouter } from "next/router";
 import CustomLoader from "~/components/common/custom-loader";
@@ -19,16 +18,8 @@ function Shop() {
   const size = router.query.sizes || "";
   const page_size = router.query.page_size || "7";
   const brand = router.query.brand || "";
-  const page = router.query.page || "1";
-  console.log("router", router.query.page);
-  const [pageNo, setPageNo] = useState(page);
-  console.log("pageNo", pageNo);
-
-  useEffect(() => {
-    setPageNo(router.query.page || "1");
-  }, [router.query.page, router.query]);
-
-  const { products, loading, errors, hasMore } = GET_ALL_PRODUCTS_SHOP({
+  const [pageNo, setPageNo] = useState("1");
+  const { products, loading, errors, hasMore } = GET_ALL_FEATURED_SHOP({
     slug,
     min_price,
     max_price,

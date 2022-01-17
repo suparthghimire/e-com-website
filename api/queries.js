@@ -30,11 +30,16 @@ export const GET_ALL_PRODUCTS_SHOP = (data) => {
   useEffect(() => {
     setLoading(true);
     setErrors(false);
+    console.log(url);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setProducts((prevProducts) => {
-          if (data.detail || (data.results && data.results.length <= 0))
+          if (
+            data.detail ||
+            data.results === undefined ||
+            (data.results && data.results.length <= 0)
+          )
             return [];
           return [...prevProducts, ...data.results];
         });
@@ -299,4 +304,93 @@ export const REGISTER = async (user) => {
   } catch (error) {
     return [null, error];
   }
+};
+
+export const GET_ALL_FEATURED_SHOP = (data) => {
+  const { min_price, max_price, color, size, page, page_size, brand } = data;
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [errors, setErrors] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+
+  const url_params = new URLSearchParams({
+    min_price,
+    max_price,
+    color,
+    size,
+    page,
+    page_size,
+    brand,
+  });
+  const url = `${BASE_URL}/product/featured/?${url_params.toString()}`;
+  useEffect(() => {
+    setProducts([]);
+  }, []);
+  useEffect(() => {
+    setLoading(true);
+    setErrors(false);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts((prevProducts) => {
+          if (data.detail || (data.results && data.results.length <= 0))
+            return [];
+          return [...prevProducts, ...data.results];
+        });
+        setHasMore(data.next ? true : false);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setErrors(error);
+      });
+  }, [min_price, max_price, color, size, page, page_size, brand]);
+  return { products, loading, errors, hasMore };
+};
+
+export const GET_ALL_TRENDING_SHOP = (data) => {
+  const { min_price, max_price, color, size, page, page_size, brand } = data;
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [errors, setErrors] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+
+  const url_params = new URLSearchParams({
+    min_price,
+    max_price,
+    color,
+    size,
+    page,
+    page_size,
+    brand,
+  });
+  const url = `${BASE_URL}/product/trending/?${url_params.toString()}`;
+  useEffect(() => {
+    setProducts([]);
+  }, []);
+  useEffect(() => {
+    setLoading(true);
+    setErrors(false);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts((prevProducts) => {
+          if (data.detail || (data.results && data.results.length <= 0))
+            return [];
+          return [...prevProducts, ...data.results];
+        });
+        setHasMore(data.next ? true : false);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setErrors(error);
+      });
+  }, [min_price, max_price, color, size, page, page_size, brand]);
+  return { products, loading, errors, hasMore };
+};
+
+export const GET_FILTER_SETTINGS = async ({ queryKey }) => {
+  const response = await fetch(`${BASE_URL}/settings/`);
+  return response.json();
 };
