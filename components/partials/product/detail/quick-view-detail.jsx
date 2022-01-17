@@ -145,7 +145,10 @@ function ModalDetailOne(props) {
         <del className="old-price">{product.price}</del>
       </div>
 
-      <p className="product-short-desc">{product.description}</p>
+      <p
+        className="product-short-desc"
+        dangerouslySetInnerHTML={{ __html: product.description }}
+      ></p>
 
       <div className="product-form product-variations product-color d-flex align-items-end">
         {colors.length > 0 ? (

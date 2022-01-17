@@ -73,7 +73,10 @@ function DescOne(props) {
               <h5 className="description-title mb-4 font-weight-semi-bold ls-m">
                 Features
               </h5>
-              <p className="mb-2">{product.description}</p>
+              <p
+                className="mb-2"
+                dangerouslySetInnerHTML={{ __html: product.description }}
+              ></p>
             </div>
           </div>
         </TabPanel>
@@ -81,7 +84,10 @@ function DescOne(props) {
           <div className="row mt-6">
             <div className="col-md-12">
               <h6 className="mb-2">How to Use</h6>
-              <p className="mb-2">{product.how_to_use}</p>
+              <p
+                className="mb-2"
+                dangerouslySetInnerHTML={{ __html: product.how_to_use }}
+              ></p>
             </div>
           </div>
         </TabPanel>
