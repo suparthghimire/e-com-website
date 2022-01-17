@@ -23,7 +23,7 @@ function FeaturedCollection(props) {
         <Reveal keyframes={fadeIn} delay={300} duration={1200} triggerOnce>
           <div className="d-flex align-items-center justify-content-between">
             <h2 className="title title-simple">Featured</h2>
-            <ALink href="/pages/shop" className="text-primary">
+            <ALink href="/pages/shop/featured" className="text-primary">
               View More
             </ALink>
           </div>
