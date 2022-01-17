@@ -20,11 +20,13 @@ function Shop() {
   const page_size = router.query.page_size || "7";
   const brand = router.query.brand || "";
   const page = router.query.page || "1";
+  console.log("router", router.query.page);
   const [pageNo, setPageNo] = useState(page);
+  console.log("pageNo", pageNo);
 
   useEffect(() => {
     setPageNo(router.query.page || "1");
-  }, [router.query.page]);
+  }, [router.query.page, router.query]);
 
   const { products, loading, errors, hasMore } = GET_ALL_PRODUCTS_SHOP({
     slug,

@@ -289,6 +289,7 @@ function SidebarFilterOne(props) {
                           query: {
                             ...query,
                             sizes: getUrlForAttrs("sizes", item),
+                            page: 1,
                           },
                         }}
                       >
@@ -356,6 +357,7 @@ function SidebarFilterOne(props) {
                             query: {
                               ...query,
                               brand: getUrlForAttrs("brand", String(item.id)),
+                              page: 1,
                             },
                           }}
                         >
