@@ -40,8 +40,15 @@ function BrandSlug() {
       <div className="page-content mb-10">
         <div className="container">
           <div className="row gutter-lg main-content-wrap">
-            {/* <SidebarFilterOne type="banner" /> */}
-            <div className="col-lg-12 main-content">
+            <SidebarFilterOne
+              type="banner"
+              show_categories={false}
+              show_sizes={false}
+              show_filter={false}
+              show_color={false}
+              show_brand={true}
+            />
+            <div className="col-lg-8 main-content">
               {loading ? (
                 <CustomLoader type="Grid" />
               ) : (

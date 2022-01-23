@@ -11,7 +11,15 @@ import Card from "~/components/features/accordion/card";
 import { GET_HOME_DATA_NEW, GET_FILTER_SETTINGS } from "~/api/queries";
 
 function SidebarFilterOne(props) {
-  const { type = "left", isFeatured = false } = props;
+  const {
+    type = "left",
+    isFeatured = false,
+    show_categories = true,
+    show_sizes = true,
+    show_filter = true,
+    show_color = true,
+    show_brand = true,
+  } = props;
   const router = useRouter();
   const query = router.query;
 
@@ -209,144 +217,81 @@ function SidebarFilterOne(props) {
               </div>
             )}
 
-            <div className="widget widget-collapsible">
-              <Card
-                title="<h3 className='widget-title'>All Categories<span className='toggle-btn p-0 parse-content'></span></h3>"
-                type="parse"
-                expanded={true}
-              >
-                <ul className="widget-body filter-items search-ul category-list-sidebar">
-                  {data &&
-                    sidebarData.map((item, index) => (
-                      <li
-                        className={query.category === item.slug ? "show" : ""}
-                        key={item.title + " - " + index}
-                      >
-                        <ALink href={"/pages/category/" + item.slug}>
-                          {item.title}
-                        </ALink>
-                      </li>
-                    ))}
-                </ul>
-              </Card>
-            </div>
+            {show_categories && (
+              <div className="widget widget-collapsible">
+                <Card
+                  title="<h3 className='widget-title'>All Categories<span className='toggle-btn p-0 parse-content'></span></h3>"
+                  type="parse"
+                  expanded={true}
+                >
+                  <ul className="widget-body filter-items search-ul category-list-sidebar">
+                    {data &&
+                      sidebarData.map((item, index) => (
+                        <li
+                          className={query.category === item.slug ? "show" : ""}
+                          key={item.title + " - " + index}
+                        >
+                          <ALink href={"/pages/category/" + item.slug}>
+                            {item.title}
+                          </ALink>
+                        </li>
+                      ))}
+                  </ul>
+                </Card>
+              </div>
+            )}
 
-            <div className="widget widget-collapsible">
-              <Card
-                title="<h3 className='widget-title'>Filter by Price<span className='toggle-btn p-0 parse-content'></span></h3>"
-                type="parse"
-                expanded={true}
-              >
-                <div className="widget-body">
-                  <form action="#">
-                    <div className="filter-price-slider noUi-target noUi-ltr noUi-horizontal shop-input-range">
-                      <InputRange
-                        formatLabel={(value) => `$${value}`}
-                        maxValue={10000}
-                        minValue={0}
-                        step={50}
-                        value={filterPrice}
-                        onChange={onChangePrice}
-                      />
-                    </div>
-
-                    <div className="filter-actions">
-                      <div className="filter-price-text mb-4">
-                        Price: NPR {filterPrice.min} - NPR {filterPrice.max}
-                        <span className="filter-price-range"></span>
+            {show_filter && (
+              <div className="widget widget-collapsible">
+                <Card
+                  title="<h3 className='widget-title'>Filter by Price<span className='toggle-btn p-0 parse-content'></span></h3>"
+                  type="parse"
+                  expanded={true}
+                >
+                  <div className="widget-body">
+                    <form action="#">
+                      <div className="filter-price-slider noUi-target noUi-ltr noUi-horizontal shop-input-range">
+                        <InputRange
+                          formatLabel={(value) => `$${value}`}
+                          maxValue={10000}
+                          minValue={0}
+                          step={50}
+                          value={filterPrice}
+                          onChange={onChangePrice}
+                        />
                       </div>
 
-                      <button
-                        className="btn btn-dark btn-filter btn-rounded"
-                        onClick={filterByPrice}
-                      >
-                        Filter
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </Card>
-            </div>
+                      <div className="filter-actions">
+                        <div className="filter-price-text mb-4">
+                          Price: NPR {filterPrice.min} - NPR {filterPrice.max}
+                          <span className="filter-price-range"></span>
+                        </div>
 
-            <div className="widget widget-collapsible">
-              <Card
-                title="<h3 className='widget-title'>Size<span className='toggle-btn p-0 parse-content'></span></h3>"
-                type="parse"
-                expanded={true}
-              >
-                <ul className="widget-body filter-items">
-                  {sizes.map((item, index) => (
-                    <li
-                      className={
-                        containsAttrInUrl("sizes", item) ? "active" : ""
-                      }
-                      key={item + " - " + index}
-                    >
-                      <ALink
-                        scroll={false}
-                        href={{
-                          pathname: router.pathname,
-                          query: {
-                            ...query,
-                            sizes: getUrlForAttrs("sizes", item),
-                            page: 1,
-                          },
-                        }}
-                      >
-                        {item}
-                      </ALink>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </div>
+                        <button
+                          className="btn btn-dark btn-filter btn-rounded"
+                          onClick={filterByPrice}
+                        >
+                          Filter
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </Card>
+              </div>
+            )}
 
-            <div className="widget widget-collapsible">
-              <Card
-                title="<h3 className='widget-title'>Color<span className='toggle-btn p-0 parse-content'></span></h3>"
-                type="parse"
-                expanded={true}
-              >
-                <ul className="widget-body filter-items">
-                  {colors.map((item, index) => (
-                    <li
-                      className={
-                        containsAttrInUrl("colors", item) ? "active" : ""
-                      }
-                      key={item + " - " + index}
-                    >
-                      <ALink
-                        scroll={false}
-                        href={{
-                          pathname: router.pathname,
-                          query: {
-                            ...query,
-                            colors: getUrlForAttrs("colors", item),
-                            page: 1,
-                          },
-                        }}
-                      >
-                        {item}
-                      </ALink>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </div>
-            <div className="widget widget-collapsible">
-              <Card
-                title="<h3 className='widget-title'>Brands<span className='toggle-btn p-0 parse-content'></span></h3>"
-                type="parse"
-                expanded={true}
-              >
-                <ul className="widget-body filter-items">
-                  {data &&
-                    brands.map((item, index) => (
+            {show_sizes && (
+              <div className="widget widget-collapsible">
+                <Card
+                  title="<h3 className='widget-title'>Size<span className='toggle-btn p-0 parse-content'></span></h3>"
+                  type="parse"
+                  expanded={true}
+                >
+                  <ul className="widget-body filter-items">
+                    {sizes.map((item, index) => (
                       <li
                         className={
-                          containsAttrInUrl("brand", String(item.id))
-                            ? "active"
-                            : ""
+                          containsAttrInUrl("sizes", item) ? "active" : ""
                         }
                         key={item + " - " + index}
                       >
@@ -356,18 +301,91 @@ function SidebarFilterOne(props) {
                             pathname: router.pathname,
                             query: {
                               ...query,
-                              brand: getUrlForAttrs("brand", String(item.id)),
+                              sizes: getUrlForAttrs("sizes", item),
                               page: 1,
                             },
                           }}
                         >
-                          {item.title}
+                          {item}
                         </ALink>
                       </li>
                     ))}
-                </ul>
-              </Card>
-            </div>
+                  </ul>
+                </Card>
+              </div>
+            )}
+
+            {show_color && (
+              <div className="widget widget-collapsible">
+                <Card
+                  title="<h3 className='widget-title'>Color<span className='toggle-btn p-0 parse-content'></span></h3>"
+                  type="parse"
+                  expanded={true}
+                >
+                  <ul className="widget-body filter-items">
+                    {colors.map((item, index) => (
+                      <li
+                        className={
+                          containsAttrInUrl("colors", item) ? "active" : ""
+                        }
+                        key={item + " - " + index}
+                      >
+                        <ALink
+                          scroll={false}
+                          href={{
+                            pathname: router.pathname,
+                            query: {
+                              ...query,
+                              colors: getUrlForAttrs("colors", item),
+                              page: 1,
+                            },
+                          }}
+                        >
+                          {item}
+                        </ALink>
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
+              </div>
+            )}
+            {show_brand && (
+              <div className="widget widget-collapsible">
+                <Card
+                  title="<h3 className='widget-title'>Brands<span className='toggle-btn p-0 parse-content'></span></h3>"
+                  type="parse"
+                  expanded={true}
+                >
+                  <ul className="widget-body filter-items">
+                    {data &&
+                      brands.map((item, index) => (
+                        <li
+                          className={
+                            containsAttrInUrl("brand", String(item.id))
+                              ? "active"
+                              : ""
+                          }
+                          key={item + " - " + index}
+                        >
+                          <ALink
+                            scroll={false}
+                            href={{
+                              pathname: router.pathname,
+                              query: {
+                                ...query,
+                                brand: getUrlForAttrs("brand", String(item.id)),
+                                page: 1,
+                              },
+                            }}
+                          >
+                            {item.title}
+                          </ALink>
+                        </li>
+                      ))}
+                  </ul>
+                </Card>
+              </div>
+            )}
           </div>
         ) : (
           <div className="widget-2 mt-10 pt-5"></div>
