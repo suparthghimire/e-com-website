@@ -7,14 +7,14 @@ import InputRange from "react-input-range";
 import ALink from "~/components/features/custom-link";
 import Card from "~/components/features/accordion/card";
 
-import filterData from "~/utils/data/shop";
-import { GET_HOME_DATA_NEW } from "~/api/queries";
+// import filterData from '~/utils/data/shop';
+import { GET_HOME_DATA_NEW, GET_FILTER_SETTINGS } from "~/api/queries";
 
 function SidebarFilterOne(props) {
   const {
     type = "left",
     isFeatured = false,
-    show_categories = false,
+    show_categories = true,
     show_sizes = true,
     show_filter = true,
     show_color = true,
@@ -24,6 +24,10 @@ function SidebarFilterOne(props) {
   const query = router.query;
 
   const { data, status } = useQuery(["home-data", {}], GET_HOME_DATA_NEW);
+  const { data: filterData, status: filterStatus } = useQuery(
+    ["filter-data", {}],
+    GET_FILTER_SETTINGS
+  );
   let tmpPrice = {
     max: query.max_price ? parseInt(query.max_price) : 1000,
     min: query.min_price ? parseInt(query.min_price) : 0,
@@ -32,6 +36,8 @@ function SidebarFilterOne(props) {
   const [isFirst, setFirst] = useState(true);
   let sidebarData = data && data?.results?.category_products;
   let brands = data && data?.results?.brand;
+  let sizes = filterData && filterData?.results?.size;
+  let colors = filterData && filterData?.results?.color;
   // let timerId;
 
   // useEffect(() => {
@@ -174,7 +180,10 @@ function SidebarFilterOne(props) {
       </ALink>
 
       <div className="sidebar-content">
-        {status !== "loading" && sidebarData ? (
+        {filterStatus !== "loading" &&
+        status !== "loading" &&
+        filterData &&
+        sidebarData ? (
           <div className="sticky-sidebar">
             {type === "boxed" || type === "banner" ? (
               ""
@@ -279,10 +288,10 @@ function SidebarFilterOne(props) {
                   expanded={true}
                 >
                   <ul className="widget-body filter-items">
-                    {filterData.sizes.map((item, index) => (
+                    {sizes.map((item, index) => (
                       <li
                         className={
-                          containsAttrInUrl("sizes", item.slug) ? "active" : ""
+                          containsAttrInUrl("sizes", item) ? "active" : ""
                         }
                         key={item + " - " + index}
                       >
@@ -292,11 +301,12 @@ function SidebarFilterOne(props) {
                             pathname: router.pathname,
                             query: {
                               ...query,
-                              sizes: getUrlForAttrs("sizes", item.slug),
+                              sizes: getUrlForAttrs("sizes", item),
+                              page: 1,
                             },
                           }}
                         >
-                          {item.name}
+                          {item}
                         </ALink>
                       </li>
                     ))}
@@ -313,10 +323,10 @@ function SidebarFilterOne(props) {
                   expanded={true}
                 >
                   <ul className="widget-body filter-items">
-                    {filterData.colors.map((item, index) => (
+                    {colors.map((item, index) => (
                       <li
                         className={
-                          containsAttrInUrl("colors", item.slug) ? "active" : ""
+                          containsAttrInUrl("colors", item) ? "active" : ""
                         }
                         key={item + " - " + index}
                       >
@@ -326,11 +336,12 @@ function SidebarFilterOne(props) {
                             pathname: router.pathname,
                             query: {
                               ...query,
-                              colors: getUrlForAttrs("colors", item.slug),
+                              colors: getUrlForAttrs("colors", item),
+                              page: 1,
                             },
                           }}
                         >
-                          {item.name}
+                          {item}
                         </ALink>
                       </li>
                     ))}
@@ -350,7 +361,7 @@ function SidebarFilterOne(props) {
                       brands.map((item, index) => (
                         <li
                           className={
-                            containsAttrInUrl("brand", item.slug)
+                            containsAttrInUrl("brand", String(item.id))
                               ? "active"
                               : ""
                           }
@@ -358,9 +369,16 @@ function SidebarFilterOne(props) {
                         >
                           <ALink
                             scroll={false}
-                            href={`/pages/brand/${item.slug}`}
+                            href={{
+                              pathname: router.pathname,
+                              query: {
+                                ...query,
+                                brand: getUrlForAttrs("brand", String(item.id)),
+                                page: 1,
+                              },
+                            }}
                           >
-                            <a>{item.title}</a>
+                            {item.title}
                           </ALink>
                         </li>
                       ))}
