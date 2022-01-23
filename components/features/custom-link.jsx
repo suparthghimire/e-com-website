@@ -23,7 +23,7 @@ export default function ALink({
     <Link {...props}>
       <a
         className={className}
-        style={style}
+        style={{ ...style, textDecoration: "none" }}
         onClick={preventDefault}
         dangerouslySetInnerHTML={parseContent(content)}
       >

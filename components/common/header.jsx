@@ -107,6 +107,7 @@ export default function Header(props) {
                           <SubCategory
                             category={nav.sub_category}
                             title={nav.title}
+                            level={0}
                           />
                         ) : (
                           ""
