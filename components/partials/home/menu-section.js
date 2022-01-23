@@ -9,7 +9,7 @@ export default function Menu(props) {
       <ul className="menu menu-options vertical-menu bg-light home-page-menu">
         <li>
           <ALink href="#" className="menu-title menu-li fw-600">
-            Browse Our Categories
+            Browse Products by
           </ALink>
         </li>
         {props.nav.map((item, index) => {
@@ -39,7 +39,7 @@ export default function Menu(props) {
         })}
         <li>
           <ALink href="#" className="menu-title menu-li fw-600">
-            Browse Products by
+            Browse Our Categories
           </ALink>
         </li>
 
