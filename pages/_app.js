@@ -11,6 +11,7 @@ import Cookie from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import "~/public/sass/style.scss";
 import { GET_USER, GET_ACCESS_TOKEN } from "~/api/queries";
+
 const queryClient = new QueryClient();
 
 const App = ({ Component, pageProps, store }) => {
