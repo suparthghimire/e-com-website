@@ -12,36 +12,6 @@ export default function Menu(props) {
             Browse Products by
           </ALink>
         </li>
-        {props.nav.map((item, index) => {
-          if (index < 8)
-            return (
-              <li
-                key={index}
-                className={
-                  item.sub_category && item.sub_category.length > 0 && "submenu"
-                }
-              >
-                <ALink
-                  href={"/pages/category/" + item.slug}
-                  className="menu-li fw-normal"
-                >
-                  <div className="d-flex align-items-center justify-content-between">
-                    <span className="text-black">{item.title}</span>
-                  </div>
-                </ALink>
-                {item.sub_category && item.sub_category.length > 0 ? (
-                  <SubCategoryHome category={item.sub_category} level={0} />
-                ) : (
-                  ""
-                )}
-              </li>
-            );
-        })}
-        <li>
-          <ALink href="#" className="menu-title menu-li fw-600">
-            Browse Our Categories
-          </ALink>
-        </li>
 
         <li className="submenu">
           <ALink href="#" className="menu-li text-black fw-normal">
@@ -67,6 +37,36 @@ export default function Menu(props) {
             Trending Products
           </ALink>
         </li>
+        <li>
+          <ALink href="#" className="menu-title menu-li fw-600">
+            Browse Our Categories
+          </ALink>
+        </li>
+        {props.nav.map((item, index) => {
+          if (index < 8)
+            return (
+              <li
+                key={index}
+                className={
+                  item.sub_category && item.sub_category.length > 0 && "submenu"
+                }
+              >
+                <ALink
+                  href={"/pages/category/" + item.slug}
+                  className="menu-li fw-normal"
+                >
+                  <div className="d-flex align-items-center justify-content-between">
+                    <span className="text-black">{item.title}</span>
+                  </div>
+                </ALink>
+                {item.sub_category && item.sub_category.length > 0 ? (
+                  <SubCategoryHome category={item.sub_category} level={0} />
+                ) : (
+                  ""
+                )}
+              </li>
+            );
+        })}
       </ul>
     </div>
   );

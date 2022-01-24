@@ -17,7 +17,7 @@ function BrandSlug() {
   const { products, loading, errors, hasMore } = GET_BRAND_PRODUCTS({
     slug,
   });
-
+  console.log(products);
   return (
     <main className="main shop">
       <Helmet>
@@ -40,15 +40,15 @@ function BrandSlug() {
       <div className="page-content mb-10">
         <div className="container">
           <div className="row gutter-lg main-content-wrap">
-            <SidebarFilterOne
+            {/* <SidebarFilterOne
               type="banner"
               show_categories={false}
               show_sizes={false}
               show_filter={false}
               show_color={false}
               show_brand={true}
-            />
-            <div className="col-lg-8 main-content">
+            /> */}
+            <div className="col-lg-12 main-content">
               {loading ? (
                 <CustomLoader type="Grid" />
               ) : (

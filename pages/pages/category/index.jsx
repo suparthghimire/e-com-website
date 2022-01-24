@@ -16,7 +16,7 @@ export default function Category() {
   const brands = categories.data?.results.brand;
   return (
     <>
-      <OwlCarousel adClass="owl-theme owl-nav-full h-700">
+      {/* <OwlCarousel adClass="owl-theme owl-nav-full h-700">
         {banner &&
           banner.map((item, index) => {
             return (
@@ -29,7 +29,7 @@ export default function Category() {
               </figure>
             );
           })}
-      </OwlCarousel>
+      </OwlCarousel> */}
       <div className="container home mt-5">
         <div className="page-content">
           <h2 className="title title-simple">Categories</h2>
