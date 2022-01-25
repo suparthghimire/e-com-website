@@ -161,6 +161,7 @@ export const GET_BRAND_PRODUCTS = (data) => {
   const { slug } = data;
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
+  const [brand, setBrand] = useState(null);
   const [errors, setErrors] = useState(false);
   const [hasMore, setHasMore] = useState(false);
   const url = `${BASE_URL}/brand/${slug}/product/`;
@@ -174,10 +175,10 @@ export const GET_BRAND_PRODUCTS = (data) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
+        setBrand(data.brand);
         setProducts((prevProducts) => {
           if (data.detail || (data.results && data.results.length <= 0))
             return [];
-
           return [...prevProducts, ...data.results];
         });
         setHasMore(data.next ? true : false);
@@ -188,7 +189,7 @@ export const GET_BRAND_PRODUCTS = (data) => {
         setErrors(error);
       });
   }, [slug]);
-  return { products, loading, errors, hasMore };
+  return { products, brand, loading, errors, hasMore };
 };
 
 export const POST_PROMO = async (promoCodeValue) => {

@@ -14,14 +14,13 @@ function BrandSlug() {
   const router = useRouter();
   const slug = router.query.brand_slug;
   const [pageNo, setPageNo] = useState("1");
-  const { products, loading, errors, hasMore } = GET_BRAND_PRODUCTS({
+  const { products, brand, loading, errors, hasMore } = GET_BRAND_PRODUCTS({
     slug,
   });
-  console.log(products);
   return (
     <main className="main shop">
       <Helmet>
-        <title>{TITLE} - Brand Products</title>
+        <title>{TITLE}</title>
       </Helmet>
       <nav className="breadcrumb-nav">
         <div className="container">
@@ -32,7 +31,7 @@ function BrandSlug() {
                   <i className="d-icon-home"></i>
                 </ALink>
               </li>
-              <li>Brand Products</li>
+              <li>{brand && brand.title}</li>
             </ul>
           </div>
         </div>
