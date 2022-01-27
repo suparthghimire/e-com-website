@@ -22,16 +22,14 @@ function DetailOne(props) {
   const [curSize, setCurSize] = useState("null");
   const [cartActive, setCartActive] = useState(false);
   const [quantity, setQauntity] = useState(1);
-  // const [colors, setColors] = useState([]);
-  // const [sizes, setSizes] = useState([]);
   let isWishlisted,
-    colors = [] && product.product_image.map((pdt) => pdt.color),
-    sizes = [] && product.available_sizes;
-
-  if (colors.length > 0) {
-    colors = [...new Map(colors.map((item) => [item.color, item])).values()];
-  }
-
+    colors = [] && [
+      ...new Set(product.product_image.map((pdt) => pdt.color.toLowerCase())),
+    ],
+    sizes = [] && [...new Set(product.available_sizes)];
+  // if (colors.length > 0) {
+  //   colors = [...new Map(colors.map((item) => [item.color, item])).values()];
+  // }
   const [colorList, setColorList] = useState({ active: null, colors: colors });
   isWishlisted =
     wishlist.findIndex((item) => item.slug === product.slug) > -1
