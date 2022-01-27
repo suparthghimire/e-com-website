@@ -23,8 +23,10 @@ function DetailOne(props) {
   const [cartActive, setCartActive] = useState(false);
   const [quantity, setQauntity] = useState(1);
   let isWishlisted,
-    colors = [] && product.product_image.map((pdt) => pdt.color),
-    sizes = [] && product.available_sizes;
+    colors = [] && [
+      ...new Set(product.product_image.map((pdt) => pdt.color.toLowerCase())),
+    ],
+    sizes = [] && [...new Set(product.available_sizes)];
   // if (colors.length > 0) {
   //   colors = [...new Map(colors.map((item) => [item.color, item])).values()];
   // }
