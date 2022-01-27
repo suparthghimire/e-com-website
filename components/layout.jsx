@@ -85,7 +85,7 @@ function Layout(props) {
 
       <MobileMenu />
 
-      <Quickview />
+      {/* <Quickview /> */}
 
       <VideoModal />
     </>
