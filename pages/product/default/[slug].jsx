@@ -17,15 +17,15 @@ import { TITLE } from "~/config";
 
 function ProductDefault() {
   const slug = useRouter().query.slug;
-
-  if (!slug) return "";
-
+  if (!slug || slug == "") return "";
   const { data, status } = useQuery(
     ["single-product", { slug }],
     GET_SINGLE_PRODUCT
   );
-  console.log("data", data);
-  if (data && data?.detail) return <Error404 />;
+  if (data && data?.detail) {
+    console.log("Here in Error 404");
+    return <Error404 />;
+  }
   const [loaded, setLoadingState] = useState(false);
   const related = data && data.category_products;
   useEffect(() => {

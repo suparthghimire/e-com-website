@@ -33,11 +33,15 @@ Modal.setAppElement("#__next");
 
 function Quickview(props) {
   const { slug, closeQuickview, isOpen } = props;
+
   const [loaded, setLoadingState] = useState(false);
   const { data, status } = useQuery(
     ["single-product", { slug }],
     GET_SINGLE_PRODUCT
   );
+  if (!slug || slug === "" || !data || (data && data?.detail)) {
+    return "";
+  }
   const router = useRouter();
   useEffect(() => {
     isOpen && closeQuickview() && setLoadingState(false);
@@ -48,9 +52,7 @@ function Quickview(props) {
       router.events.off("routeChangeStart", closeQuickview);
     };
   }, []);
-  if (!data || (data && data?.detail) || slug === "") {
-    return "";
-  }
+
   const closeQuick = () => {
     document.querySelector(".ReactModal__Overlay").classList.add("removed");
     document.querySelector(".quickview-modal").classList.add("removed");
