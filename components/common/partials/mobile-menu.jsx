@@ -101,7 +101,7 @@ function MobileMenu(props) {
             data.results.map((item, index) => {
               return (
                 <li key={index}>
-                  <ALink href={"/pages/category/" + item.slug}>
+                  <ALink href="#">
                     <div
                       className="d-flex justify-content-between align-items-center"
                       style={{ gap: "5px" }}

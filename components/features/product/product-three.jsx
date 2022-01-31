@@ -100,7 +100,7 @@ function ProductThree(props) {
           </ALink>
           <a
             href="#"
-            className="btn-product-icon btn-wishlist"
+            className="btn-product-icon btn-wishlist d-sm-none"
             title={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
             onClick={wishlistHandler}
           >
@@ -108,13 +108,15 @@ function ProductThree(props) {
               className={isWishlisted ? "d-icon-heart-full" : "d-icon-heart"}
             ></i>
           </a>
-          {/* <ALink
-            href={"/product/default/" + product.slug}
-            className="btn-product-icon btn-quickview"
-            title="Quick View"
+          <div
+            className="btn-product-icon d-block display-sm-block-md-none"
+            style={{ marginTop: "5px" }}
+            onClick={wishlistHandler}
           >
-            <i className="d-icon-bag"></i>
-          </ALink> */}
+            <i
+              className={isWishlisted ? "d-icon-heart-full" : "d-icon-heart"}
+            ></i>
+          </div>
         </div>
       </div>
     </div>

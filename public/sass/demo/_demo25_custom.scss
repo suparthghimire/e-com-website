@@ -1363,3 +1363,9 @@ main {
 }
 
 .overlay {}
+
+@media (min-width:400px){
+    .display-sm-block-md-none{
+        display: none !important
+    }
+}
