@@ -26,6 +26,7 @@ function ProductDefault() {
     console.log("Here in Error 404");
     return <Error404 />;
   }
+  console.log(data);
   const [loaded, setLoadingState] = useState(false);
   const related = data && data.category_products;
   useEffect(() => {

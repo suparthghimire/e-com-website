@@ -195,8 +195,9 @@ function DetailOne(props) {
 
       <div className="product-price">
         <ins className="new-price">NPR {product.display_price}</ins>
-
-        <del className="old-price">NPR {product.price}</del>
+        {product.display_price != product.price && (
+          <del className="old-price">NPR {product.price}</del>
+        )}
       </div>
 
       {/* <div className="ratings-container">
