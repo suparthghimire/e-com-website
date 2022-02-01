@@ -6,7 +6,7 @@ import { LOGIN } from "~/api/queries";
 import Cookie from "js-cookie";
 import ALink from "~/components/features/custom-link";
 import { useForm } from "react-hook-form";
-export default function LoginForm() {
+export default function LoginForm(props) {
   const {
     register,
     handleSubmit,
@@ -81,7 +81,15 @@ export default function LoginForm() {
           )}
         </div>
         <div className="form-footer">
-          <ALink href="/pages/forgot-password" className="lost-link">
+          <ALink
+            href="#"
+            onClick={() => {
+              props.closeModal();
+              console.log("Hehe");
+              router.push("/pages/forgot-password");
+            }}
+            className="lost-link"
+          >
             Lost your password?
           </ALink>
         </div>

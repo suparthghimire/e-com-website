@@ -130,11 +130,11 @@ function LoginModal(props) {
 
                 <div className="tab-content">
                   <TabPanel className="tab-pane">
-                    <LoginForm />
+                    <LoginForm closeModal={closeModal} />
                   </TabPanel>
 
                   <TabPanel className="tab-pane">
-                    <RegisterForm />
+                    <RegisterForm closeModal={closeModal} />
                   </TabPanel>
                 </div>
               </Tabs>
