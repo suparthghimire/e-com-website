@@ -14,7 +14,11 @@ export default function WishListProduct(props) {
         <ALink href={"/product/default/" + item.slug}>
           <figure>
             <img
-              src={item.product_image[0].url}
+              src={
+                item.product_image.length > 0
+                  ? item.product_image[0].url
+                  : "./images/placeholder/product_placeholder.png"
+              }
               width="100"
               height="100"
               alt="product"
