@@ -116,6 +116,7 @@ function MobileMenu(props) {
                     <SubCategoryMobile
                       category={item.sub_category}
                       title={item.title}
+                      level={0}
                     />
                   ) : (
                     ""

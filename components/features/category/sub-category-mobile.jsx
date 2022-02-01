@@ -25,14 +25,14 @@ export default function SubCategoryMobile(props) {
                   }
                   key={index}
                 >
-                  {/* <ALink
-                    href={"/pages/category/" + sub_cat.slug}
+                  <ALink
+                    href={
+                      props.level == 1 ? "/pages/category/" + sub_cat.slug : "#"
+                    }
                     className="submenu text-white"
-                  > */}
-                  <ALink href="#" className="submenu text-white">
-                    {sub_cat.title}
+                  >
+                    {sub_cat.title} {sub_cat.slug} {props.level}
                   </ALink>
-                  {/* </ALink> */}
                   {sub_cat.sub_category && sub_cat.sub_category.length > 0 ? (
                     <ul className="mobile-menu menu flex-column mb-0 m-0">
                       <SubCategoryMobile
