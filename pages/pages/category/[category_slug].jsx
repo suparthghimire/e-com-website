@@ -20,7 +20,7 @@ function Shop() {
   const page_size = router.query.page_size || "7";
   const brand = router.query.brand || "";
   const [pageNo, setPageNo] = useState("1");
-  const { products, loading, errors, hasMore } = GET_CATEGORY({
+  const { products, category, loading, errors, hasMore } = GET_CATEGORY({
     slug,
     min_price,
     max_price,
@@ -33,16 +33,56 @@ function Shop() {
   useEffect(() => {
     setPageNo("1");
   }, [slug]);
-  console.log({
-    slug,
-    min_price,
-    max_price,
-    size,
-    color,
-    pageNo,
-    page_size,
-    brand,
-  });
+  // for sidebar filter
+
+  const [colors, setColors] = useState([]);
+  const [sizes, setSizes] = useState([]);
+  const [price, setPrice] = useState({ minPrice: null, maxPrice: null });
+  useEffect(() => {
+    if (products.length > 0) {
+      console.log(products);
+      const all_sizes = [
+        ...new Set(
+          [].concat.apply(
+            [],
+            products.map((product) => product.available_sizes)
+          )
+        ),
+      ];
+      const all_colors = [
+        ...new Set(
+          [].concat.apply(
+            [],
+            products.map((item) => {
+              if (item.product_image.length <= 0) return [];
+              return item.product_image.map((image) => {
+                let color = image.color;
+                let upperCase =
+                  color[0].toUpperCase() + color.slice(1, color.length);
+                return upperCase;
+              });
+            })
+          )
+        ),
+      ];
+      setColors(all_colors);
+      setSizes(all_sizes);
+      setPrice({
+        minPrice: products.reduce((prev, curr) => {
+          return parseInt(prev.displayPrice) < parseInt(curr.displayPrice)
+            ? prev
+            : curr;
+        }),
+        maxPrice: products.reduce((prev, curr) => {
+          return parseInt(prev.displayPrice) > parseInt(curr.displayPrice)
+            ? prev
+            : curr;
+        }),
+      });
+      console.log(all_colors, all_sizes, price);
+    }
+  }, [products, pageNo]);
+
   // if (loading) return <CustomLoader type="Grid" />;
   return (
     <main className="main shop">
@@ -61,7 +101,7 @@ function Shop() {
                   <i className="d-icon-home"></i>
                 </ALink>
               </li>
-              <li>Shop</li>
+              <li>{category?.title}</li>
             </ul>
           </div>
         </div>
@@ -69,7 +109,13 @@ function Shop() {
       <div className="page-content mb-10">
         <div className="container">
           <div className="row gutter-lg main-content-wrap">
-            <SidebarFilterOne type="banner" />
+            <SidebarFilterOne
+              type="banner"
+              sizes={sizes}
+              colors={colors}
+              min_price={10}
+              maxPrice={1000}
+            />
             <div className="col-lg-9 main-content">
               {loading ? (
                 ""

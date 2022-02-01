@@ -127,6 +127,7 @@ export const GET_CATEGORY = (data) => {
   } = data;
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState({});
   const [errors, setErrors] = useState(false);
   const [hasMore, setHasMore] = useState(false);
 
@@ -142,13 +143,9 @@ export const GET_CATEGORY = (data) => {
   const url = `${BASE_URL}/category/${slug}/?${url_params.toString()}`;
   useEffect(() => {
     setProducts([]);
-    console.log("Products Cleared");
-    console.log(products);
   }, []);
   useEffect(() => {
     setProducts([]);
-    console.log("Products Cleared");
-    console.log(products);
   }, [slug]);
   useEffect(() => {
     setLoading(true);
@@ -157,6 +154,10 @@ export const GET_CATEGORY = (data) => {
       .then((res) => res.json())
       .then((data) => {
         // console.log("Raw", data);
+        setCategory((prevCategory) => {
+          if (data.detail) return {};
+          return data.category;
+        });
         setProducts((prevProducts) => {
           if (data.detail || (data.results && data.results.length <= 0))
             return [];
@@ -172,7 +173,7 @@ export const GET_CATEGORY = (data) => {
   }, [min_price, max_price, color, size, page, page_size, brand, slug]);
   // console.log("products", products);
 
-  return { products, loading, errors, hasMore };
+  return { products, category, loading, errors, hasMore };
 };
 
 export const GET_BRAND_PRODUCTS = (data) => {

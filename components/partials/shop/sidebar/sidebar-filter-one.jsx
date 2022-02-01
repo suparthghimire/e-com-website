@@ -19,6 +19,8 @@ function SidebarFilterOne(props) {
     show_filter = true,
     show_color = true,
     show_brand = true,
+    colors = [],
+    sizes = [],
   } = props;
   const router = useRouter();
   const query = router.query;
@@ -36,8 +38,8 @@ function SidebarFilterOne(props) {
   const [isFirst, setFirst] = useState(true);
   let sidebarData = data && data?.results?.category_products;
   let brands = data && data?.results?.brand;
-  let sizes = filterData && filterData?.results?.size;
-  let colors = filterData && filterData?.results?.color;
+  // let sizes = filterData && filterData?.results?.size;
+  // let colors = filterData && filterData?.results?.color;
   // let timerId;
 
   // useEffect(() => {
