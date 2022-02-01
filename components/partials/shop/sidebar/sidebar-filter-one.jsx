@@ -21,6 +21,7 @@ function SidebarFilterOne(props) {
     show_brand = true,
     colors = [],
     sizes = [],
+    brands = [],
   } = props;
   const router = useRouter();
   const query = router.query;
@@ -37,7 +38,7 @@ function SidebarFilterOne(props) {
   const [filterPrice, setPrice] = useState(tmpPrice);
   const [isFirst, setFirst] = useState(true);
   let sidebarData = data && data?.results?.category_products;
-  let brands = data && data?.results?.brand;
+  // let brands = data && data?.results?.brand;
   // let sizes = filterData && filterData?.results?.size;
   // let colors = filterData && filterData?.results?.color;
   // let timerId;
@@ -219,7 +220,7 @@ function SidebarFilterOne(props) {
               </div>
             )}
 
-            {show_categories && (
+            {/* {show_categories && (
               <div className="widget widget-collapsible">
                 <Card
                   title="<h3 className='widget-title'>All Categories<span className='toggle-btn p-0 parse-content'></span></h3>"
@@ -241,7 +242,7 @@ function SidebarFilterOne(props) {
                   </ul>
                 </Card>
               </div>
-            )}
+            )} */}
 
             {show_filter && (
               <div className="widget widget-collapsible">
@@ -375,7 +376,10 @@ function SidebarFilterOne(props) {
                               pathname: router.pathname,
                               query: {
                                 ...query,
-                                brand: getUrlForAttrs("brand", String(item.id)),
+                                brand: getUrlForAttrs(
+                                  "brand",
+                                  String(item.slug)
+                                ),
                                 page: 1,
                               },
                             }}

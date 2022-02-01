@@ -37,10 +37,9 @@ function Shop() {
 
   const [colors, setColors] = useState([]);
   const [sizes, setSizes] = useState([]);
-  const [price, setPrice] = useState({ minPrice: null, maxPrice: null });
+  const [brands, setBrands] = useState([]);
   useEffect(() => {
     if (products.length > 0) {
-      console.log(products);
       const all_sizes = [
         ...new Set(
           [].concat.apply(
@@ -65,21 +64,16 @@ function Shop() {
           )
         ),
       ];
+      const all_brands = [
+        ...new Map(
+          products.map((product) => [product.brand["title"], product])
+        ).values(),
+      ];
+
       setColors(all_colors);
       setSizes(all_sizes);
-      setPrice({
-        minPrice: products.reduce((prev, curr) => {
-          return parseInt(prev.displayPrice) < parseInt(curr.displayPrice)
-            ? prev
-            : curr;
-        }),
-        maxPrice: products.reduce((prev, curr) => {
-          return parseInt(prev.displayPrice) > parseInt(curr.displayPrice)
-            ? prev
-            : curr;
-        }),
-      });
-      console.log(all_colors, all_sizes, price);
+      setBrands(all_brands);
+      console.log(all_brands);
     }
   }, [products, pageNo]);
 
@@ -113,6 +107,7 @@ function Shop() {
               type="banner"
               sizes={sizes}
               colors={colors}
+              brands={brands}
               min_price={10}
               maxPrice={1000}
             />

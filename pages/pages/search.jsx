@@ -20,10 +20,9 @@ function Shop() {
   // // filters
   const [colors, setColors] = useState([]);
   const [sizes, setSizes] = useState([]);
-  const [price, setPrice] = useState({ minPrice: null, maxPrice: null });
+  const [brands, setBrands] = useState([]);
   useEffect(() => {
-    if (products && products.length > 0) {
-      console.log(products);
+    if (products.length > 0) {
       const all_sizes = [
         ...new Set(
           [].concat.apply(
@@ -48,21 +47,13 @@ function Shop() {
           )
         ),
       ];
+      const all_brands = [
+        ...new Set(products.map((product) => product.brand.title)),
+      ];
       setColors(all_colors);
       setSizes(all_sizes);
-      setPrice({
-        minPrice: products.reduce((prev, curr) => {
-          return parseInt(prev.displayPrice) < parseInt(curr.displayPrice)
-            ? prev
-            : curr;
-        }),
-        maxPrice: products.reduce((prev, curr) => {
-          return parseInt(prev.displayPrice) > parseInt(curr.displayPrice)
-            ? prev
-            : curr;
-        }),
-      });
-      console.log(all_colors, all_sizes, price);
+      setBrands(all_brands);
+      console.log(all_brands);
     }
   }, [products]);
   return (
@@ -91,7 +82,12 @@ function Shop() {
         <div className="page-content mb-10">
           <div className="container">
             <div className="row gutter-lg main-content-wrap">
-              <SidebarFilterOne type="banner" colors={colors} sizes={sizes} />
+              <SidebarFilterOne
+                type="banner"
+                colors={colors}
+                sizes={sizes}
+                brands={brands}
+              />
               <div className="col-lg-9 main-content">
                 {/* slug={slug} */}
                 <ProductListOne
