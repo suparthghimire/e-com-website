@@ -165,7 +165,7 @@ function DetailOne(props) {
                 Products
               </ALink>
             </li>
-            <li>Detail</li>
+            <li>{product.title}</li>
           </ul>
 
           {/* <ProductNav product={product} /> */}
