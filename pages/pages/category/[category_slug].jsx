@@ -30,6 +30,19 @@ function Shop() {
     page_size,
     brand,
   });
+  useEffect(() => {
+    setPageNo("1");
+  }, [slug]);
+  console.log({
+    slug,
+    min_price,
+    max_price,
+    size,
+    color,
+    pageNo,
+    page_size,
+    brand,
+  });
   // if (loading) return <CustomLoader type="Grid" />;
   return (
     <main className="main shop">
@@ -59,7 +72,7 @@ function Shop() {
             <SidebarFilterOne type="banner" />
             <div className="col-lg-9 main-content">
               {loading ? (
-                <CustomLoader type="Grid" />
+                ""
               ) : (
                 <ProductListOne
                   type="banner"

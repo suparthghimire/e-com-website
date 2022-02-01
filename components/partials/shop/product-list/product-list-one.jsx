@@ -77,7 +77,7 @@ function ProductListOne(props) {
                       className="product-wrap"
                       id="last-one"
                       ref={lastProductRef}
-                      key={"shop-" + item.slug}
+                      key={"shop-" + item.slug + index}
                     >
                       <ProductThree product={item} isCat={false} />
                     </div>
