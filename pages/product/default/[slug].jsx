@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import Helmet from "react-helmet";
@@ -22,15 +22,11 @@ function ProductDefault() {
     ["single-product", { slug }],
     GET_SINGLE_PRODUCT
   );
-  if (data && data?.detail) {
-    console.log("Here in Error 404");
-    return <Error404 />;
-  }
-  console.log(data);
+
   const [loaded, setLoadingState] = useState(false);
   const related = data && data.category_products;
   useEffect(() => {
-    if (status !== "loading" && data)
+    if (status !== "loading" && data && !data.detail)
       imagesLoaded("main")
         .on("done", function () {
           setLoadingState(true);
@@ -40,6 +36,9 @@ function ProductDefault() {
         });
     if (status === "loading") setLoadingState(false);
   }, [status]);
+  if (data && data?.detail) {
+    return <Error404 />;
+  }
   return (
     <main className="main mt-6 single-product">
       <Helmet>
@@ -103,16 +102,4 @@ function ProductDefault() {
   );
 }
 
-// export default withApollo({ ssr: typeof window === "undefined" })(
-//   ProductDefault
-// );
 export default ProductDefault;
-
-/**
- * Projection of a 3D object over a 2D Surface
-Represented by Colors, Shadings, Lines etc.
-Represented by Pixels on Digital Surfaces (Monitors, TVs, Screens, etc.)
-3D Environment on its own is not “Editable”
-A representation od 3D Environment can be “Edited"
-
- */

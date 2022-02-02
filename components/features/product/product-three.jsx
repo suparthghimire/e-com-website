@@ -34,9 +34,6 @@ function ProductThree(props) {
   const [curColor, setCurColor] = useState("null");
   const [curSize, setCurSize] = useState("null");
 
-  const showQuickviewHandler = () => {
-    openQuickview(product.slug);
-  };
   const addToCartHandler = () => {
     setCurColor(product.product_image[0].color);
     setCurSize(product.available_sizes);
@@ -115,7 +112,9 @@ function ProductThree(props) {
             <ins className="new-price">
               NPR. {toDecimal(product.display_price)}
             </ins>
-            <del className="old-price">NPR. {toDecimal(product.price)}</del>
+            {product.display_price !== product.price && (
+              <del className="old-price">NPR. {toDecimal(product.price)}</del>
+            )}
           </>
         </div>
         <div className="product-action">
