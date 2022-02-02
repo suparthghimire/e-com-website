@@ -112,7 +112,9 @@ function ProductThree(props) {
             <ins className="new-price">
               NPR. {toDecimal(product.display_price)}
             </ins>
-            <del className="old-price">NPR. {toDecimal(product.price)}</del>
+            {product.display_price !== product.price && (
+              <del className="old-price">NPR. {toDecimal(product.price)}</del>
+            )}
           </>
         </div>
         <div className="product-action">
