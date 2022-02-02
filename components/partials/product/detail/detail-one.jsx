@@ -165,7 +165,7 @@ function DetailOne(props) {
                 Products
               </ALink>
             </li>
-            <li>Detail</li>
+            <li>{product.title}</li>
           </ul>
 
           {/* <ProductNav product={product} /> */}
@@ -195,8 +195,9 @@ function DetailOne(props) {
 
       <div className="product-price">
         <ins className="new-price">NPR {product.display_price}</ins>
-
-        <del className="old-price">NPR {product.price}</del>
+        {product.display_price != product.price && (
+          <del className="old-price">NPR {product.price}</del>
+        )}
       </div>
 
       {/* <div className="ratings-container">

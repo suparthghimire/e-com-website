@@ -20,7 +20,7 @@ function Shop() {
   const page_size = router.query.page_size || "7";
   const brand = router.query.brand || "";
   const [pageNo, setPageNo] = useState("1");
-  const { products, loading, errors, hasMore } = GET_CATEGORY({
+  const { products, category, loading, errors, hasMore } = GET_CATEGORY({
     slug,
     min_price,
     max_price,
@@ -30,6 +30,53 @@ function Shop() {
     page_size,
     brand,
   });
+  useEffect(() => {
+    setPageNo("1");
+  }, [slug]);
+  // for sidebar filter
+
+  const [colors, setColors] = useState([]);
+  const [sizes, setSizes] = useState([]);
+  const [brands, setBrands] = useState([]);
+  useEffect(() => {
+    if (products.length > 0) {
+      const all_sizes = [
+        ...new Set(
+          [].concat.apply(
+            [],
+            products.map((product) => product.available_sizes)
+          )
+        ),
+      ];
+      const all_colors = [
+        ...new Set(
+          [].concat.apply(
+            [],
+            products.map((item) => {
+              if (item.product_image.length <= 0) return [];
+              return item.product_image.map((image) => {
+                let color = image.color;
+                let upperCase =
+                  color[0].toUpperCase() + color.slice(1, color.length);
+                return upperCase;
+              });
+            })
+          )
+        ),
+      ];
+      const all_brands = [
+        ...new Map(
+          products.map((product) => [product.brand["title"], product])
+        ).values(),
+      ];
+
+      setColors(all_colors);
+      setSizes(all_sizes);
+      setBrands(all_brands);
+      console.log(all_brands);
+    }
+  }, [products, pageNo]);
+
   // if (loading) return <CustomLoader type="Grid" />;
   return (
     <main className="main shop">
@@ -48,7 +95,7 @@ function Shop() {
                   <i className="d-icon-home"></i>
                 </ALink>
               </li>
-              <li>Shop</li>
+              <li>{category?.title}</li>
             </ul>
           </div>
         </div>
@@ -56,10 +103,17 @@ function Shop() {
       <div className="page-content mb-10">
         <div className="container">
           <div className="row gutter-lg main-content-wrap">
-            <SidebarFilterOne type="banner" />
+            <SidebarFilterOne
+              type="banner"
+              sizes={sizes}
+              colors={colors}
+              brands={brands}
+              min_price={10}
+              maxPrice={1000}
+            />
             <div className="col-lg-9 main-content">
               {loading ? (
-                <CustomLoader type="Grid" />
+                ""
               ) : (
                 <ProductListOne
                   type="banner"

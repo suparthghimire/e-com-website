@@ -27,10 +27,10 @@ export const GET_ALL_PRODUCTS_SHOP = (data) => {
   useEffect(() => {
     setProducts([]);
   }, []);
+
   useEffect(() => {
     setLoading(true);
     setErrors(false);
-    console.log(url);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -115,10 +115,19 @@ export const GET_ALL_BRANDS = async ({ queryKey }) => {
   return response.json();
 };
 export const GET_CATEGORY = (data) => {
-  const { slug, min_price, max_price, color, size, page, page_size, brand } =
-    data;
+  const {
+    slug,
+    min_price,
+    max_price,
+    color,
+    size = 20,
+    page = 1,
+    page_size = 20,
+    brand,
+  } = data;
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState({});
   const [errors, setErrors] = useState(false);
   const [hasMore, setHasMore] = useState(false);
 
@@ -136,11 +145,19 @@ export const GET_CATEGORY = (data) => {
     setProducts([]);
   }, []);
   useEffect(() => {
+    setProducts([]);
+  }, [slug]);
+  useEffect(() => {
     setLoading(true);
     setErrors(false);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
+        // console.log("Raw", data);
+        setCategory((prevCategory) => {
+          if (data.detail) return {};
+          return data.category;
+        });
         setProducts((prevProducts) => {
           if (data.detail || (data.results && data.results.length <= 0))
             return [];
@@ -154,7 +171,9 @@ export const GET_CATEGORY = (data) => {
         setErrors(error);
       });
   }, [min_price, max_price, color, size, page, page_size, brand, slug]);
-  return { products, loading, errors, hasMore };
+  // console.log("products", products);
+
+  return { products, category, loading, errors, hasMore };
 };
 
 export const GET_BRAND_PRODUCTS = (data) => {

@@ -9,17 +9,48 @@ import { modalActions } from "~/store/modal";
 import { wishlistActions } from "~/store/wishlist";
 
 import { toDecimal } from "~/utils";
+import { useState, useEffect } from "react";
 
 function ProductThree(props) {
-  const { product, adClass, toggleWishlist, wishlist, openQuickview } = props;
+  const {
+    product,
+    adClass,
+    toggleWishlist,
+    wishlist,
+    openQuickview,
+    addToCart,
+  } = props;
   let isWishlisted;
   isWishlisted =
     wishlist.findIndex((item) => item.slug === product.slug) > -1
       ? true
       : false;
 
+  let colors = [] && [
+    ...new Set(product.product_image.map((pdt) => pdt.color.toLowerCase())),
+  ];
+  let sizes = [] && [...new Set(product.available_sizes)];
+
+  const [curColor, setCurColor] = useState("null");
+  const [curSize, setCurSize] = useState("null");
+
   const showQuickviewHandler = () => {
     openQuickview(product.slug);
+  };
+  const addToCartHandler = () => {
+    setCurColor(product.product_image[0].color);
+    setCurSize(product.available_sizes);
+
+    if (product.is_available) {
+      addToCart({
+        ...product,
+        name: product.title,
+        qty: 1,
+        price: product.display_price,
+        color: curColor,
+        size: curSize,
+      });
+    }
   };
 
   const wishlistHandler = (e) => {
@@ -93,7 +124,7 @@ function ProductThree(props) {
             className="btn-product btn-cart color-primary"
             style={{ borderRadius: "0.5rem" }}
             title="Add to cart"
-            onClick={showQuickviewHandler}
+            onClick={addToCartHandler}
           >
             <i className="d-icon-bag"></i>
             <span>Add to cart</span>
