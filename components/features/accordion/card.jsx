@@ -37,14 +37,34 @@ export default function Card(props) {
     <SlideToggle collapsed={expanded ? false : true}>
       {({ onToggle, setCollapsibleElement, toggleState }) => (
         <>
-          <ALink
-            href={url ? url : "#"}
-            content={title}
-            className={`parse-content ${toggleState.toLowerCase()}`}
+          <div
+            className="d-flex align-items-center justify-content-between"
+            style={{ cursor: "pointer" }}
             onClick={(e) => {
               onToggle();
             }}
-          ></ALink>
+          >
+            <ALink
+              href={url ? url : "#"}
+              content={title}
+              className={`parse-content ${toggleState.toLowerCase()}`}
+            ></ALink>
+            {iconClass ? (
+              <i
+                className={
+                  (toggleState.toLowerCase() === "expanded" ||
+                  toggleState.toLowerCase() === "expanding"
+                    ? " rotate-180 "
+                    : " ") +
+                  iconClass +
+                  " mb-3 "
+                }
+                style={{ transition: "150ms ease-in-out" }}
+              ></i>
+            ) : (
+              ""
+            )}
+          </div>
 
           <div ref={setCollapsibleElement} className="overflow-hidden">
             {props.children}
