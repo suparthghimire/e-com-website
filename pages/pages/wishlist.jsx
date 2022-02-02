@@ -10,15 +10,8 @@ import { toDecimal } from "~/utils";
 import { TITLE } from "~/config";
 function Wishlist(props) {
   const router = useRouter();
-  const { wishlist, addToCart, openQuickview, removeFromWishlist } = props;
-  const showQuickviewHandler = (slug) => {
-    openQuickview(slug);
-  };
-  const moveToCart = (e, item) => {
-    e.preventDefault();
-    addToCart({ ...item, qty: 1, price: item.price[0] });
-    removeFromWishlist(item);
-  };
+  const { wishlist, addToCart, removeFromWishlist } = props;
+
   return (
     <main className="main">
       <Helmet>
@@ -67,9 +60,9 @@ function Wishlist(props) {
                 <tbody className="wishlist-items-wrapper">
                   {wishlist.map((item) => (
                     <WishListProduct
-                      item={item}
-                      openQuickview={openQuickview}
+                      product={item}
                       removeFromWishlist={removeFromWishlist}
+                      addToCart={addToCart}
                     />
                   ))}
                 </tbody>

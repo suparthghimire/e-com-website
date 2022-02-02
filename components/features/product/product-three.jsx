@@ -34,9 +34,6 @@ function ProductThree(props) {
   const [curColor, setCurColor] = useState("null");
   const [curSize, setCurSize] = useState("null");
 
-  const showQuickviewHandler = () => {
-    openQuickview(product.slug);
-  };
   const addToCartHandler = () => {
     setCurColor(product.product_image[0].color);
     setCurSize(product.available_sizes);

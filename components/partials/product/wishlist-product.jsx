@@ -1,22 +1,38 @@
-import React from "react";
-import { connect } from "react-redux";
-
+import { useState } from "react";
 import ALink from "~/components/features/custom-link";
 
 export default function WishListProduct(props) {
-  const { item, openQuickview, removeFromWishlist } = props;
-  const showQuickviewHandler = () => {
-    openQuickview(item.slug);
+  const { product, removeFromWishlist, addToCart } = props;
+  const [curColor, setCurColor] = useState("null");
+  const [curSize, setCurSize] = useState("null");
+
+  const addToCartHandler = () => {
+    console.log(product);
+    setCurColor(
+      product.product_image.length > 0 ? product.product_image[0].color : ""
+    );
+    setCurSize(product.available_sizes);
+
+    if (product.is_available) {
+      addToCart({
+        ...product,
+        name: product.name,
+        qty: 1,
+        price: product.display_price,
+        color: curColor,
+        size: curSize,
+      });
+    }
   };
   return (
-    <tr key={"wishlist-" + item.name}>
+    <tr key={"wishlist-" + product.name}>
       <td className="product-thumbnail">
-        <ALink href={"/product/default/" + item.slug}>
+        <ALink href={"/product/default/" + product.slug}>
           <figure>
             <img
               src={
-                item.product_image.length > 0
-                  ? item.product_image[0].url
+                product.product_image.length > 0
+                  ? product.product_image[0].url
                   : "./images/placeholder/product_placeholder.png"
               }
               width="100"
@@ -27,13 +43,15 @@ export default function WishListProduct(props) {
         </ALink>
       </td>
       <td className="font-weight-bold" style={{ fontSize: "1.5rem" }}>
-        {item.name.length > 25 ? item.name.slice(0, 25) + "..." : item.name}
+        {product.name.length > 25
+          ? product.name.slice(0, 25) + "..."
+          : product.name}
       </td>
       <td>
         <h5 className="text-primary">In Stock</h5>
       </td>
       <td className="product-price">
-        <span className="amount">{item.display_price}</span>
+        <span className="amount">{product.display_price}</span>
       </td>
 
       <td className="product-add-to-cart">
@@ -42,8 +60,8 @@ export default function WishListProduct(props) {
             <ALink
               href="#"
               className="add-to-cart-wishlist"
-              title="Add to Cart"
-              onClick={showQuickviewHandler}
+              name="Add to Cart"
+              onClick={addToCartHandler}
             >
               Add To Cart
             </ALink>
@@ -52,10 +70,10 @@ export default function WishListProduct(props) {
       </td>
       <td className="product-remove">
         <div>
-          <ALink href="#" className="remove" title="Remove this product">
+          <ALink href="#" className="remove" name="Remove this product">
             <i
               className="fas fa-times text-primary"
-              onClick={() => removeFromWishlist(item)}
+              onClick={() => removeFromWishlist(product)}
             ></i>
           </ALink>
         </div>

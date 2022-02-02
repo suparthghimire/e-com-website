@@ -352,6 +352,45 @@ function SidebarFilterOne(props) {
                 </Card>
               </div>
             )}
+            {/* {show_brand && (
+              <div className="widget widget-collapsible">
+                <Card
+                  title="<h3 className='widget-title'>Brands<span className='toggle-btn p-0 parse-content'></span></h3>"
+                  type="parse"
+                  expanded={true}
+                >
+                  <ul className="widget-body filter-items">
+                    {brands.map((item, index) => (
+                      <li
+                        className={
+                          containsAttrInUrl("brand", item.id.toString())
+                            ? "active"
+                            : ""
+                        }
+                        key={item.slug + " - " + index}
+                      >
+                        <ALink
+                          scroll={false}
+                          href={{
+                            pathname: router.pathname,
+                            query: {
+                              ...query,
+                              colors: getUrlForAttrs(
+                                "brand",
+                                item.slug.toString()
+                              ),
+                              page: 1,
+                            },
+                          }}
+                        >
+                          {item.title}
+                        </ALink>
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
+              </div>
+            )} */}
             {show_brand && (
               <div className="widget widget-collapsible">
                 <Card
@@ -364,7 +403,7 @@ function SidebarFilterOne(props) {
                       brands.map((item, index) => (
                         <li
                           className={
-                            containsAttrInUrl("brand", String(item.id))
+                            containsAttrInUrl("brand", item.slug.toString())
                               ? "active"
                               : ""
                           }
@@ -378,7 +417,7 @@ function SidebarFilterOne(props) {
                                 ...query,
                                 brand: getUrlForAttrs(
                                   "brand",
-                                  String(item.slug)
+                                  item.slug.toString()
                                 ),
                                 page: 1,
                               },

@@ -66,10 +66,9 @@ function Shop() {
       ];
       const all_brands = [
         ...new Map(
-          products.map((product) => [product.brand["title"], product])
+          products.map((product) => [product.brand?.title, product])
         ).values(),
       ];
-
       setColors(all_colors);
       setSizes(all_sizes);
       setBrands(all_brands);
