@@ -22,6 +22,8 @@ function SidebarFilterOne(props) {
     colors = [],
     sizes = [],
     brands = [],
+    min_price = 0,
+    max_price = 10000,
   } = props;
   const router = useRouter();
   const query = router.query;
@@ -257,8 +259,8 @@ function SidebarFilterOne(props) {
                       <div className="filter-price-slider noUi-target noUi-ltr noUi-horizontal shop-input-range">
                         <InputRange
                           formatLabel={(value) => `$${value}`}
-                          maxValue={10000}
-                          minValue={0}
+                          maxValue={max_price}
+                          minValue={min_price}
                           step={50}
                           value={filterPrice}
                           onChange={onChangePrice}
