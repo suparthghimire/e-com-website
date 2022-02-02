@@ -15,6 +15,7 @@ export default function Header(props) {
   const router = useRouter();
 
   const { data, status } = useQuery(["nav-items", {}], GET_NAV_ITEMS);
+  console.log(data);
   // if (status === "loading") return <CustomLoader type="Grid" />;
   if (status === "loading") return "";
 

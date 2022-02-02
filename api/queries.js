@@ -148,14 +148,14 @@ export const GET_CATEGORY = (data) => {
   }, []);
   useEffect(() => {
     setProducts([]);
-  }, [slug, min_price, max_price, color, size, page, page_size, brand]);
+  }, [slug, min_price, max_price, color, size, brand]);
   useEffect(() => {
     setLoading(true);
     setErrors(false);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        // console.log("Raw", data);
+        console.log("Raw", data);
         setCategory((prevCategory) => {
           if (data.detail) return {};
           return data.category;
@@ -173,7 +173,6 @@ export const GET_CATEGORY = (data) => {
         setErrors(error);
       });
   }, [min_price, max_price, color, size, page, page_size, brand, slug]);
-  // console.log("products", products);
 
   return { products, category, loading, errors, hasMore };
 };
@@ -191,7 +190,7 @@ export const GET_BRAND_PRODUCTS = (data) => {
   }, []);
   useEffect(() => {
     setProducts([]);
-  }, [slug, min_price, max_price, color, size, page, page_size, brand]);
+  }, [slug, min_price, max_price, color, size, brand]);
   useEffect(() => {
     setProducts([]);
     setLoading(true);
@@ -353,7 +352,7 @@ export const GET_ALL_FEATURED_SHOP = (data) => {
   }, []);
   useEffect(() => {
     setProducts([]);
-  }, [slug, min_price, max_price, color, size, page, page_size, brand]);
+  }, [slug, min_price, max_price, color, size, brand]);
   useEffect(() => {
     setLoading(true);
     setErrors(false);
@@ -398,7 +397,7 @@ export const GET_ALL_TRENDING_SHOP = (data) => {
   }, []);
   useEffect(() => {
     setProducts([]);
-  }, [slug, min_price, max_price, color, size, page, page_size, brand]);
+  }, [slug, min_price, max_price, color, size, brand]);
   useEffect(() => {
     setLoading(true);
     setErrors(false);

@@ -74,18 +74,7 @@ function Shop() {
       setBrands(all_brands);
       console.log(all_brands);
     }
-  }, [
-    products,
-    pageNo,
-    slug,
-    min_price,
-    max_price,
-    size,
-    color,
-    pageNo,
-    page_size,
-    brand,
-  ]);
+  }, [products, pageNo]);
 
   // if (loading) return <CustomLoader type="Grid" />;
   return (
