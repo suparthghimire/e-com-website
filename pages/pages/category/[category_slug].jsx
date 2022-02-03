@@ -38,6 +38,7 @@ function Shop() {
   const [colors, setColors] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [brands, setBrands] = useState([]);
+  const [price, setPrice] = useState(null);
   useEffect(() => {
     if (products.length > 0) {
       const all_sizes = [
@@ -72,20 +73,20 @@ function Shop() {
       setColors(all_colors);
       setSizes(all_sizes);
       setBrands(all_brands);
-      console.log(all_brands);
+      setPrice({
+        min_price: products.reduce(function (prev, curr) {
+          return parseInt(prev.display_price) < parseInt(curr.display_price)
+            ? prev
+            : curr;
+        }),
+        max_price: products.reduce(function (prev, curr) {
+          return parseInt(prev.display_price) > parseInt(curr.display_price)
+            ? prev
+            : curr;
+        }),
+      });
     }
-  }, [
-    products,
-    pageNo,
-    slug,
-    min_price,
-    max_price,
-    size,
-    color,
-    pageNo,
-    page_size,
-    brand,
-  ]);
+  }, [products, pageNo]);
 
   // if (loading) return <CustomLoader type="Grid" />;
   return (
@@ -113,13 +114,17 @@ function Shop() {
       <div className="page-content mb-10">
         <div className="container">
           <div className="row gutter-lg main-content-wrap">
+            {console.log(price)}
             <SidebarFilterOne
               type="banner"
               sizes={sizes}
               colors={colors}
               brands={brands}
-              min_price={10}
-              maxPrice={1000}
+              min_price={
+                parseInt(price?.min_price?.display_price) -
+                parseInt(price?.min_price?.display_price)
+              }
+              max_price={parseInt(price?.max_price?.display_price) + 200}
             />
             <div className="col-lg-9 main-content">
               {loading ? (

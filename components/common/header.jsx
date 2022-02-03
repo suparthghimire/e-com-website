@@ -1,23 +1,23 @@
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 import ALink from "~/components/features/custom-link";
-import CustomLoader from "../../components/common/custom-loader";
 import SubCategory from "../../components/features/category/sub-category";
 import CartMenu from "~/components/common/partials/cart-menu";
 import SearchBox from "~/components/common/partials/search-box";
 import LoginModal from "~/components/features/modals/login-modal";
 import { useQuery } from "react-query";
-import { GET_NAV_ITEMS } from "~/api/queries";
-import { headerBorderRemoveList, headerCategories } from "~/utils/data/menu";
+import { GET_NAV_ITEMS, GET_HOME_DATA_NEW } from "~/api/queries";
 
 export default function Header(props) {
   const router = useRouter();
 
   const { data, status } = useQuery(["nav-items", {}], GET_NAV_ITEMS);
-  // if (status === "loading") return <CustomLoader type="Grid" />;
-  if (status === "loading") return "";
-
+  const { data: homeData, status: homeDataStatus } = useQuery(
+    ["home-data", {}],
+    GET_HOME_DATA_NEW
+  );
+  if (status === "loading" || homeDataStatus === "loading") return "";
+  console.log(homeData);
   const showMobileMenu = () => {
     document.querySelector("body").classList.add("mmenu-active");
   };
@@ -56,7 +56,7 @@ export default function Header(props) {
               </div>
               <div className="icon-box-content d-lg-show">
                 <h4 className="icon-box-title">Call Us Now:</h4>
-                <p>0(800) 123-456</p>
+                <p>{homeData?.results?.company?.contact_one}</p>
               </div>
             </ALink>
             <span className="divider"></span>

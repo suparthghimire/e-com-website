@@ -132,7 +132,10 @@ input[type="number"] {
         margin: 0 0.6rem 0.6rem 0;
     }
 }
-
+.rotate-180{
+    transform: rotateZ(180deg) !important;
+    transition: 150ms ease-in-out;
+}
 // @include mq(lg) {
 //     .header-middle {
 //         .header-left {
@@ -1361,9 +1364,12 @@ main {
 .fw-normal {
     font-weight: normal !important;
 }
-
-.overlay {}
-
+.filter-title-icon{
+    color:pink !important
+}
+.filter-title-icon::after{
+    content:"abc";
+}
 @media (min-width:400px){
     .display-sm-block-md-none{
         display: none !important

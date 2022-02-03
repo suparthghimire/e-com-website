@@ -22,6 +22,8 @@ function SidebarFilterOne(props) {
     colors = [],
     sizes = [],
     brands = [],
+    min_price = 0,
+    max_price = 10000,
   } = props;
   const router = useRouter();
   const query = router.query;
@@ -250,14 +252,15 @@ function SidebarFilterOne(props) {
                   title="<h3 className='widget-title'>Filter by Price<span className='toggle-btn p-0 parse-content'></span></h3>"
                   type="parse"
                   expanded={true}
+                  iconClass="fas fa-chevron-down"
                 >
                   <div className="widget-body">
                     <form action="#">
                       <div className="filter-price-slider noUi-target noUi-ltr noUi-horizontal shop-input-range">
                         <InputRange
                           formatLabel={(value) => `$${value}`}
-                          maxValue={10000}
-                          minValue={0}
+                          maxValue={max_price}
+                          minValue={min_price}
                           step={50}
                           value={filterPrice}
                           onChange={onChangePrice}
@@ -289,6 +292,7 @@ function SidebarFilterOne(props) {
                   title="<h3 className='widget-title'>Size<span className='toggle-btn p-0 parse-content'></span></h3>"
                   type="parse"
                   expanded={true}
+                  iconClass="fas fa-chevron-down"
                 >
                   <ul className="widget-body filter-items">
                     {sizes.map((item, index) => (
@@ -324,6 +328,7 @@ function SidebarFilterOne(props) {
                   title="<h3 className='widget-title'>Color<span className='toggle-btn p-0 parse-content'></span></h3>"
                   type="parse"
                   expanded={true}
+                  iconClass="fas fa-chevron-down"
                 >
                   <ul className="widget-body filter-items">
                     {colors.map((item, index) => (
@@ -352,51 +357,13 @@ function SidebarFilterOne(props) {
                 </Card>
               </div>
             )}
-            {/* {show_brand && (
-              <div className="widget widget-collapsible">
-                <Card
-                  title="<h3 className='widget-title'>Brands<span className='toggle-btn p-0 parse-content'></span></h3>"
-                  type="parse"
-                  expanded={true}
-                >
-                  <ul className="widget-body filter-items">
-                    {brands.map((item, index) => (
-                      <li
-                        className={
-                          containsAttrInUrl("brand", item.id.toString())
-                            ? "active"
-                            : ""
-                        }
-                        key={item.slug + " - " + index}
-                      >
-                        <ALink
-                          scroll={false}
-                          href={{
-                            pathname: router.pathname,
-                            query: {
-                              ...query,
-                              colors: getUrlForAttrs(
-                                "brand",
-                                item.slug.toString()
-                              ),
-                              page: 1,
-                            },
-                          }}
-                        >
-                          {item.title}
-                        </ALink>
-                      </li>
-                    ))}
-                  </ul>
-                </Card>
-              </div>
-            )} */}
             {show_brand && (
               <div className="widget widget-collapsible">
                 <Card
                   title="<h3 className='widget-title'>Brands<span className='toggle-btn p-0 parse-content'></span></h3>"
                   type="parse"
                   expanded={true}
+                  iconClass="fas fa-chevron-down"
                 >
                   <ul className="widget-body filter-items">
                     {data &&
