@@ -16,7 +16,7 @@ export default function CheckoutForm(props) {
   const [promoDiscount, setPromoDiscount] = useState(0);
   const [serverErrors, setServerErrors] = useState(null);
   const [paymentMthd, setPaymentMthd] = useState(null);
-  const [pickFromShop, setPickFromShop] = useState(null);
+  const [pickFromShop, setPickFromShop] = useState(false); //change to null later if option is chosen
   const [shipCost, setShipCost] = useState(0);
   const empty_cart = () => {
     props.cartList.forEach((product) => {
@@ -392,7 +392,7 @@ export default function CheckoutForm(props) {
                         )}
                       </td>
                     </tr>
-                    <tr className="sumnary-shipping shipping-row-last">
+                    {/* <tr className="sumnary-shipping shipping-row-last">
                       <td>
                         <h4 className="summary-subtitle">Recieving Method</h4>
                         <div className="custom-radio">
@@ -435,7 +435,7 @@ export default function CheckoutForm(props) {
                         <div>NPR. 0</div>
                         <div>NPR. 40</div>
                       </td>
-                    </tr>
+                    </tr> */}
 
                     <tr className="summary-total">
                       <td className="pb-0">
