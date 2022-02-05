@@ -7,7 +7,6 @@ export default function WishListProduct(props) {
   const [curSize, setCurSize] = useState("null");
 
   const addToCartHandler = () => {
-    console.log(product);
     setCurColor(
       product.product_image.length > 0 ? product.product_image[0].color : ""
     );
@@ -22,6 +21,7 @@ export default function WishListProduct(props) {
         color: curColor,
         size: curSize,
       });
+      removeFromWishlist(product);
     }
   };
   return (
