@@ -55,8 +55,8 @@ function Shop() {
       <div className="page-content mb-10">
         <div className="container">
           <div className="row gutter-lg main-content-wrap">
-            <SidebarFilterOne type="banner" />
-            <div className="col-lg-9 main-content">
+            {/* <SidebarFilterOne type="banner" /> */}
+            <div className="col-lg-12 main-content">
               {loading ? (
                 <CustomLoader type="Oval" />
               ) : (

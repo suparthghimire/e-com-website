@@ -45,17 +45,8 @@ function Order(props) {
         <Helmet>
           <title>{TITLE} </title>
         </Helmet>
-
-        <h1 className="d-none">Riode React eCommerce Template - Order</h1>
-
         <div className="page-content pt-7 pb-10 mb-10">
           <div className="container mt-8">
-            <div className="order-results">
-              <div className="overview-item">
-                <strong>{props.user.full_name}</strong>
-              </div>
-            </div>
-            <hr />
             <div className="d-flex justify-content-between">
               <h2 className="title title-simple text-left pt-4 font-weight-bold text-uppercase">
                 Order Details

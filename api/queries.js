@@ -343,12 +343,6 @@ export const GET_ALL_FEATURED_SHOP = (data) => {
   });
   const url = `${BASE_URL}/product/featured/?${url_params.toString()}`;
   useEffect(() => {
-    setProducts([]);
-  }, []);
-  useEffect(() => {
-    setProducts([]);
-  }, [slug, min_price, max_price, color, size, brand]);
-  useEffect(() => {
     setLoading(true);
     setErrors(false);
     fetch(url)
@@ -387,12 +381,6 @@ export const GET_ALL_TRENDING_SHOP = (data) => {
     brand,
   });
   const url = `${BASE_URL}/product/trending/?${url_params.toString()}`;
-  useEffect(() => {
-    setProducts([]);
-  }, []);
-  useEffect(() => {
-    setProducts([]);
-  }, [slug, min_price, max_price, color, size, brand]);
   useEffect(() => {
     setLoading(true);
     setErrors(false);

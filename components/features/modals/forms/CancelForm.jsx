@@ -12,7 +12,7 @@ export default function CancelForm(props) {
   } = useForm();
   const [serverError, setServerError] = useState([]);
   const handle_cancel = async (data) => {
-    data = { ...data, order_status: "CANCELED" };
+    data = { ...data, order_status: "CANCELLED" };
     try {
       toast.info("Cancelling Your Order", { autoClose: 1200 });
       const response = await fetch(`${BASE_URL}/order/${props.id}/cancel/`, {
@@ -47,7 +47,7 @@ export default function CancelForm(props) {
       toast.success("Order Cancelled Successfully!", {
         autoClose: 1200,
       });
-      router.push("/pages/order/");
+      router.push("/pages/account/");
     } catch (error) {
       setServerError(error);
     } finally {

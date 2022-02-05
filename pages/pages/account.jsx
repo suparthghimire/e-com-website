@@ -20,9 +20,6 @@ function Account(props) {
         <Helmet>
           <title>{TITLE} | Account</title>
         </Helmet>
-
-        <h1 className="d-none">Riode React eCommerce Template - Account</h1>
-
         <nav className="breadcrumb-nav">
           <div className="container">
             <ul className="breadcrumb">
@@ -35,11 +32,8 @@ function Account(props) {
             </ul>
           </div>
         </nav>
-
         <div className="page-content mt-4 mb-10 pb-6">
           <div className="container">
-            <h2 className="title title-center mb-10">{props.user.full_name}</h2>
-
             <Tabs
               selectedTabClassName="show"
               selectedTabPanelClassName="active"
