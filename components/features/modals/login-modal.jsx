@@ -78,7 +78,7 @@ function LoginModal(props) {
     auth_nav = (
       <div className="dropdown">
         <ALink href="#">
-          <span>Hello {props.user.full_name}</span>
+          <span>Hello, {props.user.full_name}</span>
         </ALink>
         <ul className="dropdown-box">
           <li>

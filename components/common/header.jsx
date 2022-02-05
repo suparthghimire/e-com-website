@@ -1,3 +1,4 @@
+import { connect } from "react-redux";
 import { useRouter } from "next/router";
 
 import ALink from "~/components/features/custom-link";
@@ -8,7 +9,7 @@ import LoginModal from "~/components/features/modals/login-modal";
 import { useQuery } from "react-query";
 import { GET_NAV_ITEMS, GET_HOME_DATA_NEW } from "~/api/queries";
 
-export default function Header(props) {
+function Header(props) {
   const router = useRouter();
 
   const { data, status } = useQuery(["nav-items", {}], GET_NAV_ITEMS);
@@ -17,7 +18,6 @@ export default function Header(props) {
     GET_HOME_DATA_NEW
   );
   if (status === "loading" || homeDataStatus === "loading") return "";
-  console.log(homeData);
   const showMobileMenu = () => {
     document.querySelector("body").classList.add("mmenu-active");
   };
@@ -60,9 +60,16 @@ export default function Header(props) {
               </div>
             </ALink>
             <span className="divider"></span>
-            <ALink href="/pages/wishlist" className="wishlist">
-              <i className="d-icon-heart"></i>
-            </ALink>
+            <div style={{ position: "relative" }}>
+              <ALink href="/pages/wishlist" className="wishlist">
+                <i className="d-icon-heart">
+                  <span className="cart-count" style={inlineWishlistStyles}>
+                    {/* <sup style={{ fontSize: '1.1rem', color: '#c54b8c' }}>{0}</sup> */}
+                    {props.wishlist.length}
+                  </span>
+                </i>
+              </ALink>
+            </div>
             <span className="divider"></span>
             <CartMenu auth={props.auth} />
             <div className="d-flex align-items-center">
@@ -127,3 +134,25 @@ export default function Header(props) {
     </header>
   );
 }
+
+const inlineWishlistStyles = {
+  position: "absolute",
+  top: -2,
+  right: 2,
+  backgroundColor: "#c54b8c",
+  color: "white",
+  fontSize: "1.1rem",
+  width: "1.9rem",
+  height: "1.9rem",
+  borderRadius: "50%",
+  textAlign: "center",
+  lineHeight: "1.9rem",
+};
+
+function mapStateToProps(state) {
+  return {
+    wishlist: state.wishlist.data,
+  };
+}
+
+export default connect(mapStateToProps)(Header);

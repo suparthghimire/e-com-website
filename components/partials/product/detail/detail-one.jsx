@@ -161,7 +161,10 @@ function DetailOne(props) {
               </ALink>
             </li>
             <li>
-              <ALink href="#" className="active">
+              <ALink
+                href={`/pages/category/${product?.category.slug}`}
+                className="active"
+              >
                 {product?.category?.title}
               </ALink>
             </li>

@@ -187,12 +187,6 @@ export const GET_BRAND_PRODUCTS = (data) => {
   const url = `${BASE_URL}/brand/${slug}/product/`;
   useEffect(() => {
     setProducts([]);
-  }, []);
-  useEffect(() => {
-    setProducts([]);
-  }, [slug, min_price, max_price, color, size, brand]);
-  useEffect(() => {
-    setProducts([]);
     setLoading(true);
     setErrors(false);
     fetch(url)
@@ -200,8 +194,9 @@ export const GET_BRAND_PRODUCTS = (data) => {
       .then((data) => {
         setBrand(data.brand);
         setProducts((prevProducts) => {
-          if (data.detail || (data.results && data.results.length <= 0))
+          if (data.detail || (data.results && data.results.length <= 0)) {
             return [];
+          }
           return [...prevProducts, ...data.results];
         });
         setHasMore(data.next ? true : false);

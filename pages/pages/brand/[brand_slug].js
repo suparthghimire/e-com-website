@@ -14,9 +14,11 @@ function BrandSlug() {
   const router = useRouter();
   const slug = router.query.brand_slug;
   const [pageNo, setPageNo] = useState("1");
-  const { products, brand, loading, errors, hasMore } = GET_BRAND_PRODUCTS({
+  const test = GET_BRAND_PRODUCTS({
     slug,
   });
+  const { products, brand, loading, errors, hasMore } = test;
+  console.log(test, "aslkjdflaksjdfladsj");
   return (
     <main className="main shop">
       <Helmet>

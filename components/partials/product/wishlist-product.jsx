@@ -1,13 +1,15 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import ALink from "~/components/features/custom-link";
 
 export default function WishListProduct(props) {
+  const router = useRouter();
   const { product, removeFromWishlist, addToCart } = props;
   const [curColor, setCurColor] = useState("null");
   const [curSize, setCurSize] = useState("null");
 
   const addToCartHandler = () => {
-    console.log(product);
+    return router.push(`/product/default/${product.slug}`);
     setCurColor(
       product.product_image.length > 0 ? product.product_image[0].color : ""
     );
@@ -22,6 +24,7 @@ export default function WishListProduct(props) {
         color: curColor,
         size: curSize,
       });
+      // removeFromWishlist(product);
     }
   };
   return (

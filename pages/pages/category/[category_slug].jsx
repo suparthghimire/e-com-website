@@ -114,7 +114,6 @@ function Shop() {
       <div className="page-content mb-10">
         <div className="container">
           <div className="row gutter-lg main-content-wrap">
-            {console.log(price)}
             <SidebarFilterOne
               type="banner"
               sizes={sizes}

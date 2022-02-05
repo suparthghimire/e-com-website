@@ -370,7 +370,7 @@ function SidebarFilterOne(props) {
                       brands.map((item, index) => (
                         <li
                           className={
-                            containsAttrInUrl("brand", item.id.toString())
+                            containsAttrInUrl("brand", item.brand.id.toString())
                               ? "active"
                               : ""
                           }
@@ -384,13 +384,13 @@ function SidebarFilterOne(props) {
                                 ...query,
                                 brand: getUrlForAttrs(
                                   "brand",
-                                  item.id.toString()
+                                  item.brand.id.toString()
                                 ),
                                 page: 1,
                               },
                             }}
                           >
-                            {item.title}
+                            {item.brand.title}
                           </ALink>
                         </li>
                       ))}

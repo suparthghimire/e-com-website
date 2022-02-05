@@ -107,8 +107,8 @@ export default function CheckoutForm(props) {
       }),
       total: getTotalPrice(props.cartList, {
         promo_discount: promoDiscount,
-        shipping_fee: 40,
-        tax: getTotalPrice(props.cartList) * 0.13,
+        shipping_fee: 0,
+        tax: getTotalPrice(props.cartList) * 0,
       }),
       order_status: "ORDERED",
       orders: props.cartList.map((item) => ({
@@ -254,7 +254,7 @@ export default function CheckoutForm(props) {
                   </label>
                   <input
                     type="text"
-                    className="form-control mb-0"
+                    className="form-control mb-0 text-black"
                     placeholder="Address *"
                     id="delivery_address"
                     {...register("delivery_address", {
@@ -274,7 +274,7 @@ export default function CheckoutForm(props) {
                   <label htmlFor="contact_number">Contact Number</label>
                   <input
                     type="number"
-                    className="form-control mb-0"
+                    className="form-control mb-0 text-black"
                     placeholder="Contact Number *"
                     id="contact_number"
                     {...register("contact_number", {
@@ -367,14 +367,14 @@ export default function CheckoutForm(props) {
                         </td>
                       </tr>
                     ))}
-                    <tr>
+                    {/* <tr>
                       <td colSpan="2" className="product-name">
                         Promo Discount
                       </td>
                       <td className="product-total text-body">
                         NPR. {promoDiscount}
                       </td>
-                    </tr>
+                    </tr> */}
 
                     <tr className="summary-subtotal">
                       <td>

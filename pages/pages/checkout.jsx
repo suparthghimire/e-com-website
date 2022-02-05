@@ -11,8 +11,6 @@ import { cartActions } from "~/store/cart";
 function Checkout(props) {
   const router = useRouter();
   if (!props.loadingAuth && !props.auth) {
-    console.log(props.loadingAuth, props.auth);
-    console.log("In Checkout");
     router.push("/pages/login");
   }
   if (!props.loadingAuth && props.auth) {
@@ -23,7 +21,7 @@ function Checkout(props) {
           <title>{TITLE} | Checkout</title>
         </Helmet>
 
-        <h1 className="d-none">Riode React eCommerce Template - Checkout</h1>
+        <h1 className="d-none">Checkout</h1>
 
         <div
           className={`page-content pt-7 pb-10 ${

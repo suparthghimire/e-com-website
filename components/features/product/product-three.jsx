@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { connect } from "react-redux";
 
@@ -12,6 +13,7 @@ import { toDecimal } from "~/utils";
 import { useState, useEffect } from "react";
 
 function ProductThree(props) {
+  const router = useRouter();
   const {
     product,
     adClass,
@@ -35,6 +37,7 @@ function ProductThree(props) {
   const [curSize, setCurSize] = useState("null");
 
   const addToCartHandler = () => {
+    return router.push(`/product/default/${product.slug}`);
     setCurColor(product.product_image[0].color);
     setCurSize(product.available_sizes);
 

@@ -33,13 +33,11 @@ export default function Menu(props) {
           </ALink>
         </li>
         <li className="">
-          <ALink href="pages/shop/trending" className=" text-black fw-normal">
+          <ALink
+            href="pages/shop/trending"
+            className="menu-li text-black fw-normal"
+          >
             Trending Products
-          </ALink>
-        </li>
-        <li>
-          <ALink href="#" className="menu-title menu-li fw-600">
-            Browse Our Categories
           </ALink>
         </li>
         {props.nav.map((item, index) => {

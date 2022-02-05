@@ -6,7 +6,7 @@ export default function Dashboard(props) {
       <h3>Dashboard</h3>
       <hr />
       <p className="mb-0">
-        Hello <span>{props.user.full_name}</span>
+        Hello, <span>{props.user.full_name}</span>
       </p>
       <p className="mb-8">
         From your account dashboard you can view your recent orders, manage and

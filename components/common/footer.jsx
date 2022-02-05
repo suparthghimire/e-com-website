@@ -63,7 +63,7 @@ export default function Footer() {
                 <h4 className="widget-title">About Us</h4>
                 <ul className="widget-body">
                   {aboutus.map((item, index) => (
-                    <li>
+                    <li key={index}>
                       <ALink
                         href={"/singlepage/" + item.slug}
                         key={"singlepage-" + index}
@@ -81,7 +81,7 @@ export default function Footer() {
                 <h4 className="widget-title">Customer Service</h4>
                 <ul className="widget-body">
                   {customer.map((item, index) => (
-                    <li>
+                    <li key={index}>
                       <ALink
                         href={"/singlepage/" + item.slug}
                         key={"singlepage-" + index}

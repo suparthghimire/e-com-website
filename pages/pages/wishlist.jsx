@@ -18,7 +18,6 @@ function Wishlist(props) {
         <title>{TITLE} | Wishlist</title>
       </Helmet>
 
-      <h1 className="d-none">Riode React eCommerce Template - Wishlist</h1>
       <nav className="breadcrumb-nav">
         <div className="container">
           <ul className="breadcrumb">

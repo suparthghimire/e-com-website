@@ -12,41 +12,25 @@ export default function Category() {
   if (categories.status === "loading" || nav.status === "loading")
     return <CustomLoader type="Grid" />;
   const category = categories.data?.results?.category_products;
-  const banner = nav.data?.results;
   const brands = categories.data?.results.brand;
+  // console.log(categories, '-----------------------------')
   return (
-    <>
-      {/* <OwlCarousel adClass="owl-theme owl-nav-full h-700">
-        {banner &&
-          banner.map((item, index) => {
+    <div className="container home mt-5">
+      <div className="page-content">
+        <h2 className="title title-simple">Categories</h2>
+        <div className="category-list">
+          {category.map((item, index) => {
             return (
-              <figure
-                className="banner-image-wrapper"
-                key={"banner-" + index}
-                autoplay={true}
-              >
-                <img src={item.featured_image} alt={item.title} />
-              </figure>
+              <ALink href={"/pages/category/" + item.slug}>
+                <div className="row" key={"category" + index}>
+                  <SingleCategory key={"category-" + index} category={item} />
+                </div>
+              </ALink>
             );
           })}
-      </OwlCarousel> */}
-      <div className="container home mt-5">
-        <div className="page-content">
-          <h2 className="title title-simple">Categories</h2>
-          <div className="category-list">
-            {category.map((item, index) => {
-              return (
-                <ALink href={"/pages/category/" + item.slug}>
-                  <div className="row" key={"category" + index}>
-                    <SingleCategory key={"category-" + index} category={item} />
-                  </div>
-                </ALink>
-              );
-            })}
-          </div>
-          <BrandSection brands={brands} />
         </div>
+        <BrandSection brands={brands} />
       </div>
-    </>
+    </div>
   );
 }
