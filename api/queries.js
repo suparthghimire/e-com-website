@@ -29,7 +29,7 @@ export const GET_ALL_PRODUCTS_SHOP = (data) => {
   }, []);
   useEffect(() => {
     setProducts([]);
-  }, [slug, min_price, max_price, color, size, page, page_size, brand]);
+  }, [min_price, max_price, color, size, page, page_size, brand]);
   useEffect(() => {
     setLoading(true);
     setErrors(false);
