@@ -226,9 +226,13 @@ function ModalDetailOne(props) {
                 <div className="single-product-price">
                   <div className="product-price mb-0">
                     <ins className="new-price">
-                      ${toDecimal(product.display_price)}
+                      ${" "}
+                      {product.display_price &&
+                        toDecimal(product.display_price)}
                     </ins>
-                    <del className="old-price">${toDecimal(product.price)}</del>
+                    <del className="old-price">
+                      $ {product.price && toDecimal(product.price)}
+                    </del>
                   </div>
                 </div>
               </div>

@@ -6,7 +6,7 @@ import { toDecimal } from "~/utils";
 
 export default function CartPopup(props) {
   const { product } = props;
-
+  console.log(product);
   return (
     <div className="minipopup-area">
       <div className="minipopup-box show" style={{ top: "0" }}>
@@ -37,7 +37,7 @@ export default function CartPopup(props) {
             <span className="price-box">
               <span className="product-quantity">{product.qty}</span>
               <span className="product-price">
-                NPR. {toDecimal(product.price)}
+                NPR. {product.price && toDecimal(product.price)}
               </span>
             </span>
           </div>

@@ -22,6 +22,7 @@ function DetailOne(props) {
   const [curSize, setCurSize] = useState("null");
   const [cartActive, setCartActive] = useState(false);
   const [quantity, setQauntity] = useState(1);
+  console.log(product);
   let isWishlisted,
     colors = [] && [
       ...new Set(product.product_image.map((pdt) => pdt.color.toLowerCase())),
@@ -110,7 +111,7 @@ function DetailOne(props) {
         ...product,
         name: product.title,
         qty: quantity,
-        price: product.display_price,
+        price: product.display_price ? product.display_price : product.price,
         color: curColor,
         size: curSize,
       });
@@ -194,10 +195,18 @@ function DetailOne(props) {
       </div> */}
 
       <div className="product-price">
-        <ins className="new-price">NPR {product.display_price}</ins>
-        {product.display_price != product.price && (
-          <del className="old-price">NPR {product.price}</del>
-        )}
+        <ins className="new-price">
+          NPR{" "}
+          {product.display_price
+            ? toDecimal(product.display_price)
+            : toDecimal(product.price)}
+        </ins>
+        {!product.display_price ||
+          (product.display_price !== product.price && (
+            <del className="old-price">
+              NPR. {product.price && toDecimal(product.price)}
+            </del>
+          ))}
       </div>
 
       {/* <div className="ratings-container">
@@ -353,10 +362,18 @@ function DetailOne(props) {
                 <div className="single-product-price">
                   <div className="product-price mb-0">
                     <ins className="new-price">
-                      NPR {toDecimal(product.display_price)}
+                      NPR.{" "}
+                      {product.display_price
+                        ? toDecimal(product.display_price)
+                        : toDecimal(product.price)}
                     </ins>
                     <del className="old-price">
-                      NPR {toDecimal(product.price)}
+                      {!product.display_price ||
+                        (product.display_price !== product.price && (
+                          <del className="old-price">
+                            NPR. {product.price && toDecimal(product.price)}
+                          </del>
+                        ))}
                     </del>
                   </div>
                 </div>

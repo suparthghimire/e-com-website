@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ALink from "~/components/features/custom-link";
+import { toDecimal } from "~/utils";
 
 export default function WishListProduct(props) {
   const { product, removeFromWishlist, addToCart } = props;
@@ -17,7 +18,7 @@ export default function WishListProduct(props) {
         ...product,
         name: product.name,
         qty: 1,
-        price: product.display_price,
+        price: product.display_price ? product.display_price : product.price,
         color: curColor,
         size: curSize,
       });
@@ -51,7 +52,12 @@ export default function WishListProduct(props) {
         <h5 className="text-primary">In Stock</h5>
       </td>
       <td className="product-price">
-        <span className="amount">{product.display_price}</span>
+        <span className="amount">
+          NPR.{" "}
+          {product.display_price
+            ? toDecimal(product.display_price)
+            : toDecimal(product.price)}
+        </span>
       </td>
 
       <td className="product-add-to-cart">
