@@ -126,21 +126,18 @@ function Shop() {
               max_price={parseInt(price?.max_price?.display_price) + 200}
             />
             <div className="col-lg-9 main-content">
-              {loading ? (
-                ""
-              ) : (
-                <ProductListOne
-                  type="banner"
-                  slug={slug}
-                  products={products}
-                  total_products={products.length}
-                  loading={loading}
-                  errors={errors}
-                  hasMore={hasMore}
-                  pageNo={pageNo}
-                  setPageNo={setPageNo}
-                />
-              )}
+              <ProductListOne
+                type="banner"
+                slug={slug}
+                products={products}
+                total_products={products.length}
+                loading={loading}
+                errors={errors}
+                hasMore={hasMore}
+                pageNo={pageNo}
+                setPageNo={setPageNo}
+              />
+              {loading && <CustomLoader />}
             </div>
           </div>
         </div>

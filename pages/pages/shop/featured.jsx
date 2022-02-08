@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Helmet from "react-helmet";
 import ALink from "~/components/features/custom-link";
 import SidebarFilterOne from "~/components/partials/shop/sidebar/sidebar-filter-one";
-import { useQuery } from "react-query";
 import { GET_ALL_FEATURED_SHOP } from "../../../api/queries";
 import ProductListOne from "../../../components/partials/shop/product-list/product-list-one";
 import { useRouter } from "next/router";
@@ -11,7 +10,6 @@ import { TITLE } from "~/config";
 
 function Shop() {
   const router = useRouter();
-  const slug = router.query.category_slug;
   const min_price = router.query.min_price || "";
   const max_price = router.query.max_price || "";
   const color = router.query.colors || "";
@@ -20,7 +18,6 @@ function Shop() {
   const brand = router.query.brand || "";
   const [pageNo, setPageNo] = useState("1");
   const { products, loading, errors, hasMore } = GET_ALL_FEATURED_SHOP({
-    slug,
     min_price,
     max_price,
     size,
@@ -57,21 +54,17 @@ function Shop() {
           <div className="row gutter-lg main-content-wrap">
             {/* <SidebarFilterOne type="banner" /> */}
             <div className="col-lg-12 main-content">
-              {loading ? (
-                <CustomLoader type="Oval" />
-              ) : (
-                <ProductListOne
-                  type="banner"
-                  slug={slug}
-                  products={products}
-                  total_products={products.length}
-                  loading={loading}
-                  errors={errors}
-                  hasMore={hasMore}
-                  pageNo={pageNo}
-                  setPageNo={setPageNo}
-                />
-              )}
+              <ProductListOne
+                type="banner"
+                products={products}
+                total_products={products.length}
+                loading={loading}
+                errors={errors}
+                hasMore={hasMore}
+                pageNo={pageNo}
+                setPageNo={setPageNo}
+              />
+              {loading && <CustomLoader />}
             </div>
           </div>
         </div>
