@@ -118,7 +118,7 @@ function CartMenu(props) {
                     <div className="price-box">
                       <span className="product-quantity">{item.qty}</span>
                       <span className="product-price">
-                        NPR {toDecimal(item.price)}
+                        NPR {item.price && toDecimal(item.price)}
                       </span>
                     </div>
                   </div>

@@ -46,7 +46,7 @@ function ProductThree(props) {
         ...product,
         name: product.title,
         qty: 1,
-        price: product.display_price,
+        price: product.display_price ? product.display_price : product.price,
         color: curColor,
         size: curSize,
       });
@@ -113,11 +113,17 @@ function ProductThree(props) {
         <div className="product-price">
           <>
             <ins className="new-price">
-              NPR. {toDecimal(product.display_price)}
+              Npr.{" "}
+              {product.display_price
+                ? toDecimal(product.display_price)
+                : toDecimal(product.price)}
             </ins>
-            {product.display_price !== product.price && (
-              <del className="old-price">NPR. {toDecimal(product.price)}</del>
-            )}
+            {!product.display_price ||
+              (product.display_price !== product.price && (
+                <del className="old-price">
+                  NPR. {product.price && toDecimal(product.price)}
+                </del>
+              ))}
           </>
         </div>
         <div className="product-action">

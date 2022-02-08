@@ -14,7 +14,7 @@ function Checkout(props) {
     router.push("/pages/login");
   }
   if (!props.loadingAuth && props.auth) {
-    const { cartList, removeFromCart } = props;
+    const { cartList, wishList, removeFromCart, removeFromWishlist } = props;
     return (
       <main className="main checkout">
         <Helmet>

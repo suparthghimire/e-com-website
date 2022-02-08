@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import ALink from "~/components/features/custom-link";
+import { toDecimal } from "~/utils";
 
 export default function WishListProduct(props) {
   const router = useRouter();
@@ -9,7 +10,6 @@ export default function WishListProduct(props) {
   const [curSize, setCurSize] = useState("null");
 
   const addToCartHandler = () => {
-    return router.push(`/product/default/${product.slug}`);
     setCurColor(
       product.product_image.length > 0 ? product.product_image[0].color : ""
     );
@@ -20,11 +20,11 @@ export default function WishListProduct(props) {
         ...product,
         name: product.name,
         qty: 1,
-        price: product.display_price,
+        price: product.display_price ? product.display_price : product.price,
         color: curColor,
         size: curSize,
       });
-      // removeFromWishlist(product);
+      removeFromWishlist(product);
     }
   };
   return (
@@ -54,7 +54,12 @@ export default function WishListProduct(props) {
         <h5 className="text-primary">In Stock</h5>
       </td>
       <td className="product-price">
-        <span className="amount">{product.display_price}</span>
+        <span className="amount">
+          NPR.{" "}
+          {product.display_price
+            ? toDecimal(product.display_price)
+            : toDecimal(product.price)}
+        </span>
       </td>
 
       <td className="product-add-to-cart">

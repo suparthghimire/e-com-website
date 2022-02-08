@@ -363,7 +363,10 @@ export default function CheckoutForm(props) {
                           {item.size}
                         </td>
                         <td className="product-total text-body">
-                          NPR. {toDecimal(item.price * item.qty)}
+                          NPR.{" "}
+                          {item.price &&
+                            item.qty &&
+                            toDecimal(item.price * item.qty)}
                         </td>
                       </tr>
                     ))}
