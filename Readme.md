@@ -10,4 +10,4 @@ The tech stack used are:
 - JavaScript
 - SASS
 
-The page is hosted in Netlify [Demo]()
+The page is hosted in Netlify [Demo](https://ecommerce.suparthnarayanghimire.com.np)
